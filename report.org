@@ -116,13 +116,21 @@ top-level user stories.
 #+END_COMMENT
 
 
-* Background, Analysis and Process
+* Introduction, Analysis and Objectives
+
+** Background
+
+** Problem Analysis
+
+** Objectives
 
 * Method Design
   
 * Software Design and Implementation
 
-* Results and Conclusion 
+* Results
+
+* Discussion
   
 * Critical Evaluation
 
