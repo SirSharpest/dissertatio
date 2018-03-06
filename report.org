@@ -88,6 +88,34 @@ Chapter 4: Results and Conclusion
 Chapter 5: Critical Evaluation
 #+END_COMMENT
 
+#+BEGIN_COMMENT
+
+Problem Analysis (15%)
+This area will assess the project as described in the background, objectives and
+overview of the development process or research method(s).
+
+-Preparation: This will assess how well you researched the background to the
+project topic, how well you understood what you read and how well you
+presented this preparation with appropriate citations and bibliographic entries.
+Some of the material you wrote for your Outline Project Specification may be
+reused here, but it would need to be more detailed.
+
+- Analysis: This will assess your understanding of the problems for your project,
+how well you assessed alternative approaches and your justification for the
+approach you selected.
+
+
+There should be a clear statement of the objectives of the work or the research
+question, which you will evaluate at the end of the project.
+For plan-driven software development projects, it would be appropriate to
+include a full requirements specification as an appendix, and refer to the key
+issues in this section. For an agile project, the requirements should be
+expressed in a format appropriate to the choice of agile approach, e.g. a set of
+top-level user stories.
+
+#+END_COMMENT
+
+
 * Background, Analysis and Process
 
 * Method Design
