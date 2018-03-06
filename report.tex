@@ -1,0 +1,155 @@
+% Created 2018-03-06 Tue 22:42
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\renewcommand\maketitle{}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{fancyhdr} %For headers and footers
+\pagestyle{fancy} %For headers and footers
+\fancyfoot[CE,CO]{}
+\usepackage{lastpage} %For getting page x of y
+\usepackage{float} %Allows the figures to be positioned and formatted nicely
+\restylefloat{figure} %and this command
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\usepackage{minted}
+\setminted{frame=single,framesep=10pt}
+\rfoot{\thepage\ of \pageref{LastPage}}
+\usepackage[parfill]{parskip}
+\usepackage{subfig}
+\hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+\usepackage{titlesec}
+\usepackage{framed}
+\usepackage{etoolbox}
+\date{}
+\title{\textbf{Modelling the effects of domestication in the genus \emph{Triticum} through novel computer vision techniques}}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.3.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\titleformat{\chapter}[display]
+   {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+
+
+% Redefine the plain page style
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \rfoot{\thepage\ of \pageref{LastPage}}
+  \fancyfoot[CE,CO]{}
+}
+
+
+% \patchcmd{\chapter}{\thispagestyle{fancy}}{\thispagestyle{fancy}}{}{}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{center}
+\fontsize{10}{12}
+\selectfont
+
+\textbf{\huge Modelling the effects of domestication in the genus \textit{Triticum} through novel computer vision techniques}
+
+\vspace{0.3in}
+
+\begin{tabular}[t]{ll}
+ Author: & Nathan Hughes (nah26@aber.ac.uk) \\
+ Supervisor: & Dr. Wayne Aubrey (waa2@aber.ac.uk) \\
+ Degree Scheme &  G401 \hspace*{0.05in}(Computer Science)\\
+\\
+ \\
+ Date: & \today \\
+ Revision: & 0.1\\
+ Status: & Draft\\
+\\
+\end{tabular}
+ \\
+ \vspace{0.1in}
+This report was submitted as partial fulfilment \\of a BSc degree in Computer Science (G401)
+\end{center}
+\clearpage
+\renewcommand{\headrulewidth}{1pt}
+\thispagestyle{plain}
+
+\begin{center}
+    {\LARGE\bf Declaration of originality}
+\end{center}
+
+I confirm that:
+
+\begin{itemize}
+\item{This submission is my own work, except where 
+clearly indicated.}
+
+\item{I understand that there are severe penalties for Unacceptable Academic Practice, which can lead to loss of marks or even the withholding of a degree.}
+ 
+\item{I have read the regulations on Unacceptable Academic Practice from the University's Academic Quality and Records Office (AQRO) and the relevant sections of the current Student Handbook of the Department of Computer Science.}
+ 
+\item{In submitting this work I understand and agree to abide by the University's regulations governing these issues.}
+\end{itemize}
+
+\vspace{2em}
+Name ............................................................  \\
+
+\vspace{1em}
+Date ............................................................ \\
+
+\vspace{1em}
+\begin{center}
+    {\LARGE\bf Consent to share this work}
+\end{center}
+
+By including my name below, I hereby agree to this dissertation being made available to other students and academic staff of the Aberystwyth Computer Science Department.  
+
+\vspace{2em}
+Name ............................................................  \\
+
+\vspace{1em}
+Date ............................................................ \\
+
+\tableofcontents
+\listoftables
+\listoffigures
+\clearpage
+
+\chapter{Background, Analysis and Process}
+\label{sec-1}
+
+\chapter{Method Design}
+\label{sec-2}
+
+\chapter{Software Design and Implementation}
+\label{sec-3}
+
+\chapter{Results and Conclusion}
+\label{sec-4}
+
+\chapter{Critical Evaluation}
+\label{sec-5}
+
+\clearpage
+\bibliography{dissertation} 
+\bibliographystyle{unsrt}
+% Emacs 25.3.1 (Org mode 8.2.10)
+\end{document}
