@@ -5,6 +5,7 @@
 #+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
 #+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
 #+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
 #+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
 #+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
 #+LaTeX_HEADER: \restylefloat{figure} %and this command
@@ -16,7 +17,7 @@
 #+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
 #+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
 #+LaTeX_HEADER: \usepackage[parfill]{parskip}
-#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTeX_HEADER: \usepackage{subfig}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
@@ -35,7 +36,6 @@
     \rfoot{\thepage\ of \pageref{LastPage}}
     \fancyfoot[CE,CO]{}
   }
-
 
   % \patchcmd{\chapter}{\thispagestyle{fancy}}{\thispagestyle{fancy}}{}{}
 #+END_LaTeX

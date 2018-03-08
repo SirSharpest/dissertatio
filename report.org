@@ -1,82 +1,83 @@
-#+TITLE: *Modelling the effects of domestication in the genus /Triticum/ through novel computer vision techniques*
+#+TITLE: *Modelling the effects of domestication in Wheat through novel computer vision techniques*
 #+OPTIONS: title:nil toc:nil H:4 author:nil date:nil TeX:t LaTeX:t
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
 #+BEGIN_LaTeX
-\thispagestyle{empty}
-\renewcommand{\headrulewidth}{0pt}
-\begin{center}
-\fontsize{10}{12}
-\selectfont
+  \thispagestyle{empty}
+  \renewcommand{\headrulewidth}{0pt}
+  \begin{center}
+    \fontsize{10}{12}
+    \selectfont
 
-\textbf{\huge Modelling the effects of domestication in the genus \textit{Triticum} through novel computer vision techniques}
+    \textbf{\huge Modelling the effects of domestication in Wheat through novel computer vision techniques}
 
-\vspace{0.3in}
+    \vspace{0.3in}
 
-\begin{tabular}[t]{ll}
- Author: & Nathan Hughes (nah26@aber.ac.uk) \\
- Supervisor: & Dr. Wayne Aubrey (waa2@aber.ac.uk) \\
- Degree Scheme &  G401 \hspace*{0.05in}(Computer Science)\\
-\\
- \\
- Date: & \today \\
- Revision: & 0.1\\
- Status: & Draft\\
-\\
-\end{tabular}
- \\
- \vspace{0.1in}
-This report was submitted as partial fulfilment \\of a BSc degree in Computer Science (G401)
-\end{center}
-\clearpage
-\renewcommand{\headrulewidth}{1pt}
+    \begin{tabular}[t]{ll}
+      Author: & Nathan Hughes (nah26@aber.ac.uk) \\
+      Supervisor: & Dr. Wayne Aubrey (waa2@aber.ac.uk) \\
+      Degree Scheme &  G401 \hspace*{0.05in}(Computer Science)\\
+      \\
+      \\
+      Date: & \today \\
+      Revision: & 0.1\\
+      Status: & Draft\\
+      \\
+    \end{tabular}
+    \\
+    \vspace{0.1in}
+    This report was submitted as partial fulfilment \\of a BSc degree in Computer Science (G401)
+  \end{center}
+  \clearpage
+  \renewcommand{\headrulewidth}{1pt}
 #+END_LaTeX
 #+BEGIN_LaTeX
-\thispagestyle{plain}
+  \thispagestyle{plain}
 
-\begin{center}
+  \begin{center}
     {\LARGE\bf Declaration of originality}
-\end{center}
+  \end{center}
 
-I confirm that:
+  I confirm that:
 
-\begin{itemize}
-\item{This submission is my own work, except where 
-clearly indicated.}
+  \begin{itemize}
+  \item{This submission is my own work, except where
+      clearly indicated.}
 
-\item{I understand that there are severe penalties for Unacceptable Academic Practice, which can lead to loss of marks or even the withholding of a degree.}
- 
-\item{I have read the regulations on Unacceptable Academic Practice from the University's Academic Quality and Records Office (AQRO) and the relevant sections of the current Student Handbook of the Department of Computer Science.}
- 
-\item{In submitting this work I understand and agree to abide by the University's regulations governing these issues.}
-\end{itemize}
+  \item{I understand that there are severe penalties for Unacceptable Academic Practice, which can lead to loss of marks or even the withholding of a degree.}
 
-\vspace{2em}
-Name ............................................................  \\
+  \item{I have read the regulations on Unacceptable Academic Practice from the University's Academic Quality and Records Office (AQRO) and the relevant sections of the current Student Handbook of the Department of Computer Science.}
 
-\vspace{1em}
-Date ............................................................ \\
+  \item{In submitting this work I understand and agree to abide by the University's regulations governing these issues.}
+  \end{itemize}
 
-\vspace{1em}
-\begin{center}
+  \vspace{2em}
+  Name ............................................................  \\
+
+  \vspace{1em}
+  Date ............................................................ \\
+
+  \vspace{1em}
+  \begin{center}
     {\LARGE\bf Consent to share this work}
-\end{center}
+  \end{center}
 
-By including my name below, I hereby agree to this dissertation being made available to other students and academic staff of the Aberystwyth Computer Science Department.  
+  By including my name below, I hereby agree to this dissertation being made available to other students and academic staff of the Aberystwyth Computer Science Department.
 
-\vspace{2em}
-Name ............................................................  \\
+  \vspace{2em}
+  Name ............................................................  \\
 
-\vspace{1em}
-Date ............................................................ \\
+  \vspace{1em}
+  Date ............................................................ \\
 
-\tableofcontents
-\listoftables
-\listoffigures
-\clearpage
+  \clearpage
+  \tableofcontents
+  \listoftables
+  \listoffigures
+  \listoflistings
+  \clearpage
 #+END_LaTeX
-
 
 #+BEGIN_COMMENT
 A research project
@@ -125,15 +126,129 @@ top-level user stories.
 ** Objectives
 
 * Method Design
-  
+
+** Improvements to 3D imaging software
+*** New Watershed Algorithm
+
+In order to solve the problem of misidentified and joint seeds, from the primitive collection,
+I implemented a /quasi-euclidean/ distance transform into the analysis pipeline cite:Hughes2017. This provided much better results than the previous
+/chessboard/ transform which had been successful on more uniform datasets.
+
+**** Quasi-Euclidean algorithm
+
+This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
+line segments cite:Pfaltz1966.
+
+#+NAME: eqn:qe
+\begin{equation}
+\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
+\end{equation}
+
+
+In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
+and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
+
 * Software Design and Implementation
+
+** Data Pipeline
+
+#+NAME: fig:pipeline
+#+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
+
+(*) -> "Scan Wheat Spikes"
+
+partition MATLAB {
+--> "Load Raw Scan Data"
+-> "Convert to 2D Image Stacks"
+--> "Calculate Threshold Percentile"
+-left-> "Segment and Mask via Threshold"
+--> "Apply Improved Quasi-Euclidean Watershed"
+-right-> "Detected Objects"
+--> "Output Data to CSV format"
+}
+
+partition Python {
+-right-> "Load and Convert data to CTData Objects"
+
+If "Check for \nfalse positives?" then
+-> [Yes]"Estimate Error"
+--> "Remove Estimated Outliers"
+--> "Load in external experiment information"
+else
+--> [No] "Load in external experiment information"
+Endif
+
+If "Spike Joining?" then
+-left-> [Yes] "Process logical spike joining"
+--> "Aggregate Data columns"
+else
+--> [No] "Aggregate Data columns"
+Endif
+
+If "Normally Distributed?" then
+--> [Yes] "Perform Parametric Tests"
+
+--> "Output Results"
+else
+--> [No] "Perform Non-Parametric Tests"
+Endif
+
+--> "Output Results"
+}
+#+END_SRC
+#+BEGIN_CENTER
+#+CAPTION: Data Pipeline and Information Flow
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:pipeline
+[[file:pipeline.png]]
+#+RESULTS: fig:pipeline
+#+END_CENTER
+
+** Improved Watershedding algorithm
+
+*** Code
+#+CAPTION: MATLAB Watershedding function
+#+LABEL: lst:ws
+#+BEGIN_SRC octave
+  function [W] = watershedSplit3D(A)
+    % Takes image stack A and splits it into stack W
+    % Convert to BW
+    bw = logical(A);
+    % Create variable for opening and closing
+    se = strel('disk', 5);
+    % Minimise object missshapen-ness
+    bw = imerode(bw, se);
+    bw = imdilate(bw, se);
+    % Fill in any left over holes
+    bw = imfill(bw,4,'holes');
+    % Use chessboard for distance calculation for more refined splitting
+    chessboard = -bwdist(~bw, 'quasi-euclidean');
+    % Modify the intensity of our bwdist to produce chessboard2
+    mask = imextendedmin(chessboard, 2);
+    chessboard2 = imimposemin(chessboard, mask);
+    % Calculate watershed based on the modified chessboard
+    Ld2 = watershed(chessboard2);
+    % Take original image and add on the lines calculated for splitting
+    W = A;
+    W(Ld2 == 0) = 0;
+  end
+#+END_SRC
 
 * Results
 
+** Improved accuracy of imaging software
+
+*** Effect of enhanced watershedding algorithm
+#+BEGIN_CENTER
+#+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:qe
+[[./images/chess_quasi.png]]
+#+END_CENTER
+
 * Discussion
-  
 * Critical Evaluation
 
 \clearpage
-bibliography:dissertation.bib 
+bibliography:dissertation.bib
 bibliographystyle:unsrt
