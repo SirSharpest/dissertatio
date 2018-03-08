@@ -5,5 +5,5 @@
 !.gitignore
 !*.org
 !dissertation.bib
-!*png
+!*/png
 !report.pdf

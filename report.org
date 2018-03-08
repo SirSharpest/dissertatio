@@ -152,9 +152,8 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 
 ** Data Pipeline
 
-#+NAME: fig:pipeline
-#+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
-
+#+NAME: fig:matlab
+#+BEGIN_SRC  plantuml :results file :file ./images/matlab.png
 (*) -> "Scan Wheat Spikes"
 
 partition MATLAB {
@@ -162,11 +161,37 @@ partition MATLAB {
 -> "Convert to 2D Image Stacks"
 --> "Calculate Threshold Percentile"
 -left-> "Segment and Mask via Threshold"
---> "Apply Improved Quasi-Euclidean Watershed"
--right-> "Detected Objects"
+--> "Calculate 3D Quasi-Euclidean Distance"
+If "Seeds Joined" then
+--> [Yes] "Separate by Watershed"
+--> "Detect Objects"
+else
+-> [No] "Detect Objects"
+Endif
+
+
+
+-> "Record Measurements"
+--> [For each seed] "Record Measurements"
+
 --> "Output Data to CSV format"
 }
+->(*)
 
+#+END_SRC
+#+BEGIN_CENTER
+#+CAPTION: Image Processing Pipeline
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:matlab
+[[file:./images/matlab.png]]
+#+RESULTS: fig:matlab
+#+END_CENTER
+
+
+#+NAME: fig:pipeline
+#+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
+
+(*) -> "MATLAB Output"
 partition Python {
 -right-> "Load and Convert data to CTData Objects"
 
@@ -175,7 +200,7 @@ If "Check for \nfalse positives?" then
 --> "Remove Estimated Outliers"
 --> "Load in external experiment information"
 else
---> [No] "Load in external experiment information"
+-> [No] "Load in external experiment information"
 Endif
 
 If "Spike Joining?" then
@@ -200,7 +225,7 @@ Endif
 #+CAPTION: Data Pipeline and Information Flow
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:pipeline
-[[file:pipeline.png]]
+[[file:./images/pipeline.png]]
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
