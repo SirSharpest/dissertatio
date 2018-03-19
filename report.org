@@ -78,7 +78,6 @@
   \listoflistings
   \clearpage
 #+END_LaTeX
-
 #+BEGIN_COMMENT
 A research project
 A research project might use the following top-level structure:
@@ -88,7 +87,6 @@ Chapter 3: Software Design, Implementation and Testing
 Chapter 4: Results and Conclusion
 Chapter 5: Critical Evaluation
 #+END_COMMENT
-
 #+BEGIN_COMMENT
 
 Problem Analysis (15%)
@@ -148,7 +146,39 @@ line segments cite:Pfaltz1966.
 In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
 
-* Software Design and Implementation
+*** Code
+#+CAPTION: MATLAB Watershedding function
+#+LABEL: lst:ws
+#+BEGIN_SRC octave
+  function [W] = watershedSplit3D(A)
+    % Takes image stack A and splits it into stack W
+    % Convert to BW
+    bw = logical(A);
+    % Create variable for opening and closing
+    se = strel('disk', 5);
+    % Minimise object missshapen-ness
+    bw = imerode(bw, se);
+    bw = imdilate(bw, se);
+    % Fill in any left over holes
+    bw = imfill(bw,4,'holes');
+    % Use chessboard for distance calculation for more refined splitting
+    chessboard = -bwdist(~bw, 'quasi-euclidean');
+    % Modify the intensity of our bwdist to produce chessboard2
+    mask = imextendedmin(chessboard, 2);
+    chessboard2 = imimposemin(chessboard, mask);
+    % Calculate watershed based on the modified chessboard
+    Ld2 = watershed(chessboard2);
+    % Take original image and add on the lines calculated for splitting
+    W = A;
+    W(Ld2 == 0) = 0;
+  end
+#+END_SRC
+
+** Testing of Software
+
+* Software Design, Testing and Implementation
+
+** Software Development Methodology
 
 ** Data Pipeline
 
@@ -229,36 +259,6 @@ Endif
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
-** Improved Watershedding algorithm
-
-*** Code
-#+CAPTION: MATLAB Watershedding function
-#+LABEL: lst:ws
-#+BEGIN_SRC octave
-  function [W] = watershedSplit3D(A)
-    % Takes image stack A and splits it into stack W
-    % Convert to BW
-    bw = logical(A);
-    % Create variable for opening and closing
-    se = strel('disk', 5);
-    % Minimise object missshapen-ness
-    bw = imerode(bw, se);
-    bw = imdilate(bw, se);
-    % Fill in any left over holes
-    bw = imfill(bw,4,'holes');
-    % Use chessboard for distance calculation for more refined splitting
-    chessboard = -bwdist(~bw, 'quasi-euclidean');
-    % Modify the intensity of our bwdist to produce chessboard2
-    mask = imextendedmin(chessboard, 2);
-    chessboard2 = imimposemin(chessboard, mask);
-    % Calculate watershed based on the modified chessboard
-    Ld2 = watershed(chessboard2);
-    % Take original image and add on the lines calculated for splitting
-    W = A;
-    W(Ld2 == 0) = 0;
-  end
-#+END_SRC
-
 * Results
 
 ** Improved accuracy of imaging software
@@ -273,6 +273,12 @@ Endif
 
 * Discussion
 * Critical Evaluation
+** Organisational Methods
+** Relevance to Degree
+** Time Management
+** Collaborative Work
+** Other Issues
+
 
 \clearpage
 bibliography:dissertation.bib

@@ -1,4 +1,4 @@
-% Created 2018-03-08 Thu 22:16
+% Created 2018-03-19 Mon 11:44
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -175,34 +175,8 @@ line segments \cite{Pfaltz1966}.
 In order to apply this to a 3D space Kleinberg's method is used  \cite{Kleinberg1997}. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euclidean} method stated in equation:\ref{eqn:qe}.
 
-\chapter{Software Design and Implementation}
-\label{sec-3}
-
-\section{Data Pipeline}
-\label{sec-3-1}
-
-\begin{center}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=10cm]{./images/matlab.png}
-\caption{\label{fig:matlab}Image Processing Pipeline}
-\end{figure}
-\end{center}
-
-
-\begin{center}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=10cm]{./images/pipeline.png}
-\caption{\label{fig:pipeline}Data Pipeline and Information Flow}
-\end{figure}
-\end{center}
-
-\section{Improved Watershedding algorithm}
-\label{sec-3-2}
-
 \subsection{Code}
-\label{sec-3-2-1}
+\label{sec-2-1-2}
 \begin{listing}[H]
 \begin{minted}[]{octave}
 function [W] = watershedSplit3D(A)
@@ -231,6 +205,35 @@ end
 \caption{\label{lst:ws}MATLAB Watershedding function}
 \end{listing}
 
+\section{Testing of Software}
+\label{sec-2-2}
+
+\chapter{Software Design, Testing and Implementation}
+\label{sec-3}
+
+\section{Software Development Methodology}
+\label{sec-3-1}
+
+\section{Data Pipeline}
+\label{sec-3-2}
+
+\begin{center}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{./images/matlab.png}
+\caption{\label{fig:matlab}Image Processing Pipeline}
+\end{figure}
+\end{center}
+
+
+\begin{center}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{./images/pipeline.png}
+\caption{\label{fig:pipeline}Data Pipeline and Information Flow}
+\end{figure}
+\end{center}
+
 \chapter{Results}
 \label{sec-4}
 
@@ -251,6 +254,17 @@ end
 \label{sec-5}
 \chapter{Critical Evaluation}
 \label{sec-6}
+\section{Organisational Methods}
+\label{sec-6-1}
+\section{Relevance to Degree}
+\label{sec-6-2}
+\section{Time Management}
+\label{sec-6-3}
+\section{Collaborative Work}
+\label{sec-6-4}
+\section{Other Issues}
+\label{sec-6-5}
+
 
 \clearpage
 \bibliography{dissertation}
