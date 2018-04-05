@@ -1,4 +1,4 @@
-% Created 2018-03-19 Mon 11:44
+% Created 2018-04-05 Thu 16:55
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -38,6 +38,7 @@
 \usepackage{subfig}
 \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 \usepackage{titlesec}
+\renewcommand{\bibname}{References}
 \usepackage{framed}
 \usepackage{etoolbox}
 \date{}
@@ -45,10 +46,12 @@
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
-  pdfcreator={Emacs 25.3.1 (Org mode 8.2.10)}}
+  pdfcreator={Emacs 25.3.50.2 (Org mode 8.2.10)}}
 \begin{document}
 
 \maketitle
+\hyphenpenalty=10000
+
 \titleformat{\chapter}[display]
    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{0pt}
@@ -158,7 +161,7 @@ Date ............................................................ \\
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
 I implemented a \emph{quasi-euclidean} distance transform into the analysis pipeline \cite{Hughes2017}. This provided much better results than the previous
-\emph{chessboard} transform which had been successful on more uniform datasets.
+\emph{chessboard} transform which had been successful on more uniform data.
 
 \subsubsection{Quasi-Euclidean algorithm}
 \label{sec-2-1-1-1}
@@ -175,35 +178,6 @@ line segments \cite{Pfaltz1966}.
 In order to apply this to a 3D space Kleinberg's method is used  \cite{Kleinberg1997}. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euclidean} method stated in equation:\ref{eqn:qe}.
 
-\subsection{Code}
-\label{sec-2-1-2}
-\begin{listing}[H]
-\begin{minted}[]{octave}
-function [W] = watershedSplit3D(A)
-  % Takes image stack A and splits it into stack W
-  % Convert to BW
-  bw = logical(A);
-  % Create variable for opening and closing
-  se = strel('disk', 5);
-  % Minimise object missshapen-ness
-  bw = imerode(bw, se);
-  bw = imdilate(bw, se);
-  % Fill in any left over holes
-  bw = imfill(bw,4,'holes');
-  % Use chessboard for distance calculation for more refined splitting
-  chessboard = -bwdist(~bw, 'quasi-euclidean');
-  % Modify the intensity of our bwdist to produce chessboard2
-  mask = imextendedmin(chessboard, 2);
-  chessboard2 = imimposemin(chessboard, mask);
-  % Calculate watershed based on the modified chessboard
-  Ld2 = watershed(chessboard2);
-  % Take original image and add on the lines calculated for splitting
-  W = A;
-  W(Ld2 == 0) = 0;
-end
-\end{minted}
-\caption{\label{lst:ws}MATLAB Watershedding function}
-\end{listing}
 
 \section{Testing of Software}
 \label{sec-2-2}
@@ -266,8 +240,43 @@ end
 \label{sec-6-5}
 
 
+\chapter{\emph{Code Segments and Examples}}
+\label{sec-7}
+\section{MATLAB Watershedding}
+\label{sec-7-1}
+\begin{listing}[H]
+\begin{minted}[]{octave}
+function [W] = watershedSplit3D(A)
+  % Takes image stack A and splits it into stack W
+  % Convert to BW
+  bw = logical(A);
+  % Create variable for opening and closing
+  se = strel('disk', 5);
+  % Minimise object missshapen-ness
+  bw = imerode(bw, se);
+  bw = imdilate(bw, se);
+  % Fill in any left over holes
+  bw = imfill(bw,4,'holes');
+  % Use chessboard for distance calculation for more refined splitting
+  chessboard = -bwdist(~bw, 'quasi-euclidean');
+  % Modify the intensity of our bwdist to produce chessboard2
+  mask = imextendedmin(chessboard, 2);
+  chessboard2 = imimposemin(chessboard, mask);
+  % Calculate watershed based on the modified chessboard
+  Ld2 = watershed(chessboard2);
+  % Take original image and add on the lines calculated for splitting
+  W = A;
+  W(Ld2 == 0) = 0;
+end
+\end{minted}
+\caption{\label{lst:ws}MATLAB Watershedding function}
+\end{listing}
+
+
+
 \clearpage
-\bibliography{dissertation}
-\bibliographystyle{unsrt}
-% Emacs 25.3.1 (Org mode 8.2.10)
+\addcontentsline{toc}{Chapter}{References}
+\bibliography{../../../library}
+\bibliographystyle{IEEEannotU}
+% Emacs 25.3.50.2 (Org mode 8.2.10)
 \end{document}

@@ -20,8 +20,13 @@
 #+LaTeX_HEADER: \usepackage{subfig}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 #+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \renewcommand{\bibname}{References}
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
 #+LATEX_HEADER_EXTRA: \usepackage{etoolbox}
+
+#+BEGIN_LaTeX
+\hyphenpenalty=10000
+#+END_LaTeX
 
 #+BEGIN_LaTeX
   \titleformat{\chapter}[display]
