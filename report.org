@@ -13,7 +13,6 @@ Primarily the focus has been on the data science elements of my degree, creating
 
 Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the /glossary/ (table:[[tab:glossary]]).
 
-
 ** Background
 
 Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops Wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
@@ -53,15 +52,23 @@ The comparison pairs are as follows:
 4. Domesticated Emmer and Durum
 5. Wild Einkorn and Wild Emmer
 
-
 ** Aim and Objectives
 
 The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlinned. As well as to prove/disprove the hypothesis stated.
 
 The software created is robust in order to duplicate results and is flexible as to allow for further studies to be carried out and to use the same method.
 
+Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project.
+
+Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
 
 ** Deliverables
+
+This project provides three final deliveribles:
+
+1. A flexible software suite written in /Python/ that provides a standardised method for analysing and interpreting \micro-CT data output.
+2. A Graphical User Interface (GUI) which offers a point and click method for data gathering, graphing and manipulating \micro-CT data, using the library from deliverable 1 as a backend.
+3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
 
 * Method Design
 
@@ -193,8 +200,63 @@ Endif
 ** Other Issues
 
 
-* /Code Segments and Examples/
-** MATLAB Watershedding
+
+* Appendix
+** /Software Packages Used/
+
+*** Libraries
+#+attr_latex: :align |l|l|l|
+#+NAME: tab:software
+#+CAPTION: Software libraries used
+|---------------------------------+-------+------------|
+| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
+|---------------------------------+-------+------------|
+| Seaborn                         | Scipy | Sklearn    |
+|---------------------------------+-------+------------|
+| Statsmodels                     | Pymc3 | Xlrd       |
+|---------------------------------+-------+------------|
+| PyQt5                           |       |            |
+|---------------------------------+-------+------------|
+
+*** Tools
+#+attr_latex: :align |l|l|l|
+#+NAME: tab:softwareused
+#+CAPTION: Software tools used
+|--------+-----------------------+----------|
+| MATLAB | Python Debugger (PDB) | IPython  |
+|--------+-----------------------+----------|
+| Emacs  | git                   | org-mode |
+|--------+-----------------------+----------|
+| Tomviz | ImageJ                |          |
+|--------+-----------------------+----------|
+
+** /Glossary/
+#+attr_latex: :align |l|l|
+#+NAME: tab:glossary
+#+CAPTION: Dictionary for Terms and acronyms
+|--------------+--------------------------------------------|
+| *Term*       | *Definition*                               |
+|--------------+--------------------------------------------|
+| \micro-CT    | Micro Computed Tomography                  |
+|--------------+--------------------------------------------|
+| Genotype     | A genetically distinct individual or group |
+|--------------+--------------------------------------------|
+| Phenotype    | A physical/measurable trait                |
+|--------------+--------------------------------------------|
+| Alleles      | A variant of a gene                        |
+|--------------+--------------------------------------------|
+| Genus        |                                            |
+|--------------+--------------------------------------------|
+| Genome       |                                            |
+|--------------+--------------------------------------------|
+| Morphometric |                                            |
+|--------------+--------------------------------------------|
+| GUI          | Graphical User Interface                   |
+|--------------+--------------------------------------------|
+
+
+** /Code Segments and Examples/
+*** MATLAB Watershedding
 
 
 #+CAPTION: MATLAB Watershedding function
@@ -223,23 +285,6 @@ Endif
     W(Ld2 == 0) = 0;
   end
 #+END_SRC
-
-* /Glossary/
-#+attr_latex: :align |l|l|
-#+NAME: tab:glossary
-#+CAPTION: Dictionary for Terms and acronyms
-|--------------+--------------------------------------------|
-| Term         | Definition                                 |
-|--------------+--------------------------------------------|
-| \micro-CT    | Micro Computed Tomography                  |
-| Genotype     | A genetically distinct individual or group |
-| Phenotype    | A physical/measurable trait                |
-| Alleles      | A variant of a gene                        |
-| Genus        |                                            |
-| Genome       |                                            |
-| Morphometric |                                            |
-|--------------+--------------------------------------------|
-
 
 \clearpage
 \addcontentsline{toc}{Chapter}{References}

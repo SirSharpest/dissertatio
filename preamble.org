@@ -32,6 +32,7 @@
 #+END_LaTeX
 
 #+BEGIN_LaTeX
+
   \titleformat{\chapter}[display]
      {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
   \titlespacing*{\chapter}{10pt}{10pt}{10pt}
@@ -49,6 +50,7 @@
 #+END_LaTeX
 
 #+BEGIN_LaTeX
+
   \thispagestyle{empty}
   \renewcommand{\headrulewidth}{0pt}
   \begin{center}
@@ -77,6 +79,7 @@
   \clearpage
   \renewcommand{\headrulewidth}{1pt}
 #+END_LaTeX
+
 #+BEGIN_LaTeX
   \thispagestyle{plain}
 
