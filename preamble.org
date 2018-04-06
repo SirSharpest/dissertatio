@@ -20,6 +20,7 @@
 #+LaTeX_HEADER: \usepackage{subfig}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 #+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \usepackage{tabularx}
 
 #+LaTeX_HEADER: \renewcommand{\bibname}{References}
 

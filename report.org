@@ -15,20 +15,20 @@ Additionally, as this is very much multi-disciplinary research, specific terms a
 
 ** Background
 
-Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops Wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
+Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
 
 During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
 
-Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on Wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and thoroughly domesticated genotypes are unprepared for.
+Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and thoroughly domesticated genotypes are unprepared for.
 
 Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
 
-To create a better understanding of Wheat and in particular how its traits have evolved over time, through domestication, a newly developed method of \micro-CT image analysis cite:Hughes2017 for crops was used to generate data.
+To create a better understanding of wheat and in particular how its traits have evolved over time, through domestication, a newly developed method of \micro-CT image analysis cite:Hughes2017 for crops was used to generate data.
 
-These data were then used to test a number of hypothesis on the effects of domestication in the Wheat genome.
+These data were then used to test a number of hypothesis on the effects of domestication in the wheat genome.
 
-** Significance to current research
-The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the Wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
+** Significance to Current Research
+The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
 
 This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress.
 
@@ -48,19 +48,26 @@ The comparison pairs are as follows:
 
 1. Wild Einkorn and Domesticated Einkorn
 2. Wild Emmer and Domesticated Emmer
-3. Bread Wheat and Spelta Wheat
+3. Bread wheat and Spelta wheat
 4. Domesticated Emmer and Durum
 5. Wild Einkorn and Wild Emmer
 
 ** Aim and Objectives
 
-The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlinned. As well as to prove/disprove the hypothesis stated.
+The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlined. As well as to prove/disprove the hypothesis stated.
 
 The software created is robust in order to duplicate results and is flexible as to allow for further studies to be carried out and to use the same method.
 
 Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project.
 
 Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
+
+These aims have a focus on the phenotypic attributes generated from customised image analysis software cite:Hughes2017 and can be seen in figure:[[fig:seeds]].
+
+#+CAPTION: wheat grain labelled (/left/), wheat grain cut in half (/right/)
+#+ATTR_LATEX: :width 17cm
+#+NAME: fig:seeds
+[[./images/seeds.png]]
 
 ** Deliverables
 
@@ -70,41 +77,21 @@ This project provides three final deliveribles:
 2. A Graphical User Interface (GUI) which offers a point and click method for data gathering, graphing and manipulating \micro-CT data, using the library from deliverable 1 as a backend.
 3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
 
-* Method Design
 
-** Improvements to 3D imaging software
-*** TODO PACIFY New Watershed Algorithm
-
-In order to solve the problem of misidentified and joint seeds, from the primitive collection,
-I implemented a /quasi-euclidean/ distance transform into the analysis pipeline cite:Hughes2017. This provided much better results than the previous
-/chessboard/ transform which had been successful on more uniform data.
-
-**** Quasi-Euclidean algorithm
-
-This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
-line segments cite:Pfaltz1966.
-
-#+NAME: eqn:qe
-\begin{equation}
-\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
-\end{equation}
-
-
-In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
-and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
-
-
-** Testing of Software
-
-* Software Design, Testing and Implementation
+* Software Design, Implementation and Testing
 
 ** Software Development Methodology
+** Designing Process
+** Implementation
+** Testing
+
+* Methods
 
 ** Data Pipeline
 
 #+NAME: fig:matlab
 #+BEGIN_SRC  plantuml :results file :file ./images/matlab.png
-(*) -> "Scan Wheat Spikes"
+(*) -> "Scan wheat Spikes"
 
 partition MATLAB {
 --> "Load Raw Scan Data"
@@ -179,11 +166,27 @@ Endif
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
-* Results
+** Improvements to 3D imaging software
+***  New Watershed Algorithm
 
-** Improved accuracy of imaging software
+In order to solve the problem of misidentified and joint seeds, from the primitive collection,
+a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:[[fig:matlab]]). This provided much better results than the previous
+/chessboard/ transform which had been successful on more uniform data in previous studies cite:Hughes2017.
 
-*** Effect of enhanced watershedding algorithm
+**** Quasi-Euclidean algorithm
+
+This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
+line segments cite:Pfaltz1966.
+
+#+NAME: eqn:qe
+\begin{equation}
+\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
+\end{equation}
+
+
+In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
+and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
+**** Effect of Enhanced Watershed algorithm
 #+BEGIN_CENTER
 #+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
 #+ATTR_LATEX: :width 10cm
@@ -191,6 +194,7 @@ Endif
 [[./images/chess_quasi.png]]
 #+END_CENTER
 
+* Results
 * Discussion
 * Critical Evaluation
 ** Organisational Methods
@@ -205,7 +209,7 @@ Endif
 ** /Software Packages Used/
 
 *** Libraries
-#+attr_latex: :align |l|l|l|
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
 #+NAME: tab:software
 #+CAPTION: Software libraries used
 |---------------------------------+-------+------------|
@@ -219,7 +223,7 @@ Endif
 |---------------------------------+-------+------------|
 
 *** Tools
-#+attr_latex: :align |l|l|l|
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
 #+NAME: tab:softwareused
 #+CAPTION: Software tools used
 |--------+-----------------------+----------|
@@ -231,7 +235,7 @@ Endif
 |--------+-----------------------+----------|
 
 ** /Glossary/
-#+attr_latex: :align |l|l|
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:glossary
 #+CAPTION: Dictionary for Terms and acronyms
 |--------------+--------------------------------------------|
