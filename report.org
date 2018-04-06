@@ -3,130 +3,70 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
-#+BEGIN_LaTeX
-  \thispagestyle{empty}
-  \renewcommand{\headrulewidth}{0pt}
-  \begin{center}
-    \fontsize{10}{12}
-    \selectfont
-
-    \textbf{\huge Modelling the effects of domestication in Wheat through novel computer vision techniques}
-
-    \vspace{0.3in}
-
-    \begin{tabular}[t]{ll}
-      Author: & Nathan Hughes (nah26@aber.ac.uk) \\
-      Supervisor: & Dr. Wayne Aubrey (waa2@aber.ac.uk) \\
-      Degree Scheme &  G401 \hspace*{0.05in}(Computer Science)\\
-      \\
-      \\
-      Date: & \today \\
-      Revision: & 0.1\\
-      Status: & Draft\\
-      \\
-    \end{tabular}
-    \\
-    \vspace{0.1in}
-    This report was submitted as partial fulfilment \\of a BSc degree in Computer Science (G401)
-  \end{center}
-  \clearpage
-  \renewcommand{\headrulewidth}{1pt}
-#+END_LaTeX
-#+BEGIN_LaTeX
-  \thispagestyle{plain}
-
-  \begin{center}
-    {\LARGE\bf Declaration of originality}
-  \end{center}
-
-  I confirm that:
-
-  \begin{itemize}
-  \item{This submission is my own work, except where
-      clearly indicated.}
-
-  \item{I understand that there are severe penalties for Unacceptable Academic Practice, which can lead to loss of marks or even the withholding of a degree.}
-
-  \item{I have read the regulations on Unacceptable Academic Practice from the University's Academic Quality and Records Office (AQRO) and the relevant sections of the current Student Handbook of the Department of Computer Science.}
-
-  \item{In submitting this work I understand and agree to abide by the University's regulations governing these issues.}
-  \end{itemize}
-
-  \vspace{2em}
-  Name ............................................................  \\
-
-  \vspace{1em}
-  Date ............................................................ \\
-
-  \vspace{1em}
-  \begin{center}
-    {\LARGE\bf Consent to share this work}
-  \end{center}
-
-  By including my name below, I hereby agree to this dissertation being made available to other students and academic staff of the Aberystwyth Computer Science Department.
-
-  \vspace{2em}
-  Name ............................................................  \\
-
-  \vspace{1em}
-  Date ............................................................ \\
-
-  \clearpage
-  \tableofcontents
-  \listoftables
-  \listoffigures
-  \listoflistings
-  \clearpage
-#+END_LaTeX
-#+BEGIN_COMMENT
-A research project
-A research project might use the following top-level structure:
-Chapter 1: Background, Analysis and Process
-Chapter 2: Method Design
-Chapter 3: Software Design, Implementation and Testing
-Chapter 4: Results and Conclusion
-Chapter 5: Critical Evaluation
-#+END_COMMENT
-#+BEGIN_COMMENT
-
-Problem Analysis (15%)
-This area will assess the project as described in the background, objectives and
-overview of the development process or research method(s).
-
--Preparation: This will assess how well you researched the background to the
-project topic, how well you understood what you read and how well you
-presented this preparation with appropriate citations and bibliographic entries.
-Some of the material you wrote for your Outline Project Specification may be
-reused here, but it would need to be more detailed.
-
-- Analysis: This will assess your understanding of the problems for your project,
-how well you assessed alternative approaches and your justification for the
-approach you selected.
-
-
-There should be a clear statement of the objectives of the work or the research
-question, which you will evaluate at the end of the project.
-For plan-driven software development projects, it would be appropriate to
-include a full requirements specification as an appendix, and refer to the key
-issues in this section. For an agile project, the requirements should be
-expressed in a format appropriate to the choice of agile approach, e.g. a set of
-top-level user stories.
-
-#+END_COMMENT
 
 
 * Introduction, Analysis and Objectives
 
+This project aims to answer a biological research question through the use of computer science, whilst also creating a software suite which will enable further studies to be carried out with ease.
+
+Primarily the focus has been on the data science elements of my degree, creating, cleaning and discerning meaning in it.
+
+Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the /glossary/ (table:[[tab:glossary]]).
+
+
 ** Background
 
-** Problem Analysis
+Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops Wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
 
-** Objectives
+During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
+
+Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on Wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and thoroughly domesticated genotypes are unprepared for.
+
+Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
+
+To create a better understanding of Wheat and in particular how its traits have evolved over time, through domestication, a newly developed method of \micro-CT image analysis cite:Hughes2017 for crops was used to generate data.
+
+These data were then used to test a number of hypothesis on the effects of domestication in the Wheat genome.
+
+** Significance to current research
+The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the Wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
+
+This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress.
+
+The individual images in figure:[[fig:phylo]] show, at a glance, the diversity and also the difference in the wild and cultivated (domesticated)
+species. This work allows for these differences to be quantified and evaluated into useful metrics for answering research based questions.
+
+#+CAPTION: Phylogeny of wheat genotypes (Provided by Dr. Hugo Oliveira)
+#+ATTR_LATEX: :width 17cm
+#+NAME: fig:phylo
+[[file:./images/philotree.png]]
+
+** Hypothesis
+
+To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:[[fig:phylo]].
+
+The comparison pairs are as follows:
+
+1. Wild Einkorn and Domesticated Einkorn
+2. Wild Emmer and Domesticated Emmer
+3. Bread Wheat and Spelta Wheat
+4. Domesticated Emmer and Durum
+5. Wild Einkorn and Wild Emmer
+
+
+** Aim and Objectives
+
+The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlinned. As well as to prove/disprove the hypothesis stated.
+
+The software created is robust in order to duplicate results and is flexible as to allow for further studies to be carried out and to use the same method.
+
+
+** Deliverables
 
 * Method Design
 
 ** Improvements to 3D imaging software
-*** New Watershed Algorithm
+*** TODO PACIFY New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
 I implemented a /quasi-euclidean/ distance transform into the analysis pipeline cite:Hughes2017. This provided much better results than the previous
@@ -255,6 +195,8 @@ Endif
 
 * /Code Segments and Examples/
 ** MATLAB Watershedding
+
+
 #+CAPTION: MATLAB Watershedding function
 #+LABEL: lst:ws
 #+BEGIN_SRC octave
@@ -282,9 +224,24 @@ Endif
   end
 #+END_SRC
 
+* /Glossary/
+#+attr_latex: :align |l|l|
+#+NAME: tab:glossary
+#+CAPTION: Dictionary for Terms and acronyms
+|--------------+--------------------------------------------|
+| Term         | Definition                                 |
+|--------------+--------------------------------------------|
+| \micro-CT    | Micro Computed Tomography                  |
+| Genotype     | A genetically distinct individual or group |
+| Phenotype    | A physical/measurable trait                |
+| Alleles      | A variant of a gene                        |
+| Genus        |                                            |
+| Genome       |                                            |
+| Morphometric |                                            |
+|--------------+--------------------------------------------|
 
 
 \clearpage
 \addcontentsline{toc}{Chapter}{References}
-bibliography:~/Dropbox/library.bib
+bibliography:library.bib
 bibliographystyle:IEEEannotU
