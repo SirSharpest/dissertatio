@@ -170,12 +170,15 @@ This project provides three final deliveribles:
 * Software Design, Implementation and Testing
 
 ** Software Development Methodology
-*** Weekly targets
+** Functional Requirements
+*** Requirements for CT Analysing Library
+*** Requirements for CT GUI Application
 ** Version control
 ** Designing Process
 ** Implementation
 ** Testing
-
+*** Feedback Forms
+Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
 *** Unit Testing CT Analysing Library
 
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|r|
@@ -228,7 +231,7 @@ This project provides three final deliveribles:
 |---------------------------+----------------------------------------------------+------------|
 
 
-
+*** Unit Testing CT GUI Application
 * Methods and Solutions
 ** Data Pipeline
 
@@ -308,7 +311,6 @@ Endif
 [[file:./images/pipeline.png]]
 #+RESULTS: fig:pipeline
 #+END_CENTER
-
 
 
 ** Image Analysis Methods
