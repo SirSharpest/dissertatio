@@ -167,14 +167,35 @@ This project provides three final deliveribles:
 3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
 
 * Software Design, Implementation and Testing
+This project made use of formal design methods and strict organisation whilst being flexible to change.
+Overall the design took a hybridised form in order to best suit the scientific environment which this
+domain specific software is built for.
 
 ** Software Development Methodology
+Data analysis drove the direction of the project, as a result an agile methodology was adopted.
+Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based off of the
+previous week's list.
+
+Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement.
+
 ** Functional Requirements
 *** Requirements for CT Analysing Library
 *** Requirements for CT GUI Application
+- Useable by /anyone/
 ** Version control
 ** Designing Process
+** Documentation
+The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
+
+This documentation generator was purpose created, implemented in LISP and provided in listing:[[lst:docgen]].
+
+Beyond this, inline commenting is provided for supplied software. Keeping in line with the agile development ethos the software is self-documented and self-evident. A brief example of this is shown in listing:[[lst:docexample]]
+
+Similarly, the documentation for using the CT GUI Application is based on feedback provided via user testing and Google form feedback data.
+** Language Choice
+** Software Library Choices
 ** Implementation
+
 ** Testing
 *** Feedback Forms
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
@@ -229,7 +250,6 @@ Feedback and constructive suggestions were made by researchers at the National P
 | \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |       0.00 |
 |---------------------------+----------------------------------------------------+------------|
 
-
 *** Unit Testing CT GUI Application
 * Methods and Solutions
 ** Data Pipeline
@@ -269,7 +289,37 @@ Endif
 #+RESULTS: fig:matlab
 #+END_CENTER
 
+** Image Analysis Methods
+***  New Watershed Algorithm
 
+In order to solve the problem of misidentified and joint seeds, from the primitive collection,
+a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:[[fig:matlab]]). This provided much better results than the previous
+/chessboard/ transform which had been successful on more uniform data in previous studies cite:Hughes2017.
+
+**** Quasi-Euclidean algorithm
+
+This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
+line segments cite:Pfaltz1966.
+
+#+NAME: eqn:qe
+\begin{equation}
+\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
+\end{equation}
+
+
+In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
+and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
+**** Effect of Enhanced Watershed algorithm
+#+BEGIN_CENTER
+#+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:qe
+[[./images/chess_quasi.png]]
+#+END_CENTER
+
+** CT Analysing Library Methods
+** CT GUI Application Methods
+** Data Analysis Methods
 #+NAME: fig:pipeline
 #+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
 
@@ -304,47 +354,14 @@ Endif
 }
 #+END_SRC
 #+BEGIN_CENTER
-#+CAPTION: Data Pipeline and Information Flow
+#+CAPTION: How data is integrated with the CT Analysing Library
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:pipeline
 [[file:./images/pipeline.png]]
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
-
-** Image Analysis Methods
-***  New Watershed Algorithm
-
-In order to solve the problem of misidentified and joint seeds, from the primitive collection,
-a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:[[fig:matlab]]). This provided much better results than the previous
-/chessboard/ transform which had been successful on more uniform data in previous studies cite:Hughes2017.
-
-**** Quasi-Euclidean algorithm
-
-This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
-line segments cite:Pfaltz1966.
-
-#+NAME: eqn:qe
-\begin{equation}
-\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
-\end{equation}
-
-
-In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
-and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
-**** Effect of Enhanced Watershed algorithm
-#+BEGIN_CENTER
-#+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
-#+ATTR_LATEX: :width 10cm
-#+NAME: fig:qe
-[[./images/chess_quasi.png]]
-#+END_CENTER
-
-** CT Analysing Library Methods
-** CT GUI Application Methods
-
 * Results
-
 * Discussion
 ** Similar Research
 ** Alternate Solutions
@@ -415,7 +432,6 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 ** /Code Segments and Examples/
 *** MATLAB Watershedding
 
-
 #+CAPTION: MATLAB Watershedding function
 #+LABEL: lst:ws
 #+BEGIN_SRC octave
@@ -442,7 +458,6 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
     W(Ld2 == 0) = 0;
   end
 #+END_SRC
-
 
 *** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
@@ -484,6 +499,52 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 	  (populate-org-buffer doc-buf file dir)))
       (with-current-buffer doc-buf
 	(org-mode))))
+#+END_SRC
+
+\clearpage
+*** Self-Documenting Code Example
+#+CAPTION: Example of code documentation and readability from /data_transforms.py/
+#+LABEL: lst:docexample
+#+BEGIN_SRC python
+def standarise_data(df, features, groupby):
+    """
+    This is to conform with the likes of PCA, the following text is borrowed from:
+    https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
+    Some code also also heavily borrowed from this page and I
+    take minimal credit for it.
+
+    PCA is effected by scale so you need to scale the features in your data before
+    applying PCA.
+
+    Use StandardScaler to help you standardize the dataset’s features onto unit scale
+    (mean = 0 and variance = 1)
+    which is a requirement for the optimal performance of many machine
+    learning algorithms.
+    If you want to see the negative effect not scaling your data can have,
+    scikit-learn
+    has a section
+
+    on the effects of not standardizing your data.
+
+    uses: \dfrac{x_i – mean(x)}{stdev(x)}
+    assumes Normal Distribution
+
+    To try and fit a normal distribution I am applying log scales of log_2
+
+    @param df the data to be standarised
+    @param features the list of features to standardise
+    @param groupby how the columns should be grouped
+    @returns scaled values
+    """
+    # Separating out the features
+    x = df.loc[:, features].values
+
+    # Attempt to normalise through power transforms
+    box_cox_data(x)
+
+    # Standardizing the features
+    x = StandardScaler().fit_transform(x)
+    return x
 #+END_SRC
 
 \clearpage

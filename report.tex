@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 22:11
+% Created 2018-04-09 Mon 22:51
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -322,28 +322,54 @@ This project provides three final deliveribles:
 
 \chapter{Software Design, Implementation and Testing}
 \label{sec-2}
+This project made use of formal design methods and strict organisation whilst being flexible to change.
+Overall the design took a hybridised form in order to best suit the scientific environment which this
+domain specific software is built for.
 
 \section{Software Development Methodology}
 \label{sec-2-1}
+Data analysis drove the direction of the project, as a result an agile methodology was adopted.
+Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based off of the
+previous week's list.
+
+Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement.
+
 \section{Functional Requirements}
 \label{sec-2-2}
 \subsection{Requirements for CT Analysing Library}
 \label{sec-2-2-1}
 \subsection{Requirements for CT GUI Application}
 \label{sec-2-2-2}
+\begin{itemize}
+\item Useable by \emph{anyone}
+\end{itemize}
 \section{Version control}
 \label{sec-2-3}
 \section{Designing Process}
 \label{sec-2-4}
-\section{Implementation}
+\section{Documentation}
 \label{sec-2-5}
-\section{Testing}
+The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
+
+This documentation generator was purpose created, implemented in LISP and provided in listing:\ref{lst:docgen}.
+
+Beyond this, inline commenting is provided for supplied software. Keeping in line with the agile development ethos the software is self-documented and self-evident. A brief example of this is shown in listing:\ref{lst:docexample}
+
+Similarly, the documentation for using the CT GUI Application is based on feedback provided via user testing and Google form feedback data.
+\section{Language Choice}
 \label{sec-2-6}
+\section{Software Library Choices}
+\label{sec-2-7}
+\section{Implementation}
+\label{sec-2-8}
+
+\section{Testing}
+\label{sec-2-9}
 \subsection{Feedback Forms}
-\label{sec-2-6-1}
+\label{sec-2-9-1}
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service\ldots{}
 \subsection{Unit Testing CT Analysing Library}
-\label{sec-2-6-2}
+\label{sec-2-9-2}
 
 \begin{table}[htb]
 \caption{\label{tab:unittest}Output of \emph{pytest} Unit Tests and results for CT Analysing Library}
@@ -397,9 +423,8 @@ Feedback and constructive suggestions were made by researchers at the National P
 \end{tabularx}
 \end{table}
 
-
 \subsection{Unit Testing CT GUI Application}
-\label{sec-2-6-3}
+\label{sec-2-9-3}
 \chapter{Methods and Solutions}
 \label{sec-3}
 \section{Data Pipeline}
@@ -412,16 +437,6 @@ Feedback and constructive suggestions were made by researchers at the National P
 \caption{\label{fig:matlab}Image Processing Pipeline}
 \end{figure}
 \end{center}
-
-
-\begin{center}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=10cm]{./images/pipeline.png}
-\caption{\label{fig:pipeline}Data Pipeline and Information Flow}
-\end{figure}
-\end{center}
-
 
 \section{Image Analysis Methods}
 \label{sec-3-2}
@@ -460,10 +475,18 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euc
 \label{sec-3-3}
 \section{CT GUI Application Methods}
 \label{sec-3-4}
+\section{Data Analysis Methods}
+\label{sec-3-5}
+\begin{center}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{./images/pipeline.png}
+\caption{\label{fig:pipeline}How data is integrated with the CT Analysing Library}
+\end{figure}
+\end{center}
 
 \chapter{Results}
 \label{sec-4}
-
 \chapter{Discussion}
 \label{sec-5}
 \section{Similar Research}
@@ -559,7 +582,6 @@ PCA & Principal Component Analysis\\
 \subsection{MATLAB Watershedding}
 \label{sec-7-3-1}
 
-
 \begin{listing}[H]
 \begin{minted}[]{octave}
 function [W] = watershedSplit3D(A)
@@ -587,7 +609,6 @@ end
 \end{minted}
 \caption{\label{lst:ws}MATLAB Watershedding function}
 \end{listing}
-
 
 \subsection{Custom Documentation Generator}
 \label{sec-7-3-2}
@@ -631,6 +652,54 @@ end
       (org-mode))))
 \end{minted}
 \caption{\label{lst:docgen}Custom lisp code for generating easy to read documentation}
+\end{listing}
+
+\clearpage
+\subsection{Self-Documenting Code Example}
+\label{sec-7-3-3}
+\begin{listing}[H]
+\begin{minted}[]{python}
+def standarise_data(df, features, groupby):
+    """
+    This is to conform with the likes of PCA, the following text is borrowed from:
+    https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
+    Some code also also heavily borrowed from this page and I
+    take minimal credit for it.
+
+    PCA is effected by scale so you need to scale the features in your data before
+    applying PCA.
+
+    Use StandardScaler to help you standardize the dataset’s features onto unit scale
+    (mean = 0 and variance = 1)
+    which is a requirement for the optimal performance of many machine
+    learning algorithms.
+    If you want to see the negative effect not scaling your data can have,
+    scikit-learn
+    has a section
+
+    on the effects of not standardizing your data.
+
+    uses: \dfrac{x_i – mean(x)}{stdev(x)}
+    assumes Normal Distribution
+
+    To try and fit a normal distribution I am applying log scales of log_2
+
+    @param df the data to be standarised
+    @param features the list of features to standardise
+    @param groupby how the columns should be grouped
+    @returns scaled values
+    """
+    # Separating out the features
+    x = df.loc[:, features].values
+
+    # Attempt to normalise through power transforms
+    box_cox_data(x)
+
+    # Standardizing the features
+    x = StandardScaler().fit_transform(x)
+    return x
+\end{minted}
+\caption{\label{lst:docexample}Example of code documentation and readability from \emph{data\_transforms.py}}
 \end{listing}
 
 \clearpage
