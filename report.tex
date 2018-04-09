@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 02:07
+% Created 2018-04-09 Mon 15:36
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -40,6 +40,7 @@
 \usepackage{titlesec}
 \usepackage{tabularx}
 \usepackage{multicol}
+\usepackage[usenames, dvipsnames]{color}
 \renewcommand{\bibname}{References}
 \usepackage{framed}
 \usepackage{etoolbox}
@@ -335,6 +336,62 @@ This project provides three final deliveribles:
 \label{sec-2-4}
 \section{Testing}
 \label{sec-2-5}
+
+\subsection{Unit Testing CT Analysing Library}
+\label{sec-2-5-1}
+
+\begin{table}[htb]
+\caption{\label{tab:unittest}Output of \emph{pytest} Unit Tests and results for CT Analysing Library}
+\centering
+\begin{tabularx}{\textwidth}{|l|X|r|}
+\hline
+\textbf{Result} & \textbf{Test} & \textbf{Duration}\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_aggregate\_spike\_averages & 0.03\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_maximum\_removed & 0.00\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_minimum\_removed & 0.00\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data & 1.30\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data\_no\_data & 0.00\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_load\_data & 0.13\\
+\hline
+\color{ForestGreen}Passed & CTData.py::test\_NoDataFoundException & 0.00\\
+\hline
+\color{ForestGreen}Passed & Data\_transforms.py::test\_box\_cox\_data & 0.01\\
+\hline
+\color{ForestGreen}Passed & Data\_transforms.py::test\_pca\_to\_table & 0.01\\
+\hline
+\color{ForestGreen}Passed & Data\_transforms.py::test\_perform\_pca & 0.02\\
+\hline
+\color{ForestGreen}Passed & Data\_transforms.py::test\_standardise\_data & 0.01\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_dataframe & 0.05\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_object & 0.05\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_difference\_of\_means & 0.11\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_dataframe & 0.02\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_object & 0.02\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_pca & 0.17\\
+\hline
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_qqplot & 0.00\\
+\hline
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_baysian\_hypothesis\_test & 10.76\\
+\hline
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_t\_test & 0.00\\
+\hline
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_test\_normality & 0.00\\
+\hline
+\end{tabularx}
+\end{table}
+
 
 
 \chapter{Methods and Solutions}

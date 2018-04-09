@@ -22,7 +22,7 @@
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}
-
+#+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
 #+LaTeX_HEADER: \renewcommand{\bibname}{References}
 
 

@@ -1,5 +1,5 @@
 #+TITLE: *Modelling the effects of domestication in Wheat through novel computer vision techniques*
-#+OPTIONS: title:nil toc:nil H:4 author:nil date:nil TeX:t LaTeX:t
+#+OPTIONS: title:nil toc:nil H:4 author:nil date:nil TeX:t LaTeX:t  ^:nil
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
@@ -175,6 +175,58 @@ This project provides three final deliveribles:
 ** Designing Process
 ** Implementation
 ** Testing
+
+*** Unit Testing CT Analysing Library
+
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|r|
+#+NAME: tab:unittest
+#+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
+|---------------------------+----------------------------------------------------+------------|
+| *Result*                  | *Test*                                             | *Duration* |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |       0.03 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |       1.30 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_data                          |       0.13 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |       0.01 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |       0.01 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |       0.02 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |       0.01 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |       0.05 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |       0.05 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |       0.11 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |       0.02 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |       0.02 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |       0.17 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |      10.76 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |       0.00 |
+|---------------------------+----------------------------------------------------+------------|
+
 
 
 * Methods and Solutions
