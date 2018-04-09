@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 02:03
+% Created 2018-04-09 Mon 02:07
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -363,18 +363,15 @@ This project provides three final deliveribles:
 
 \section{Image Analysis Methods}
 \label{sec-3-2}
-\subsection{Improvements to 3D imaging software}
+\subsection{New Watershed Algorithm}
 \label{sec-3-2-1}
-\subsubsection{New Watershed Algorithm}
-\label{sec-3-2-1-1}
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
 a  \emph{quasi-euclidean} distance transform was implemented into the analysis pipeline (figure:\ref{fig:matlab}). This provided much better results than the previous
 \emph{chessboard} transform which had been successful on more uniform data in previous studies \cite{Hughes2017}.
 
-\begin{enumerate}
-\item Quasi-Euclidean algorithm
-\label{sec-3-2-1-1-1}
+\subsubsection{Quasi-Euclidean algorithm}
+\label{sec-3-2-1-1}
 
 This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
 line segments \cite{Pfaltz1966}.
@@ -387,8 +384,8 @@ line segments \cite{Pfaltz1966}.
 
 In order to apply this to a 3D space Kleinberg's method is used  \cite{Kleinberg1997}. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euclidean} method stated in equation:\ref{eqn:qe}.
-\item Effect of Enhanced Watershed algorithm
-\label{sec-3-2-1-1-2}
+\subsubsection{Effect of Enhanced Watershed algorithm}
+\label{sec-3-2-1-2}
 \begin{center}
 \begin{figure}[htb]
 \centering
@@ -396,7 +393,6 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euc
 \caption{\label{fig:qe}\emph{A} showing the chessboard method, \emph{B} improved quasi-euclidean method}
 \end{figure}
 \end{center}
-\end{enumerate}
 
 \section{CT Analysing Library Methods}
 \label{sec-3-3}
