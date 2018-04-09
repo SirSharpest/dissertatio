@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 22:53
+% Created 2018-04-09 Mon 23:23
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -659,45 +659,40 @@ end
 \label{sec-7-3-3}
 \begin{listing}[H]
 \begin{minted}[]{python}
-def standarise_data(df, features, groupby):
+def get_spike_info(self, excel_file, join_column='Folder#'):
     """
-    This is to conform with the likes of PCA, the following text is borrowed from:
-    https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
-    Some code also also heavily borrowed from this page and I
-    take minimal credit for it.
+    This function should do something akin to adding additional
+    information to the data frame
 
-    PCA is effected by scale so you need to scale the features in your data before
-    applying PCA.
+    @note there is some confusion in the NPPC about whether to use
+    folder name or file name as the unique id when this is made into
+    end-user software, a toggle should be added to allow this
 
-    Use StandardScaler to help you standardize the dataset’s features onto unit scale
-    (mean = 0 and variance = 1)
-    which is a requirement for the optimal performance of many machine
-    learning algorithms.
-    If you want to see the negative effect not scaling your data can have,
-    scikit-learn
-    has a section
-
-    on the effects of not standardizing your data.
-
-    uses: \dfrac{x_i – mean(x)}{stdev(x)}
-    assumes Normal Distribution
-
-    To try and fit a normal distribution I am applying log scales of log_2
-
-    @param df the data to be standarised
-    @param features the list of features to standardise
-    @param groupby how the columns should be grouped
-    @returns scaled values
+    @param excel_file a file to attach and read data from
+    @param join_column if the column for joining data is
+    different then it should be stated
     """
-    # Separating out the features
-    x = df.loc[:, features].values
+    try:
+        # Grab the linking excel file
+        info = pd.read_excel(excel_file,
+                             index_col='Folder#')
 
-    # Attempt to normalise through power transforms
-    box_cox_data(x)
+        features = list(info.columns)
+        # Lambda to look up the feature in excel spreadsheet
+        def look_up(x, y): return info.loc[x['folderid']][y]
 
-    # Standardizing the features
-    x = StandardScaler().fit_transform(x)
-    return x
+        # Lambda form a series (data row) and apply it to dataframe
+        def gather_data(x): return pd.Series(
+            [look_up(x, y) for y in features])
+
+        self.df[features] = self.df.apply(gather_data, axis=1)
+    except KeyError as e:
+        print('Error matching data')
+        print(e)
+        raise NoDataFoundException
+    except AttributeError as e:
+        print(e)
+        raise NoDataFoundException
 \end{minted}
 \caption{\label{lst:docexample}Example of code documentation and readability from \emph{data\_transforms.py}}
 \end{listing}
