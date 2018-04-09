@@ -257,7 +257,9 @@ Endif
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
-** Improvements to 3D imaging software
+
+
+** Image Analysis Methods
 ***  New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
@@ -285,6 +287,8 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 [[./images/chess_quasi.png]]
 #+END_CENTER
 
+** CT Analysing Library Methods
+** CT GUI Application Methods
 
 * Results
 
