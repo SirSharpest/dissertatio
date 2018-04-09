@@ -117,7 +117,7 @@ The software created is robust in order to duplicate results and is flexible as 
 Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project. Figure:[[fig:spikes]] illustrates the range of diversity
 
 #+CAPTION: Two \micro-CT scans of wheat spikes, showing diversity in Population, Compactum (6N) left, Durum right (4N)
-#+ATTR_LATEX: :width 12cm
+#+ATTR_LATEX: :width 11cm
 #+NAME: fig:spikes
 [[./images/spikes.png]]
 
