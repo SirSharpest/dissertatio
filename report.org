@@ -184,6 +184,9 @@ Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, th
 - Useable by /anyone/
 ** Version control
 ** Designing Process
+To make the most fit for purpose software weekly meetings were had with researchers at the National Plant Phenomics Centre, through discussions prototype demonstrations many design decision were made.
+
+This expanded on the agile principles of communication over-comprehensive documentation. Where conversations were decidedly much more beneficial than complex planing prior to developing a product.
 ** Documentation
 The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
 
