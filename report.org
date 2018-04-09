@@ -166,7 +166,6 @@ This project provides three final deliveribles:
 2. A Graphical User Interface (GUI) which offers a point and click method for data gathering, graphing and manipulating \micro-CT data, using the library from deliverable 1 as a backend.
 3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
 
-
 * Software Design, Implementation and Testing
 
 ** Software Development Methodology
@@ -442,6 +441,49 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
     W = A;
     W(Ld2 == 0) = 0;
   end
+#+END_SRC
+
+
+*** Custom Documentation Generator
+#+CAPTION: Custom lisp code for generating easy to read documentation
+#+LABEL: lst:docgen
+#+BEGIN_SRC emacs-lisp
+  (defun populate-org-buffer (buffer filename root)
+    (goto-char (point-min))
+    (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
+      (while (re-search-forward
+	      (rx (group (or "def" "class"))
+		  space
+		  (group (+ (not (any "()"))))
+		  (? "(" (* nonl) "):" (+ "\n") (+ space)
+		     (= 3 "\"")
+		     (group (+? anything))
+		     (= 3 "\"")))
+	      nil 'noerror)
+	(setq to-insert
+	      (concat
+	       to-insert
+	       (if (string= "class" (match-string 1))
+		   "** "
+		 "*** ")
+	       (match-string 2)
+	       "\n"
+	       (and (match-string 3)
+		    (concat (match-string 3) "\n")))))
+      (with-current-buffer buffer
+	(insert to-insert))))
+
+  (defun org-documentation-from-dir (&optional dir)
+    (interactive)
+    (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
+	   (files (directory-files-recursively dir "\py$"))
+	   (doc-buf (get-buffer-create "org-docs")))
+      (dolist (file files)
+	(with-temp-buffer
+	  (insert-file-contents file)
+	  (populate-org-buffer doc-buf file dir)))
+      (with-current-buffer doc-buf
+	(org-mode))))
 #+END_SRC
 
 \clearpage

@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 15:36
+% Created 2018-04-09 Mon 22:11
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -320,25 +320,30 @@ This project provides three final deliveribles:
 \item Answers to the proposed questions (hypothesis), the \emph{Results} and \emph{Discussion} sections of this report provides this.
 \end{enumerate}
 
-
 \chapter{Software Design, Implementation and Testing}
 \label{sec-2}
 
 \section{Software Development Methodology}
 \label{sec-2-1}
-\subsection{Weekly targets}
-\label{sec-2-1-1}
-\section{Version control}
+\section{Functional Requirements}
 \label{sec-2-2}
-\section{Designing Process}
+\subsection{Requirements for CT Analysing Library}
+\label{sec-2-2-1}
+\subsection{Requirements for CT GUI Application}
+\label{sec-2-2-2}
+\section{Version control}
 \label{sec-2-3}
-\section{Implementation}
+\section{Designing Process}
 \label{sec-2-4}
-\section{Testing}
+\section{Implementation}
 \label{sec-2-5}
-
+\section{Testing}
+\label{sec-2-6}
+\subsection{Feedback Forms}
+\label{sec-2-6-1}
+Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service\ldots{}
 \subsection{Unit Testing CT Analysing Library}
-\label{sec-2-5-1}
+\label{sec-2-6-2}
 
 \begin{table}[htb]
 \caption{\label{tab:unittest}Output of \emph{pytest} Unit Tests and results for CT Analysing Library}
@@ -393,7 +398,8 @@ This project provides three final deliveribles:
 \end{table}
 
 
-
+\subsection{Unit Testing CT GUI Application}
+\label{sec-2-6-3}
 \chapter{Methods and Solutions}
 \label{sec-3}
 \section{Data Pipeline}
@@ -415,7 +421,6 @@ This project provides three final deliveribles:
 \caption{\label{fig:pipeline}Data Pipeline and Information Flow}
 \end{figure}
 \end{center}
-
 
 
 \section{Image Analysis Methods}
@@ -581,6 +586,51 @@ function [W] = watershedSplit3D(A)
 end
 \end{minted}
 \caption{\label{lst:ws}MATLAB Watershedding function}
+\end{listing}
+
+
+\subsection{Custom Documentation Generator}
+\label{sec-7-3-2}
+\begin{listing}[H]
+\begin{minted}[]{common-lisp}
+(defun populate-org-buffer (buffer filename root)
+  (goto-char (point-min))
+  (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
+    (while (re-search-forward
+            (rx (group (or "def" "class"))
+                space
+                (group (+ (not (any "()"))))
+                (? "(" (* nonl) "):" (+ "\n") (+ space)
+                   (= 3 "\"")
+                   (group (+? anything))
+                   (= 3 "\"")))
+            nil 'noerror)
+      (setq to-insert
+            (concat
+             to-insert
+             (if (string= "class" (match-string 1))
+                 "** "
+               "*** ")
+             (match-string 2)
+             "\n"
+             (and (match-string 3)
+                  (concat (match-string 3) "\n")))))
+    (with-current-buffer buffer
+      (insert to-insert))))
+
+(defun org-documentation-from-dir (&optional dir)
+  (interactive)
+  (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
+         (files (directory-files-recursively dir "\py$"))
+         (doc-buf (get-buffer-create "org-docs")))
+    (dolist (file files)
+      (with-temp-buffer
+        (insert-file-contents file)
+        (populate-org-buffer doc-buf file dir)))
+    (with-current-buffer doc-buf
+      (org-mode))))
+\end{minted}
+\caption{\label{lst:docgen}Custom lisp code for generating easy to read documentation}
 \end{listing}
 
 \clearpage
