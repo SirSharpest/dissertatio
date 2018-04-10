@@ -254,6 +254,71 @@ Feedback and constructive suggestions were made by researchers at the National P
 |---------------------------+----------------------------------------------------+------------|
 
 *** Unit Testing CT GUI Application
+
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|r|
+#+NAME: tab:unittest2
+#+CAPTION: Output of /pytest/ Unit Tests and results for CT GUI Application
+|---------------------------+------------------------------------------------------+----------|
+| Result                    | Test                                                 | Duration |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_box_groupby_1_rb_1      |     1.02 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_box_groupby_2_rb_2      |     0.89 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_box_rb_1                |     1.01 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_box_rb_2                |     1.05 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_groupby_1_rb_1     |     1.90 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_groupby_1_rb_2     |     1.22 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_rb_1               |     0.59 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_rb_2               |     0.50 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | analysis.py::analysis_window_loads                   |     0.28 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | GUI.py::startup                                      |     0.00 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg1_att_1        |    16.86 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg1_att_2        |     8.65 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg2_att_1        |    10.28 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg2_att_2        |     9.88 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg1_att_1            |     0.24 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg1_att_2            |     0.26 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg2_att_1            |     0.23 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg2_att_2            |     0.27 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_window_loads         |     0.19 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | load_data.py::load_data_with_rachis                  |     0.60 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | load_data.py::load_data_without_rachis               |     0.66 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_large            |     2.13 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_none             |     1.80 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_small            |     2.15 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_small_and_large  |     1.94 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::load_additional_data               |     2.04 |
+|---------------------------+------------------------------------------------------+----------|
+| \color{ForestGreen}Passed | preprocessing.py::load_additional_data_expected_fail |     0.14 |
+|---------------------------+------------------------------------------------------+----------|
+
+
+
+
 * Methods and Solutions
 ** Data Pipeline
 

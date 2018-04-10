@@ -1,4 +1,4 @@
-% Created 2018-04-09 Mon 23:39
+% Created 2018-04-10 Tue 18:34
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -428,6 +428,74 @@ Feedback and constructive suggestions were made by researchers at the National P
 
 \subsection{Unit Testing CT GUI Application}
 \label{sec-2-9-3}
+
+\begin{table}[htb]
+\caption{\label{tab:unittest2}Output of \emph{pytest} Unit Tests and results for CT GUI Application}
+\centering
+\begin{tabularx}{\textwidth}{|l|X|r|}
+\hline
+Result & Test & Duration\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_groupby\_1\_rb\_1 & 1.02\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_groupby\_2\_rb\_2 & 0.89\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_rb\_1 & 1.01\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_rb\_2 & 1.05\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_groupby\_1\_rb\_1 & 1.90\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_groupby\_1\_rb\_2 & 1.22\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_rb\_1 & 0.59\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_rb\_2 & 0.50\\
+\hline
+\color{ForestGreen}Passed & analysis.py::analysis\_window\_loads & 0.28\\
+\hline
+\color{ForestGreen}Passed & GUI.py::startup & 0.00\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg1\_att\_1 & 16.86\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg1\_att\_2 & 8.65\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg2\_att\_1 & 10.28\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg2\_att\_2 & 9.88\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg1\_att\_1 & 0.24\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg1\_att\_2 & 0.26\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg2\_att\_1 & 0.23\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg2\_att\_2 & 0.27\\
+\hline
+\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_window\_loads & 0.19\\
+\hline
+\color{ForestGreen}Passed & load\_data.py::load\_data\_with\_rachis & 0.60\\
+\hline
+\color{ForestGreen}Passed & load\_data.py::load\_data\_without\_rachis & 0.66\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_large & 2.13\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_none & 1.80\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_small & 2.15\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_small\_and\_large & 1.94\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::load\_additional\_data & 2.04\\
+\hline
+\color{ForestGreen}Passed & preprocessing.py::load\_additional\_data\_expected\_fail & 0.14\\
+\hline
+\end{tabularx}
+\end{table}
+
+
+
+
 \chapter{Methods and Solutions}
 \label{sec-3}
 \section{Data Pipeline}
