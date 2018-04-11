@@ -1,4 +1,4 @@
-% Created 2018-04-10 Tue 18:34
+% Created 2018-04-11 Wed 15:20
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -40,6 +40,8 @@
 \usepackage{titlesec}
 \usepackage{tabularx}
 \usepackage{multicol}
+\usepackage{array}
+\newcolumntype{C}{ >{\centering\arraybackslash} m{8.5cm} }
 \usepackage[usenames, dvipsnames]{color}
 \renewcommand{\bibname}{References}
 \usepackage{framed}
@@ -54,6 +56,7 @@
 
 \maketitle
 \hyphenpenalty=10000
+
 
 
 \titleformat{\chapter}[display]
@@ -373,126 +376,125 @@ Similarly, the documentation for using the CT GUI Application is based on feedba
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service\ldots{}
 \subsection{Unit Testing CT Analysing Library}
 \label{sec-2-9-2}
-
 \begin{table}[htb]
 \caption{\label{tab:unittest}Output of \emph{pytest} Unit Tests and results for CT Analysing Library}
 \centering
-\begin{tabularx}{\textwidth}{|l|X|r|}
+\begin{tabularx}{\textwidth}{|l|X|}
 \hline
-\textbf{Result} & \textbf{Test} & \textbf{Duration}\\
+\textbf{Result} & \textbf{Test}\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_aggregate\_spike\_averages & 0.03\\
+\color{ForestGreen}Passed & CTData.py::test\_aggregate\_spike\_averages\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_maximum\_removed & 0.00\\
+\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_maximum\_removed\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_minimum\_removed & 0.00\\
+\color{ForestGreen}Passed & CTData.py::test\_clean\_data\_minimum\_removed\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data & 1.30\\
+\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data\_no\_data & 0.00\\
+\color{ForestGreen}Passed & CTData.py::test\_load\_additional\_data\_no\_data\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_load\_data & 0.13\\
+\color{ForestGreen}Passed & CTData.py::test\_load\_data\\
 \hline
-\color{ForestGreen}Passed & CTData.py::test\_NoDataFoundException & 0.00\\
+\color{ForestGreen}Passed & CTData.py::test\_NoDataFoundException\\
 \hline
-\color{ForestGreen}Passed & Data\_transforms.py::test\_box\_cox\_data & 0.01\\
+\color{ForestGreen}Passed & Data\_transforms.py::test\_box\_cox\_data\\
 \hline
-\color{ForestGreen}Passed & Data\_transforms.py::test\_pca\_to\_table & 0.01\\
+\color{ForestGreen}Passed & Data\_transforms.py::test\_pca\_to\_table\\
 \hline
-\color{ForestGreen}Passed & Data\_transforms.py::test\_perform\_pca & 0.02\\
+\color{ForestGreen}Passed & Data\_transforms.py::test\_perform\_pca\\
 \hline
-\color{ForestGreen}Passed & Data\_transforms.py::test\_standardise\_data & 0.01\\
+\color{ForestGreen}Passed & Data\_transforms.py::test\_standardise\_data\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_dataframe & 0.05\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_dataframe\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_object & 0.05\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_boxplot\_as\_object\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_difference\_of\_means & 0.11\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_difference\_of\_means\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_dataframe & 0.02\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_dataframe\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_object & 0.02\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_histogram\_as\_object\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_pca & 0.17\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_pca\\
 \hline
-\color{ForestGreen}Passed & Graphing.py::test\_plot\_qqplot & 0.00\\
+\color{ForestGreen}Passed & Graphing.py::test\_plot\_qqplot\\
 \hline
-\color{ForestGreen}Passed & Statistical\_tests.py::test\_baysian\_hypothesis\_test & 10.76\\
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_baysian\_hypothesis\_test\\
 \hline
-\color{ForestGreen}Passed & Statistical\_tests.py::test\_t\_test & 0.00\\
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_t\_test\\
 \hline
-\color{ForestGreen}Passed & Statistical\_tests.py::test\_test\_normality & 0.00\\
+\color{ForestGreen}Passed & Statistical\_tests.py::test\_test\_normality\\
 \hline
 \end{tabularx}
 \end{table}
 
 \subsection{Unit Testing CT GUI Application}
 \label{sec-2-9-3}
-
-\begin{table}[htb]
+\begin{longtable}{|l|p{6.5cm}|C|}
 \caption{\label{tab:unittest2}Output of \emph{pytest} Unit Tests and results for CT GUI Application}
-\centering
-\begin{tabularx}{\textwidth}{|l|X|r|}
+\\
 \hline
-Result & Test & Duration\\
+\textbf{Result} & \textbf{Test} & \textbf{Image}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_groupby\_1\_rb\_1 & 1.02\\
+\endhead
+\hline\multicolumn{3}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\color{ForestGreen}Passed & analysis.py:: box\_groupby\_1\_rb\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_box_groupby_1_rb_1.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_groupby\_2\_rb\_2 & 0.89\\
+\color{ForestGreen}Passed & analysis.py:: box\_groupby\_2\_rb\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_box_groupby_2_rb_2.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_rb\_1 & 1.01\\
+\color{ForestGreen}Passed & analysis.py:: box\_rb\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_box_rb_1.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_box\_rb\_2 & 1.05\\
+\color{ForestGreen}Passed & analysis.py:: box\_rb\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_box_rb_2.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_groupby\_1\_rb\_1 & 1.90\\
+\color{ForestGreen}Passed & analysis.py:: hist\_groupby\_1\_rb\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_groupby\_1\_rb\_2 & 1.22\\
+\color{ForestGreen}Passed & analysis.py:: hist\_groupby\_1\_rb\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_hist_groupby_1_rb_2.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_rb\_1 & 0.59\\
+\color{ForestGreen}Passed & analysis.py:: hist\_rb\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_hist_rb_1.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_hist\_rb\_2 & 0.50\\
+\color{ForestGreen}Passed & analysis.py:: hist\_rb\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_hist_rb_2.png}\\
 \hline
-\color{ForestGreen}Passed & analysis.py::analysis\_window\_loads & 0.28\\
+\color{ForestGreen}Passed & analysis.py:: loads & \includegraphics[width=.9\linewidth]{./images/Screenshots/analysis_window_loads.png}\\
 \hline
-\color{ForestGreen}Passed & GUI.py::startup & 0.00\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: bayesg1\_att\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_bayestest_g1_att_1.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg1\_att\_1 & 16.86\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: bayesg1\_att\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_bayestest_g1_att_2.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg1\_att\_2 & 8.65\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: bayesg2\_att\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_bayestest_g2_att_1.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg2\_att\_1 & 10.28\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: bayesg2\_att\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_bayestest_g2_att_2.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_bayesg2\_att\_2 & 9.88\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: tg1\_att\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_ttest_g1_att_1.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg1\_att\_1 & 0.24\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: tg1\_att\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_ttest_g1_att_2.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg1\_att\_2 & 0.26\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: tg2\_att\_1 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_ttest_g2_att_1.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg2\_att\_1 & 0.23\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: tg2\_att\_2 & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_ttest_g2_att_2.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_tg2\_att\_2 & 0.27\\
+\color{ForestGreen}Passed & hypothesis\_tests.py:: loads & \includegraphics[width=.9\linewidth]{./images/Screenshots/hypothesis_window_loads.png}\\
 \hline
-\color{ForestGreen}Passed & hypothesis\_tests.py::hypothesis\_window\_loads & 0.19\\
+\color{ForestGreen}Passed & GUI.py:: startup & N/A\\
 \hline
-\color{ForestGreen}Passed & load\_data.py::load\_data\_with\_rachis & 0.60\\
+\color{ForestGreen}Passed & load\_data.py:: load\_data\_with\_rachis & N/A\\
 \hline
-\color{ForestGreen}Passed & load\_data.py::load\_data\_without\_rachis & 0.66\\
+\color{ForestGreen}Passed & load\_data.py:: load\_data\_without\_rachis & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_large & 2.13\\
+\color{ForestGreen}Passed & preprocessing.py:: clean\_data\_remove\_large & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_none & 1.80\\
+\color{ForestGreen}Passed & preprocessing.py:: clean\_data\_remove\_none & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_small & 2.15\\
+\color{ForestGreen}Passed & preprocessing.py:: clean\_data\_remove\_small & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::clean\_data\_remove\_small\_and\_large & 1.94\\
+\color{ForestGreen}Passed & preprocessing.py:: clean\_data\_remove\_small\_and\_large & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::load\_additional\_data & 2.04\\
+\color{ForestGreen}Passed & preprocessing.py:: load\_additional\_data & N/A\\
 \hline
-\color{ForestGreen}Passed & preprocessing.py::load\_additional\_data\_expected\_fail & 0.14\\
+\color{ForestGreen}Passed & preprocessing.py:: load\_additional\_data\_expected\_fail & N/A\\
 \hline
-\end{tabularx}
-\end{table}
-
+\end{longtable}
 
 
 

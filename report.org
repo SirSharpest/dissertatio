@@ -203,119 +203,116 @@ Similarly, the documentation for using the CT GUI Application is based on feedba
 *** Feedback Forms
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
 *** Unit Testing CT Analysing Library
-
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|r|
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:unittest
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
-|---------------------------+----------------------------------------------------+------------|
-| *Result*                  | *Test*                                             | *Duration* |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |       0.03 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |       1.30 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_data                          |       0.13 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |       0.01 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |       0.01 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |       0.02 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |       0.01 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |       0.05 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |       0.05 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |       0.11 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |       0.02 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |       0.02 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |       0.17 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |      10.76 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |       0.00 |
-|---------------------------+----------------------------------------------------+------------|
+|---------------------------+----------------------------------------------------|
+| *Result*                  | *Test*                                             |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_load_data                          |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |
+|---------------------------+----------------------------------------------------|
+| \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |
+|---------------------------+----------------------------------------------------|
 
 *** Unit Testing CT GUI Application
-
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|r|
+#+ATTR_LATEX: :environment longtable :width \textwidth :align |l|p{6.5cm}|C|
 #+NAME: tab:unittest2
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT GUI Application
-|---------------------------+------------------------------------------------------+----------|
-| Result                    | Test                                                 | Duration |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_box_groupby_1_rb_1      |     1.02 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_box_groupby_2_rb_2      |     0.89 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_box_rb_1                |     1.01 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_box_rb_2                |     1.05 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_groupby_1_rb_1     |     1.90 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_groupby_1_rb_2     |     1.22 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_rb_1               |     0.59 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_hist_rb_2               |     0.50 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | analysis.py::analysis_window_loads                   |     0.28 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | GUI.py::startup                                      |     0.00 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg1_att_1        |    16.86 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg1_att_2        |     8.65 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg2_att_1        |    10.28 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_bayesg2_att_2        |     9.88 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg1_att_1            |     0.24 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg1_att_2            |     0.26 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg2_att_1            |     0.23 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_tg2_att_2            |     0.27 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | hypothesis_tests.py::hypothesis_window_loads         |     0.19 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | load_data.py::load_data_with_rachis                  |     0.60 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | load_data.py::load_data_without_rachis               |     0.66 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_large            |     2.13 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_none             |     1.80 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_small            |     2.15 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::clean_data_remove_small_and_large  |     1.94 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::load_additional_data               |     2.04 |
-|---------------------------+------------------------------------------------------+----------|
-| \color{ForestGreen}Passed | preprocessing.py::load_additional_data_expected_fail |     0.14 |
-|---------------------------+------------------------------------------------------+----------|
-
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| *Result*                  | *Test*                                                | *Image*                                                      |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: box_groupby_1_rb_1                      | [[./images/Screenshots/analysis_window_box_groupby_1_rb_1.png]]  |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: box_groupby_2_rb_2                      | [[./images/Screenshots/analysis_window_box_groupby_2_rb_2.png]]  |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: box_rb_1                                | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: box_rb_2                                | [[./images/Screenshots/analysis_window_box_rb_2.png]]            |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_1                     | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                     | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_2.png]] |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: hist_rb_1                               | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: hist_rb_2                               | [[./images/Screenshots/analysis_window_hist_rb_2.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | analysis.py:: loads                                   | [[./images/Screenshots/analysis_window_loads.png]]               |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_1                   | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                   | [[./images/Screenshots/hypothesis_bayestest_g1_att_2.png]]       |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                   | [[./images/Screenshots/hypothesis_bayestest_g2_att_1.png]]       |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                   | [[./images/Screenshots/hypothesis_bayestest_g2_att_2.png]]       |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_1                       | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                       | [[./images/Screenshots/hypothesis_ttest_g1_att_2.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                       | [[./images/Screenshots/hypothesis_ttest_g2_att_1.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                       | [[./images/Screenshots/hypothesis_ttest_g2_att_2.png]]           |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: loads                           | [[./images/Screenshots/hypothesis_window_loads.png]]             |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | GUI.py:: startup                                      | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | load_data.py:: load_data_with_rachis                  | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | load_data.py:: load_data_without_rachis               | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_large            | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_none             | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_small            | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_small_and_large  | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: load_additional_data               | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | preprocessing.py:: load_additional_data_expected_fail | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 
 
 

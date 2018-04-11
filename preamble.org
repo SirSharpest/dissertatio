@@ -22,16 +22,21 @@
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}
+#+LaTeX_HEADER: \usepackage{array}
+#+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{8.5cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
+
+
 #+LaTeX_HEADER: \renewcommand{\bibname}{References}
-
-
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
+
 #+LATEX_HEADER_EXTRA: \usepackage{etoolbox}
+
 
 #+BEGIN_LaTeX
 \hyphenpenalty=10000
 #+END_LaTeX
+
 
 #+BEGIN_LaTeX
 
