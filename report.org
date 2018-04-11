@@ -181,7 +181,7 @@ Requirements for this project are split between software requirements for both t
 
 These are the functional requirements for the Python library produced:
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
   \begin{multicols}{2}
 
     \begin{itemize}
@@ -197,8 +197,7 @@ These are the functional requirements for the Python library produced:
     \columnbreak
 
   \end{multicols}
-
-#+END_LaTeX
+#+END_EXPORT
 
 *** Requirements for CT GUI Application
 - Useable by /anyone/
