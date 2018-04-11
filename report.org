@@ -3,6 +3,7 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
+#+MACRO: LT_HEADER #+ATTR_LaTeX: :caption \caption{\label{$1} $2}\\\hline $3 & $4 & $5 \\\hline\endfirsthead\caption[]{$2}\endhead
 
 
 * Introduction, Analysis and Objectives
@@ -179,7 +180,31 @@ previous week's list.
 Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement.
 
 ** Functional Requirements
+Requirements for this project are split between software requirements for both the CT Analysing Library and the CT GUI Application and the research requirements (i.e. the answers to the proposed hypothesis).
+
 *** Requirements for CT Analysing Library
+
+These are the functional requirements for the Python library produced:
+
+#+BEGIN_LaTeX
+  \begin{multicols}{2}
+
+    \begin{itemize}
+    \item Require 1
+    \end{itemize}
+
+    \columnbreak
+
+    \begin{itemize}
+    \item Require 2
+    \end{itemize}
+
+    \columnbreak
+
+  \end{multicols}
+
+#+END_LaTeX
+
 *** Requirements for CT GUI Application
 - Useable by /anyone/
 ** Version control
@@ -452,7 +477,7 @@ Endif
 |---------------------------------+-------+------------|
 | Statsmodels                     | Pymc3 | Xlrd       |
 |---------------------------------+-------+------------|
-| PyQt5                           |       |            |
+| PyQt5                           | gcc   |            |
 |---------------------------------+-------+------------|
 
 *** Tools
