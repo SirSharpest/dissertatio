@@ -3,7 +3,6 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
-#+MACRO: LT_HEADER #+ATTR_LaTeX: :caption \caption{\label{$1} $2}\\\hline $3 & $4 & $5 \\\hline\endfirsthead\caption[]{$2}\endhead
 
 
 * Introduction, Analysis and Objectives
@@ -34,7 +33,7 @@ The driving question for this research asks "Can \micro-CT data be used to model
 
 The population of wheat used contains samples from the following genotypes:
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
   \begin{multicols}{3}
 
     \begin{itemize}
@@ -62,12 +61,11 @@ The population of wheat used contains samples from the following genotypes:
     \end{itemize}
 
   \end{multicols}
-
-#+END_LaTeX
+#+END_EXPORT
 
 These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
   \begin{multicols}{2}
 
     \begin{itemize}
@@ -84,11 +82,8 @@ These samples come from over 70 plants and provided in excess of 2000 seeds for 
     \item Surface Area
     \item Crease Depth / Volume
     \end{itemize}
-
-
   \end{multicols}
-
-#+END_LaTeX
+#+END_EXPORT
 
 
 #+CAPTION: Wheat grain labelled (/left/), wheat grain cut in half (/right/)
@@ -340,7 +335,6 @@ Feedback and constructive suggestions were made by researchers at the National P
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 
 
-
 * Methods and Solutions
 ** Data Pipeline
 
@@ -451,7 +445,7 @@ Endif
 #+RESULTS: fig:pipeline
 #+END_CENTER
 
-* Results
+* Resultss
 * Discussion
 ** Similar Research
 ** Alternate Solutions

@@ -33,13 +33,12 @@
 #+LATEX_HEADER_EXTRA: \usepackage{etoolbox}
 
 
-#+BEGIN_LaTeX
+
+#+BEGIN_EXPORT latex
 \hyphenpenalty=10000
-#+END_LaTeX
+#+END_EXPORT
 
-
-#+BEGIN_LaTeX
-
+#+BEGIN_EXPORT latex
   \titleformat{\chapter}[display]
      {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
   \titlespacing*{\chapter}{10pt}{10pt}{10pt}
@@ -54,9 +53,7 @@
   }
 
   % \patchcmd{\chapter}{\thispagestyle{fancy}}{\thispagestyle{fancy}}{}{}
-#+END_LaTeX
 
-#+BEGIN_LaTeX
 
   \thispagestyle{empty}
   \renewcommand{\headrulewidth}{0pt}
@@ -85,9 +82,7 @@
   \end{center}
   \clearpage
   \renewcommand{\headrulewidth}{1pt}
-#+END_LaTeX
 
-#+BEGIN_LaTeX
   \thispagestyle{plain}
 
   \begin{center}
@@ -132,7 +127,9 @@
   \listoffigures
   \listoflistings
   \clearpage
-#+END_LaTeX
+
+#+END_EXPORT
+
 #+BEGIN_COMMENT
 A research project
 A research project might use the following top-level structure:
