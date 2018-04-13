@@ -17,11 +17,13 @@ Additionally, as this is very much multi-disciplinary research, specific terms a
 
 ** Background
 
-Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
+   Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
 
 During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
 
-Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and thoroughly domesticated genotypes are unprepared for.
+Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and  domesticated genotypes are unprepared for.
+
+Furthermore, with increasing populations, expanded
 
 Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
 
@@ -34,34 +36,35 @@ The driving question for this research asks "Can \micro-CT data be used to model
 The population of wheat used contains samples from the following genotypes:
 
 #+BEGIN_EXPORT latex
-  \begin{multicols}{3}
+\begin{multicols}{3}
 
-    \begin{itemize}
-    \item Wild Monococcum (2N)
-    \item Domesticated Monococcum (2N)
-    \item Tauschii (2N)
-    \end{itemize}
+  \begin{itemize}
+  \item Wild Monococcum (2N)
+  \item Domesticated Monococcum (2N)
+  \item Tauschii (2N)
+  \end{itemize}
 
-    \columnbreak
+  \columnbreak
 
-    \begin{itemize}
-    \item Durum (4N)
-    \item Dicoccoides (4N)
-    \item Dicoccum (4N)
-    \item Ispahanicum (4N)
-    \item Timopheevii (4N)
-    \end{itemize}
+  \begin{itemize}
+  \item Durum (4N)
+  \item Dicoccoides (4N)
+  \item Dicoccum (4N)
+  \item Ispahanicum (4N)
+  \item Timopheevii (4N)
+  \end{itemize}
 
-    \columnbreak
+  \columnbreak
 
-    \begin{itemize}
-    \item Spelta(6N)
-    \item Aestivum (6N)
-    \item Compactum (6N)
-    \end{itemize}
+  \begin{itemize}
+  \item Spelta(6N)
+  \item Aestivum (6N)
+  \item Compactum (6N)
+  \end{itemize}
 
-  \end{multicols}
+\end{multicols}
 #+END_EXPORT
+/Full species names are found in table:[[tab:wheat]].
 
 These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
 
@@ -113,7 +116,7 @@ The software created is robust in order to duplicate results and is flexible as 
 Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project. Figure:[[fig:spikes]] illustrates the range of diversity
 
 #+CAPTION: Two \micro-CT scans of wheat spikes, showing diversity in Population, Compactum (6N) left, Durum right (4N)
-#+ATTR_LATEX: :width 11cm
+#+ATTR_LATEX: :width 13cm
 #+NAME: fig:spikes
 [[./images/spikes.png]]
 
@@ -133,11 +136,11 @@ The comparison pairs are as follows:
 4. Dicoccum and Durum
 5. Monococcum Wild and Dicoccoides
 
-** Problems Overview
+** Challenges Overview
 
-The problems which this project tackles come in two flavours: Computational and Biological. As such keen awareness of these is needed to appreciate the novelty of this work.
+The challenges which this project tackles come in two flavours: Computational and Biological. As such keen awareness of these is needed to appreciate the novelty of this work.
 
-*** Biological Problems
+*** Biological Challenges
 Previous studies have been able to demonstrate that variation in wheat grain morphology can be partially explained, in 2010 Gegas et al. demonstrated this through a 99.4% 2 component PCA cite:Gegas2010. However there is much left to do in terms of formal classifications and descriptions of these differences. This project deals with this problem through computational analysis.
 
 Two effects run parallel in this study which requires acute biological knowledge of in order to make correct decisions:
@@ -147,7 +150,7 @@ Two effects run parallel in this study which requires acute biological knowledge
 
 Hypothesis are required to take into account, both of these effects so as not to misidentify results.
 
-*** Computational Problems
+*** Computational Challenges
 Using \micro-CT data in plant sciences is becoming more and more common cite:Tracy2017,Jhala2015,Hughes2017,Metzner2015 and whilst a lot of studies focus on the traits of grains specifically no formal model has been created, no accepted data format. This is a data engineering problem and the methods described in this project address this.
 
 Further to data organisation, proposals are made for the statistical analysis which should be used. This allows for studies to become more robust and repeatable, thus strengthening the studies overall.
@@ -333,12 +336,11 @@ Feedback and constructive suggestions were made by researchers at the National P
 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data_expected_fail | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 
-
 * Methods and Solutions
 ** Data Pipeline
 
-#+NAME: fig:matlab
-#+BEGIN_SRC  plantuml :results file :file ./images/matlab.png
+
+#+BEGIN_SRC  plantuml  :file ./images/matlab.png
 (*) -> "Scan wheat Spikes"
 
 partition MATLAB {
@@ -364,19 +366,18 @@ Endif
 ->(*)
 
 #+END_SRC
-#+BEGIN_CENTER
+#+NAME: fig:matlab
 #+CAPTION: Image Processing Pipeline
 #+ATTR_LATEX: :width 10cm
-#+NAME: fig:matlab
+#+RESULTS:
 [[file:./images/matlab.png]]
-#+RESULTS: fig:matlab
-#+END_CENTER
+
 
 ** Image Analysis Methods
 ***  New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
-a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:[[fig:matlab]]). This provided much better results than the previous
+a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:). This provided much better results than the previous
 /chessboard/ transform which had been successful on more uniform data in previous studies cite:Hughes2017.
 
 **** Quasi-Euclidean algorithm
@@ -388,6 +389,7 @@ line segments cite:Pfaltz1966.
 \begin{equation}
 \left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
 \end{equation}
+
 
 
 In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
@@ -403,8 +405,9 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 ** CT Analysing Library Methods
 ** CT GUI Application Methods
 ** Data Analysis Methods
-#+NAME: fig:pipeline
+
 #+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
+
 
 (*) -> "MATLAB Output"
 partition Python {
@@ -436,15 +439,13 @@ Endif
 --> "Output Results"
 }
 #+END_SRC
-#+BEGIN_CENTER
+#+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
 #+ATTR_LATEX: :width 10cm
-#+NAME: fig:pipeline
+#+RESULTS:
 [[file:./images/pipeline.png]]
-#+RESULTS: fig:pipeline
-#+END_CENTER
 
-* Resultss
+* Results
 * Discussion
 ** Similar Research
 ** Alternate Solutions
@@ -510,6 +511,36 @@ Endif
 |--------------+------------------------------------------------------------------------------|
 | PCA          | Principal Component Analysis                                                 |
 |--------------+------------------------------------------------------------------------------|
+
+** Wheat Varieties
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
+#+NAME: tab:wheat
+#+CAPTION: Dictionary for Wheat names used
+|-----------------+-----------------------|
+| *Used name*     | *Species name*        |
+|-----------------+-----------------------|
+| Monococcum      | /Triticum monococcum/ |
+|-----------------+-----------------------|
+| Monococcum Wild | Triticum Boeticum     |
+|-----------------+-----------------------|
+| Tauschii        | Aegilops tauschii     |
+|-----------------+-----------------------|
+| Durum           | Triticum Durum        |
+|-----------------+-----------------------|
+| Dicoccoides     | Triticum Dicoccoides  |
+|-----------------+-----------------------|
+| Dicoccum        | Triticum Dicoccum     |
+|-----------------+-----------------------|
+| Ispahanicum     | Triticum Ispahanicum  |
+|-----------------+-----------------------|
+| Timopheevii     | Triticum Timopheevii  |
+|-----------------+-----------------------|
+| Spelta          | Triticum Spelta       |
+|-----------------+-----------------------|
+| Aestivum        | Triticum Aestivum     |
+|-----------------+-----------------------|
+| Compactum       | Triticum Compactum    |
+|-----------------+-----------------------|
 
 
 ** /Code Segments and Examples/
