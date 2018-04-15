@@ -325,6 +325,10 @@ The CT Analysing Library uses a Singleton style design pattern. A single data ob
 
 A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: /data_transforms.py/; /graphing.py/, /statistical_tests.py/. These modules enable scientific functions to be applied to the /CTData/ object. A UML style class diagram is shown in figure:[[fig:ctdata]], here the interactions of the classes can be seen, as well as their internal functions.
 #+BEGIN_SRC  plantuml :results file :file ./images/ctdata.png
+skinparam monochrome true
+skinparam rectangleFontSize 30
+skinparam classFontSize 30
+skinparam classAttributeFontSize 30
   skinparam linetype ortho
   left to right direction
   class data_transforms  {
@@ -388,9 +392,11 @@ A very functional paradigm is used by this library. By applying mapping and filt
 **** CT GUI Application Design Pattern
 The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design. The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
 
-
-
 #+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
+skinparam monochrome true
+skinparam rectangleFontSize 30
+skinparam classFontSize 30
+skinparam classAttributeFontSize 30
 skinparam linetype ortho
 
 left to right direction
@@ -650,6 +656,12 @@ TODO
 ** Data Pipeline
 
 #+BEGIN_SRC  plantuml  :file ./images/matlab.png
+skinparam monochrome true
+skinparam ActivityFontSize 30
+skinparam ArrowFontSize 30
+skinparam PartitionFontSize 30
+skinparam ActivityDiamondFontSize 30
+
 (*) -> "Scan wheat Spikes"
 
 partition MATLAB {
@@ -677,7 +689,7 @@ Endif
 #+END_SRC
 #+NAME: fig:matlab
 #+CAPTION: Image Processing Pipeline
-#+ATTR_LATEX: :width 10cm
+#+ATTR_LATEX: :width 13cm
 #+RESULTS:
 [[file:./images/matlab.png]]
 
@@ -722,6 +734,11 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 ** Data Analysis Methods
 
 #+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
+skinparam monochrome true
+skinparam ActivityFontSize 30
+skinparam ArrowFontSize 30
+skinparam PartitionFontSize 30
+skinparam ActivityDiamondFontSize 30
 
 (*) -> "MATLAB Output"
 partition Python {
@@ -742,7 +759,7 @@ else
 --> [No] "Aggregate Data columns"
 Endif
 
-If "Normally Distributed?" then
+If "Normally\nDistributed?\n" then
 --> [Yes] "Perform Parametric Tests"
 
 --> "Output Results"
@@ -755,7 +772,7 @@ Endif
 #+END_SRC
 #+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
-#+ATTR_LATEX: :width 10cm
+#+ATTR_LATEX: :width 13cm
 #+RESULTS:
 [[file:./images/pipeline.png]]
 
