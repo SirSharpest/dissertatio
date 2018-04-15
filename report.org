@@ -4,7 +4,6 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
 
-
 * Introduction, Analysis and Objectives
 
 This project aims to answer a biological research question through the use of computer science, whilst also creating a software suite which will enable further studies to be carried out with ease.
@@ -275,13 +274,13 @@ Graphical elements, such as the graphing functionality of the CT Analysing Libra
 
 In figure:[[fig:gui1]] an example of the wire-frames created during meetings is show (A), next to it is displayed the final look of the loading window (B).
  #+CAPTION: Wire-frame of the GUI loading data window
- #+ATTR_LATEX: :width 17cm
+ #+ATTR_LATEX: :width 16cm
  #+NAME: fig:gui1
  [[./images/wireframe1.png]]
 
 Similarly, figure:[[fig:gui2]] provides the initial wire-frame (A) of how the analysis window could have looked and what kind of GUI elements would be required, again, next to it is the final analysis window (B)
  #+CAPTION: Wire-frame of the GUI analysis window
- #+ATTR_LATEX: :width 17cm
+ #+ATTR_LATEX: :width 16cm
  #+NAME: fig:gui2
  [[./images/wireframe2.png]]
 ** Documentation
@@ -295,10 +294,35 @@ Beyond this, inline commenting is provided for supplied software. Keeping in lin
 
 Documentation for the CT GUI application is provided as a visual user guide, and provides sample data for the user to test with.
 ** Software Library Choices
-** Implementation
-*** Design Patterns
-**** CT Analysing Library Design Pattern
+The software libraries used for this project focus around data manipulation, where possible core libraries of the Python language were used and only well supported, established and documented libraries were chosen. Software support is a major requirement for reproducible results.
 
+All software packages used in the Analysing Library are required by the CT Analysing GUI as the Library is a dependency of it. The GUI has a single separate requirement /PyQT5/.
+Table:[[tab:software]] contains a full listing of all software used and required by this project.
+*** CT Analysing Library
+**** Numpy
+The Numpy library is one of the most commonly used additions to the Python ecosystem, it is fundamental to many data science projects. Here it is used to handle data lists, arrays and structures. There is no viable alternative to this package and it is required by Scipy and Statsmodels.
+**** Matplotlib/Seaborn
+Matplotlib acts as the plotting backend for the project. The Seaborn package acts as a porcelain for matplotlib and makes graph creation and decoration much easier.
+**** Scipy
+Data transforms such as Box Cox and PCA are dependant on the functions of the Scipy library. Alternatives are available, however this is the most well established and often used library for these functions.
+**** Pandas
+Pandas is used to read the CSV files which the raw data is stored in. This library converts and stores data in dataframes which are used throughout this project to manipulate data.
+**** Xlrd
+This extension library is required in order to read Microsoft encoded files. Extra experiment information can be provided with the "xlsx" extension.
+**** Statsmodels
+Bayesian hypothesis testing is provided through this library.
+**** PyQT5
+There were many options for creating a user interface in Python, the language provides its own core library via the /TKinter/ module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
+
+** Implementation
+Strict software engineering principles were applied during creation of this project. The use of standards, design patterns and code-linters have been used throughout to minimise the possibility of errors and to create wholly extendable software. These devices enable understandable and self-documented code allowing future users to quickly start using the provided packages.
+
+*** Design Patterns
+Each of the packages of this projects follow a design pattern to make them extendable for future additions, as and when they are required by future studies and experiments.
+**** CT Analysing Library Design Pattern
+The CT Analysing Library uses a Singleton style design pattern. A single data object is created from a /CTData/ class.
+
+A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: /data_transforms.py/; /graphing.py/, /statistical_tests.py/. These modules enable scientific functions to be applied to the /CTData/ object. A UML style class diagram is shown in figure:[[fig:ctdata]], here the interactions of the classes can be seen, as well as their internal functions.
 #+BEGIN_SRC  plantuml :results file :file ./images/ctdata.png
   skinparam linetype ortho
   left to right direction
@@ -356,21 +380,20 @@ Documentation for the CT GUI application is provided as a visual user guide, and
 #+END_SRC
 #+NAME: fig:ctdata
 #+CAPTION: CT Analysing Library UML
-#+ATTR_LATEX: :width 17cm
+#+ATTR_LATEX: :width 12cm
 #+RESULTS:
 [[file:./images/ctdata.png]]
 
-
 **** CT GUI Application Design Pattern
+The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design. The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
+
+
 
 #+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
-   skinparam linetype ortho
+skinparam linetype ortho
 
-  left to right direction
-
-
-
-    rectangle View{
+left to right direction
+rectangle View{
 
 
     class UiMainWindow{
@@ -488,14 +511,27 @@ Documentation for the CT GUI application is provided as a visual user guide, and
 #+END_SRC
 #+NAME: fig:ctgui
 #+CAPTION: CT Analysing GUI UML
-#+ATTR_LATEX: :width 17cm
+#+ATTR_LATEX: :width 15.2cm
 #+RESULTS:
 [[file:./images/ctgui.png]]
+
+
+*** Standards
+The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
+
+In addition to PEP8, a Python code linter Flake8 has been used to prevent "code smells", bad formatting, incorrect white space usage etc.
+
 ** Version control
+This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
+
+By using submodules the CT Grain Analysing Library could be kept in sync with the GUI aspect of the project.
+
+Additionally, /setup.py/ has been used to provide installation of the library, the code for this can be seen in listing:[[lst:setuppy]].
 ** Testing
 *** Feedback Forms
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
 *** Unit Testing CT Analysing Library
+TODO
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:unittest
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
@@ -546,6 +582,7 @@ Feedback and constructive suggestions were made by researchers at the National P
 |---------------------------+----------------------------------------------------|
 
 *** Unit Testing CT GUI Application
+TODO
 #+ATTR_LATEX: :environment longtable :width \textwidth :align |l|p{6.5cm}|C|
 #+NAME: tab:unittest2
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT GUI Application
@@ -745,7 +782,7 @@ Endif
 |---------------------------------+-------+------------|
 | Statsmodels                     | Pymc3 | Xlrd       |
 |---------------------------------+-------+------------|
-| PyQt5                           | gcc   |            |
+| PyQt5                           | gcc   | Pip        |
 |---------------------------------+-------+------------|
 
 *** Tools
@@ -936,6 +973,32 @@ Endif
 	  print(e)
 	  raise NoDataFoundException
 
+#+END_SRC
+
+*** Setup.py
+#+CAPTION: The /setup.py/ configuration for the CT Analyser Library
+#+LABEL: lst:setuppy
+#+BEGIN_SRC python
+  from setuptools import setup
+
+  setup(name='CT_Analysing_Library',
+	version='0.2',
+	description='Library used for CT grain analysis at the NPPC',
+	url='https://github.com/SirSharpest/CT_Analysing_Library',
+	author='Nathan Hughes',
+	author_email='nathan1hughes@gmail.com',
+	license='MIT',
+	packages=['ct_analysing_library'],
+	install_requires=['pandas',
+			  'numpy',
+			  'matplotlib',
+			  'seaborn',
+			  'scipy',
+			  'sklearn',
+			  'statsmodels',
+			  'pymc3',
+			  'xlrd'],
+	zip_safe=True)
 #+END_SRC
 
 \clearpage
