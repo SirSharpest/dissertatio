@@ -974,13 +974,12 @@ Endif
 	  raise NoDataFoundException
 
 #+END_SRC
-
+\clearpage
 *** Setup.py
 #+CAPTION: The /setup.py/ configuration for the CT Analyser Library
 #+LABEL: lst:setuppy
 #+BEGIN_SRC python
   from setuptools import setup
-
   setup(name='CT_Analysing_Library',
 	version='0.2',
 	description='Library used for CT grain analysis at the NPPC',
