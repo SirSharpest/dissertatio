@@ -25,6 +25,8 @@
 #+LaTeX_HEADER: \usepackage{array}
 #+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{8.5cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
+#+LaTeX_HEADER: \usepackage[nocompress]{cite}
+
 
 
 #+LaTeX_HEADER: \renewcommand{\bibname}{References}
