@@ -390,7 +390,9 @@ skinparam classAttributeFontSize 30
 [[file:./images/ctdata.png]]
 
 **** CT GUI Application Design Pattern
-The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design. The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
+The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design.
+
+The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
 
 #+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
 skinparam monochrome true
@@ -522,7 +524,6 @@ rectangle View{
 #+RESULTS:
 [[file:./images/ctgui.png]]
 
-
 *** Standards
 The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
 
@@ -533,12 +534,37 @@ This project has used Git version 2.7.4 throughout. The structure of the project
 
 By using submodules the CT Grain Analysing Library could be kept in sync with the GUI aspect of the project.
 
-Additionally, /setup.py/ has been used to provide installation of the library, the code for this can be seen in listing:[[lst:setuppy]].
+Additionally, /setup.py/ has been used to provide installation of the library, the code for this can be seen in listing:[[lst:setuppy]]. Using /setup.py/ provides a quick and easy way for any user to install the software, along with any dependencies.
+
+**** Issue Tracking
+Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:[[fig:github]]
+#+CAPTION: Github Issue Tracking
+#+NAME: fig:github
+#+ATTR_LATEX: :width 12cm
+[[./images/github.png]]
+
+** Library Versioning
+The development of this project was performed using the Python /virtualenv/. This is a virtual environment package which Python offers, it allows for an isolated working copy of the project.
+
+By developing in this manner, libraries were ensured to be using the correct versions required by the software.
+ \clearpage
 ** Testing
+Testing was performed both in acceptance testing by using user feedback, the functional requirements and the ability to use the software to answer the hypothesis of the research elements of this project. Further to this, unit testing was performed to allow for automated testing as well as test-driven-development of features.
 *** Feedback Forms
-Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
+Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service.
+
+These provided a method of acceptance testing by those who would be using the software to help with investigating data. Page 1 of the given form is shown in figure:[[fig:feedback]]. This form was completed by 3 researchers at the National Plant Phenomics Centre, feedback was very positive overall.
+#+NAME: fig:feedback
+#+CAPTION: CT Feedback form
+#+ATTR_LATEX: :width 7.3cm
+[[./images/feedbackform.png]]
+
+\clearpage
+
 *** Unit Testing CT Analysing Library
-TODO
+The unit tests for the CT Analysing Library were straightforward, using the /PyTest/ framework and a subset of data from a data set, these tests assert that features are implemented correctly and that the correct results are given.
+
+
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:unittest
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
@@ -588,8 +614,15 @@ TODO
 | \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |
 |---------------------------+----------------------------------------------------|
 
+
+\clearpage
+
 *** Unit Testing CT GUI Application
-TODO
+The unit testing used for the CT GUI Application was more sophisticated than that of the Library. This testing required visual confirmation that figures and graphs generated were displayed correctly and that they showed what the user would expect, given the data.
+
+To do this a /PyTest/ plugin was used, /QtBot/ which provides simulated user input. This allows for the GUI to be thoroughly tested, automatically.
+
+In table:[[tab:unittest2]] the results of the automated testing is given along side an image of several of the tests, tests of the same graphs but with different parameters were also generated and manually verified and provided as supplemental data.
 
 #+ATTR_LATEX: :environment longtable :width \textwidth :align |l|p{4.4cm}|C|
 #+NAME: tab:unittest2
@@ -794,9 +827,9 @@ Endif
 #+NAME: tab:software
 #+CAPTION: Software libraries used
 |---------------------------------+-------+------------|
-| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
-|---------------------------------+-------+------------|
 | Seaborn                         | Scipy | Sklearn    |
+|---------------------------------+-------+------------|
+| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
 |---------------------------------+-------+------------|
 | Statsmodels                     | Pymc3 | Xlrd       |
 |---------------------------------+-------+------------|
@@ -812,9 +845,10 @@ Endif
 |--------+-----------------------+----------|
 | Emacs  | git                   | org-mode |
 |--------+-----------------------+----------|
-| Tomviz | ImageJ                |          |
+| Tomviz | ImageJ                | PlantUML |
 |--------+-----------------------+----------|
 
+\clearpage
 ** /Glossary/
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:glossary
@@ -849,7 +883,7 @@ Endif
 | OOP          | Object Orientated Programming                                                |
 |--------------+------------------------------------------------------------------------------|
 
-
+\clearpage
 ** Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
 #+NAME: tab:wheat
@@ -880,7 +914,7 @@ Endif
 | Compactum       | Triticum Compactum    |
 |-----------------+-----------------------|
 
-
+\clearpage
 ** /Code Segments and Examples/
 *** MATLAB Watershedding
 
@@ -911,6 +945,7 @@ Endif
   end
 #+END_SRC
 
+\clearpage
 *** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
 #+LABEL: lst:docgen
@@ -939,7 +974,6 @@ Endif
 		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
       (with-current-buffer buffer
 	(insert to-insert))))
-
   (defun org-documentation-from-dir (&optional dir)
     (interactive)
     (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
