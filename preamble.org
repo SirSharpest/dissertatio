@@ -66,7 +66,7 @@
     \vspace{0.3in}
 
     \begin{tabular}[t]{ll}
-      Author: & Nathan Hughes (nah26@aber.ac.uk) \\
+      Author: & Mr. Nathan Hughes (nah26@aber.ac.uk) \\
       Supervisor: & Dr. Wayne Aubrey (waa2@aber.ac.uk) \\
       Degree Scheme &  G401 \hspace*{0.05in}(Computer Science)\\
       \\

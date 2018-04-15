@@ -23,7 +23,7 @@ During domestication, the main traits selected for breeding were most likely pla
 
 Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and  domesticated genotypes are unprepared for.
 
-Furthermore, with increasing populations, expanded
+Furthermore, with increasing populations and less arable land there is an even greater pressure for the optimisation of grain and spike characteristics. With studies showing that spikelet count can be controlled by specific and sometimes recessive genes cite:Finnegan2018, which could drastically enhance overall yield, and a general public distrust towards genetically modification cite:Aleksejeva2014,Twardowski2015,Lynas the reliance on breeding programs for optimisation is further stressed.
 
 Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
 
@@ -31,9 +31,9 @@ As such, there are questions still left open about how best to make selections f
 
 ** Biological Question and Materials
 
-The driving question for this research asks "Can \micro-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information. The biological data used in this solution are as follows:
+The driving question for this research asks "Can \micro-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
 
-The population of wheat used contains samples from the following genotypes:
+The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexiploid.
 
 #+BEGIN_EXPORT latex
 \begin{multicols}{3}
@@ -64,50 +64,68 @@ The population of wheat used contains samples from the following genotypes:
 
 \end{multicols}
 #+END_EXPORT
-/Full species names are found in table:[[tab:wheat]].
+Full species names are found in table:[[tab:wheat]].
 
-These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
+*** Why use \micro-CT image analysis?
+In the past, science has been greatly limited by the amount of data which could be processed in an experiment. In the last few decades the inclusion of computer science has reduced this bottleneck. Now, the challenge for many fields of research is producing more data and this is often cited as the major bottleneck in creating robust studies cite:Furbank2011.
 
-#+BEGIN_EXPORT latex
-  \begin{multicols}{2}
+Many experiments aim to meet the demand for data by using high-throughput automated imaging systems cite:Naumann2007,Prasanna2013,Humplik2015. These systems have, in the last decade, become a standard and accepted tool for data generation. However, they will only produce 2-dimensional data on a per-plant basis. Image processing research has had success in modifying these automated systems in order to produce a pseudo 3-dimensional structure using stero-imaging cite:Roussel2016. Even so, these techniques require destructive harvesting of materials and do not provide information of internal structure.
 
-    \begin{itemize}
-    \item Length
-    \item Width
-    \item Depth
+For decades medical research has found success with X-Ray imaging technology cite:Wang2008. From this, plant science has been able to benefit from the wealth of prior knowledge and more and more studies are being augmented with the use of X-Ray/\micro-CT imaging cite:Jhala2015,Tracy2012,Metzner2015,Hughes2017,Staedler2013.
 
-    \end{itemize}
+In this study, \micro-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, or in such a high throughput or quality.
 
-    \columnbreak
+*** Extracted Data
 
-    \begin{itemize}
-    \item Volume
-    \item Surface Area
-    \item Crease Depth / Volume
-    \end{itemize}
-  \end{multicols}
-#+END_EXPORT
+ These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
+
+ #+BEGIN_EXPORT latex
+   \begin{multicols}{2}
+
+     \begin{itemize}
+     \item Length
+     \item Width
+     \item Depth
+
+     \end{itemize}
+
+     \columnbreak
+
+     \begin{itemize}
+     \item Volume
+     \item Surface Area
+     \item Crease Depth / Volume
+     \end{itemize}
+   \end{multicols}
+ #+END_EXPORT
 
 
-#+CAPTION: Wheat grain labelled (/left/), wheat grain cut in half (/right/)
-#+ATTR_LATEX: :width 17cm
-#+NAME: fig:seeds
-[[./images/seeds.png]]
+ #+CAPTION: Wheat grain labelled (/left/), wheat grain cut in half (/right/), adapted from Hughes et al. cite:Hughes2017
+ #+ATTR_LATEX: :width 17cm
+ #+NAME: fig:seeds
+ [[./images/seeds.png]]
+
 
 ** Significance to Current Research
 The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
 
-This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress.
+This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress. Each of these areas depend on making informed decisions in order to direct experiments. By producing information at an individual seed level, this study has been able to provide data that can offer suggestions of plant potential and behaviour.
+
+Often, the most sought after traits are centred around thousand-grain-weight (TGW) as well as standard deviation of seed shapes. During harvesting, filters are used to only allow ideal shaped seeds through. This means that, potentially, despite a breed of wheat providing a high average volume of seed in reality much of it may go to waste if the shapes are not uniform. This research aims to alleviate this problem and provides low level information which is sorely required.
 
 The individual images in figure:[[fig:phylo]] show, at a glance, the diversity and also the difference in the wild and cultivated (domesticated)
 species. This work allows for these differences to be quantified and evaluated into useful metrics for answering research based questions.
+
+By better understanding the morphometric deviations in wheat species, more informed choices can be made when it comes to breeding wheat for the future and to fulfil ever-changing requirements.
+
+\clearpage
 
 #+CAPTION: Phylogeny of wheat genotypes (Provided by Dr. Hugo Oliveira)
 #+ATTR_LATEX: :width 17cm
 #+NAME: fig:phylo
 [[file:./images/philotree.png]]
 
-** Aim and Objectives
+** Aims and Objectives
 
 The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlined. As well as to prove/disprove the hypothesis stated below.
 
@@ -115,15 +133,10 @@ The software created is robust in order to duplicate results and is flexible as 
 
 Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project. Figure:[[fig:spikes]] illustrates the range of diversity
 
-#+CAPTION: Two \micro-CT scans of wheat spikes, showing diversity in Population, Compactum (6N) left, Durum right (4N)
-#+ATTR_LATEX: :width 13cm
-#+NAME: fig:spikes
-[[./images/spikes.png]]
-
-
 Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
 
 These aims have a focus on the phenotypic attributes generated from customised image analysis software cite:Hughes2017 and can be seen in figure:[[fig:seeds]].
+
 
 ** Hypothesis
 To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:[[fig:phylo]].
@@ -135,6 +148,12 @@ The comparison pairs are as follows:
 3. Spelta and Aestivum
 4. Dicoccum and Durum
 5. Monococcum Wild and Dicoccoides
+
+
+#+CAPTION: Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:spikes
+[[./images/spikes.png]]
 
 ** Challenges Overview
 
@@ -166,61 +185,313 @@ This project provides three final deliveribles:
 3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
 
 * Software Design, Implementation and Testing
-This project made use of formal design methods and strict organisation whilst being flexible to change.
-Overall the design took a hybridised form in order to best suit the scientific environment which this
-domain specific software is built for.
-
-** Software Development Methodology
-Data analysis drove the direction of the project, as a result an agile methodology was adopted.
-Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based off of the
-previous week's list.
-
-Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement.
+This chapter outlines choices and methodologies employed in the software engineering aspect of this project, as well as highlighting the key functional requirements and implementation decisions.
 
 ** Functional Requirements
-Requirements for this project are split between software requirements for both the CT Analysing Library and the CT GUI Application and the research requirements (i.e. the answers to the proposed hypothesis).
-
+Requirements for this project are split between software requirements for both the CT Analysing Library and the CT GUI Application and the research requirements (i.e. the answers to the proposed hypothesis). Here the requirements for the software are discussed:
 *** Requirements for CT Analysing Library
 
 These are the functional requirements for the Python library produced:
 
 #+BEGIN_EXPORT latex
-  \begin{multicols}{2}
+\begin{multicols}{2}
 
-    \begin{itemize}
-    \item Require 1
-    \end{itemize}
+  \begin{itemize}
+  \item Provide an OOP means to deal with data
+  \item Make gathering of data simplified
+  \item Handle Saving of data in a useable format
+  \item Easily enable data transformations
+  \item Perform hypothesis testing
+  \end{itemize}
 
-    \columnbreak
+  \columnbreak
 
-    \begin{itemize}
-    \item Require 2
-    \end{itemize}
+  \begin{itemize}
+  \item Process rejoining of split scans
+  \item Handle Removing of erroneous data
+  \item Enable matching data to external information
+  \item Auto plot data (boxplots, histograms etc.)
+  \item Allow easy filtering of data
+  \end{itemize}
 
-    \columnbreak
+  \columnbreak
 
-  \end{multicols}
+\end{multicols}
 #+END_EXPORT
 
 *** Requirements for CT GUI Application
-- Useable by /anyone/
-** Version control
-** Designing Process
-To make the most fit for purpose software weekly meetings were had with researchers at the National Plant Phenomics Centre, through discussions prototype demonstrations many design decision were made.
 
-This expanded on the agile principles of communication over-comprehensive documentation. Where conversations were decidedly much more beneficial than complex planing prior to developing a product.
+#+BEGIN_EXPORT latex
+\begin{multicols}{2}
+
+  \begin{itemize}
+  \item Provide a intuitive user interface for working with CT data
+  \item Allow a interaction with data without the need for programming
+  \item Implement the Matplotlib plotting utility
+  \item Easily join experiment data with CT data
+  \item Use an MVC model
+  \end{itemize}
+
+  \columnbreak
+
+  \begin{itemize}
+  \item Implement the CT Analysis Library
+  \item Display data visually
+  \item Dynamically create graphs
+  \item Provide hypothesis testing
+  \end{itemize}
+
+  \columnbreak
+
+\end{multicols}
+#+END_EXPORT
+
+** Software Development Methodology
+This project made use of formal design methods and strict organisation whilst being flexible to change. Overall the design took a hybridised form in order to best suit the scientific environment which this domain specific software is built for.
+
+Data analysis drove the direction of the project, as a result an agile methodology was adopted.
+Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based off of the previous week's list.
+
+Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement cite:Andrews.
+
+Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
+** Language Choices
+Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
+
+In scientific programming three of the most commonly used languages are Python, R and MATLAB cite:Ozgur2016.
+
+These three languages are able to provide all the features which this project requires. However Python was chosen for several reasons.
+
+MATLAB could not be used as a potential language due to it being pay to use software, as this project aims to be accessible, the cost of software would greatly reduce the scope of access.
+
+R is a valid candidate, it provides all of the statistical capabilities required by the project, it also provides packages for creating GUI based applications, it is fast and it is widely used in scientific computing and data science.
+
+The main deciding factor is Python's wealth of resources, adoption rate and the developer of this project being vastly more experienced with Python's ecosystem than R's.
+
+** Designing Process
+Through meetings and emails, the agile principles of communication over comprehensive documentation was used. Where conversations were decidedly much more beneficial than complex planing prior to developing a product.
+
+Graphical elements, such as the graphing functionality of the CT Analysing Library and the CT GUI Application were sketched using wire-frames whilst in meetings where the potential users (clients) could provide their ideas.
+
+In figure:[[fig:gui1]] an example of the wire-frames created during meetings is show (A), next to it is displayed the final look of the loading window (B).
+ #+CAPTION: Wire-frame of the GUI loading data window
+ #+ATTR_LATEX: :width 17cm
+ #+NAME: fig:gui1
+ [[./images/wireframe1.png]]
+
+Similarly, figure:[[fig:gui2]] provides the initial wire-frame (A) of how the analysis window could have looked and what kind of GUI elements would be required, again, next to it is the final analysis window (B)
+ #+CAPTION: Wire-frame of the GUI analysis window
+ #+ATTR_LATEX: :width 17cm
+ #+NAME: fig:gui2
+ [[./images/wireframe2.png]]
 ** Documentation
+Whilst an agile approach was used, some documentation was created for use with the CT Analysing Library.
+
 The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
 
 This documentation generator was purpose created, implemented in LISP and provided in listing:[[lst:docgen]].
 
 Beyond this, inline commenting is provided for supplied software. Keeping in line with the agile development ethos the software is self-documented and self-evident. A brief example of this is shown in listing:[[lst:docexample]]
 
-Similarly, the documentation for using the CT GUI Application is based on feedback provided via user testing and Google form feedback data.
-** Language Choice
+Documentation for the CT GUI application is provided as a visual user guide, and provides sample data for the user to test with.
 ** Software Library Choices
 ** Implementation
+*** Design Patterns
+**** CT Analysing Library Design Pattern
 
+#+BEGIN_SRC  plantuml :results file :file ./images/ctdata.png
+  skinparam linetype ortho
+  left to right direction
+  class data_transforms  {
+
+  +box_cox_data()
+  +standardise_data()
+  +perform_pca()
+  +pca_to_table()
+
+  }
+
+  class graphing {
+
+  +plot_difference_o_means()
+  +plot_forest_plot()
+  +plot_boxplot()
+  +plot_qqplot()
+  +plot_histogram()
+  +plot_pca()
+  +check_var_args()
+
+  }
+
+
+  class CTData {
+  + __init__()
+  + get_data()
+  + gather_data()
+  + create_dimensions_ratio()
+  + make_dataframe()
+  + clean_data()
+  + get_files()
+  + fix_colnames()
+  + join_spikes_by_rachis()
+  + remove_percentile()
+  + aggregate_spike_averages()
+  + find_troublesome_spikes()
+  + gather_data()
+  }
+
+
+
+  class statistical_tests{
+
+  +baysian_hypothesis_test()
+  +check_normality()
+  +perform_t_test()
+
+  }
+
+  data_transforms <-- CTData
+  CTData --> statistical_tests
+  CTData --> graphing
+#+END_SRC
+#+NAME: fig:ctdata
+#+CAPTION: CT Analysing Library UML
+#+ATTR_LATEX: :width 17cm
+#+RESULTS:
+[[file:./images/ctdata.png]]
+
+
+**** CT GUI Application Design Pattern
+
+#+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
+   skinparam linetype ortho
+
+  left to right direction
+
+
+
+    rectangle View{
+
+
+    class UiMainWindow{
+    +setupUi()
+    +retranslateUi()
+    }
+
+    class MatplotlibView{
+    +__init__()
+    +setup()
+    }
+    }
+
+
+  rectangle Controller{
+
+    class AnalysisWindow{
+    +__init__()
+    +set_graph_type()
+    +refresh()
+    +update_view()
+    +setup_figure_canvas()
+    +find_clicked_button()
+    +get_group_by()
+    +make_canvas()
+    }
+
+    class AppWindow{
+
+    +__init__()
+    +setup_menu_functions()
+    +setup_default_states()
+    +view_data()
+    +get_data()
+    +set_data()
+    +update_analysis()
+
+    }
+
+
+    class FindFilesWindow{
+    +__init__()
+    +connect_view_functions()
+    +set_default_states()
+    +find_files()
+    +save_file_dialog()
+    +search_for_files()
+    +set_files_list()
+    }
+
+
+
+    class PreProcessWindow{
+    +__init__()
+    +connect_view_functions()
+    +select_experimental_info()
+    +load_experimental_data()
+    +clean_data()
+    }
+
+
+
+    class StatsTestWindow{
+
+    +__init__()
+    +connect_view_functions()
+    +set_test_type()
+    +set_group_by()
+    +update_view()
+    +setup_figure_canvas()
+    +get_group_by()
+    +slice_data()
+    +make_canvas_plot()
+
+    }
+
+    }
+
+    rectangle Model {
+
+    class CTGUIData{
+    +__init__()
+    +download_data()
+    }
+
+    class WidgetList{
+    +__init__()
+    +update()
+    +get_items()
+    }
+
+    class MyMplCanvas {
+    +__init__()
+    +facet_hist()
+    +compute_initial_figure()
+    }
+
+    class MyStaticMplCanvas {
+    +compute_initial_figure()
+    }
+
+    class PandasModel{
+    +__init__()
+    +setup()
+    }
+
+    }
+
+  Model -->  Controller
+  View --> Controller
+
+  Controller --> Model
+  Controller --> View
+
+#+END_SRC
+#+NAME: fig:ctgui
+#+CAPTION: CT Analysing GUI UML
+#+ATTR_LATEX: :width 17cm
+#+RESULTS:
+[[file:./images/ctgui.png]]
+** Version control
 ** Testing
 *** Feedback Forms
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service...
@@ -287,35 +558,35 @@ Feedback and constructive suggestions were made by researchers at the National P
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | analysis.py:: box_rb_1                                | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: box_rb_2                                | [[./images/Screenshots/analysis_window_box_rb_2.png]]            |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_1                     | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                     | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_2.png]] |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | analysis.py:: hist_rb_1                               | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_rb_2                               | [[./images/Screenshots/analysis_window_hist_rb_2.png]]           |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: loads                                   | [[./images/Screenshots/analysis_window_loads.png]]               |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_1                   | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                   | [[./images/Screenshots/hypothesis_bayestest_g1_att_2.png]]       |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                   | [[./images/Screenshots/hypothesis_bayestest_g2_att_1.png]]       |
-|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                   | [[./images/Screenshots/hypothesis_bayestest_g2_att_2.png]]       |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_1                       | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                       | [[./images/Screenshots/hypothesis_ttest_g1_att_2.png]]           |
+| \color{ForestGreen}Passed | analysis.py:: box_rb_2                                | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                       | [[./images/Screenshots/hypothesis_ttest_g2_att_1.png]]           |
+| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                     | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                       | [[./images/Screenshots/hypothesis_ttest_g2_att_2.png]]           |
+| \color{ForestGreen}Passed | analysis.py:: hist_rb_2                               | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: loads                           | [[./images/Screenshots/hypothesis_window_loads.png]]             |
+| \color{ForestGreen}Passed | analysis.py:: loads                                   | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                   | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                   | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                   | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                       | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                       | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                       | N/A                                                          |
+|---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
+| \color{ForestGreen}Passed | hypothesis_tests.py:: loads                           | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
 | \color{ForestGreen}Passed | GUI.py:: startup                                      | N/A                                                          |
 |---------------------------+-------------------------------------------------------+--------------------------------------------------------------|
@@ -338,7 +609,6 @@ Feedback and constructive suggestions were made by researchers at the National P
 
 * Methods and Solutions
 ** Data Pipeline
-
 
 #+BEGIN_SRC  plantuml  :file ./images/matlab.png
 (*) -> "Scan wheat Spikes"
@@ -372,9 +642,8 @@ Endif
 #+RESULTS:
 [[file:./images/matlab.png]]
 
-
 ** Image Analysis Methods
-***  New Watershed Algorithm
+***  [#B] New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
 a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:). This provided much better results than the previous
@@ -401,6 +670,13 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 #+NAME: fig:qe
 [[./images/chess_quasi.png]]
 #+END_CENTER
+
+*** Extracted Grains
+
+ #+CAPTION: Individual Wheat grains, rendered in 3D
+ #+ATTR_LATEX: :width 13cm
+ #+NAME: fig:ctgrains
+ [[./images/ctgrains.png]]
 
 ** CT Analysing Library Methods
 ** CT GUI Application Methods
@@ -449,14 +725,12 @@ Endif
 * Discussion
 ** Similar Research
 ** Alternate Solutions
-
 * Critical Evaluation
 ** Organisational Methods
 ** Relevance to Degree
 ** Time Management
 ** Collaborative Work
 ** Other Issues
-
 * Appendix
 ** /Software Packages Used/
 
@@ -511,6 +785,13 @@ Endif
 |--------------+------------------------------------------------------------------------------|
 | PCA          | Principal Component Analysis                                                 |
 |--------------+------------------------------------------------------------------------------|
+| Spike        | A singular stalk of wheat                                                    |
+|--------------+------------------------------------------------------------------------------|
+| Spikelet     | A group of seeds all forming from the same node in a spike                   |
+|--------------+------------------------------------------------------------------------------|
+| MVC          | Model View Controller - A design pattern for GUIs                            |
+|--------------+------------------------------------------------------------------------------|
+
 
 ** Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
@@ -598,7 +879,7 @@ Endif
 	       (match-string 2)
 	       "\n"
 	       (and (match-string 3)
-		    (concat (match-string 3) "\n")))))
+		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
       (with-current-buffer buffer
 	(insert to-insert))))
 
