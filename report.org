@@ -299,20 +299,19 @@ The software libraries used for this project focus around data manipulation, whe
 
 All software packages used in the Analysing Library are required by the CT Analysing GUI as the Library is a dependency of it. The GUI has a single separate requirement /PyQT5/.
 Table:[[tab:software]] contains a full listing of all software used and required by this project.
-*** CT Analysing Library
-**** Numpy
+*** Numpy
 The Numpy library is one of the most commonly used additions to the Python ecosystem, it is fundamental to many data science projects. Here it is used to handle data lists, arrays and structures. There is no viable alternative to this package and it is required by Scipy and Statsmodels.
-**** Matplotlib/Seaborn
+*** Matplotlib/Seaborn
 Matplotlib acts as the plotting backend for the project. The Seaborn package acts as a porcelain for matplotlib and makes graph creation and decoration much easier.
-**** Scipy
+*** Scipy
 Data transforms such as Box Cox and PCA are dependant on the functions of the Scipy library. Alternatives are available, however this is the most well established and often used library for these functions.
-**** Pandas
+*** Pandas
 Pandas is used to read the CSV files which the raw data is stored in. This library converts and stores data in dataframes which are used throughout this project to manipulate data.
-**** Xlrd
+*** Xlrd
 This extension library is required in order to read Microsoft encoded files. Extra experiment information can be provided with the "xlsx" extension.
-**** Statsmodels
+*** Statsmodels
 Bayesian hypothesis testing is provided through this library.
-**** PyQT5
+*** PyQT5
 There were many options for creating a user interface in Python, the language provides its own core library via the /TKinter/ module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
 
 ** Implementation
