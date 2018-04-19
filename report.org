@@ -289,24 +289,62 @@ An idea for how data could be cleaned was created by using the information found
 
 Decisions to move the CT Grain Analysing Library towards an object orientated model were made during this sprint, after evaluating the potential of a functionally programmed model or a object one. Handling everything in terms of classes was decidedly easier in terms of understanding how to use the library.
 
-
-
 *** Sprint - Week 3
 
 A lot of progress was made on constructing a GUI here, dynamic plotting was put together as a proof of this concept. Histograms of the data were able to be made by using the mouse to select which attribute to measure.
 
-GUI elements such as navigation, data tabs and file menus were added to make more clear to the user how functionality should work
+GUI elements such as navigation, data tabs and file menus were added to make more clear to the user how functionality should work.
+
+A novel and new method for generating documentation was created specifically for documenting this software library. Using a plain text format, doc strings from python code was used to make a single easy to read PDF to be distributed with the software package.
+
+Another piece of functionality was introduced to the GUI that would enable the user to view the data they had loaded as a single 2 dimensional data frame. This is for quickly viewing data as a single source and all together. This had arisen as a functionality desired by researchers in a previous weeks meeting.
 
 *** Sprint - Week 4
+A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. This allowed for the more complex shapes which this data set presented as a problem initially.
+
+Further work was done in terms of the GUI to enable matplotlib and seaborn library integration with the dynamic plotting features which were developed previously.
+
+Custom exceptions were written for the CT Analysing Library, these exceptions allow for more detailed feedback to a programmer when they perform actions which might result in erroneous data processing. In particular a "NoDataFoundException" was made for when empty data files where found in searching.
+
+Current versions of doc strings were enhanced to match with newer functionality which had been added in recent weeks, and documentation was regenerated.
+
 *** Sprint - Week 5
+Functions were added to the CT Analysing Library which would allow for aggregation of data columns, this meant that averaging functions could be performed on a per-spike basis. Mean, standard deviation, sum and count functions were applied by default.
+
+Further research was carried out into data transforms which are commonly used in data science; Principal component analysis, linear modelling and multivariate analysis were topics researched as possibilities for inclusion in this library.
+
 *** Sprint - Week 6
+Preparation for a mid-project demo took up the majority of this sprint, ensuring data which had been gathered to date was well understood was vital.
+
+A presentation was created using data extracted via the CT Analysing Library, this was in the mode of figures and graphs which could then be used to better explain the theme of the project.
+
 *** Sprint - Week 7
+An initial implementation of principal component analysis was tested and found to be useful, a considerable amount of time was dedicated to refactoring the code-base to allow for new data transforms to be easily incorporated.
+
+Additions to the graphing section of the library also allowed for splitting data into multiple plots which could then be featured side-by-side, separation of data helped contribute to seeing the differences in the data.
+
+Some initial ideas for unit testing were written up, an investigation into which platform and library were best to use was carried out. This had to be taken into consideration as testing a GUI required some additional software to simulate a user testing widgets and onscreen objects.
+
 *** Sprint - Week 8
+With data extraction parameters finalised, a new watershedding method implemented and a more robust selection process implemented the data was now fit for hypothesis to be tested.
+
+Through meetings with researching staff, the five key hypothesis/null-hypothesis had been formed and the grouping of the data well defined. This allowed for initial Null-Hypothesis-Significance-Testing (NHST) to be carried out. The initial results found were not representative of the data. A requirement for new hypothesis testing was now required.
+
+The /PyTest/ library was decided upon, this was used as a unit testing framework for both the Analysis Library and the GUI software. In total around 50 tests were devised.
+
 *** Sprint - Week 9
+More graphing options were added to the GUI, these came from the boxplot functionality which the updated CT Analysing Library made available. A new type of grouping by sub-type was added. This let multiple plots be displayed for the same feature i.e. viewing a histogram of volume but split by genotype. This new feature required a rework of the dynamic plotting functionality. This refactoring took a considerable amount of time and work.
+
+An initial solution to hypothesis testing was added in the form of Welch and Student T-Tests to first the CT Analysing Library and then to the GUI also. The GUI now had an additional tab added specifically for testing groups of data.
+
 *** Sprint - Week 10
+
+A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Baysian statistics to carry out hypothesis testing cite:Kruschke2012. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
+Previous research questions were repeated, using this method. This time new and significant findings were uncovered.
+
 *** Sprint - Week 11
-*** Sprint - Week 12
-*** Sprint - Week 13
+A feature freeze was enforced during the 11th week of the project. This was to ensure time was allocated for completing work, finalising unit tests and documentation. The > 50 unit tests were finalised, completed and ensured to be passing. Documentation was completed and exported.
+
 ** Language Choices
 Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
 
@@ -365,9 +403,26 @@ This extension library is required in order to read Microsoft encoded files. Ext
 Bayesian hypothesis testing is provided through this library.
 *** PyQT5
 There were many options for creating a user interface in Python, the language provides its own core library via the /TKinter/ module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
+** Version control
+This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
+
+By using submodules the CT Grain Analysing Library could be kept in sync with the GUI aspect of the project.
+
+Additionally, /setup.py/ has been used to provide installation of the library, the code for this can be seen in listing:[[lst:setuppy]]. Using /setup.py/ provides a quick and easy way for any user to install the software, along with any dependencies.
+
+**** Issue Tracking
+Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:[[fig:github]]
+#+CAPTION: Github Issue Tracking
+#+NAME: fig:github
+#+ATTR_LATEX: :width 12cm
+[[./images/github.png]]
 
 ** Implementation
 Strict software engineering principles were applied during creation of this project. The use of standards, design patterns and code-linters have been used throughout to minimise the possibility of errors and to create wholly extendable software. These devices enable understandable and self-documented code allowing future users to quickly start using the provided packages.
+*** Standards
+The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
+
+In addition to PEP8, a Python code linter Flake8 has been used to prevent "code smells", bad formatting, incorrect white space usage etc.
 
 *** CT Analysing Library Design Pattern
 The CT Analysing Library uses a Singleton style design pattern. A single data object is created from a /CTData/ class.
@@ -572,24 +627,6 @@ rectangle View{
 #+ATTR_LATEX: :width 15.2cm
 #+RESULTS:
 [[file:./images/ctgui.png]]
-
-*** Standards
-The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
-
-In addition to PEP8, a Python code linter Flake8 has been used to prevent "code smells", bad formatting, incorrect white space usage etc.
-** Version control
-This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
-
-By using submodules the CT Grain Analysing Library could be kept in sync with the GUI aspect of the project.
-
-Additionally, /setup.py/ has been used to provide installation of the library, the code for this can be seen in listing:[[lst:setuppy]]. Using /setup.py/ provides a quick and easy way for any user to install the software, along with any dependencies.
-
-**** Issue Tracking
-Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:[[fig:github]]
-#+CAPTION: Github Issue Tracking
-#+NAME: fig:github
-#+ATTR_LATEX: :width 12cm
-[[./images/github.png]]
 ** Library Versioning
 The development of this project was performed using the Python /virtualenv/. This is a virtual environment package which Python offers, it allows for an isolated working copy of the project.
 
