@@ -255,6 +255,58 @@ Weekly sprints were implemented as a list of "todo's", these were written on a M
 Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement cite:Andrews.
 
 Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
+** Sprint Timeline
+The implementation of this work was done in a agile method, treating each week as a sprint, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
+
+*** Sprint - Week 0
+Initial planning was taken out, discussions with researchers at the National Plant Phenomics Centre (NPPC), to create a general set of targets and research goals.
+
+A website was built in order to host weekly progress reports, this was used to share with supervisors and with staff at the NPPC. It also provided a list of discussion points to go through at weekly meetings.
+
+A bug was identified in image analysis software, this was raised to be fixed a later date.
+
+A literature review was taken out to highlight the novelty of this research, as well as current trends in the field in terms of analysis and known/accepted information.
+
+*** Sprint - Week 1
+
+Initial running of grain analysis software was performed multiple times, as per instructions in literature cite:Hughes2017, multiple parameters for minimum and maximum expected sizes of grains needed to be tested. Data which was produced was very noisy and would require further work.
+
+Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis cite:Mairhofer2015,Daly2017. Experimentation with these methods were not trivial and a decision was made to revisit if time permitted at the end of the project.
+
+A key function of the CT Analysis Library was created, showing in listing:[[lst:infojoining]]. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
+
+An issue was identified in the choices of testing which are typically used in these studies, the use of ANOVA and Student's T-Test, for example, are best used with parametric data, that is to say data where distribution is normally distributed. Further reading into this presented the use of Box Cox transforms as a method to counter these issues.
+
+An issue was raised; a method for visualising outliers in the data could provide greatly beneficial insight into finding errors. If time was available at the end of the project, this would be explored further.
+
+*** Sprint - Week 2
+
+Spikes of wheat are scanned in two separate imaging cycles sometimes, this is because the tube used by the \micro-CT machine are 10cm tall and often a spike will exceed this. In order for full analysis to be carried out these separate scans need to be rejoined. A method for doing this was added to the python Analysis Library.
+
+An initial Model-View-Controller (MVC) model was constructed for how a GUI might take form around. Using this several wire-frames were created
+
+An idea for how data could be cleaned was created by using the information found in previous studies cite:Hughes2017. From this reported data minimum and maximum expected size could be assumed for wheat grains in terms of volume.
+
+Decisions to move the CT Grain Analysing Library towards an object orientated model were made during this sprint, after evaluating the potential of a functionally programmed model or a object one. Handling everything in terms of classes was decidedly easier in terms of understanding how to use the library.
+
+
+
+*** Sprint - Week 3
+
+A lot of progress was made on constructing a GUI here, dynamic plotting was put together as a proof of this concept. Histograms of the data were able to be made by using the mouse to select which attribute to measure.
+
+GUI elements such as navigation, data tabs and file menus were added to make more clear to the user how functionality should work
+
+*** Sprint - Week 4
+*** Sprint - Week 5
+*** Sprint - Week 6
+*** Sprint - Week 7
+*** Sprint - Week 8
+*** Sprint - Week 9
+*** Sprint - Week 10
+*** Sprint - Week 11
+*** Sprint - Week 12
+*** Sprint - Week 13
 ** Language Choices
 Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
 
@@ -317,9 +369,7 @@ There were many options for creating a user interface in Python, the language pr
 ** Implementation
 Strict software engineering principles were applied during creation of this project. The use of standards, design patterns and code-linters have been used throughout to minimise the possibility of errors and to create wholly extendable software. These devices enable understandable and self-documented code allowing future users to quickly start using the provided packages.
 
-*** Design Patterns
-Each of the packages of this projects follow a design pattern to make them extendable for future additions, as and when they are required by future studies and experiments.
-**** CT Analysing Library Design Pattern
+*** CT Analysing Library Design Pattern
 The CT Analysing Library uses a Singleton style design pattern. A single data object is created from a /CTData/ class.
 
 A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: /data_transforms.py/; /graphing.py/, /statistical_tests.py/. These modules enable scientific functions to be applied to the /CTData/ object. A UML style class diagram is shown in figure:[[fig:ctdata]], here the interactions of the classes can be seen, as well as their internal functions.
@@ -388,7 +438,7 @@ skinparam classAttributeFontSize 30
 #+RESULTS:
 [[file:./images/ctdata.png]]
 
-**** CT GUI Application Design Pattern
+*** CT GUI Application Design Pattern
 The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design.
 
 The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
@@ -527,7 +577,6 @@ rectangle View{
 The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
 
 In addition to PEP8, a Python code linter Flake8 has been used to prevent "code smells", bad formatting, incorrect white space usage etc.
-
 ** Version control
 This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
 
@@ -541,7 +590,6 @@ Issues were tracked during the project, both in personal notes and in the Git in
 #+NAME: fig:github
 #+ATTR_LATEX: :width 12cm
 [[./images/github.png]]
-
 ** Library Versioning
 The development of this project was performed using the Python /virtualenv/. This is a virtual environment package which Python offers, it allows for an isolated working copy of the project.
 
@@ -684,6 +732,7 @@ In table:[[tab:unittest2]] the results of the automated testing is given along s
 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
 |---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
 
+
 * Methods and Solutions
 ** Data Pipeline
 
@@ -726,7 +775,7 @@ Endif
 [[file:./images/matlab.png]]
 
 ** Image Analysis Methods
-***  [#B] New Watershed Algorithm
+***   New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
 a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:). This provided much better results than the previous
@@ -762,6 +811,36 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
  [[./images/ctgrains.png]]
 
 ** CT Analysing Library Methods
+
+*** Adding Spike Experiment Information
+#+NAME: lst:infojoining
+#+CAPTION: Spike Information Joining Algorithm
+#+BEGIN_SRC python
+  def get_spike_info(grain_df, excel_file, join_column='Folder#'):
+
+      # Make a copy as we don't want to change the original
+      df = grain_df.copy(deep=True)
+
+      # Grab the linking excel file
+      info = pd.read_excel(excel_file,
+			   index_col='Folder#')
+
+      # These are the features to grab
+      features = ['Hulled/Naked', 'Common name', 'Genome', 'Ploidy',
+		  'Wild/Domesticated', 'Sample name', 'Sub type', 'Ear']
+
+      # Lambda to look up the feature in excel spreadsheet
+      def look_up(x, y): return info.loc[x['folderid']][y]
+
+      # Lambda form a series (data row) and apply it to dataframe
+      def gather_data(x): return pd.Series([look_up(x, y) for y in features])
+
+      df[features] = df.apply(gather_data, axis=1)
+
+      # Return the copy
+      return df
+#+END_SRC
+
 ** CT GUI Application Methods
 ** Data Analysis Methods
 
