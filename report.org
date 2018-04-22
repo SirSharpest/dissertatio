@@ -33,23 +33,23 @@ As such, there are questions still left open about how best to make selections f
 
 The driving question for this research asks "Can \micro-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
 
-The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexiploid.
+The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexaploid.
 
 #+BEGIN_EXPORT latex
 \begin{multicols}{3}
 
   \begin{itemize}
-  \item Wild Monococcum (2N)
-  \item Domesticated Monococcum (2N)
+  \item Einkorn Wild (2N)
+  \item Einkorn Domesticated (2N)
   \item Tauschii (2N)
   \end{itemize}
 
   \columnbreak
 
   \begin{itemize}
-  \item Durum (4N)
-  \item Dicoccoides (4N)
-  \item Dicoccum (4N)
+  \item Pasta Wheat (4N)
+  \item Emmer Wild (4N)
+  \item Emmer Domesticated (4N)
   \item Ispahanicum (4N)
   \item Timopheevii (4N)
   \end{itemize}
@@ -57,9 +57,9 @@ The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ i
   \columnbreak
 
   \begin{itemize}
-  \item Spelta(6N)
-  \item Aestivum (6N)
-  \item Compactum (6N)
+  \item Spelt (6N)
+  \item Bread Wheat (6N)
+  \item Club Wheat (6N)
   \end{itemize}
 
 \end{multicols}
@@ -141,12 +141,11 @@ To provide a full spectrum of analysis the null-hypothesis of this work is prese
 
 The comparison pairs are as follows:
 
-1. Monococcum Wild and Monococcum Domesticate
-2. Dicoccoides and Dicoccum
-3. Spelta and Aestivum
-4. Dicoccum and Durum
-5. Monococcum Wild and Dicoccoides
-
+1. Einkorn Wild and Einkorn Domesticated
+2. Emmer Wild and Emmer Domesticated
+3. Spelt and Bread wheat
+4. Emmer Domesticated and Pasta Wheat
+5. Einkorn Wild and Emmer Wild
 
 #+CAPTION: Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)
 #+ATTR_LATEX: :width 10cm
@@ -337,7 +336,7 @@ An initial solution to hypothesis testing was added in the form of Welch and Stu
 
 *** Sprint - Week 10
 
-A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Baysian statistics to carry out hypothesis testing cite:Kruschke2012. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
+A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Bayesian statistics to carry out hypothesis testing cite:Kruschke2012. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
 Previous research questions were repeated, using this method. This time new and significant findings were uncovered.
 
 *** Sprint - Week 11
@@ -516,6 +515,7 @@ The unit tests for the CT Analysing Library were straightforward, using the /PyT
 \clearpage
 
 *** Unit Testing CT GUI Application
+
 The unit testing used for the CT GUI Application was more sophisticated than that of the Library. This testing required visual confirmation that figures and graphs generated were displayed correctly and that they showed what the user would expect, given the data.
 
 To do this a /PyTest/ plugin was used, /QtBot/ which provides simulated user input. This allows for the GUI to be thoroughly tested, automatically.
@@ -583,7 +583,13 @@ In table:[[tab:unittest2]] the results of the automated testing is given along s
 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
 |---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
 
+
+*** TODO Acceptance Testing
+How have these tests met the goals of the software aspects of the project?
+
 * Methods and Solutions
+
+
 ** Data Pipeline
 
 #+NAME: fig:matlab
@@ -628,7 +634,14 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
  [[./images/ctgrains.png]]
 
 ** CT Analysing Library Methods
-
+*** Spike Rejoining
+*** Data Aggregating
+*** Loading Data
+*** Cleaning and Removing Erroneous Data
+*** Data Transformations
+*** T-Tests
+*** Bayesian Hypothesis Testing
+*** Plotting Functions
 *** Adding Spike Experiment Information
 #+NAME: lst:infojoining
 #+CAPTION: Spike Information Joining Algorithm
@@ -659,6 +672,12 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 #+END_SRC
 
 ** CT GUI Application Methods
+*** Integration with CT Analysis Library
+*** QT GUI Loading
+*** Connecting Signals from GUI to Function Calls
+*** Plot Window Rendering
+*** Creating GUI Elements When Required
+*** Dynamically Generating Plots
 ** Data Analysis Methods
 
 #+NAME: fig:pipeline
@@ -770,6 +789,7 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 |-----------------+-----------------------|
 | Compactum       | Triticum Compactum    |
 |-----------------+-----------------------|
+
 
 \clearpage
 ** /Code Segments and Examples/
