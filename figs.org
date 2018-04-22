@@ -1,0 +1,255 @@
+#+BEGIN_SRC  plantuml  :file ./images/matlab.png
+skinparam monochrome true
+skinparam ActivityFontSize 30
+skinparam ArrowFontSize 30
+skinparam PartitionFontSize 30
+skinparam ActivityDiamondFontSize 30
+
+(*) -> "Scan wheat Spikes"
+
+partition MATLAB {
+--> "Load Raw Scan Data"
+-> "Convert to 2D Image Stacks"
+--> "Calculate Threshold Percentile"
+-left-> "Segment and Mask via Threshold"
+--> "Calculate 3D Quasi-Euclidean Distance"
+If "Seeds Joined" then
+--> [Yes] "Separate by Watershed"
+--> "Detect Objects"
+else
+-> [No] "Detect Objects"
+Endif
+
+
+
+-> "Record Measurements"
+--> [For each seed] "Record Measurements"
+
+--> "Output Data to CSV format"
+}
+->(*)
+
+#+END_SRC
+
+#+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
+skinparam monochrome true
+skinparam ActivityFontSize 30
+skinparam ArrowFontSize 30
+skinparam PartitionFontSize 30
+skinparam ActivityDiamondFontSize 30
+
+(*) -> "MATLAB Output"
+partition Python {
+-right-> "Load and Convert data to CTData Objects"
+
+If "Check for \nfalse positives?" then
+-> [Yes]"Estimate Error"
+--> "Remove Estimated Outliers"
+--> "Load in external experiment information"
+else
+-> [No] "Load in external experiment information"
+Endif
+
+If "Spike Joining?" then
+-left-> [Yes] "Process logical spike joining"
+--> "Aggregate Data columns"
+else
+--> [No] "Aggregate Data columns"
+Endif
+
+If "Normally\nDistributed?\n" then
+--> [Yes] "Perform Parametric Tests"
+
+--> "Output Results"
+else
+--> [No] "Perform Non-Parametric Tests"
+Endif
+
+--> "Output Results"
+}
+#+END_SRC
+
+#+BEGIN_SRC  plantuml :results file :file ./images/ctdata.png
+skinparam monochrome true
+skinparam rectangleFontSize 30
+skinparam classFontSize 30
+skinparam classAttributeFontSize 30
+  skinparam linetype ortho
+  left to right direction
+  class data_transforms  {
+
+  +box_cox_data()
+  +standardise_data()
+  +perform_pca()
+  +pca_to_table()
+
+  }
+
+  class graphing {
+
+  +plot_difference_o_means()
+  +plot_forest_plot()
+  +plot_boxplot()
+  +plot_qqplot()
+  +plot_histogram()
+  +plot_pca()
+  +check_var_args()
+
+  }
+
+
+  class CTData {
+  + __init__()
+  + get_data()
+  + gather_data()
+  + create_dimensions_ratio()
+  + make_dataframe()
+  + clean_data()
+  + get_files()
+  + fix_colnames()
+  + join_spikes_by_rachis()
+  + remove_percentile()
+  + aggregate_spike_averages()
+  + find_troublesome_spikes()
+  + gather_data()
+  }
+
+
+
+  class statistical_tests{
+
+  +baysian_hypothesis_test()
+  +check_normality()
+  +perform_t_test()
+
+  }
+
+  data_transforms <-- CTData
+  CTData --> statistical_tests
+  CTData --> graphing
+#+END_SRC
+
+#+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
+skinparam monochrome true
+skinparam rectangleFontSize 30
+skinparam classFontSize 30
+skinparam classAttributeFontSize 30
+skinparam linetype ortho
+
+left to right direction
+rectangle View{
+
+
+    class UiMainWindow{
+    +setupUi()
+    +retranslateUi()
+    }
+
+    class MatplotlibView{
+    +__init__()
+    +setup()
+    }
+    }
+
+
+  rectangle Controller{
+
+    class AnalysisWindow{
+    +__init__()
+    +set_graph_type()
+    +refresh()
+    +update_view()
+    +setup_figure_canvas()
+    +find_clicked_button()
+    +get_group_by()
+    +make_canvas()
+    }
+
+    class AppWindow{
+
+    +__init__()
+    +setup_menu_functions()
+    +setup_default_states()
+    +view_data()
+    +get_data()
+    +set_data()
+    +update_analysis()
+
+    }
+
+
+    class FindFilesWindow{
+    +__init__()
+    +connect_view_functions()
+    +set_default_states()
+    +find_files()
+    +save_file_dialog()
+    +search_for_files()
+    +set_files_list()
+    }
+
+
+
+    class PreProcessWindow{
+    +__init__()
+    +connect_view_functions()
+    +select_experimental_info()
+    +load_experimental_data()
+    +clean_data()
+    }
+
+
+
+    class StatsTestWindow{
+
+    +__init__()
+    +connect_view_functions()
+    +set_test_type()
+    +set_group_by()
+    +update_view()
+    +setup_figure_canvas()
+    +get_group_by()
+    +slice_data()
+    +make_canvas_plot()
+
+    }
+
+    }
+
+    rectangle Model {
+
+    class CTGUIData{
+    +__init__()
+    +download_data()
+    }
+
+    class WidgetList{
+    +__init__()
+    +update()
+    +get_items()
+    }
+
+    class MyMplCanvas {
+    +__init__()
+    +facet_hist()
+    +compute_initial_figure()
+    }
+
+    class MyStaticMplCanvas {
+    +compute_initial_figure()
+    }
+
+    class PandasModel{
+    +__init__()
+    +setup()
+    }
+
+    }
+
+  Model -->  Controller
+  View --> Controller
+
+  Controller --> Model
+  Controller --> View
+
+#+END_SRC

@@ -105,7 +105,6 @@ In this study, \micro-CT has enabled the study of individual seeds of wheat, whi
  #+NAME: fig:seeds
  [[./images/seeds.png]]
 
-
 ** Significance to Current Research
 The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
 
@@ -136,7 +135,6 @@ Novel additions have been made to existing image analysis libraries in order to 
 Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
 
 These aims have a focus on the phenotypic attributes generated from customised image analysis software cite:Hughes2017 and can be seen in figure:[[fig:seeds]].
-
 
 ** Hypothesis
 To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:[[fig:phylo]].
@@ -428,69 +426,10 @@ In addition to PEP8, a Python code linter Flake8 has been used to prevent "code 
 The CT Analysing Library uses a Singleton style design pattern. A single data object is created from a /CTData/ class.
 
 A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: /data_transforms.py/; /graphing.py/, /statistical_tests.py/. These modules enable scientific functions to be applied to the /CTData/ object. A UML style class diagram is shown in figure:[[fig:ctdata]], here the interactions of the classes can be seen, as well as their internal functions.
-#+BEGIN_SRC  plantuml :results file :file ./images/ctdata.png
-skinparam monochrome true
-skinparam rectangleFontSize 30
-skinparam classFontSize 30
-skinparam classAttributeFontSize 30
-  skinparam linetype ortho
-  left to right direction
-  class data_transforms  {
 
-  +box_cox_data()
-  +standardise_data()
-  +perform_pca()
-  +pca_to_table()
-
-  }
-
-  class graphing {
-
-  +plot_difference_o_means()
-  +plot_forest_plot()
-  +plot_boxplot()
-  +plot_qqplot()
-  +plot_histogram()
-  +plot_pca()
-  +check_var_args()
-
-  }
-
-
-  class CTData {
-  + __init__()
-  + get_data()
-  + gather_data()
-  + create_dimensions_ratio()
-  + make_dataframe()
-  + clean_data()
-  + get_files()
-  + fix_colnames()
-  + join_spikes_by_rachis()
-  + remove_percentile()
-  + aggregate_spike_averages()
-  + find_troublesome_spikes()
-  + gather_data()
-  }
-
-
-
-  class statistical_tests{
-
-  +baysian_hypothesis_test()
-  +check_normality()
-  +perform_t_test()
-
-  }
-
-  data_transforms <-- CTData
-  CTData --> statistical_tests
-  CTData --> graphing
-#+END_SRC
 #+NAME: fig:ctdata
 #+CAPTION: CT Analysing Library UML
 #+ATTR_LATEX: :width 12cm
-#+RESULTS:
 [[file:./images/ctdata.png]]
 
 *** CT GUI Application Design Pattern
@@ -498,134 +437,9 @@ The Model-View-Controller (MVC) design pattern is one of the most commonly struc
 
 The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
 
-#+BEGIN_SRC  plantuml :results file :file ./images/ctgui.png
-skinparam monochrome true
-skinparam rectangleFontSize 30
-skinparam classFontSize 30
-skinparam classAttributeFontSize 30
-skinparam linetype ortho
-
-left to right direction
-rectangle View{
-
-
-    class UiMainWindow{
-    +setupUi()
-    +retranslateUi()
-    }
-
-    class MatplotlibView{
-    +__init__()
-    +setup()
-    }
-    }
-
-
-  rectangle Controller{
-
-    class AnalysisWindow{
-    +__init__()
-    +set_graph_type()
-    +refresh()
-    +update_view()
-    +setup_figure_canvas()
-    +find_clicked_button()
-    +get_group_by()
-    +make_canvas()
-    }
-
-    class AppWindow{
-
-    +__init__()
-    +setup_menu_functions()
-    +setup_default_states()
-    +view_data()
-    +get_data()
-    +set_data()
-    +update_analysis()
-
-    }
-
-
-    class FindFilesWindow{
-    +__init__()
-    +connect_view_functions()
-    +set_default_states()
-    +find_files()
-    +save_file_dialog()
-    +search_for_files()
-    +set_files_list()
-    }
-
-
-
-    class PreProcessWindow{
-    +__init__()
-    +connect_view_functions()
-    +select_experimental_info()
-    +load_experimental_data()
-    +clean_data()
-    }
-
-
-
-    class StatsTestWindow{
-
-    +__init__()
-    +connect_view_functions()
-    +set_test_type()
-    +set_group_by()
-    +update_view()
-    +setup_figure_canvas()
-    +get_group_by()
-    +slice_data()
-    +make_canvas_plot()
-
-    }
-
-    }
-
-    rectangle Model {
-
-    class CTGUIData{
-    +__init__()
-    +download_data()
-    }
-
-    class WidgetList{
-    +__init__()
-    +update()
-    +get_items()
-    }
-
-    class MyMplCanvas {
-    +__init__()
-    +facet_hist()
-    +compute_initial_figure()
-    }
-
-    class MyStaticMplCanvas {
-    +compute_initial_figure()
-    }
-
-    class PandasModel{
-    +__init__()
-    +setup()
-    }
-
-    }
-
-  Model -->  Controller
-  View --> Controller
-
-  Controller --> Model
-  Controller --> View
-
-#+END_SRC
 #+NAME: fig:ctgui
 #+CAPTION: CT Analysing GUI UML
 #+ATTR_LATEX: :width 15.2cm
-#+RESULTS:
 [[file:./images/ctgui.png]]
 ** Library Versioning
 The development of this project was performed using the Python /virtualenv/. This is a virtual environment package which Python offers, it allows for an isolated working copy of the project.
@@ -769,46 +583,12 @@ In table:[[tab:unittest2]] the results of the automated testing is given along s
 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
 |---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
 
-
 * Methods and Solutions
 ** Data Pipeline
 
-#+BEGIN_SRC  plantuml  :file ./images/matlab.png
-skinparam monochrome true
-skinparam ActivityFontSize 30
-skinparam ArrowFontSize 30
-skinparam PartitionFontSize 30
-skinparam ActivityDiamondFontSize 30
-
-(*) -> "Scan wheat Spikes"
-
-partition MATLAB {
---> "Load Raw Scan Data"
--> "Convert to 2D Image Stacks"
---> "Calculate Threshold Percentile"
--left-> "Segment and Mask via Threshold"
---> "Calculate 3D Quasi-Euclidean Distance"
-If "Seeds Joined" then
---> [Yes] "Separate by Watershed"
---> "Detect Objects"
-else
--> [No] "Detect Objects"
-Endif
-
-
-
--> "Record Measurements"
---> [For each seed] "Record Measurements"
-
---> "Output Data to CSV format"
-}
-->(*)
-
-#+END_SRC
 #+NAME: fig:matlab
 #+CAPTION: Image Processing Pipeline
 #+ATTR_LATEX: :width 13cm
-#+RESULTS:
 [[file:./images/matlab.png]]
 
 ** Image Analysis Methods
@@ -881,47 +661,9 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 ** CT GUI Application Methods
 ** Data Analysis Methods
 
-#+BEGIN_SRC  plantuml :results file :file ./images/pipeline.png
-skinparam monochrome true
-skinparam ActivityFontSize 30
-skinparam ArrowFontSize 30
-skinparam PartitionFontSize 30
-skinparam ActivityDiamondFontSize 30
-
-(*) -> "MATLAB Output"
-partition Python {
--right-> "Load and Convert data to CTData Objects"
-
-If "Check for \nfalse positives?" then
--> [Yes]"Estimate Error"
---> "Remove Estimated Outliers"
---> "Load in external experiment information"
-else
--> [No] "Load in external experiment information"
-Endif
-
-If "Spike Joining?" then
--left-> [Yes] "Process logical spike joining"
---> "Aggregate Data columns"
-else
---> [No] "Aggregate Data columns"
-Endif
-
-If "Normally\nDistributed?\n" then
---> [Yes] "Perform Parametric Tests"
-
---> "Output Results"
-else
---> [No] "Perform Non-Parametric Tests"
-Endif
-
---> "Output Results"
-}
-#+END_SRC
 #+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
 #+ATTR_LATEX: :width 13cm
-#+RESULTS:
 [[file:./images/pipeline.png]]
 
 * Results
