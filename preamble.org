@@ -23,7 +23,7 @@
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}
 #+LaTeX_HEADER: \usepackage{array}
-#+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{11.4cm} }
+#+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{10.4cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
 #+LaTeX_HEADER: \usepackage[nocompress]{cite}
 

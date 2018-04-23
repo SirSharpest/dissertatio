@@ -16,14 +16,14 @@ Using a population of genetically diverse wheat, several hypothesis and question
 Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the /glossary/ (table:[[tab:glossary]]).
 
 ** Background
-
+2
    Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
 
 During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
 
 Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and  domesticated genotypes are unprepared for.
 
-Furthermore, with increasing populations and less arable land there is an even greater pressure for the optimisation of grain and spike characteristics. With studies showing that spikelet count can be controlled by specific and sometimes recessive genes cite:Finnegan2018, which could drastically enhance overall yield, and a general public distrust towards genetically modification cite:Aleksejeva2014,Twardowski2015,Lynas the reliance on breeding programs for optimisation is further stressed.
+Furthermore, with increasing populations and less arable land there is an even greater pressure for the optimisation of grain and spike characteristics. With studies showing that spikelet, the collective for seeds sharing the same node on a spike, count can be controlled by specific and sometimes recessive genes cite:Finnegan2018, which could drastically enhance overall yield, and a general public distrust towards genetically modification cite:Aleksejeva2014,Twardowski2015,Lynas the reliance on breeding programs for optimisation is further stressed.
 
 Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
 
@@ -33,33 +33,33 @@ As such, there are questions still left open about how best to make selections f
 
 The driving question for this research asks "Can \micro-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
 
-The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexaploid.
+The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexaploid. A /W/ indicates wild genotypes, /D/ domesticated ones.
 
 #+BEGIN_EXPORT latex
 \begin{multicols}{3}
 
   \begin{itemize}
-  \item Einkorn Wild (2N)
-  \item Einkorn Domesticated (2N)
-  \item Tauschii (2N)
+  \item{\textit{T. boeoticum} (2N|W)}
+  \item{\textit{T. monococcum} (2N|D)}
+  \item{\textit{A. Tauschii} (2N|D)}
   \end{itemize}
 
   \columnbreak
 
   \begin{itemize}
-  \item Pasta Wheat (4N)
-  \item Emmer Wild (4N)
-  \item Emmer Domesticated (4N)
-  \item Ispahanicum (4N)
-  \item Timopheevii (4N)
+  \item{\textit{T. durum} (4N|D)}
+  \item{\textit{T. dicoccum} (4N|D)}
+  \item{\textit{T. dicoccoides} (4N|W)}
+  \item{\textit{T. ispahanicum}(4N|D)}
+  \item{\textit{T. timopheevii} (4N|D)}
   \end{itemize}
 
   \columnbreak
 
   \begin{itemize}
-  \item Spelt (6N)
-  \item Bread Wheat (6N)
-  \item Club Wheat (6N)
+  \item{\textit{T. spelta} (6N|D)}
+  \item{\textit{T. aestivum} (6N|D)}
+  \item{\textit{T. compactum} (6N|D)}
   \end{itemize}
 
 \end{multicols}
@@ -67,13 +67,13 @@ The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ i
 Full species names are found in table:[[tab:wheat]].
 
 *** Why use \micro-CT image analysis?
-In the past, science has been greatly limited by the amount of data which could be processed in an experiment. In the last few decades the inclusion of computer science has reduced this bottleneck. Now, the challenge for many fields of research is producing more data and this is often cited as the major bottleneck in creating robust studies cite:Furbank2011.
+In the past, science has been greatly limited by the amount of data which could be processed in an experiment. In the last few decades the inclusion of computer science has reduced this bottleneck. Now, the challenge for many fields of research is producing more data and this is often cited as the new limiting factor in creating robust studies cite:Furbank2011.
 
 Many experiments aim to meet the demand for data by using high-throughput automated imaging systems cite:Naumann2007,Prasanna2013,Humplik2015. These systems have, in the last decade, become a standard and accepted tool for data generation. However, they will only produce 2-dimensional data on a per-plant basis. Image processing research has had success in modifying these automated systems in order to produce a pseudo 3-dimensional structure using stero-imaging cite:Roussel2016. Even so, these techniques require destructive harvesting of materials and do not provide information of internal structure.
 
 For decades medical research has found success with X-Ray imaging technology cite:Wang2008. From this, plant science has been able to benefit from the wealth of prior knowledge and more and more studies are being augmented with the use of X-Ray/\micro-CT imaging cite:Jhala2015,Tracy2012,Metzner2015,Hughes2017,Staedler2013.
 
-In this study, \micro-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, or in such a high throughput or quality.
+In this study, \micro-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, whilst retaining developmental and positional information, or in such a high throughput or quality.
 
 *** Extracted Data
 
@@ -134,19 +134,19 @@ Novel additions have been made to existing image analysis libraries in order to 
 
 Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
 
-These aims have a focus on the phenotypic attributes generated from customised image analysis software cite:Hughes2017 and can be seen in figure:[[fig:seeds]].
 
 ** Hypothesis
 To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:[[fig:phylo]].
 
-The comparison pairs are as follows:
+The comparison pairs are as follows (where W indicates wild genotypes and D domesticated.):
 
-1. Einkorn Wild and Einkorn Domesticated
-2. Emmer Wild and Emmer Domesticated
-3. Spelt and Bread wheat
-4. Emmer Domesticated and Pasta Wheat
-5. Einkorn Wild and Emmer Wild
+1. /T. monococcum/ (2N|D) and /T. beoticum/ (2N|W)
+2. /T.dicoccum/ (4N|D) and /T. dicoccoides/ (4N|W)
+3. /T. spelta/ (6N|D) and /T. aestivum/ (6N|D)
+4. /T. dicoccum/ (4N|D) and /T. durum/ (4N|D)
+5. /T. beoticum/ (2N|W) and /T. dicoccoides/ (2N|W)
 
+These comparison groups where chosen, with help from researchers at the National Plant Phenomics Centre, based on their ploidy and also on their domestication grouping. This maximises the potential of this research by isolating features and attributes of wheat based on domestication status.
 #+CAPTION: Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:spikes
@@ -159,7 +159,7 @@ The challenges which this project tackles come in two flavours: Computational an
 *** Biological Challenges
 Previous studies have been able to demonstrate that variation in wheat grain morphology can be partially explained, in 2010 Gegas et al. demonstrated this through a 99.4% 2 component PCA cite:Gegas2010. However there is much left to do in terms of formal classifications and descriptions of these differences. This project deals with this problem through computational analysis.
 
-Two effects run parallel in this study which requires acute biological knowledge of in order to make correct decisions:
+Two effects run parallel in this study, both of these need to be accounted for in the analysis, and questions need asked in a manner to extract each effect independently:
 
 1. The effects of ploidy in wheat.
 2. The effects of domestication in wheat.
@@ -193,23 +193,25 @@ These are the functional requirements for the Python library produced:
 #+BEGIN_EXPORT latex
 \begin{multicols}{2}
 
-  \begin{itemize}
+  \begin{enumerate}
+  \setcounter{enumi}{-1}
   \item Provide an OOP means to deal with data
   \item Make gathering of data simplified
   \item Handle Saving of data in a useable format
   \item Easily enable data transformations
   \item Perform hypothesis testing
-  \end{itemize}
+  \end{enumerate}
 
   \columnbreak
 
-  \begin{itemize}
+  \begin{enumerate}
+  \setcounter{enumi}{4}
   \item Process rejoining of split scans
   \item Handle Removing of erroneous data
   \item Enable matching data to external information
   \item Auto plot data (boxplots, histograms etc.)
   \item Allow easy filtering of data
-  \end{itemize}
+  \end{enumerate}
 
   \columnbreak
 
@@ -221,22 +223,24 @@ These are the functional requirements for the Python library produced:
 #+BEGIN_EXPORT latex
 \begin{multicols}{2}
 
-  \begin{itemize}
+  \begin{enumerate}
+  \setcounter{enumi}{9}
   \item Provide a intuitive user interface for working with CT data
   \item Allow a interaction with data without the need for programming
   \item Implement the Matplotlib plotting utility
   \item Easily join experiment data with CT data
   \item Use an MVC model
-  \end{itemize}
+  \end{enumerate}
 
   \columnbreak
 
-  \begin{itemize}
+  \begin{enumerate}
+  \setcounter{enumi}{14}
   \item Implement the CT Analysis Library
   \item Display data visually
   \item Dynamically create graphs
   \item Provide hypothesis testing
-  \end{itemize}
+  \end{enumerate}
 
   \columnbreak
 
@@ -253,7 +257,7 @@ Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, th
 
 Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
 ** Sprint Timeline
-The implementation of this work was done in a agile method, treating each week as a sprint, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
+The implementation of this work was done following agile sprint planning, treating each week as a encapsulated working frame, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
 
 *** Sprint - Week 0
 Initial planning was taken out, discussions with researchers at the National Plant Phenomics Centre (NPPC), to create a general set of targets and research goals.
@@ -268,7 +272,7 @@ A literature review was taken out to highlight the novelty of this research, as 
 
 Initial running of grain analysis software was performed multiple times, as per instructions in literature cite:Hughes2017, multiple parameters for minimum and maximum expected sizes of grains needed to be tested. Data which was produced was very noisy and would require further work.
 
-Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis cite:Mairhofer2015,Daly2017. Experimentation with these methods were not trivial and a decision was made to revisit if time permitted at the end of the project.
+Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis cite:Mairhofer2015,Daly2017. Experimentation with these methods were technically challenging and a decision was made to revisit if time permitted at the end of the project.
 
 A key function of the CT Analysis Library was created, showing in listing:[[lst:infojoining]]. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
 
@@ -297,7 +301,7 @@ A novel and new method for generating documentation was created specifically for
 Another piece of functionality was introduced to the GUI that would enable the user to view the data they had loaded as a single 2 dimensional data frame. This is for quickly viewing data as a single source and all together. This had arisen as a functionality desired by researchers in a previous weeks meeting.
 
 *** Sprint - Week 4
-A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. This allowed for the more complex shapes which this data set presented as a problem initially.
+A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. Allowing for the more complex shapes which this data set presented as a problem to be fully and properly segmented.
 
 Further work was done in terms of the GUI to enable matplotlib and seaborn library integration with the dynamic plotting features which were developed previously.
 
@@ -462,54 +466,54 @@ These provided a method of acceptance testing by those who would be using the so
 The unit tests for the CT Analysing Library were straightforward, using the /PyTest/ framework and a subset of data from a data set, these tests assert that features are implemented correctly and that the correct results are given.
 
 
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|l|X|
 #+NAME: tab:unittest
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
-|---------------------------+----------------------------------------------------|
-| *Result*                  | *Test*                                             |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_load_data                          |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |
-|---------------------------+----------------------------------------------------|
-| \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |
-|---------------------------+----------------------------------------------------|
+|------+---------------------------+----------------------------------------------------|
+| I.D. | *Result*                  | *Test*                                             |
+|------+---------------------------+----------------------------------------------------|
+|    0 | \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |
+|------+---------------------------+----------------------------------------------------|
+|    1 | \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |
+|------+---------------------------+----------------------------------------------------|
+|    2 | \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |
+|------+---------------------------+----------------------------------------------------|
+|    3 | \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |
+|------+---------------------------+----------------------------------------------------|
+|    4 | \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |
+|------+---------------------------+----------------------------------------------------|
+|    5 | \color{ForestGreen}Passed | CTData.py::test_load_data                          |
+|------+---------------------------+----------------------------------------------------|
+|    6 | \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |
+|------+---------------------------+----------------------------------------------------|
+|    7 | \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |
+|------+---------------------------+----------------------------------------------------|
+|    8 | \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |
+|------+---------------------------+----------------------------------------------------|
+|    9 | \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |
+|------+---------------------------+----------------------------------------------------|
+|   10 | \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |
+|------+---------------------------+----------------------------------------------------|
+|   11 | \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |
+|------+---------------------------+----------------------------------------------------|
+|   12 | \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |
+|------+---------------------------+----------------------------------------------------|
+|   13 | \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |
+|------+---------------------------+----------------------------------------------------|
+|   14 | \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |
+|------+---------------------------+----------------------------------------------------|
+|   15 | \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |
+|------+---------------------------+----------------------------------------------------|
+|   16 | \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |
+|------+---------------------------+----------------------------------------------------|
+|   17 | \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |
+|------+---------------------------+----------------------------------------------------|
+|   18 | \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |
+|------+---------------------------+----------------------------------------------------|
+|   19 | \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |
+|------+---------------------------+----------------------------------------------------|
+|   20 | \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |
+|------+---------------------------+----------------------------------------------------|
 
 
 \clearpage
@@ -522,73 +526,119 @@ To do this a /PyTest/ plugin was used, /QtBot/ which provides simulated user inp
 
 In table:[[tab:unittest2]] the results of the automated testing is given along side an image of several of the tests, tests of the same graphs but with different parameters were also generated and manually verified and provided as supplemental data.
 
-#+ATTR_LATEX: :environment longtable :width \textwidth :align |l|p{4.4cm}|C|
+#+ATTR_LATEX: :environment longtable :width \textwidth :align |l|l|p{4.4cm}|C|
 #+NAME: tab:unittest2
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT GUI Application
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| *Result*                  | *Test*                                                 | *Image*                                                      |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: box_groupby_1_rb_1                       | [[./images/Screenshots/analysis_window_box_groupby_1_rb_1.png]]  |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: box_groupby_2_rb_2                       | [[./images/Screenshots/analysis_window_box_groupby_2_rb_2.png]]  |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: box_rb_1                                 | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_1                      | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_rb_1                                | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_1                    | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_1                        | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: box_rb_2                                 | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                      | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: hist_rb_2                                | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | analysis.py:: loads                                    | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                    | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                    | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                    | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                        | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                        | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                        | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | hypothesis_tests.py:: loads                            | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | GUI.py:: startup                                       | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | load_data.py:: load_data_with_rachis                   | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | load_data.py:: load_data_without_rachis                | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_large             | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_none              | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_small             | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove _small_and_large  | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: load_additional_data                | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
-|---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+| I.D. | *Result*                  | *Test*                                                 | *Image*                                                      |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   21 | \color{ForestGreen}Passed | analysis.py:: box_groupby_1_rb_1                       | [[./images/Screenshots/analysis_window_box_groupby_1_rb_1.png]]  |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   22 | \color{ForestGreen}Passed | analysis.py:: box_groupby_2_rb_2                       | [[./images/Screenshots/analysis_window_box_groupby_2_rb_2.png]]  |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   23 | \color{ForestGreen}Passed | analysis.py:: box_rb_1                                 | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   24 | \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_1                      | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   25 | \color{ForestGreen}Passed | analysis.py:: hist_rb_1                                | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   26 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_1                    | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   27 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_1                        | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   28 | \color{ForestGreen}Passed | analysis.py:: box_rb_2                                 | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   29 | \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                      | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   30 | \color{ForestGreen}Passed | analysis.py:: hist_rb_2                                | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   31 | \color{ForestGreen}Passed | analysis.py:: loads                                    | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   32 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                    | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   33 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                    | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   34 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                    | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   35 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                        | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   36 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                        | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   37 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                        | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   38 | \color{ForestGreen}Passed | hypothesis_tests.py:: loads                            | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   39 | \color{ForestGreen}Passed | GUI.py:: startup                                       | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   40 | \color{ForestGreen}Passed | load_data.py:: load_data_with_rachis                   | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   41 | \color{ForestGreen}Passed | load_data.py:: load_data_without_rachis                | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   42 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_large             | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   43 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_none              | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   44 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_small             | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   45 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove _small_and_large  | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   46 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data                | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|   47 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
+|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
 
+*** Acceptance Testing
+These unit tests, alongside user tests have been used to meet the outlined functional requirements; specific tests are shown in table:[[tab:frtests]] to match them to the associated functional requirement.
 
-*** TODO Acceptance Testing
-How have these tests met the goals of the software aspects of the project?
+#+ATTR_LATEX: :environment longtable :width \textwidth :align |l|l|p{14cm}|
+#+NAME: tab:frtests
+#+CAPTION: Functional requirements and Unit tests
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| *F.R.* | *U.T.*         | *How is the F.R. met?*                                                                                                                                                                           |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      0 | n/a            | An OOP interface is provided by the /ct_data/ object                                                                                                                                             |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      1 | 3,4,5          | Loading of data is tested multiple times specifically through unit tests                                                                                                                         |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      2 | 4,5            | Unit tests carry out saving loaded data into appropriate formats, in particular python /pandas/ tables and CSV files, this was also user tested                                                  |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      3 | 7,8,9,10       | All the functions in the /data_transforms.py/ library are unit tested automatically on test data of known output                                                                                 |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      4 | 26,27,32-38    | Hypothesis testing was tested with known data 8+ times in automated unit testing for both CT GUI Application and the CT Analysis Library group of tests , testers also used these functions      |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      5 | 6,7            | Loading of spikes was tested both for data which was known to exist and could be successfully done, and for data which was know to throw errors                                                  |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      6 | 1,2,7,42-46    | Finding and removing erroneous data was unit tested by having a combination of parameters tested for both the GUI and the Analysis Library                                                       |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      7 | 3-6,40,41      | Matching of pre-existing experiment information to the extracted data was tested for bad inputs through unit testing, users tested this too and reported no unexpected results                   |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      8 | 11-17,28-38    | Plotting of data automatically, inferring of axis, titles and measurements was tested, with images automatically recorded by unit tests.                                                         |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      9 | 0,1,2,3        | Unit testing checked if given data could easily be separated and divided into subsections, this was specifically tested and tested by proxy in other tests when hypothesis testing was performed |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     10 | 21,26 39,40,42 | Multiple tests are taken to check that the GUI loads as expected, planning sessions and user feedback was also used to meet this particular functional requirement                               |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     11 | 40,42          | Data is loaded through GUI elements with little prior knowledge of the software in order to have data processed, this was unit tested and user feedback was used to make more accessible         |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     12 | 21-27          | Testing of /Matplotlib/ and /Seaborn/ interfacing with, and integrating with the CT Analysing GUI.                                                                                               |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     13 | 43-47          | Loading of experiment data is pivotal for most functionality of the GUI, it is tested multiple times in an isolated formatted, as well as by other future functions which require it             |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     14 | n/a            | The entire software is wrapped in an MVC model, this cannot be tested but the functional requirement has been met                                                                                |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     15 | 21-47          | All of the unit tests for the CT Analysing GUI depend on the CT Analysing Library, it is reasonable that the integration is well tested, by product of all other tests                           |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     16 | 21-27          | Several tests, those shown in table:[[tab:unittest2]] are specifically recorded visually and presented as images in order to automatically unit test that visual data is intact                      |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     17 | 21-27          | By using automatic image capturing of unit testing in progress, visual checking can be carried out and confirmed that data is visually what is expected and to a high standard                   |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     18 | 26,27, 32-28   | With multiple known outputs, several different groupings and combinations the hypothesis tests were unit tested and this functional requirement is known to be acceptably implemented            |
+|--------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 * Methods and Solutions
+This chapter will discuss and expand upon the software implementations which were carried out in the course of this project, with particular focus on novel and non-trivial elements.
 
+Where appropriate code segments snipp
 
 ** Data Pipeline
 
@@ -763,32 +813,33 @@ and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidea
 ** Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
 #+NAME: tab:wheat
-#+CAPTION: Dictionary for Wheat names used
-|-----------------+-----------------------|
-| *Used name*     | *Species name*        |
-|-----------------+-----------------------|
-| Monococcum      | /Triticum monococcum/ |
-|-----------------+-----------------------|
-| Monococcum Wild | Triticum Boeticum     |
-|-----------------+-----------------------|
-| Tauschii        | Aegilops tauschii     |
-|-----------------+-----------------------|
-| Durum           | Triticum Durum        |
-|-----------------+-----------------------|
-| Dicoccoides     | Triticum Dicoccoides  |
-|-----------------+-----------------------|
-| Dicoccum        | Triticum Dicoccum     |
-|-----------------+-----------------------|
-| Ispahanicum     | Triticum Ispahanicum  |
-|-----------------+-----------------------|
-| Timopheevii     | Triticum Timopheevii  |
-|-----------------+-----------------------|
-| Spelta          | Triticum Spelta       |
-|-----------------+-----------------------|
-| Aestivum        | Triticum Aestivum     |
-|-----------------+-----------------------|
-| Compactum       | Triticum Compactum    |
-|-----------------+-----------------------|
+#+CAPTION: Wheat used in this work and their common names
+|------------------------+---------------------|
+| *Species name*         | *Common name*       |
+|------------------------+---------------------|
+| /Triticum monococcum/  | Einkorn Domesticate |
+|------------------------+---------------------|
+| /Triticum boeticum/    | Einkorn Wild        |
+|------------------------+---------------------|
+| /Aegilops tauschii/    | n/a                 |
+|------------------------+---------------------|
+| /Triticum durum/       | Pasta Wheat         |
+|------------------------+---------------------|
+| /Triticum dicoccoides/ | Einkorn Domesticate |
+|------------------------+---------------------|
+| /Triticum dicoccum/    | Einkorn Wild        |
+|------------------------+---------------------|
+| /Triticum ispahanicum/ | n/a                 |
+|------------------------+---------------------|
+| /Triticum timopheevii/ | n/a                 |
+|------------------------+---------------------|
+| /Triticum spelta/      | Spelt               |
+|------------------------+---------------------|
+| /Triticum aestivum/    | Bread Wheat         |
+|------------------------+---------------------|
+| /Triticum compactum/   | Club Wheat          |
+|------------------------+---------------------|
+
 
 
 \clearpage
