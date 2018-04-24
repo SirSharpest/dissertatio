@@ -809,6 +809,7 @@ class CTData():
 	self.additional_data = None
 #+END_SRC
 
+\clearpage
 *** Loading Data
 
 Initial data loading is performed by the /gather_data/ function, it takes a folder string and performs a regular expression check for all CSV files. From the files found in this search this function performs separation of rachis information (data about the spike's inner nodes) and the files containing seed/grain data.
@@ -822,26 +823,73 @@ These are returned together as a tuple, the data found is stored as part of the 
       """
       this function gathers together all
       the data of interest
+
       @param folder is a starting folder
       @returns tuple of (seed files, rachis files)
       """
+
       # check the end of the folder has a '/'
       if folder[-1] != '/':
 	  folder = folder + '/'
+
       search_params = '{0}*/*.csv'
       candidate_files = glob(search_params.format(folder))
+
       # Check data was found
       if len(candidate_files) == 0:
 	  raise NoDataFoundException
+
       # we aren't bothered about the raw files so lets remove them
       candidate_files = [f for f in candidate_files if 'raw' not in f]
+
       # now let's separate out the rachis
       rachis = [f for f in candidate_files if 'rachis' in f]
+
       # and just assume the rest is what we want
       candidate_files = [f for f in candidate_files if 'rachis' not in f]
+
       return (candidate_files, rachis)
 #+END_SRC
 
+\clearpage
+*** Adding Spike Experiment Information
+
+Using a loosely defined Microsoft excel (.xlsx) file, a file of additional information can be loaded into the /CTData/ object. This new information can be any information which is relevant to the individual scans.
+
+This function /get_spike_info/ works by finding the matching column to join data on, then using the provided excel file it adds these new columns of information into the /CTData/ object.
+
+By using \lambda functions (named /look_up/ and /gather_data/) rapid allocation of information can be done in sections, applying hundreds of data entries to the existing data. This is one of many elements in this project which solves challenges in a very functional programming manner.
+
+#+NAME: lst:infojoining
+#+CAPTION: Spike Information Joining Algorithm
+#+BEGIN_SRC python
+  def get_spike_info(df, excel_file, join_column='Folder#'):
+      """
+      This function should do something akin to adding additional
+      information to the data frame
+
+      @note there is some confusion in the NPPC about whether to use
+      folder name or file name as the unique id when this is made into
+      end-user software, a toggle should be added to allow this
+
+      @param excel_file a file to attach and read data from
+      @param join_column if the column for joining data is required
+      """
+      # Grab the linking excel file
+      info = pd.read_excel(excel_file,
+			   index_col='Folder#')
+      # These are the features to grab
+      features = list(info.columns)
+      # Lambda to look up the feature in excel spreadsheet
+      def look_up(x, y): return info.loc[x['folderid']][y]
+      # Lambda form a series (data row) and apply it to dataframe
+      def gather_data(x): return pd.Series([look_up(x, y) for y in features])
+      df[features] = df.apply(gather_data, axis=1)
+      # Return the copy
+      return df
+#+END_SRC
+
+\clearpage
 *** Spike Rejoining
 The /Scanco/ \micro-CT100 scanner (/Scanco/ Medical, Switzerland) allows for a carousel loading of samples, the maximum allowed length of a sample is ~10cm, in this study the majority of wheat spikes exceed this limit. A solution was found in splitting these samples in half and creating two separated \micro-CT scans.
 
@@ -858,7 +906,6 @@ The implementation for this searches through the provided data frame for spikes 
 	"""
 	Important part of this function is that we accept that the data is what it is
 	that is to say: rtop, rbot and Z are all orientated in the proper direction
-
 	It's main purpose is to join split spikes by rachis nodes identified in the
 	analysis process
 
@@ -867,9 +914,11 @@ The implementation for this searches through the provided data frame for spikes 
 	# So we are only really interested in grains which are not labelled with
 	# 'all' in partition, so let's id them to start with
 	for sn in self.df[self.df['Ear'] != 'all']['Sample name'].unique():
+
 	    # Calculate estimated bottom location of a spike
 	    bot = self.df.loc[(self.df['Sample name'] == sn)
 			      & (self.df['Ear'] == 'bot')]['rbot']
+
 	    # Apply bottom measurement where required by incrementing
 	    # 'z' values to top scans
 	    self.df.loc[
@@ -879,6 +928,7 @@ The implementation for this searches through the provided data frame for spikes 
 			(self.df['Ear'] == 'top'), 'z'] + bot
 #+END_SRC
 
+\clearpage
 *** Data Aggregating
 The analysis method used is focused on extracting data on a per-grain basis, grains have a many to one relationship of spikes.
 
@@ -899,16 +949,28 @@ The function /aggregate_spike_averages/ takes a list of attributes to be aggrega
       @param attributes list of features to average
       @param groupby how the data should be aggregated
       """
+
+      # Functions which are used as an apply to the dataframe
       trans_funcs = {'median': np.median,
 		     'mean': np.mean, 'std': np.std, 'sum': np.sum}
+
+      # For each attribute apply
       for att in attributes:
+
+	  # For each function apply to each attribute in turn
 	  for col, func in trans_funcs.items():
+
+	      # Add straight to the dataframe using appropriate formatting to keep
+	      # naming straightforward
 	      self.df['{0}_{1}'.format(col, att)] = self.df.groupby(groupby)[
 		  att].transform(func)
+
+      # Also add some information on the counts of seeds per plant
       self.df['grain_count'] = self.df.groupby(
 	  groupby)[groupby].transform(len)
 #+END_SRC
 
+\clearpage
 *** Cleaning and Removing Erroneous Data
 
 Data are cleaned by calculating percentiles of minimum data, these extreme values are removed. In addition to this, values found in seed/grain literature are used to remove data based on known extremes cite:Gegas2010,Hughes2017.
@@ -925,19 +987,26 @@ Data are cleaned by calculating percentiles of minimum data, these extreme value
       @param remove_small a boolean to remove small grains or not
       @param remove_large a boolean to remove larger grains or not
       """
+      # Remove all data which has any null or none types
       self.df = self.df.dropna(axis=1, how='all')
+
+      # Remove obviously wrong and too large grains
       self.df = self.df[self.df['surface_area'] < 100]
       self.df = self.df[self.df['volume'] > 3.50]  # this is given for brachy
       self.df = self.df[self.df['volume'] < 60]
+
+      # If the large parameter is set then remove the upper 5th percentile of volume
       if remove_large:
 	  self.df = self.df[self.df['volume'] <
 			    self.df['volume'].quantile(.95)]
+      # If the large parameter is set then remove the lower 5th percentile of volume
       if remove_small:
 	  self.df = self.df[self.df['volume'] >
 			    self.df['volume'].quantile(.05)]
 
 #+END_SRC
 
+\clearpage
 *** Data Transformations (PCA)
 In this project several data transformation algorithms are implemented uses the /Scipy/ library cite:Oliphant2007.
 
@@ -949,6 +1018,7 @@ Prior to using the PC function, data are standardised, this is either done throu
 
 #+CAPTION: PCA Data Transform
 #+LABEL: lst:pca
+#+LATEX_A
 #+BEGIN_SRC python
   def perform_pca(df, features, groupby, groupby2=None,
 		  groupby3=None, standardise=False):
@@ -963,12 +1033,18 @@ Prior to using the PC function, data are standardised, this is either done throu
       @param standardise=False asks whether to standardise the data prior to PCA
       @returns a dataframe of the data, the pca object & the scaled data for reference
       """
+      # Only use 2 pcs
       pca = PCA(components=2)
+      # Standardise the data if requested
       data = standarise_data(
 	  df, features, groupby) if standardise else df.loc[:, features].values
+      # Perform pca fitting on the chosen data
       principalComponents = pca.fit_transform(data)
+      # form the pca into a dataframe with pca1 and 2 labelled
       principalDf = pd.DataFrame(data=principalComponents, columns=[
 				 'principal component 1', 'principal component 2'])
+      # Decide how to group the data into the final pca table to return
+      # three options are given as multiple analysis may be required
       if groupby2 is None:
 	  return (pd.concat([principalDf, df[[groupby]]],
 			    axis=1), pca, data)
@@ -978,24 +1054,20 @@ Prior to using the PC function, data are standardised, this is either done throu
       else:
 	  return (pd.concat([principalDf, df[[groupby]],
 			     df[[groupby2]], df[[groupby3]]], axis=1), pca, data)
-
-
-
 #+END_SRC
 
+\clearpage
 *** Bayesian Hypothesis Testing
 
 Null-hypothesis significance testing (NHST) is done typically through T-test like functions, where the means of two groups are tested.
 As a novel addition, this library provides an improvement upon NHST by using a Bayesian approach proposed by Kruschke in 2012 cite:Kruschke2012.
 
-Here a full model is produced where data are first normalised through power transforms, model parameters set and then 1000 simulations ran via Markov chain Monte Carlo to produce a larger data sample to perform mean testing on.
+Here a full model is produced where data are first normalised through log transforms, model parameters set and then 1000 simulations ran via Markov chain Monte Carlo to produce a larger data sample to perform mean testing on.
 
 The full model is explained later in this chapter.
 
-\clearpage
-
-#+LABEL: lst:bayes
-#+CAPTION: Bayesian Model Function
+#+LABEL: lst:bayes1
+#+CAPTION: Bayesian Model Function (part 1)
 #+BEGIN_SRC python
   def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
       """
@@ -1023,6 +1095,14 @@ The full model is explained later in this chapter.
 	      group1_name), lower=sig_low, upper=sig_high)
 	  group2_std = pm.Uniform('{0}_std'.format(
 	      group2_name), lower=sig_low, upper=sig_high)
+#+END_SRC
+
+\clearpage
+
+#+ATTR_LATEX: :placement [!tpb]
+#+LABEL: lst:bayes2
+#+CAPTION: Bayesian Model Function (part 2)
+#+BEGIN_SRC python
       with model:
 	  nu = pm.Exponential('nu_minus_one', 1/29.) + 1
       with model:
@@ -1046,35 +1126,10 @@ The full model is explained later in this chapter.
 						    'difference of stds','effect size'])
 #+END_SRC
 
+
+\clearpage
+
 *** Plotting Functions
-*** Adding Spike Experiment Information
-#+NAME: lst:infojoining
-#+CAPTION: Spike Information Joining Algorithm
-#+BEGIN_SRC python
-  def get_spike_info(grain_df, excel_file, join_column='Folder#'):
-
-      # Make a copy as we don't want to change the original
-      df = grain_df.copy(deep=True)
-
-      # Grab the linking excel file
-      info = pd.read_excel(excel_file,
-			   index_col='Folder#')
-
-      # These are the features to grab
-      features = ['Hulled/Naked', 'Common name', 'Genome', 'Ploidy',
-		  'Wild/Domesticated', 'Sample name', 'Sub type', 'Ear']
-
-      # Lambda to look up the feature in excel spreadsheet
-      def look_up(x, y): return info.loc[x['folderid']][y]
-
-      # Lambda form a series (data row) and apply it to dataframe
-      def gather_data(x): return pd.Series([look_up(x, y) for y in features])
-
-      df[features] = df.apply(gather_data, axis=1)
-
-      # Return the copy
-      return df
-#+END_SRC
 
 ** CT GUI Application Methods
 *** Integration with CT Analysis Library
