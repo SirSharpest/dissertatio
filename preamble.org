@@ -137,7 +137,7 @@
   \thispagestyle{plain}
 
   \begin{center}
-    {\LARGE\bf Acknowledgements and Thanks}
+    {\LARGE\bf Acknowledgements}
   \end{center}
 
 \vspace{3cm}
