@@ -124,6 +124,36 @@
   Date ............................................................ \\
 
   \clearpage
+
+  \thispagestyle{plain}
+
+  \begin{center}
+    {\LARGE\bf Acknowledgements and Thanks}
+  \end{center}
+
+\vspace{3cm}
+
+This work is a product of all the things Aberystwyth University has taught me, unfortunately
+there is not enough space here for everyone who should be thanked and acknowledged.
+
+\vspace{1cm}
+
+However, in relation to this project it would be a great crime to not thank my project supervisor Dr. Wayne Aubrey for his help and guidance;
+Professor. John Doonan, who provided the project and trusted me with it;
+Dr. Candida Nibau who taught me practically everything I know about biology.
+
+\vspace{1cm}
+
+My headphones, my books and all the art that kept me sane. Without J.K. Rowling, Arthur Conan-Doyle, Ben Howard and Bob Dylan
+ my inspiration would have dried up long ago.
+
+\vspace{1cm}
+
+Finally, and most importantly, my mother Barbara Hughes. Who believed in me, always.
+
+
+
+  \clearpage
   \tableofcontents
   \listoftables
   \listoffigures
