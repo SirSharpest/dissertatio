@@ -675,6 +675,7 @@ The data needs to be checked for false positives, this is done by first removing
 
 When the data has been cleaned, additional data is added. The added data provides information about the experiment, plant names; genotypes; top and bottom scans. With this data, information on scans which need to be joined is provided.
 
+
 #+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
 #+ATTR_LATEX: :width 13cm
@@ -682,6 +683,8 @@ When the data has been cleaned, additional data is added. The added data provide
 
 
 ** Image Analysis Methods
+Initially, this project aimed to use existing software for feature extraction
+
 *** New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
@@ -703,12 +706,20 @@ line segments cite:Pfaltz1966.
 In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
 **** Effect of Enhanced Watershed algorithm
-#+BEGIN_CENTER
+
+Figure:[[fig:qe]] shows in two dimensional flat images how this problem was solved.
 #+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:qe
 [[./images/chess_quasi.png]]
-#+END_CENTER
+
+Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
+
+
+#+CAPTION: /A/ showing before the new method, /B/ after, /C/ zoomed before, /D/ zoomed after.
+#+ATTR_LATEX :width 8cm
+#+NAME: fig:qe3d
+[[./images/watershedfigure.png]]
 
 *** Extracted Grains
 
