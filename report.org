@@ -257,92 +257,8 @@ Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, th
 Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
 ** Sprint Timeline
 The implementation of this work was done following agile sprint planning, treating each week as a encapsulated working frame, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
-*** Sprint - Week 0
-Initial planning was taken out, discussions with researchers at the National Plant Phenomics Centre (NPPC), to create a general set of targets and research goals.
 
-A website was built in order to host weekly progress reports, this was used to share with supervisors and with staff at the NPPC. It also provided a list of discussion points to go through at weekly meetings.
-
-A bug was identified in image analysis software, this was raised to be fixed a later date.
-
-A literature review was taken out to highlight the novelty of this research, as well as current trends in the field in terms of analysis and known/accepted information.
-
-*** Sprint - Week 1
-
-Initial running of grain analysis software was performed multiple times, as per instructions in literature cite:Hughes2017, multiple parameters for minimum and maximum expected sizes of grains needed to be tested. Data which was produced was very noisy and would require further work.
-
-Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis cite:Mairhofer2015,Daly2017. Experimentation with these methods were technically challenging and a decision was made to revisit if time permitted at the end of the project.
-
-A key function of the CT Analysis Library was created, showing in listing:[[lst:infojoining]]. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
-
-An issue was identified in the choices of testing which are typically used in these studies, the use of ANOVA and Student's T-Test, for example, are best used with parametric data, that is to say data where distribution is normally distributed. Further reading into this presented the use of Box Cox transforms as a method to counter these issues.
-
-An issue was raised; a method for visualising outliers in the data could provide greatly beneficial insight into finding errors. If time was available at the end of the project, this would be explored further.
-
-*** Sprint - Week 2
-
-Spikes of wheat are scanned in two separate imaging cycles sometimes, this is because the tube used by the \micro-CT machine are 10cm tall and often a spike will exceed this. In order for full analysis to be carried out these separate scans need to be rejoined. A method for doing this was added to the python Analysis Library.
-
-An initial Model-View-Controller (MVC) model was constructed for how a GUI might take form around. Using this several wire-frames were created
-
-An idea for how data could be cleaned was created by using the information found in previous studies cite:Hughes2017. From this reported data minimum and maximum expected size could be assumed for wheat grains in terms of volume.
-
-Decisions to move the CT Grain Analysing Library towards an object orientated model were made during this sprint, after evaluating the potential of a functionally programmed model or a object one. Handling everything in terms of classes was decidedly easier in terms of understanding how to use the library.
-
-*** Sprint - Week 3
-
-A lot of progress was made on constructing a GUI here, dynamic plotting was put together as a proof of this concept. Histograms of the data were able to be made by using the mouse to select which attribute to measure.
-
-GUI elements such as navigation, data tabs and file menus were added to make more clear to the user how functionality should work.
-
-A novel and new method for generating documentation was created specifically for documenting this software library. Using a plain text format, doc strings from python code was used to make a single easy to read PDF to be distributed with the software package.
-
-Another piece of functionality was introduced to the GUI that would enable the user to view the data they had loaded as a single 2 dimensional data frame. This is for quickly viewing data as a single source and all together. This had arisen as a functionality desired by researchers in a previous weeks meeting.
-
-*** Sprint - Week 4
-A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. Allowing for the more complex shapes which this data set presented as a problem to be fully and properly segmented.
-
-Further work was done in terms of the GUI to enable matplotlib and seaborn library integration with the dynamic plotting features which were developed previously.
-
-Custom exceptions were written for the CT Analysing Library, these exceptions allow for more detailed feedback to a programmer when they perform actions which might result in erroneous data processing. In particular a "NoDataFoundException" was made for when empty data files where found in searching.
-
-Current versions of doc strings were enhanced to match with newer functionality which had been added in recent weeks, and documentation was regenerated.
-
-*** Sprint - Week 5
-Functions were added to the CT Analysing Library which would allow for aggregation of data columns, this meant that averaging functions could be performed on a per-spike basis. Mean, standard deviation, sum and count functions were applied by default.
-
-Further research was carried out into data transforms which are commonly used in data science; Principal component analysis, linear modelling and multivariate analysis were topics researched as possibilities for inclusion in this library.
-
-*** Sprint - Week 6
-Preparation for a mid-project demo took up the majority of this sprint, ensuring data which had been gathered to date was well understood was vital.
-
-A presentation was created using data extracted via the CT Analysing Library, this was in the mode of figures and graphs which could then be used to better explain the theme of the project.
-
-*** Sprint - Week 7
-An initial implementation of principal component analysis was tested and found to be useful, a considerable amount of time was dedicated to refactoring the code-base to allow for new data transforms to be easily incorporated.
-
-Additions to the graphing section of the library also allowed for splitting data into multiple plots which could then be featured side-by-side, separation of data helped contribute to seeing the differences in the data.
-
-Some initial ideas for unit testing were written up, an investigation into which platform and library were best to use was carried out. This had to be taken into consideration as testing a GUI required some additional software to simulate a user testing widgets and onscreen objects.
-
-*** Sprint - Week 8
-With data extraction parameters finalised, a new watershedding method implemented and a more robust selection process implemented the data was now fit for hypothesis to be tested.
-
-Through meetings with researching staff, the five key hypothesis/null-hypothesis had been formed and the grouping of the data well defined. This allowed for initial Null-Hypothesis-Significance-Testing (NHST) to be carried out. The initial results found were not representative of the data. A requirement for new hypothesis testing was now required.
-
-The /PyTest/ library was decided upon, this was used as a unit testing framework for both the Analysis Library and the GUI software. In total around 50 tests were devised.
-
-*** Sprint - Week 9
-More graphing options were added to the GUI, these came from the boxplot functionality which the updated CT Analysing Library made available. A new type of grouping by sub-type was added. This let multiple plots be displayed for the same feature i.e. viewing a histogram of volume but split by genotype. This new feature required a rework of the dynamic plotting functionality. This refactoring took a considerable amount of time and work.
-
-An initial solution to hypothesis testing was added in the form of Welch and Student T-Tests to first the CT Analysing Library and then to the GUI also. The GUI now had an additional tab added specifically for testing groups of data.
-
-*** Sprint - Week 10
-
-A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Bayesian statistics to carry out hypothesis testing cite:Kruschke2012. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
-Previous research questions were repeated, using this method. This time new and significant findings were uncovered.
-
-*** Sprint - Week 11
-A feature freeze was enforced during the 11th week of the project. This was to ensure time was allocated for completing work, finalising unit tests and documentation. The > 50 unit tests were finalised, completed and ensured to be passing. Documentation was completed and exported.
+A full account of the sprints, which are in part running documentation for this project, are available in appendix:[[sec:appendix]].
 
 ** Language Choices
 Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
@@ -1151,9 +1067,9 @@ The full model is explained later in this chapter.
 ** Time Management
 ** Collaborative Work
 ** Other Issues
-* Appendix
-** /Software Packages Used/
 
+\appendix
+* /Software Packages Used/
 *** Libraries
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
 #+NAME: tab:software
@@ -1181,7 +1097,7 @@ The full model is explained later in this chapter.
 |--------+-----------------------+----------|
 
 \clearpage
-** /Glossary/
+* /Glossary/
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:glossary
 #+CAPTION: Dictionary for Terms and acronyms
@@ -1218,7 +1134,7 @@ The full model is explained later in this chapter.
 |----------------------------------------+------------------------------------------------------------------------------|
 
 \clearpage
-** Wheat Varieties
+* Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
 #+NAME: tab:wheat
 #+CAPTION: Wheat used in this work and their common names
@@ -1251,47 +1167,31 @@ The full model is explained later in this chapter.
 
 
 \clearpage
-** /Code Segments and Examples/
+* /Code Segments and Examples/
 
-*** Custom Documentation Generator
-#+CAPTION: Custom lisp code for generating easy to read documentation
-#+LABEL: lst:docgen
-#+BEGIN_SRC emacs-lisp
-  (defun populate-org-buffer (buffer filename root)
-    (goto-char (point-min))
-    (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
-      (while (re-search-forward
-	      (rx (group (or "def" "class"))
-		  space
-		  (group (+ (not (any "()"))))
-		  (? "(" (* nonl) "):" (+ "\n") (+ space)
-		     (= 3 "\"")
-		     (group (+? anything))
-		     (= 3 "\"")))
-	      nil 'noerror)
-	(setq to-insert
-	      (concat
-	       to-insert
-	       (if (string= "class" (match-string 1))
-		   "** "
-		 "*** ")
-	       (match-string 2)
-	       "\n"
-	       (and (match-string 3)
-		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
-      (with-current-buffer buffer
-	(insert to-insert))))
-  (defun org-documentation-from-dir (&optional dir)
-    (interactive)
-    (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
-	   (files (directory-files-recursively dir "\py$"))
-	   (doc-buf (get-buffer-create "org-docs")))
-      (dolist (file files)
-	(with-temp-buffer
-	  (insert-file-contents file)
-	  (populate-org-buffer doc-buf file dir)))
-      (with-current-buffer doc-buf
-	(org-mode))))
+*** Setup.py
+#+CAPTION: The /setup.py/ configuration for the CT Analyser Library
+#+LABEL: lst:setuppy
+#+BEGIN_SRC python
+  from setuptools import setup
+  setup(name='CT_Analysing_Library',
+	version='0.2',
+	description='Library used for CT grain analysis at the NPPC',
+	url='https://github.com/SirSharpest/CT_Analysing_Library',
+	author='Nathan Hughes',
+	author_email='nathan1hughes@gmail.com',
+	license='MIT',
+	packages=['ct_analysing_library'],
+	install_requires=['pandas',
+			  'numpy',
+			  'matplotlib',
+			  'seaborn',
+			  'scipy',
+			  'sklearn',
+			  'statsmodels',
+			  'pymc3',
+			  'xlrd'],
+	zip_safe=True)
 #+END_SRC
 
 \clearpage
@@ -1336,30 +1236,142 @@ The full model is explained later in this chapter.
 
 #+END_SRC
 \clearpage
-*** Setup.py
-#+CAPTION: The /setup.py/ configuration for the CT Analyser Library
-#+LABEL: lst:setuppy
-#+BEGIN_SRC python
-  from setuptools import setup
-  setup(name='CT_Analysing_Library',
-	version='0.2',
-	description='Library used for CT grain analysis at the NPPC',
-	url='https://github.com/SirSharpest/CT_Analysing_Library',
-	author='Nathan Hughes',
-	author_email='nathan1hughes@gmail.com',
-	license='MIT',
-	packages=['ct_analysing_library'],
-	install_requires=['pandas',
-			  'numpy',
-			  'matplotlib',
-			  'seaborn',
-			  'scipy',
-			  'sklearn',
-			  'statsmodels',
-			  'pymc3',
-			  'xlrd'],
-	zip_safe=True)
+*** Custom Documentation Generator
+#+CAPTION: Custom lisp code for generating easy to read documentation
+#+LABEL: lst:docgen
+#+BEGIN_SRC emacs-lisp
+  (defun populate-org-buffer (buffer filename root)
+    (goto-char (point-min))
+    (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
+      (while (re-search-forward
+	      (rx (group (or "def" "class"))
+		  space
+		  (group (+ (not (any "()"))))
+		  (? "(" (* nonl) "):" (+ "\n") (+ space)
+		     (= 3 "\"")
+		     (group (+? anything))
+		     (= 3 "\"")))
+	      nil 'noerror)
+	(setq to-insert
+	      (concat
+	       to-insert
+	       (if (string= "class" (match-string 1))
+		   "** "
+		 "*** ")
+	       (match-string 2)
+	       "\n"
+	       (and (match-string 3)
+		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
+      (with-current-buffer buffer
+	(insert to-insert))))
+  (defun org-documentation-from-dir (&optional dir)
+    (interactive)
+    (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
+	   (files (directory-files-recursively dir "\py$"))
+	   (doc-buf (get-buffer-create "org-docs")))
+      (dolist (file files)
+	(with-temp-buffer
+	  (insert-file-contents file)
+	  (populate-org-buffer doc-buf file dir)))
+      (with-current-buffer doc-buf
+	(org-mode))))
 #+END_SRC
+
+\clearpage
+
+
+* Sprint Timeline
+  <<sec:appendix>>
+
+*** Sprint - Week 0
+Initial planning was taken out, discussions with researchers at the National Plant Phenomics Centre (NPPC), to create a general set of targets and research goals.
+
+A website was built in order to host weekly progress reports, this was used to share with supervisors and with staff at the NPPC. It also provided a list of discussion points to go through at weekly meetings.
+
+A bug was identified in image analysis software, this was raised to be fixed a later date.
+
+A literature review was taken out to highlight the novelty of this research, as well as current trends in the field in terms of analysis and known/accepted information.
+
+*** Sprint - Week 1
+
+Initial running of grain analysis software was performed multiple times, as per instructions in literature cite:Hughes2017, multiple parameters for minimum and maximum expected sizes of grains needed to be tested. Data which was produced was very noisy and would require further work.
+
+Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis cite:Mairhofer2015,Daly2017. Experimentation with these methods were technically challenging and a decision was made to revisit if time permitted at the end of the project.
+
+A key function of the CT Analysis Library was created, showing in listing:[[lst:infojoining]]. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
+
+An issue was identified in the choices of testing which are typically used in these studies, the use of ANOVA and Student's T-Test, for example, are best used with parametric data, that is to say data where distribution is normally distributed. Further reading into this presented the use of Box Cox transforms as a method to counter these issues.
+
+An issue was raised; a method for visualising outliers in the data could provide greatly beneficial insight into finding errors. If time was available at the end of the project, this would be explored further.
+
+*** Sprint - Week 2
+
+Spikes of wheat are scanned in two separate imaging cycles sometimes, this is because the tube used by the \micro-CT machine are 10cm tall and often a spike will exceed this. In order for full analysis to be carried out these separate scans need to be rejoined. A method for doing this was added to the python Analysis Library.
+
+An initial Model-View-Controller (MVC) model was constructed for how a GUI might take form around. Using this several wire-frames were created
+
+An idea for how data could be cleaned was created by using the information found in previous studies cite:Hughes2017. From this reported data minimum and maximum expected size could be assumed for wheat grains in terms of volume.
+
+Decisions to move the CT Grain Analysing Library towards an object orientated model were made during this sprint, after evaluating the potential of a functionally programmed model or a object one. Handling everything in terms of classes was decidedly easier in terms of understanding how to use the library.
+
+*** Sprint - Week 3
+
+A lot of progress was made on constructing a GUI here, dynamic plotting was put together as a proof of this concept. Histograms of the data were able to be made by using the mouse to select which attribute to measure.
+
+GUI elements such as navigation, data tabs and file menus were added to make more clear to the user how functionality should work.
+
+A novel and new method for generating documentation was created specifically for documenting this software library. Using a plain text format, doc strings from python code was used to make a single easy to read PDF to be distributed with the software package.
+
+Another piece of functionality was introduced to the GUI that would enable the user to view the data they had loaded as a single 2 dimensional data frame. This is for quickly viewing data as a single source and all together. This had arisen as a functionality desired by researchers in a previous weeks meeting.
+
+*** Sprint - Week 4
+A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. Allowing for the more complex shapes which this data set presented as a problem to be fully and properly segmented.
+
+Further work was done in terms of the GUI to enable matplotlib and seaborn library integration with the dynamic plotting features which were developed previously.
+
+Custom exceptions were written for the CT Analysing Library, these exceptions allow for more detailed feedback to a programmer when they perform actions which might result in erroneous data processing. In particular a "NoDataFoundException" was made for when empty data files where found in searching.
+
+Current versions of doc strings were enhanced to match with newer functionality which had been added in recent weeks, and documentation was regenerated.
+
+*** Sprint - Week 5
+Functions were added to the CT Analysing Library which would allow for aggregation of data columns, this meant that averaging functions could be performed on a per-spike basis. Mean, standard deviation, sum and count functions were applied by default.
+
+Further research was carried out into data transforms which are commonly used in data science; Principal component analysis, linear modelling and multivariate analysis were topics researched as possibilities for inclusion in this library.
+
+*** Sprint - Week 6
+Preparation for a mid-project demo took up the majority of this sprint, ensuring data which had been gathered to date was well understood was vital.
+
+A presentation was created using data extracted via the CT Analysing Library, this was in the mode of figures and graphs which could then be used to better explain the theme of the project.
+
+*** Sprint - Week 7
+An initial implementation of principal component analysis was tested and found to be useful, a considerable amount of time was dedicated to refactoring the code-base to allow for new data transforms to be easily incorporated.
+
+Additions to the graphing section of the library also allowed for splitting data into multiple plots which could then be featured side-by-side, separation of data helped contribute to seeing the differences in the data.
+
+Some initial ideas for unit testing were written up, an investigation into which platform and library were best to use was carried out. This had to be taken into consideration as testing a GUI required some additional software to simulate a user testing widgets and onscreen objects.
+
+*** Sprint - Week 8
+With data extraction parameters finalised, a new watershedding method implemented and a more robust selection process implemented the data was now fit for hypothesis to be tested.
+
+Through meetings with researching staff, the five key hypothesis/null-hypothesis had been formed and the grouping of the data well defined. This allowed for initial Null-Hypothesis-Significance-Testing (NHST) to be carried out. The initial results found were not representative of the data. A requirement for new hypothesis testing was now required.
+
+The /PyTest/ library was decided upon, this was used as a unit testing framework for both the Analysis Library and the GUI software. In total around 50 tests were devised.
+
+*** Sprint - Week 9
+More graphing options were added to the GUI, these came from the boxplot functionality which the updated CT Analysing Library made available. A new type of grouping by sub-type was added. This let multiple plots be displayed for the same feature i.e. viewing a histogram of volume but split by genotype. This new feature required a rework of the dynamic plotting functionality. This refactoring took a considerable amount of time and work.
+
+An initial solution to hypothesis testing was added in the form of Welch and Student T-Tests to first the CT Analysing Library and then to the GUI also. The GUI now had an additional tab added specifically for testing groups of data.
+
+*** Sprint - Week 10
+
+A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Bayesian statistics to carry out hypothesis testing cite:Kruschke2012. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
+Previous research questions were repeated, using this method. This time new and significant findings were uncovered.
+
+*** Sprint - Week 11
+A feature freeze was enforced during the 11th week of the project. This was to ensure time was allocated for completing work, finalising unit tests and documentation. The > 50 unit tests were finalised, completed and ensured to be passing. Documentation was completed and exported.
+
+
+
 
 \clearpage
 bibliography:library.bib
