@@ -23,6 +23,8 @@
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}
 #+LaTeX_HEADER: \usepackage{array}
+#+LaTeX_HEADER: \usepackage[subfigure]{tocloft}
+
 #+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{10.4cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
 #+LaTeX_HEADER: \usepackage[nocompress]{cite}
@@ -35,6 +37,13 @@
 #+LATEX_HEADER_EXTRA: \usepackage{etoolbox}
 
 
+#+BEGIN_EXPORT latex
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\setlength{\cftmyequationsnumwidth}{2.5em}% Width of equation number in List of Equations
+#+END_EXPORT
 
 #+BEGIN_EXPORT latex
 \hyphenpenalty=10000
@@ -155,8 +164,13 @@ Finally, and most importantly, my mother Barbara Hughes. Who believed in me, alw
 
   \clearpage
   \tableofcontents
+  \clearpage
   \listoftables
+  \clearpage
   \listoffigures
+  \clearpage
+  \listofmyequations
+  \clearpage
   \listoflistings
   \clearpage
 

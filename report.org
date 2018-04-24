@@ -4,7 +4,6 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+INCLUDE: "./preamble.org"
 
-
 * Introduction, Analysis and Objectives
 
 This project aims to answer a biological research question through the use of computer science, whilst also creating a software suite which will enable further studies to be carried out with ease.
@@ -218,6 +217,7 @@ These are the functional requirements for the Python library produced:
 #+END_EXPORT
 
 *** Requirements for CT GUI Application
+
 
 #+BEGIN_EXPORT latex
 \begin{multicols}{2}
@@ -683,7 +683,9 @@ When the data has been cleaned, additional data is added. The added data provide
 
 
 ** Image Analysis Methods
-Initially, this project aimed to use existing software for feature extraction
+Initially, this project aimed to use existing software for feature extraction, however the range of data (due to the spectrum of genotypes in the study) meant that software which worked well for certain genotypes of wheat did not work well on others.
+
+The issue became in seeds becoming erroneously joined, research and investigation lead to a new solution being implemented in a forked version of the open source software used for image analysis cite:Hughes2017
 
 *** New Watershed Algorithm
 
@@ -696,14 +698,17 @@ a  /quasi-euclidean/ distance transform was implemented into the analysis pipeli
 This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
 line segments cite:Pfaltz1966.
 
+
 #+NAME: eqn:qe
-\begin{equation}
-\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right | ,\textup{otherwise}
-\end{equation}
+\begin{align}
+  &\begin{aligned}
+&|x_1-x_2|+(\sqrt{2}-1)|y_1-y_2|, |x_1-x_2| > |y_1-y_2| \\
+      &(\sqrt{2}-1)|x_1-x_2| + |y_1-y_2|, \textup{otherwise.}
+  \end{aligned}
+\end{align}
+\myequations{Quasi-Euclidean Distance}
 
-
-
-In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$-dimensional trees
+In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$ dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
 **** Effect of Enhanced Watershed algorithm
 
@@ -717,7 +722,7 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 
 
 #+CAPTION: /A/ showing before the new method, /B/ after, /C/ zoomed before, /D/ zoomed after.
-#+ATTR_LATEX :width 8cm
+#+ATTR_LATEX: :width 12cm
 #+NAME: fig:qe3d
 [[./images/watershedfigure.png]]
 
@@ -774,7 +779,6 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 *** Creating GUI Elements When Required
 *** Dynamically Generating Plots
 ** Data Analysis Methods
-
 
 * Results
 * Discussion
