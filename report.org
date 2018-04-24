@@ -195,7 +195,7 @@ These are the functional requirements for the Python library produced:
   \setcounter{enumi}{-1}
   \item Provide an OOP means to deal with data
   \item Make gathering of data simplified
-  \item Handle Saving of data in a useable format
+  \item Handle Saving of data in a usable format
   \item Easily enable data transformations
   \item Perform hypothesis testing
   \end{enumerate}
@@ -695,7 +695,7 @@ The issue became in seeds becoming erroneously joined, research and investigatio
 *** New Watershed Algorithm
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
-a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:). This provided much better results than the previous
+a  /quasi-euclidean/ distance transform was implemented into the analysis pipeline (figure:[[fig:matlab]]). This provided much better results than the previous
 /chessboard/ transform which had been successful on more uniform data in previous studies cite:Hughes2017.
 
 **** Quasi-Euclidean algorithm
@@ -714,28 +714,70 @@ line segments cite:Pfaltz1966.
 
 In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$ dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
-**** Effect of Enhanced Watershed algorithm
 
-Figure:[[fig:qe]] shows in two dimensional flat images how this problem was solved.
+**** Implementation
+
+The software implementation for this was done in MATLAB cite:MATHWORKS2017, this meant that it could instantly and easily be inserted into the existing pipeline in the open source software which was forked and modified to add this feature. In code listing:[[lst:ws]] this new algorithm, in full, is shown.
+
+#+CAPTION: MATLAB Watershedding function
+#+LABEL: lst:ws
+#+BEGIN_SRC octave
+  function [W] = watershedSplit3D(A)
+    % Takes image stack A and splits it into stack W.
+    % This is done by using a watershedding
+    % algorithm based on quasi-euclidean distance
+
+    % Convert to BW
+    bw = logical(A);
+    % Create variable for opening and closing
+    se = strel('disk', 5);
+    % Minimise object missshapen-ness
+    bw = imerode(bw, se);
+    bw = imdilate(bw, se);
+    % Fill in any left over holes
+    bw = imfill(bw,4,'holes');
+    % Use chessboard for distance calculation for more refined splitting
+    chessboard = -bwdist(~bw, 'quasi-euclidean');
+    % Modify the intensity of our bwdist to produce chessboard2
+    mask = imextendedmin(chessboard, 2);
+    chessboard2 = imimposemin(chessboard, mask);
+    % Calculate watershed based on the modified chessboard
+    Ld2 = watershed(chessboard2);
+    % Take original image and add on the lines calculated for splitting
+    W = A;
+    W(Ld2 == 0) = 0;
+  end
+#+END_SRC
+
+The process creates a black and white copy of the image, performs erosion and dilation to remove holes and erroneous pixels. A distance map is then created, this represents each pixel, which is plant material (grains), as an integer value of distance from the closest non-plant pixel. This map combines with the watershed algorithm to provide an estimate of where objects are incorrectly connected (fused grains), subtracting this from the original 3D image provides cleaning split and segmented grains which can be passed through to the next stage of the pipeline.
+
+**** Why this algorithm works
+
+This improved algorithm for measuring distance between points works well with this data because of the variation in seed morphology.
+
+Where previous studies cite:Hughes2017 found their methods worked well, they also used elite well-bred wheat varieties. These varieties have a more round more even shape with a low standard deviation in shape, generally.
+
+This study, with such a varied group of genotypes has encountered many seeds which do not have a reasonable degree of regularity in shape. As such, a simple distance based method of splitting from the centre of objects was ill suited. By using a quasi-euclidean distance a more flexible shape is afforded in grains and the resulting segmentation is less prone to over-zealous splitting due to non-uniform shape.
+
+**** Effect of Enhanced Watershed algorithm in 2D
+
+Figure:[[fig:qe]] shows in two dimensional flat images how this problem was solved. As well as what the previous method was doing to cause errors in data.
 #+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
-#+ATTR_LATEX: :width 10cm
+#+ATTR_LATEX: :width 16cm
 #+NAME: fig:qe
 [[./images/chess_quasi.png]]
 
+\clearpage
+**** Effect of Enhanced Watershed algorithm in 3D
+
 Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
 
-
 #+CAPTION: /A/ showing before the new method, /B/ after, /C/ zoomed before, /D/ zoomed after.
-#+ATTR_LATEX: :width 12cm
+#+ATTR_LATEX: :width 14cm
 #+NAME: fig:qe3d
 [[./images/watershedfigure.png]]
 
-*** Extracted Grains
 
- #+CAPTION: Individual Wheat grains, rendered in 3D
- #+ATTR_LATEX: :width 13cm
- #+NAME: fig:ctgrains
- [[./images/ctgrains.png]]
 
 ** CT Analysing Library Methods
 *** Spike Rejoining
@@ -783,6 +825,7 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 *** Creating GUI Elements When Required
 *** Dynamically Generating Plots
 ** Data Analysis Methods
+** Bayesian Modelling
 
 * Results
 * Discussion
@@ -895,36 +938,7 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 
 \clearpage
 ** /Code Segments and Examples/
-*** MATLAB Watershedding
 
-#+CAPTION: MATLAB Watershedding function
-#+LABEL: lst:ws
-#+BEGIN_SRC octave
-  function [W] = watershedSplit3D(A)
-    % Takes image stack A and splits it into stack W
-    % Convert to BW
-    bw = logical(A);
-    % Create variable for opening and closing
-    se = strel('disk', 5);
-    % Minimise object missshapen-ness
-    bw = imerode(bw, se);
-    bw = imdilate(bw, se);
-    % Fill in any left over holes
-    bw = imfill(bw,4,'holes');
-    % Use chessboard for distance calculation for more refined splitting
-    chessboard = -bwdist(~bw, 'quasi-euclidean');
-    % Modify the intensity of our bwdist to produce chessboard2
-    mask = imextendedmin(chessboard, 2);
-    chessboard2 = imimposemin(chessboard, mask);
-    % Calculate watershed based on the modified chessboard
-    Ld2 = watershed(chessboard2);
-    % Take original image and add on the lines calculated for splitting
-    W = A;
-    W(Ld2 == 0) = 0;
-  end
-#+END_SRC
-
-\clearpage
 *** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
 #+LABEL: lst:docgen
