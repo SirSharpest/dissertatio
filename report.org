@@ -686,7 +686,6 @@ From statistical testing a final result(s) can be used to answer scientific ques
 #+ATTR_LATEX: :width 15cm
 [[file:./images/pipeline.png]]
 
-
 ** Image Analysis Methods
 Initially, this project aimed to use existing software for feature extraction, however the range of data (due to the spectrum of genotypes in the study) meant that software which worked well for certain genotypes of wheat did not work well on others.
 
@@ -751,7 +750,7 @@ The software implementation for this was done in MATLAB cite:MATHWORKS2017, this
 
 The process creates a black and white copy of the image, performs erosion and dilation to remove holes and erroneous pixels. A distance map is then created, this represents each pixel, which is plant material (grains), as an integer value of distance from the closest non-plant pixel. This map combines with the watershed algorithm to provide an estimate of where objects are incorrectly connected (fused grains), subtracting this from the original 3D image provides cleaning split and segmented grains which can be passed through to the next stage of the pipeline.
 
-**** Why this algorithm works
+**** Reasons for Improvement
 
 This improved algorithm for measuring distance between points works well with this data because of the variation in seed morphology.
 
@@ -779,14 +778,274 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 
 
 
+\clearpage
 ** CT Analysing Library Methods
-*** Spike Rejoining
-*** Data Aggregating
+The CT Analysing Library provided by this project, aims to reduce the amount of work and time required to organise, analyse and pull meaning out of \micro-CT data.
+Here several of the more novel features of the library are explained.
+
+*** CT Data Object
+
+The CT Analysing Library uses a mixture of object orientated (OOP) and functional programming paradigms, the main initialisation function for the object /CTData/ enables the storing of data and application of functions upon it, making data organisation much more straightforward.
+
+#+CAPTION: CT Data Object Initialisation Method
+#+LABEL: lst:ctdata
+#+BEGIN_SRC python
+class CTData():
+    def __init__(self, folder, rachis):
+	"""
+	This is the initialise function for the CTData object,
+	this will only need called once.
+
+	@param folder the folder to look for data in
+	@param rachis a boolean to decide to load in rachis data or not
+	"""
+	try:
+	    self.make_dataframe(folder, get_rachis=rachis)
+	    self.clean_data()
+	    self.create_dimensions_ratio()
+	    self.df = self.df.reset_index(drop=True)
+	except (ValueError, NoDataFoundException):
+	    raise NoDataFoundException
+	self.additional_data = None
+#+END_SRC
+
 *** Loading Data
+
+Initial data loading is performed by the /gather_data/ function, it takes a folder string and performs a regular expression check for all CSV files. From the files found in this search this function performs separation of rachis information (data about the spike's inner nodes) and the files containing seed/grain data.
+
+These are returned together as a tuple, the data found is stored as part of the /CTData/ object for use in the processing pipeline.
+
+#+CAPTION: Loading Data Function
+#+LABEL: lst:gather
+#+BEGIN_SRC python
+  def gather_data(self, folder):
+      """
+      this function gathers together all
+      the data of interest
+      @param folder is a starting folder
+      @returns tuple of (seed files, rachis files)
+      """
+      # check the end of the folder has a '/'
+      if folder[-1] != '/':
+	  folder = folder + '/'
+      search_params = '{0}*/*.csv'
+      candidate_files = glob(search_params.format(folder))
+      # Check data was found
+      if len(candidate_files) == 0:
+	  raise NoDataFoundException
+      # we aren't bothered about the raw files so lets remove them
+      candidate_files = [f for f in candidate_files if 'raw' not in f]
+      # now let's separate out the rachis
+      rachis = [f for f in candidate_files if 'rachis' in f]
+      # and just assume the rest is what we want
+      candidate_files = [f for f in candidate_files if 'rachis' not in f]
+      return (candidate_files, rachis)
+#+END_SRC
+
+*** Spike Rejoining
+The /Scanco/ \micro-CT100 scanner (/Scanco/ Medical, Switzerland) allows for a carousel loading of samples, the maximum allowed length of a sample is ~10cm, in this study the majority of wheat spikes exceed this limit. A solution was found in splitting these samples in half and creating two separated \micro-CT scans.
+
+This process means that post imaging these sample data need to be reconnected and the $z$ axis of all scans need adjusted.
+
+One of the main issues of this task is that there are multiple ways that rejoining could be implemented, this library provides a function that standardises the process. Making repeatable results much easier to produce.
+
+The implementation for this searches through the provided data frame for spikes which are not marked as being 'all', that is to say complete and non-split. From these spikes left, they are either marked 'top' or 'bottom', using an associated 'Sample name' these can be linked. Once linked the top of the spikes need to have their $z$ attribute increased by the size of the bottom spike.
+
+#+CAPTION: Spike Rejoining Function
+#+LABEL: lst:join
+#+BEGIN_SRC python
+    def join_spikes_by_rachis(self):
+	"""
+	Important part of this function is that we accept that the data is what it is
+	that is to say: rtop, rbot and Z are all orientated in the proper direction
+
+	It's main purpose is to join split spikes by rachis nodes identified in the
+	analysis process
+
+	@param grain_df is the grain dataframe to take on-board
+	"""
+	# So we are only really interested in grains which are not labelled with
+	# 'all' in partition, so let's id them to start with
+	for sn in self.df[self.df['Ear'] != 'all']['Sample name'].unique():
+	    # Calculate estimated bottom location of a spike
+	    bot = self.df.loc[(self.df['Sample name'] == sn)
+			      & (self.df['Ear'] == 'bot')]['rbot']
+	    # Apply bottom measurement where required by incrementing
+	    # 'z' values to top scans
+	    self.df.loc[
+		(self.df['Sample name'] == sn) &
+		(self.df['Ear'] == 'top'), 'z'] =
+			self.df.loc[(self.df['Sample name'] == sn) &
+			(self.df['Ear'] == 'top'), 'z'] + bot
+#+END_SRC
+
+*** Data Aggregating
+The analysis method used is focused on extracting data on a per-grain basis, grains have a many to one relationship of spikes.
+
+In order to look at the data on a spike-per-spike basis rather than from seed-to-seed the data needs to aggregated.
+
+The function /aggregate_spike_averages/ takes a list of attributes to be aggregated and a manner of grouping the data. Using this data new columns are created based on median; mean; standard deviation; sum. These new columns are stored in the /CTData/ object directly.
+
+#+CAPTION: Aggregating Data Function
+#+LABEL: lst:agg
+#+BEGIN_SRC python
+  def aggregate_spike_averages(self, attributes, groupby):
+      """
+      This will aggregate features (specified by attributes) into their medians
+      on a per-spike basis.
+
+      Makes direct changes to the dataframe (self.df)
+
+      @param attributes list of features to average
+      @param groupby how the data should be aggregated
+      """
+      trans_funcs = {'median': np.median,
+		     'mean': np.mean, 'std': np.std, 'sum': np.sum}
+      for att in attributes:
+	  for col, func in trans_funcs.items():
+	      self.df['{0}_{1}'.format(col, att)] = self.df.groupby(groupby)[
+		  att].transform(func)
+      self.df['grain_count'] = self.df.groupby(
+	  groupby)[groupby].transform(len)
+#+END_SRC
+
 *** Cleaning and Removing Erroneous Data
-*** Data Transformations
-*** T-Tests
+
+Data are cleaned by calculating percentiles of minimum data, these extreme values are removed. In addition to this, values found in seed/grain literature are used to remove data based on known extremes cite:Gegas2010,Hughes2017.
+
+#+CAPTION: Cleaning Data
+#+LABEL: lst:clean_data
+#+BEGIN_SRC python
+  def clean_data(self, remove_small=False, remove_large=False):
+      """
+      Following parameters outlined in the
+      CT software documentation I remove outliers
+      which are known to be errors
+
+      @param remove_small a boolean to remove small grains or not
+      @param remove_large a boolean to remove larger grains or not
+      """
+      self.df = self.df.dropna(axis=1, how='all')
+      self.df = self.df[self.df['surface_area'] < 100]
+      self.df = self.df[self.df['volume'] > 3.50]  # this is given for brachy
+      self.df = self.df[self.df['volume'] < 60]
+      if remove_large:
+	  self.df = self.df[self.df['volume'] <
+			    self.df['volume'].quantile(.95)]
+      if remove_small:
+	  self.df = self.df[self.df['volume'] >
+			    self.df['volume'].quantile(.05)]
+
+#+END_SRC
+
+*** Data Transformations (PCA)
+In this project several data transformation algorithms are implemented uses the /Scipy/ library cite:Oliphant2007.
+
+For principal component analysis (PCA), the CT Analysis Library implements it using two principal components (PCs) only. The decision to limit this library
+to using only two PCs was made to keep data as easy to interpret as possible. Additionally experimentation with this transform shows a high percentage of
+coverage and data explanation from only two PCs.
+
+Prior to using the PC function, data are standardised, this is either done through log transforms or by Box Cox power transforms. This provides more normal data and allows for information to be more likely to provide a significant output.
+
+#+CAPTION: PCA Data Transform
+#+LABEL: lst:pca
+#+BEGIN_SRC python
+  def perform_pca(df, features, groupby, groupby2=None,
+		  groupby3=None, standardise=False):
+      """
+      This function will perform a PCA and return the principle components as a
+      dataframe.
+
+      @param n_components components to check form
+      @param df dataframe of the data to analyse
+      @param features features from the dataframe to use
+      @param groupby the column in the df to use
+      @param standardise=False asks whether to standardise the data prior to PCA
+      @returns a dataframe of the data, the pca object & the scaled data for reference
+      """
+      pca = PCA(components=2)
+      data = standarise_data(
+	  df, features, groupby) if standardise else df.loc[:, features].values
+      principalComponents = pca.fit_transform(data)
+      principalDf = pd.DataFrame(data=principalComponents, columns=[
+				 'principal component 1', 'principal component 2'])
+      if groupby2 is None:
+	  return (pd.concat([principalDf, df[[groupby]]],
+			    axis=1), pca, data)
+      if groupby3 is None:
+	  return (pd.concat([principalDf, df[[groupby]],
+			     df[[groupby2]]], axis=1), pca, data)
+      else:
+	  return (pd.concat([principalDf, df[[groupby]],
+			     df[[groupby2]], df[[groupby3]]], axis=1), pca, data)
+
+
+
+#+END_SRC
+
 *** Bayesian Hypothesis Testing
+
+Null-hypothesis significance testing (NHST) is done typically through T-test like functions, where the means of two groups are tested.
+As a novel addition, this library provides an improvement upon NHST by using a Bayesian approach proposed by Kruschke in 2012 cite:Kruschke2012.
+
+Here a full model is produced where data are first normalised through power transforms, model parameters set and then 1000 simulations ran via Markov chain Monte Carlo to produce a larger data sample to perform mean testing on.
+
+The full model is explained later in this chapter.
+
+\clearpage
+
+#+LABEL: lst:bayes
+#+CAPTION: Bayesian Model Function
+#+BEGIN_SRC python
+  def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
+      """
+      Implements and uses the hypothesis test outlined as a robust replacement
+      for the t-test
+      @param group1 a numpy array to test
+      @param group2 a numpy array to test
+      @param group1_name the name of the first group
+      @param group2_name the name of the second group
+      @returns a summary dataframe
+      """
+      group1 = np.log10(group1)
+      group2 = np.log10(group2)
+      y = pd.DataFrame(dict(value=np.r_[group1, group2], group=np.r_[
+		       [group1_name]*len(group1), [group2_name]*len(group2)]))
+      mu_m = y.value.mean()
+      mu_s = y.value.std()*2
+      with pm.Model() as model:
+	  group1_mean = pm.Normal('{0}_mean'.format(group1_name), mu_m, sd=mu_s)
+	  group2_mean = pm.Normal('{0}_mean'.format(group2_name), mu_m, sd=mu_s)
+      sig_low = 1
+      sig_high = 1000
+      with model:
+	  group1_std = pm.Uniform('{0}_std'.format(
+	      group1_name), lower=sig_low, upper=sig_high)
+	  group2_std = pm.Uniform('{0}_std'.format(
+	      group2_name), lower=sig_low, upper=sig_high)
+      with model:
+	  nu = pm.Exponential('nu_minus_one', 1/29.) + 1
+      with model:
+	  lambda_1 = group1_std**-2
+	  lambda_2 = group2_std**-2
+	  group1 = pm.StudentT(group1_name, nu=nu, mu=group1_mean,
+			       lam=lambda_1, observed=group1)
+	  group2 = pm.StudentT(group2_name, nu=nu, mu=group2_mean,
+			       lam=lambda_2, observed=group2)
+      with model:
+	  diff_of_means = pm.Deterministic(
+	      'difference of means', group1_mean - group2_mean)
+	  diff_of_stds = pm.Deterministic(
+	      'difference of stds', group1_std - group2_std)
+	  effect_size = pm.Deterministic('effect size',
+					 diff_of_means /np.sqrt((group1_std**2 +
+					 group2_std**2) / 2))
+      with model:
+	  trace = pm.sample(2000, cores=2)
+	  return trace, pm.summary(trace, varnames=['difference of means',
+						    'difference of stds','effect size'])
+#+END_SRC
+
 *** Plotting Functions
 *** Adding Spike Experiment Information
 #+NAME: lst:infojoining
