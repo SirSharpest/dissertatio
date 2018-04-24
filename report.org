@@ -661,7 +661,7 @@ The entire process is represented as a diagram in figure:[[fig:matlab]]
 
 #+NAME: fig:matlab
 #+CAPTION: Image Processing Pipeline
-#+ATTR_LATEX: :width 13cm
+#+ATTR_LATEX: :width 15cm
 [[file:./images/matlab.png]]
 
 *** Data Analysis Pipeline
@@ -675,10 +675,15 @@ The data needs to be checked for false positives, this is done by first removing
 
 When the data has been cleaned, additional data is added. The added data provides information about the experiment, plant names; genotypes; top and bottom scans. With this data, information on scans which need to be joined is provided.
 
+Using data on $x,y,z$ coordinates a approximation is made to join spikes at the most likely point at which they were initially cut for imaging. Once this is performed data columns can be aggregated to form averages, medians, standard deviations etc. on a per plant (sample) basis.
+
+Finally, a decision is made by way of human input as to what type of statistics should be used to test hypothesis. This decision is mostly based on the distribution of the data where $X \sim \mathcal{N}(\mu,\,\sigma^{2})$ data is tested with parametric tests (e.g. Student's T-Test) else non-parametric tests are used (e.g. Welch's T-Test).
+
+From statistical testing a final result(s) can be used to answer scientific questions on the data. The entire process is represented in figure:[[fig:pipeline]].
 
 #+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
-#+ATTR_LATEX: :width 13cm
+#+ATTR_LATEX: :width 15cm
 [[file:./images/pipeline.png]]
 
 
@@ -697,7 +702,6 @@ a  /quasi-euclidean/ distance transform was implemented into the analysis pipeli
 
 This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
 line segments cite:Pfaltz1966.
-
 
 #+NAME: eqn:qe
 \begin{align}
@@ -824,35 +828,37 @@ Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the s
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:glossary
 #+CAPTION: Dictionary for Terms and acronyms
-|--------------+------------------------------------------------------------------------------|
-| *Term*       | *Definition*                                                                 |
-|--------------+------------------------------------------------------------------------------|
-| \micro-CT    | Micro Computed Tomography                                                    |
-|--------------+------------------------------------------------------------------------------|
-| Genotype     | A genetically distinct individual or group                                   |
-|--------------+------------------------------------------------------------------------------|
-| Phenotype    | A physical/measurable trait                                                  |
-|--------------+------------------------------------------------------------------------------|
-| Alleles      | A variant of a gene                                                          |
-|--------------+------------------------------------------------------------------------------|
-| Genus        | Classification ranking, below the /family/ grouping                          |
-|--------------+------------------------------------------------------------------------------|
-| Genome       | The complete genetic make up of an organism, which defines its individuality |
-|--------------+------------------------------------------------------------------------------|
-| Morphometric | The shape and form of an organism                                            |
-|--------------+------------------------------------------------------------------------------|
-| GUI          | Graphical User Interface                                                     |
-|--------------+------------------------------------------------------------------------------|
-| PCA          | Principal Component Analysis                                                 |
-|--------------+------------------------------------------------------------------------------|
-| Spike        | A singular stalk of wheat                                                    |
-|--------------+------------------------------------------------------------------------------|
-| Spikelet     | A group of seeds all forming from the same node in a spike                   |
-|--------------+------------------------------------------------------------------------------|
-| MVC          | Model View Controller - A design pattern for GUIs                            |
-|--------------+------------------------------------------------------------------------------|
-| OOP          | Object Orientated Programming                                                |
-|--------------+------------------------------------------------------------------------------|
+|----------------------------------------+------------------------------------------------------------------------------|
+| *Term*                                 | *Definition*                                                                 |
+|----------------------------------------+------------------------------------------------------------------------------|
+| \micro-CT                              | Micro Computed Tomography                                                    |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genotype                               | A genetically distinct individual or group                                   |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Phenotype                              | A physical/measurable trait                                                  |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Alleles                                | A variant of a gene                                                          |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genus                                  | Classification ranking, below the /family/ grouping                          |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genome                                 | The complete genetic make up of an organism, which defines its individuality |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Morphometric                           | The shape and form of an organism                                            |
+|----------------------------------------+------------------------------------------------------------------------------|
+| GUI                                    | Graphical User Interface                                                     |
+|----------------------------------------+------------------------------------------------------------------------------|
+| PCA                                    | Principal Component Analysis                                                 |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Spike                                  | A singular stalk of wheat                                                    |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Spikelet                               | A group of seeds all forming from the same node in a spike                   |
+|----------------------------------------+------------------------------------------------------------------------------|
+| MVC                                    | Model View Controller - A design pattern for GUIs                            |
+|----------------------------------------+------------------------------------------------------------------------------|
+| OOP                                    | Object Orientated Programming                                                |
+|----------------------------------------+------------------------------------------------------------------------------|
+| $X \sim \mathcal{N}(\mu,\,\sigma^{2})$ | Notation for Normal (Gaussian) Distribution                                   |
+|----------------------------------------+------------------------------------------------------------------------------|
 
 \clearpage
 ** Wheat Varieties
