@@ -1188,10 +1188,94 @@ One example of this is in the load data function shown in example:[[lst:ctguiex]
 	  QMessageBox.warning(self.window, "Data Already Loaded",
 			      "Sorry! You've already loaded in data")
 #+END_SRC
-
-
 *** Plot Window Rendering
+
+Plots where rendered in this application by creating a custom object which inherited from the /matplotlib/ backend /qt5agg/. This object is both a /Qt/ widget and a /matplotlib/ figure. This class provided a straightforward mechanism that would allow for any style of plot (which /matplotlib/ supports) to be created.
+
+This object also acts as a template class for actual implementations, each window type of this application that uses plots (/Analysis Tab/; /Hypothesis Testing Tab/) creates a custom /MyMplCanvas/ child class. To specifically handle inputs which are unique to that window.
+
+The unique inheritance of this class allows it to be treated as a /Qt/ widget, when it is created by a controller it  can be added to the view with no alterations required.
+
+#+CAPTION: The Matplotlib FigureCanvas Polymorphic Class
+#+NAME: lst:matbackend
+#+BEGIN_SRC python
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+...
+  class MyMplCanvas(FigureCanvas):
+      """Ultimately, this is a QWidget (as well as a FigureCanvasAgg, etc.)."""
+
+      def __init__(self, parent=None, window=None, df=None,
+		   column=None, width=5, height=4,
+		   dpi=100, plot_type=None, group_by=None, ttest=False):
+
+	  if group_by == 'None':
+	      self.group_by = None
+	  else:
+	      self.group_by = group_by
+	  self.ttest = ttest
+	  self.window = window
+	  self.plot_type = plot_type
+	  self.column = column
+
+	  if plot_type == 'histogram' and self.group_by is not None:
+	      self.fig = self.facet_hist(df, column, group_by)
+	      FigureCanvas.__init__(self, self.fig)
+	  else:
+	      self.fig = Figure(figsize=(width, height), dpi=dpi)
+	      self.axes = self.fig.add_subplot(111)
+	      FigureCanvas.__init__(self, self.fig)
+	      self.compute_initial_figure(self.axes, df)
+
+	  self.setParent(parent)
+	  FigureCanvas.setSizePolicy(self,
+				     QtWidgets.QSizePolicy.Expanding,
+				     QtWidgets.QSizePolicy.Expanding)
+	  FigureCanvas.updateGeometry(self)
+#+END_SRC
+
 *** Creating GUI Elements When Required
+
+One of the key features of this project, and this GUI application specifically is the ability to handle dynamic input. The loading additional experiment information allows for the opportunity for never-before seen data to be presented. This allows users to define custom classification and testing groups. An example from the research element of this project is shown in figure:[[fig:dynam]].
+
+#+LABEL: fig:dynam
+#+CAPTION: Showing how groups are loaded from columns for potential data splitting and testing
+#+ATTR_LATEX: :width 10cm
+[[./images/dynamicselection.png]]
+
+Here in example:[[lst:testwindowview]] lines 16,17 show that combo buttons are created for the /Hypothesis Testing/ window to display to a user. A similar system is added for the /Analysis Window/ where decisions are carried out as to what columns could be potentially used for object grouping. This is calculated by dividing the columns contents, if it is numeric and has repeating elements or if the contents are text then they are (generally) applicable for use in grouping grains for testing or plotting.
+
+#+NAME: lst:testwindowview
+#+CAPTION: The Hypothesis Testing Window class
+#+BEGIN_SRC python
+  class TestWindowView():
+      def __init__(self,df,ui,plot_type):
+	  """
+	  Given a dataframe and a layout spec
+	  this class populates appropriate radio button functionality
+	  """
+	  self.df = df
+	  self.ui = ui
+	  self.plot_type = plot_type
+	  self.ui.cb_test_grouping.clear()
+	  self.ui.cb_test_attribute.clear()
+	  # Line up attributes
+	  self.ui.cb_test_attribute.addItems(list(
+	      filter(lambda x: is_numeric_dtype(df[x]), df.columns)))
+
+	  # Find groups
+	  self.ui.cb_test_grouping.addItems(
+	      self.find_candidates_for_grouping(self.df))
+
+      def find_candidates_for_grouping(self, df):
+	  lst = []
+	  for c in df.columns:
+	      if len(df[c].unique()) < 30:
+		  if not is_numeric_dtype(df[c]):
+		      lst.append(c)
+	  return lst
+#+END_SRC
+
+
 *** Dynamically Generating Plots
 ** Data Analysis Methods
 ** Bayesian Modelling
