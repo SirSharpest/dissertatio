@@ -1053,8 +1053,61 @@ The full model is explained later in this chapter in a much more informative man
 ** CT GUI Application Methods
 The CT GUI Application enables a researcher to perform analysis with a high degree of automation and ease of use. Here several of the elements of software engineering behind this application and its design are explored.
 
+*** Windows
+The CT GUI Application uses a tabbed interface, each tab carries out a specific task. This follows Gestalt themes of making user interfaces inherently clear with grouping together functionality in specific areas.
+
+**** The Load Data Window
+This window acts as the opening to the software, where a user can select loading of files and data. As well as options such as whether to load spike rachis information.
+#+LABEL: fig:loaddata
+#+CAPTION: The Initial Data Loading Window for the GUI
+#+ATTR_LATEX: :width 11.5cm
+[[./images/Screenshots/load_data_with_rachis.png]]
+**** Table View
+In addition to the tabs provide by the application, a table view is accessed via the system menu bar. This allows an alternative view of the data which is not pictorial.
+#+LABEL: fig:loaddata
+#+CAPTION: The Table view in used in the GUI
+#+ATTR_LATEX: :width 5cm
+[[./images/table.png]]
+**** The Clean Data Window
+The second tab this software introduces is a data cleaning and preparation window. This tab allows additional data to be loaded into an experiment such as scan names, genotype information etc. Options to clean the data by removing outliers is also presented with various options.
+#+LABEL: fig:cleandata
+#+CAPTION: The Data Cleaning and Loading Window for the GUI
+#+ATTR_LATEX: :width 11.5cm
+[[./images/Screenshots/clean_data_remove_large.png]]
+
+**** The Analysis Window
+The third tab is made available once data has been loaded, access to it prior to loading data will cause the application to provide the user with a warning that it will not function correctly without loading information first.
+
+This window gives a user the ability to rapidly investigate data, it enables the plotting of data via histograms and box plots, both of these are incredibly useful for initial investigation of data. It tells researchers a lot about the shape of their data and allows them to see an estimate of means, averages and spread of data.
+
+#+LABEL: fig:analysis
+#+CAPTION: The Analysis/Investagation Window for the GUI
+#+ATTR_LATEX: :width 11.5cm
+[[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]]
+
+**** The Hypothesis Testing Window
+The fourth and final window which this application presents is a method for performing hypothesis testing on the loaded data.
+
+The method for implementing tests is flexible and more could be easily implemented; currently the Student's T-test, Welch's T-test and a Bayesian T-test are implemented to give a range of NHSTs.
+
+#+LABEL: fig:hypotest
+#+CAPTION: The Hypothesis Testing Window for the GUI
+#+ATTR_LATEX: :width 11.5cm
+[[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]
+
 *** QT GUI Loading
 
+The GUI is started from a minimal main method, as dictated by standard model-view-controller (MVC) convention. This leads to an /AppWindow/ object which inherits from the /Qt/'s library /QMainWindow/. The MVC model comes into full effect in the constructor for this class.
+
+This constructor assigns a /PyQt5/ GUI file to itself. This allows for a predefined series of objects with rigid layout to be used in the software.
+
+A series of setup functions are called which connect triggers (functions called when GUI elements are interacted with) to the correct controllers.
+
+Th
+
+
+#+CAPTION: The AppWindow Class' initialisation function
+#+LABEL: lst:appwindow
 #+BEGIN_SRC python -n
 class AppWindow(QMainWindow):
     def __init__(self):
@@ -1089,6 +1142,7 @@ class AppWindow(QMainWindow):
 *** Dynamically Generating Plots
 ** Data Analysis Methods
 ** Bayesian Modelling
+
 
 * Results
 * Discussion
