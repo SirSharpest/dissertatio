@@ -315,7 +315,7 @@ Pandas is used to read the CSV files which the raw data is stored in. This libra
 *** Xlrd
 This extension library is required in order to read Microsoft encoded files. Extra experiment information can be provided with the "xlsx" extension.
 *** Statsmodels
-Bayesian hypothesis testing is provided through this library.
+The backbone of the data analysis model is handled by this library, it also provides an implementation of the Markov chain Monte Carlo system used to generate random samples from the model population.
 *** PyQT5
 There were many options for creating a user interface in Python, the language provides its own core library via the /TKinter/ module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
 ** Version control
@@ -329,10 +329,10 @@ Additionally, /setup.py/ has been used to provide installation of the library, t
 Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:[[fig:github]]
 #+CAPTION: Github Issue Tracking
 #+NAME: fig:github
-#+ATTR_LATEX: :width 12cm
+#+ATTR_LATEX: :width 10cm
 [[./images/github.png]]
 
-** Implementation
+** Implementation Methodology
 Strict software engineering principles were applied during creation of this project. The use of standards, design patterns and code-linters have been used throughout to minimise the possibility of errors and to create wholly extendable software. These devices enable understandable and self-documented code allowing future users to quickly start using the provided packages.
 *** Standards
 The main standard adhered to for software provided by this project is the PEP8 style guide cite:VanRossum. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
@@ -979,8 +979,19 @@ As a novel addition, this library provides an improvement upon NHST by using a B
 
 Here a full model is produced where data are first normalised through log transforms, model parameters set and then 1000 simulations ran via Markov chain Monte Carlo to produce a larger data sample to perform mean testing on.
 
-The full model is explained later in this chapter.
+The 1000 simulations are ran twice, these form two independent chains, checking of convergence and agreement on these random chains is performed to reduce the chance of error.
 
+This function returns a /trace/ object which contains all of the data generated, the data of particular interest is the "difference of means" that this method calculates and the credible interval graphs which it returns the values for, figure:[[fig:ci]] provides an example of such.
+
+#+NAME: fig:ci
+#+CAPTION: An example credible interval produced by this method
+#+ATTR_LATEX :width 10cm
+[[./images/ci.png]]
+
+
+The full model is explained later in this chapter in a much more informative manner and fully defined in terms of relevance to results of this project. Listing:[[lst:bayes1]] provides the python model implemented.
+
+#+ATTR_LATEX: :placement [!hpb]
 #+LABEL: lst:bayes1
 #+CAPTION: Bayesian Model Function (part 1)
 #+BEGIN_SRC python -n
@@ -1010,14 +1021,7 @@ The full model is explained later in this chapter.
 	      group1_name), lower=sig_low, upper=sig_high)
 	  group2_std = pm.Uniform('{0}_std'.format(
 	      group2_name), lower=sig_low, upper=sig_high)
-#+END_SRC
 
-\clearpage
-
-#+ATTR_LATEX: :placement [!tpb]
-#+LABEL: lst:bayes2
-#+CAPTION: Bayesian Model Function (part 2)
-#+BEGIN_SRC python +n
       with model:
 	  nu = pm.Exponential('nu_minus_one', 1/29.) + 1
       with model:
@@ -1262,6 +1266,7 @@ class AppWindow(QMainWindow):
 
 #+END_SRC
 \clearpage
+
 
 ** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
