@@ -981,11 +981,12 @@ Here a full model is produced where data are first normalised through log transf
 
 The 1000 simulations are ran twice, these form two independent chains, checking of convergence and agreement on these random chains is performed to reduce the chance of error.
 
-This function returns a /trace/ object which contains all of the data generated, the data of particular interest is the "difference of means" that this method calculates and the credible interval graphs which it returns the values for, figure:[[fig:ci]] provides an example of such.
+This function returns a /trace/ object which contains all of the data generated, the data of particular interest is the "difference of means" that this method calculates and the credible interval graphs which it returns the values for, figure:[[fig:ci]] provides an example of such. The example provided shows the likelihood of two means of an interaction term of
+$length \times  depth \times width$ overlapping.
 
 #+NAME: fig:ci
 #+CAPTION: An example credible interval produced by this method
-#+ATTR_LATEX :width 10cm
+#+ATTR_LATEX: :width 15cm
 [[./images/ci.png]]
 
 
