@@ -1091,10 +1091,16 @@ The fourth and final window which this application presents is a method for perf
 The method for implementing tests is flexible and more could be easily implemented; currently the Student's T-test, Welch's T-test and a Bayesian T-test are implemented to give a range of NHSTs.
 
 #+LABEL: fig:hypotest
-#+CAPTION: The Hypothesis Testing Window for the GUI
+#+CAPTION: The Hypothesis Testing Window for the GUI with a difference of means plot
 #+ATTR_LATEX: :width 11.5cm
 [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]
 
+#+LABEL: fig:hypotest
+#+CAPTION: The Hypothesis Testing Window for the GUI with a T-test and boxplot
+#+ATTR_LATEX: :width 11.5cm
+[[./images/Screenshots/hypothesis_ttest_g1_att_2.png]]
+
+\clearpage
 *** QT GUI Loading
 
 The GUI is started from a minimal main method, as dictated by standard model-view-controller (MVC) convention. This leads to an /AppWindow/ object which inherits from the /Qt/'s library /QMainWindow/. The MVC model comes into full effect in the constructor for this class.
@@ -1103,7 +1109,7 @@ This constructor assigns a /PyQt5/ GUI file to itself. This allows for a predefi
 
 A series of setup functions are called which connect triggers (functions called when GUI elements are interacted with) to the correct controllers.
 
-Th
+This main window spawns and hosts the controllers which dictate handling of their respective window (tab).
 
 
 #+CAPTION: The AppWindow Class' initialisation function
@@ -1135,8 +1141,55 @@ class AppWindow(QMainWindow):
 	self.show()
 #+END_SRC
 
-*** Integration with CT Analysis Library
+\clearpage
+
 *** Connecting Signals from GUI to Function Calls
+In example:[[lst:connecting]] lines 11,12,13 show how the UI object has individual members, each of these has a "clicked" trigger, which when triggered calls a function pointer which this controller handles.
+#+CAPTION: Example of connecting function pointers
+#+NAME: lst:connecting
+#+BEGIN_SRC python
+  class FindFilesWindow():
+      def __init__(self, window, ui):
+	  self.ui = ui
+	  self.window = window
+	  self.connect_view_functions()
+      def connect_view_functions(self):
+	  # Load data page
+	  self.ui.btn_find_files.clicked.connect(self.search_for_files)
+	  self.ui.btn_load_data.clicked.connect(self.find_files)
+	  self.ui.btn_to_csv.clicked.connect(self.save_file_dialog)
+#+END_SRC
+
+*** Integration with CT Analysis Library
+
+The integration with the CT Analysis Library is frequent and spread throughout this application and functions as a key dependency for data organisation.
+
+One example of this is in the load data function shown in example:[[lst:ctguiex]]. Here the custom exception classes are imported and used for data already loaded, as well as the loading functions itself.
+
+#+NAME: lst:ctguiex
+#+CAPTION: The load data function from the load_data window
+#+BEGIN_SRC python -n
+  def find_files(self):
+      try:
+	  if self.window.get_data() is not None:
+	      raise DataAlreadyLoaded
+	  self.window.set_data(CTGUIData(self.ui.directory.text(),
+					 self.ui.rdb_rachis_yes.isChecked()))
+	  if self.window.get_data():
+	      self.ui.btn_to_csv.setEnabled(True)
+	      self.ui.tab_preprocess.setEnabled(True)
+	      self.ui.tab_analysis.setEnabled(True)
+	      self.set_files_list()
+	      self.ui.lbl_status.setText('Data loaded!')
+      except TypeError as e:
+	  QMessageBox.warning(self.window, "Finding Files Error",
+			      "Couldn't find files in given location")
+      except DataAlreadyLoaded as e:
+	  QMessageBox.warning(self.window, "Data Already Loaded",
+			      "Sorry! You've already loaded in data")
+#+END_SRC
+
+
 *** Plot Window Rendering
 *** Creating GUI Elements When Required
 *** Dynamically Generating Plots
