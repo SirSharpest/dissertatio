@@ -1061,7 +1061,7 @@ This window acts as the opening to the software, where a user can select loading
 #+LABEL: fig:loaddata
 #+CAPTION: The Initial Data Loading Window for the GUI
 #+ATTR_LATEX: :width 11.5cm
-[[./images/Screenshots/load_data_with_rachis.png]]
+[[./images/Screenshots/clean_data_remove_large.png]]
 **** Table View
 In addition to the tabs provide by the application, a table view is accessed via the system menu bar. This allows an alternative view of the data which is not pictorial.
 #+LABEL: fig:loaddata
@@ -1073,7 +1073,7 @@ The second tab this software introduces is a data cleaning and preparation windo
 #+LABEL: fig:cleandata
 #+CAPTION: The Data Cleaning and Loading Window for the GUI
 #+ATTR_LATEX: :width 11.5cm
-[[./images/Screenshots/clean_data_remove_large.png]]
+[[./images/clean.png]]
 
 **** The Analysis Window
 The third tab is made available once data has been loaded, access to it prior to loading data will cause the application to provide the user with a warning that it will not function correctly without loading information first.
@@ -1083,7 +1083,7 @@ This window gives a user the ability to rapidly investigate data, it enables the
 #+LABEL: fig:analysis
 #+CAPTION: The Analysis/Investagation Window for the GUI
 #+ATTR_LATEX: :width 11.5cm
-[[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]]
+[[./images/analysiswindow.png]]
 
 **** The Hypothesis Testing Window
 The fourth and final window which this application presents is a method for performing hypothesis testing on the loaded data.
@@ -1093,12 +1093,12 @@ The method for implementing tests is flexible and more could be easily implement
 #+LABEL: fig:hypotest
 #+CAPTION: The Hypothesis Testing Window for the GUI with a difference of means plot
 #+ATTR_LATEX: :width 11.5cm
-[[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]
+[[./images/differenceofmeanswindow.png]]
 
 #+LABEL: fig:hypotest
 #+CAPTION: The Hypothesis Testing Window for the GUI with a T-test and boxplot
 #+ATTR_LATEX: :width 11.5cm
-[[./images/Screenshots/hypothesis_ttest_g1_att_2.png]]
+[[./images/pvaltest.png]]
 
 \clearpage
 *** QT GUI Loading
