@@ -1397,7 +1397,7 @@ Krusche cite:Kruschke2012. This is represented as $\nu = 30$.
 \nu = 30
    \end{aligned}
  \end{align}
- \myequations{Likelihood of Model}
+ \myequations{Degrees of freedom used in Bayesian model}
 
 #+ATTR_LATEX: :width 7cm
 #+NAME: fig:expo
@@ -1432,7 +1432,7 @@ A large window for standard deviation is used (1,10000). Whilst no values in the
 \text{Uniform}(1,10000)
    \end{aligned}
  \end{align}
- \myequations{Mean equation used in Bayesian model}
+ \myequations{Standard Deviation used in Bayesian model}
 
 
 #+ATTR_LATEX: :width 7cm
