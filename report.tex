@@ -1,4 +1,4 @@
-% Created 2018-04-25 Wed 00:01
+% Created 2018-04-25 Wed 01:03
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
@@ -56,6 +56,21 @@
  pdfcreator={Emacs 27.0.50 (Org mode 9.1.9)},
  pdflang={English}}
 \begin{document}
+
+\newcommand{\zebra}[3]{%
+    {\realnumberstyle{#3}}%
+    \begingroup
+    \lst@basicstyle
+    \ifodd\value{lstnumber}%
+        \color{#1}%
+    \else
+        \color{#2}%
+    \fi
+        \rlap{\hspace*{\lst@numbersep}%
+        \color@block{\linewidth}{\ht\strutbox}{\dp\strutbox}%
+        }%
+    \endgroup
+}
 
 \newcommand{\listequationsname}{List of Equations}
 \newlistof{myequations}{equ}{\listequationsname}
@@ -190,7 +205,7 @@ Finally, and most importantly, my mother Barbara Hughes. Who believed in me, alw
   \clearpage
 
 \chapter{Introduction, Analysis and Objectives}
-\label{sec:org58d2108}
+\label{sec:orgd3b10fd}
 
 This project aims to answer a biological research question through the use of computer science, whilst also creating a software suite which will enable further studies to be carried out with ease.
 
@@ -198,10 +213,10 @@ Primarily the focus has been on the data science elements of my degree, creating
 
 Using a population of genetically diverse wheat, several hypothesis and questions are explored in the hopes of contributing to the scientific understanding of domestication. A mixture of image analysis through three-dimensional micro-computed tomography and computational analysis are used to provide these much needed solutions.
 
-Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the \emph{glossary} (table:\ref{tab:org8348433}).
+Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the \emph{glossary} (table:\ref{tab:org7ff13a6}).
 
 \section{Background}
-\label{sec:org27e5b64}
+\label{sec:org5c30bc5}
 2
    Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years \cite{Ozkan2002}. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20\% of the total calories and proteins consumed worldwide, and accounts for roughly 53\% of total harvested area (in China and Central Asia) \cite{Shiferaw2013}.
 
@@ -216,7 +231,7 @@ Modern breeding programs have had some success in selecting primitive undomestic
 As such, there are questions still left open about how best to make selections for crop breeding. There is also a lack of formalised modelling of information which could be of use to these areas of research.
 
 \section{Biological Question and Materials}
-\label{sec:orga4e9768}
+\label{sec:orgf739960}
 
 The driving question for this research asks "Can \textmu{}-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
 
@@ -249,10 +264,10 @@ The genotypes used in this study are listed here, denoted by "\emph{X} N" where 
   \end{itemize}
 
 \end{multicols}
-Full species names are found in table:\ref{tab:org1237898}.
+Full species names are found in table:\ref{tab:org974d129}.
 
 \subsection{Why use \textmu{}-CT image analysis?}
-\label{sec:org7477f8c}
+\label{sec:org8a57c97}
 In the past, science has been greatly limited by the amount of data which could be processed in an experiment. In the last few decades the inclusion of computer science has reduced this bottleneck. Now, the challenge for many fields of research is producing more data and this is often cited as the new limiting factor in creating robust studies \cite{Furbank2011}.
 
 Many experiments aim to meet the demand for data by using high-throughput automated imaging systems \cite{Naumann2007,Prasanna2013,Humplik2015}. These systems have, in the last decade, become a standard and accepted tool for data generation. However, they will only produce 2-dimensional data on a per-plant basis. Image processing research has had success in modifying these automated systems in order to produce a pseudo 3-dimensional structure using stero-imaging \cite{Roussel2016}. Even so, these techniques require destructive harvesting of materials and do not provide information of internal structure.
@@ -262,9 +277,9 @@ For decades medical research has found success with X-Ray imaging technology \ci
 In this study, \textmu{}-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, whilst retaining developmental and positional information, or in such a high throughput or quality.
 
 \subsection{Extracted Data}
-\label{sec:org3e8abdd}
+\label{sec:org19cc6f8}
 
-These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:\ref{fig:org6670faa} and are as follows:
+These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:\ref{fig:orge14a6e4} and are as follows:
 
 \begin{multicols}{2}
 
@@ -288,19 +303,19 @@ These samples come from over 70 plants and provided in excess of 2000 seeds for 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=17cm]{./images/seeds.png}
-\caption{\label{fig:org6670faa}
+\caption{\label{fig:orge14a6e4}
 Wheat grain labelled (\emph{left}), wheat grain cut in half (\emph{right}), adapted from Hughes et al. \cite{Hughes2017}}
 \end{figure}
 
 \section{Significance to Current Research}
-\label{sec:org2cbe70f}
+\label{sec:org7fb88d3}
 The biological interest in this area has been expressed in several areas of research \cite{Leigh2013}, it is proposed that the key to unlocking diversity in the wheat genus lies in these ancestor, undomesticated species \cite{Cockram2007}.
 
 This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress. Each of these areas depend on making informed decisions in order to direct experiments. By producing information at an individual seed level, this study has been able to provide data that can offer suggestions of plant potential and behaviour.
 
 Often, the most sought after traits are centred around thousand-grain-weight (TGW) as well as standard deviation of seed shapes. During harvesting, filters are used to only allow ideal shaped seeds through. This means that, potentially, despite a breed of wheat providing a high average volume of seed in reality much of it may go to waste if the shapes are not uniform. This research aims to alleviate this problem and provides low level information which is sorely required.
 
-The individual images in figure:\ref{fig:org2678df7} show, at a glance, the diversity and also the difference in the wild and cultivated (domesticated)
+The individual images in figure:\ref{fig:org00c8e3d} show, at a glance, the diversity and also the difference in the wild and cultivated (domesticated)
 species. This work allows for these differences to be quantified and evaluated into useful metrics for answering research based questions.
 
 By better understanding the morphometric deviations in wheat species, more informed choices can be made when it comes to breeding wheat for the future and to fulfil ever-changing requirements.
@@ -310,24 +325,24 @@ By better understanding the morphometric deviations in wheat species, more infor
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=17cm]{./images/philotree.png}
-\caption{\label{fig:org2678df7}
+\caption{\label{fig:org00c8e3d}
 Phylogeny of wheat genotypes (Provided by Dr. Hugo Oliveira)}
 \end{figure}
 
 \section{Aims and Objectives}
-\label{sec:org271f50f}
+\label{sec:org0ce9095}
 
 The overarching aim of this project has been to create several pieces of software which aid in answering the biologically significant questions outlined. As well as to prove/disprove the hypothesis stated below.
 
 The software created is robust in order to duplicate results and is flexible as to allow for further studies to be carried out and to use the same method.
 
-Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project. Figure:\ref{fig:orgd75fa3e} illustrates the range of diversity
+Novel additions have been made to existing image analysis libraries in order to make them more flexible for this project. Figure:\ref{fig:orgadcd722} illustrates the range of diversity
 
 Furthermore, the library written allows for easy data organisation and automation of otherwise difficult tasks such as concatenating data from multiple sources and graphing of information. Full documentation and integrated testing allows for a suite of tools which can be built upon in future and reduce the amount of effort required for similar studies to be carried out and analysed.
 
 \section{Hypothesis}
-\label{sec:org4142d20}
-To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:\ref{fig:org2678df7}.
+\label{sec:org93843a2}
+To provide a full spectrum of analysis the null-hypothesis of this work is presented as investigating if there are morphometric differences in the seeds of several wheat varieties outlined in figure:\ref{fig:org00c8e3d}.
 
 The comparison pairs are as follows (where W indicates wild genotypes and D domesticated.):
 
@@ -343,17 +358,17 @@ These comparison groups where chosen, with help from researchers at the National
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=10cm]{./images/spikes.png}
-\caption{\label{fig:orgd75fa3e}
+\caption{\label{fig:orgadcd722}
 Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)}
 \end{figure}
 
 \section{Challenges Overview}
-\label{sec:org02fb554}
+\label{sec:org4b82219}
 
 The challenges which this project tackles come in two flavours: Computational and Biological. As such keen awareness of these is needed to appreciate the novelty of this work.
 
 \subsection{Biological Challenges}
-\label{sec:orgfcac63e}
+\label{sec:org9b023fc}
 Previous studies have been able to demonstrate that variation in wheat grain morphology can be partially explained, in 2010 Gegas et al. demonstrated this through a 99.4\% 2 component PCA \cite{Gegas2010}. However there is much left to do in terms of formal classifications and descriptions of these differences. This project deals with this problem through computational analysis.
 
 Two effects run parallel in this study, both of these need to be accounted for in the analysis, and questions need asked in a manner to extract each effect independently:
@@ -366,7 +381,7 @@ Two effects run parallel in this study, both of these need to be accounted for i
 Hypothesis are required to take into account, both of these effects so as not to misidentify results.
 
 \subsection{Computational Challenges}
-\label{sec:orgc3e28b0}
+\label{sec:orgcc34367}
 Using \textmu{}-CT data in plant sciences is becoming more and more common \cite{Tracy2017,Jhala2015,Hughes2017,Metzner2015} and whilst a lot of studies focus on the traits of grains specifically no formal model has been created, no accepted data format. This is a data engineering problem and the methods described in this project address this.
 
 Further to data organisation, proposals are made for the statistical analysis which should be used. This allows for studies to become more robust and repeatable, thus strengthening the studies overall.
@@ -374,7 +389,7 @@ Further to data organisation, proposals are made for the statistical analysis wh
 The biological material used in this research is much more diverse a population than has been previously studied with \textmu{}-CT image analysis, this requires current computer vision methods to be adapted in order to be accurate.
 
 \section{Deliverables}
-\label{sec:orgdaca078}
+\label{sec:org5294a0d}
 
 This project provides three final deliveribles:
 
@@ -385,14 +400,14 @@ This project provides three final deliveribles:
 \end{enumerate}
 
 \chapter{Software Design, Implementation and Testing}
-\label{sec:org42201aa}
+\label{sec:org8a82a86}
 This chapter outlines choices and methodologies employed in the software engineering aspect of this project, as well as highlighting the key functional requirements and implementation decisions.
 
 \section{Functional Requirements}
-\label{sec:org616230e}
+\label{sec:org4f26adb}
 Requirements for this project are split between software requirements for both the CT Analysing Library and the CT GUI Application and the research requirements (i.e. the answers to the proposed hypothesis). Here the requirements for the software are discussed:
 \subsection{Requirements for CT Analysing Library}
-\label{sec:orgd168c2d}
+\label{sec:orgd5ff02c}
 
 These are the functional requirements for the Python library produced:
 
@@ -423,7 +438,7 @@ These are the functional requirements for the Python library produced:
 \end{multicols}
 
 \subsection{Requirements for CT GUI Application}
-\label{sec:org153f860}
+\label{sec:orgb8cd421}
 
 
 \begin{multicols}{2}
@@ -452,7 +467,7 @@ These are the functional requirements for the Python library produced:
 \end{multicols}
 
 \section{Software Development Methodology}
-\label{sec:org9034887}
+\label{sec:orgc46c79d}
 This project made use of formal design methods and strict organisation whilst being flexible to change. Overall the design took a hybridised form in order to best suit the scientific environment which this domain specific software is built for.
 
 Data analysis drove the direction of the project, as a result an agile methodology was adopted.
@@ -462,13 +477,13 @@ Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, th
 
 Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
 \section{Sprint Timeline}
-\label{sec:org92f7840}
+\label{sec:org85940e3}
 The implementation of this work was done following agile sprint planning, treating each week as a encapsulated working frame, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
 
-A full account of the sprints, which are in part running documentation for this project, are available in appendix:\ref{orgd2ffa2b}.
+A full account of the sprints, which are in part running documentation for this project, are available in appendix:\ref{orgc884c19}.
 
 \section{Language Choices}
-\label{sec:orgc8c911b}
+\label{sec:org2a4a565}
 Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
 
 In scientific programming three of the most commonly used languages are Python, R and MATLAB \cite{Ozgur2016}.
@@ -482,106 +497,106 @@ R is a valid candidate, it provides all of the statistical capabilities required
 The main deciding factor is Python's wealth of resources, adoption rate and the developer of this project being vastly more experienced with Python's ecosystem than R's.
 
 \section{Designing Process}
-\label{sec:org558b388}
+\label{sec:org58afa28}
 Through meetings and emails, the agile principles of communication over comprehensive documentation was used. Where conversations were decidedly much more beneficial than complex planing prior to developing a product.
 
 Graphical elements, such as the graphing functionality of the CT Analysing Library and the CT GUI Application were sketched using wire-frames whilst in meetings where the potential users (clients) could provide their ideas.
 
-In figure:\ref{fig:org410b72a} an example of the wire-frames created during meetings is show (A), next to it is displayed the final look of the loading window (B).
+In figure:\ref{fig:orge0cf1ee} an example of the wire-frames created during meetings is show (A), next to it is displayed the final look of the loading window (B).
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=16cm]{./images/wireframe1.png}
-\caption{\label{fig:org410b72a}
+\caption{\label{fig:orge0cf1ee}
 Wire-frame of the GUI loading data window}
 \end{figure}
 
-Similarly, figure:\ref{fig:org56d272b} provides the initial wire-frame (A) of how the analysis window could have looked and what kind of GUI elements would be required, again, next to it is the final analysis window (B)
+Similarly, figure:\ref{fig:org6ef83ff} provides the initial wire-frame (A) of how the analysis window could have looked and what kind of GUI elements would be required, again, next to it is the final analysis window (B)
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=16cm]{./images/wireframe2.png}
-\caption{\label{fig:org56d272b}
+\caption{\label{fig:org6ef83ff}
 Wire-frame of the GUI analysis window}
 \end{figure}
 \section{Documentation}
-\label{sec:org44ba996}
+\label{sec:org7d9914e}
 Whilst an agile approach was used, some documentation was created for use with the CT Analysing Library.
 
 The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
 
-This documentation generator was purpose created, implemented in LISP and provided in listing:\ref{orgd5af7fc}.
+This documentation generator was purpose created, implemented in LISP and provided in listing:\ref{org9ecae02}.
 
-Beyond this, inline commenting is provided for supplied software. Keeping in line with the agile development ethos the software is self-documented and self-evident. A brief example of this is shown in listing:\ref{org9d6d824}
+Beyond this, inline commenting is provided for supplied software. Keeping in line with the agile development ethos the software is self-documented and self-evident. A brief example of this is shown in listing:\ref{orgdd7aaef}
 
 Documentation for the CT GUI application is provided as a visual user guide, and provides sample data for the user to test with.
 \section{Software Library Choices}
-\label{sec:org523919a}
+\label{sec:orgcea053d}
 The software libraries used for this project focus around data manipulation, where possible core libraries of the Python language were used and only well supported, established and documented libraries were chosen. Software support is a major requirement for reproducible results.
 
 All software packages used in the Analysing Library are required by the CT Analysing GUI as the Library is a dependency of it. The GUI has a single separate requirement \emph{PyQT5}.
-Table:\ref{tab:org344b748} contains a full listing of all software used and required by this project.
+Table:\ref{tab:org9bf44a8} contains a full listing of all software used and required by this project.
 \subsection{Numpy}
-\label{sec:org13a1e91}
+\label{sec:org217d30b}
 The Numpy library is one of the most commonly used additions to the Python ecosystem, it is fundamental to many data science projects. Here it is used to handle data lists, arrays and structures. There is no viable alternative to this package and it is required by Scipy and Statsmodels.
 \subsection{Matplotlib/Seaborn}
-\label{sec:orgb34b12a}
+\label{sec:org9ffe38f}
 Matplotlib acts as the plotting backend for the project. The Seaborn package acts as a porcelain for matplotlib and makes graph creation and decoration much easier.
 \subsection{Scipy}
-\label{sec:org9c40df0}
+\label{sec:orgd28fe7b}
 Data transforms such as Box Cox and PCA are dependant on the functions of the Scipy library. Alternatives are available, however this is the most well established and often used library for these functions.
 \subsection{Pandas}
-\label{sec:org22ef9ee}
+\label{sec:org40d3767}
 Pandas is used to read the CSV files which the raw data is stored in. This library converts and stores data in dataframes which are used throughout this project to manipulate data.
 \subsection{Xlrd}
-\label{sec:org9ec2841}
+\label{sec:orgc422ba1}
 This extension library is required in order to read Microsoft encoded files. Extra experiment information can be provided with the "xlsx" extension.
 \subsection{Statsmodels}
-\label{sec:org588dbb1}
+\label{sec:org5f0eea6}
 Bayesian hypothesis testing is provided through this library.
 \subsection{PyQT5}
-\label{sec:orgab32f01}
+\label{sec:org2ab24cd}
 There were many options for creating a user interface in Python, the language provides its own core library via the \emph{TKinter} module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
 \section{Version control}
-\label{sec:org3479102}
+\label{sec:org6258d21}
 This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
 
 By using submodules the CT Grain Analysing Library could be kept in sync with the GUI aspect of the project.
 
-Additionally, \emph{setup.py} has been used to provide installation of the library, the code for this can be seen in listing:\ref{org09dce75}. Using \emph{setup.py} provides a quick and easy way for any user to install the software, along with any dependencies.
+Additionally, \emph{setup.py} has been used to provide installation of the library, the code for this can be seen in listing:\ref{org6d45530}. Using \emph{setup.py} provides a quick and easy way for any user to install the software, along with any dependencies.
 
 \subsubsection{Issue Tracking}
-\label{sec:org370c1de}
-Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:\ref{fig:org8dffd2c}
+\label{sec:org8905f4a}
+Issues were tracked during the project, both in personal notes and in the Git interface as illustrated in figure:\ref{fig:org2e463ba}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=12cm]{./images/github.png}
-\caption{\label{fig:org8dffd2c}
+\caption{\label{fig:org2e463ba}
 Github Issue Tracking}
 \end{figure}
 
 \section{Implementation}
-\label{sec:orgea2251a}
+\label{sec:org720dbf7}
 Strict software engineering principles were applied during creation of this project. The use of standards, design patterns and code-linters have been used throughout to minimise the possibility of errors and to create wholly extendable software. These devices enable understandable and self-documented code allowing future users to quickly start using the provided packages.
 \subsection{Standards}
-\label{sec:orgba5bc52}
+\label{sec:org38b53c3}
 The main standard adhered to for software provided by this project is the PEP8 style guide \cite{VanRossum}. The principle behind this coding style, as stated by Guido van Rossum, is "Code is read much more often than it is written". This makes this styling guide perfect for the chosen agile methodology of self-evident documentation in the software.
 
 In addition to PEP8, a Python code linter Flake8 has been used to prevent "code smells", bad formatting, incorrect white space usage etc.
 
 \subsection{CT Analysing Library Design Pattern}
-\label{sec:orgdc1d41e}
+\label{sec:orgc0ca198}
 The CT Analysing Library uses a Singleton style design pattern. A single data object is created from a \emph{CTData} class.
 
-A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: \emph{data\_transforms.py}; \emph{graphing.py}, \emph{statistical\_tests.py}. These modules enable scientific functions to be applied to the \emph{CTData} object. A UML style class diagram is shown in figure:\ref{fig:org8f9d6f7}, here the interactions of the classes can be seen, as well as their internal functions.
+A very functional paradigm is used by this library. By applying mapping and filter style functions data elements can be passed to the supporting modules: \emph{data\_transforms.py}; \emph{graphing.py}, \emph{statistical\_tests.py}. These modules enable scientific functions to be applied to the \emph{CTData} object. A UML style class diagram is shown in figure:\ref{fig:orgb3a4e67}, here the interactions of the classes can be seen, as well as their internal functions.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=12cm]{./images/ctdata.png}
-\caption{\label{fig:org8f9d6f7}
+\caption{\label{fig:orgb3a4e67}
 CT Analysing Library UML}
 \end{figure}
 
 \subsection{CT GUI Application Design Pattern}
-\label{sec:org03cd65f}
+\label{sec:orgd7d6bb3}
 The Model-View-Controller (MVC) design pattern is one of the most commonly structures for creating user interfaces. It allows for the user's view/interface code to be separated from the model, the code which changes the data. The model and the view communicate and update each other via the controller element of the design.
 
 The QT framework provides "connectors" which act as triggers/activations for functions, these are set off by the user providing either keyboard or mouse based input.
@@ -589,39 +604,39 @@ The QT framework provides "connectors" which act as triggers/activations for fun
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=15.2cm]{./images/ctgui.png}
-\caption{\label{fig:orgde53706}
+\caption{\label{fig:org561f5d1}
 CT Analysing GUI UML}
 \end{figure}
 \section{Library Versioning}
-\label{sec:org4eb3f39}
+\label{sec:org2136d38}
 The development of this project was performed using the Python \emph{virtualenv}. This is a virtual environment package which Python offers, it allows for an isolated working copy of the project.
 
 By developing in this manner, libraries were ensured to be using the correct versions required by the software.
  \clearpage
 \section{Testing}
-\label{sec:org251f98d}
+\label{sec:org1711ccf}
 Testing was performed both in acceptance testing by using user feedback, the functional requirements and the ability to use the software to answer the hypothesis of the research elements of this project. Further to this, unit testing was performed to allow for automated testing as well as test-driven-development of features.
 \subsection{Feedback Forms}
-\label{sec:org5c939c4}
+\label{sec:orgb9532e9}
 Feedback and constructive suggestions were made by researchers at the National Plant Phenomics Centre, these were submitted via the Google forms service.
 
-These provided a method of acceptance testing by those who would be using the software to help with investigating data. Page 1 of the given form is shown in figure:\ref{fig:org54b8138}. This form was completed by 3 researchers at the National Plant Phenomics Centre, feedback was very positive overall.
+These provided a method of acceptance testing by those who would be using the software to help with investigating data. Page 1 of the given form is shown in figure:\ref{fig:orgd25f99f}. This form was completed by 3 researchers at the National Plant Phenomics Centre, feedback was very positive overall.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=7.3cm]{./images/feedbackform.png}
-\caption{\label{fig:org54b8138}
+\caption{\label{fig:orgd25f99f}
 CT Feedback form}
 \end{figure}
 
 \clearpage
 
 \subsection{Unit Testing CT Analysing Library}
-\label{sec:org1b472c9}
+\label{sec:org3b4de36}
 The unit tests for the CT Analysing Library were straightforward, using the \emph{PyTest} framework and a subset of data from a data set, these tests assert that features are implemented correctly and that the correct results are given.
 
 
 \begin{table}[htbp]
-\caption{\label{tab:orga2a9595}
+\caption{\label{tab:org61b9651}
 Output of \emph{pytest} Unit Tests and results for CT Analysing Library}
 \centering
 \begin{tabularx}{\textwidth}{|l|l|X|}
@@ -677,16 +692,16 @@ I.D. & \textbf{Result} & \textbf{Test}\\
 \clearpage
 
 \subsection{Unit Testing CT GUI Application}
-\label{sec:org8a826b4}
+\label{sec:orgb4640c5}
 
 The unit testing used for the CT GUI Application was more sophisticated than that of the Library. This testing required visual confirmation that figures and graphs generated were displayed correctly and that they showed what the user would expect, given the data.
 
 To do this a \emph{PyTest} plugin was used, \emph{QtBot} which provides simulated user input. This allows for the GUI to be thoroughly tested, automatically.
 
-In table:\ref{tab:org7107c50} the results of the automated testing is given along side an image of several of the tests, tests of the same graphs but with different parameters were also generated and manually verified and provided as supplemental data.
+In table:\ref{tab:org440a574} the results of the automated testing is given along side an image of several of the tests, tests of the same graphs but with different parameters were also generated and manually verified and provided as supplemental data.
 
 \begin{longtable}{|l|l|p{4.4cm}|C|}
-\caption{\label{tab:org7107c50}
+\caption{\label{tab:org440a574}
 Output of \emph{pytest} Unit Tests and results for CT GUI Application}
 \\
 \hline
@@ -775,11 +790,11 @@ I.D. & \textbf{Result} & \textbf{Test} & \textbf{Image} \\
 \end{longtable}
 
 \subsection{Acceptance Testing}
-\label{sec:orgf27b281}
-These unit tests, alongside user tests have been used to meet the outlined functional requirements; specific tests are shown in table:\ref{tab:orgb704ac6} to match them to the associated functional requirement.
+\label{sec:orga028b80}
+These unit tests, alongside user tests have been used to meet the outlined functional requirements; specific tests are shown in table:\ref{tab:org8e7fa2c} to match them to the associated functional requirement.
 
 \begin{longtable}{|l|l|p{14cm}|}
-\caption{\label{tab:orgb704ac6}
+\caption{\label{tab:org8e7fa2c}
 Functional requirements and Unit tests}
 \\
 \hline
@@ -829,7 +844,7 @@ Functional requirements and Unit tests}
 \hline
 15 & 21-47 & All of the unit tests for the CT Analysing GUI depend on the CT Analysing Library, it is reasonable that the integration is well tested, by product of all other tests\\
 \hline
-16 & 21-27 & Several tests, those shown in table:\ref{tab:org7107c50} are specifically recorded visually and presented as images in order to automatically unit test that visual data is intact\\
+16 & 21-27 & Several tests, those shown in table:\ref{tab:org440a574} are specifically recorded visually and presented as images in order to automatically unit test that visual data is intact\\
 \hline
 17 & 21-27 & By using automatic image capturing of unit testing in progress, visual checking can be carried out and confirmed that data is visually what is expected and to a high standard\\
 \hline
@@ -838,13 +853,13 @@ Functional requirements and Unit tests}
 \end{longtable}
 
 \chapter{Methods and Solutions}
-\label{sec:org097ba0d}
+\label{sec:org4a1a965}
 This chapter will discuss and expand upon the software implementations which were carried out in the course of this project, with particular focus on novel and non-trivial elements of software engineering.
 
 Where appropriate code segments are provided to illustrate how a feature has been implemented in software.
 
 \section{Data Processing Methods}
-\label{sec:org90a1c38}
+\label{sec:org5105745}
 This project presents a start to finish style of data analysis, data are generated by extracting information from raw scans, the resulting data is then post-processed and statistical analysis draws information from this.
 
 Historically, these processes and tasks are huge time sinks in terms of manual work, this project emphasises an increase in automation.
@@ -852,7 +867,7 @@ Historically, these processes and tasks are huge time sinks in terms of manual w
 Two separate pipelines are provided to carry out these tasks.
 
 \subsection{Image-Data Requisition Pipeline}
-\label{sec:org0996503}
+\label{sec:org2327e34}
 
 Acquiring data for this study first required Wheat plants to be grown and harvested, the process outlined here begins with scanning samples from these plants in a \textmu{}-CT machine.
 
@@ -864,20 +879,20 @@ Due to the low resolution of the imaging technique (68.6\textmu{} meters per pix
 
 Finally, each isolated object is exported for measuring (objects are defined by groups of connected pixels), measurements are recorded into tables and saved as CSV files. The data is recorded as pixel values and converted to appropriate real-world measurements.
 
-The entire process is represented as a diagram in figure:\ref{fig:org2f66097}
+The entire process is represented as a diagram in figure:\ref{fig:orgc59f8fb}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=15cm]{./images/matlab.png}
-\caption{\label{fig:org2f66097}
+\caption{\label{fig:orgc59f8fb}
 Image Processing Pipeline}
 \end{figure}
 
 \subsection{Data Analysis Pipeline}
-\label{sec:org2b7d29b}
+\label{sec:org46dd27d}
 The data analysis and research in this project is performed in part by automated software, the CT Analysis Library, and by human decision making as to statistical methods which need to be applied.
 
-Here, the pipeline presented in figure:\ref{fig:org0bbaf7d} demonstrates the process used by the CT Analysis Library, and by result the CT Analysing GUI.
+Here, the pipeline presented in figure:\ref{fig:org7db6b8e} demonstrates the process used by the CT Analysis Library, and by result the CT Analysing GUI.
 
 The first stage of this process is loading in the data exported by the MATLAB software. These data are loaded on a per scan basis, meaning that the previously mentioned process of spike splitting is initially still an issue, a resulting \emph{CT Data} object is created, this holds the data and carries out the proper treatment for it.
 
@@ -889,36 +904,36 @@ Using data on \(x,y,z\) coordinates a approximation is made to join spikes at th
 
 Finally, a decision is made by way of human input as to what type of statistics should be used to test hypothesis. This decision is mostly based on the distribution of the data where \(X \sim \mathcal{N}(\mu,\,\sigma^{2})\) data is tested with parametric tests (e.g. Student's T-Test) else non-parametric tests are used (e.g. Welch's T-Test).
 
-From statistical testing a final result(s) can be used to answer scientific questions on the data. The entire process is represented in figure:\ref{fig:org0bbaf7d}.
+From statistical testing a final result(s) can be used to answer scientific questions on the data. The entire process is represented in figure:\ref{fig:org7db6b8e}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=15cm]{./images/pipeline.png}
-\caption{\label{fig:org0bbaf7d}
+\caption{\label{fig:org7db6b8e}
 How data is integrated with the CT Analysing Library}
 \end{figure}
 
 \section{Image Analysis Methods}
-\label{sec:org3f5d50e}
+\label{sec:orgc095243}
 Initially, this project aimed to use existing software for feature extraction, however the range of data (due to the spectrum of genotypes in the study) meant that software which worked well for certain genotypes of wheat did not work well on others.
 
 The issue became in seeds becoming erroneously joined, research and investigation lead to a new solution being implemented in a forked version of the open source software used for image analysis \cite{Hughes2017}
 
 \subsection{New Watershed Algorithm}
-\label{sec:org10f60df}
+\label{sec:org028b1bf}
 
 In order to solve the problem of misidentified and joint seeds, from the primitive collection,
-a  \emph{quasi-euclidean} distance transform was implemented into the analysis pipeline (figure:\ref{fig:org2f66097}). This provided much better results than the previous
+a  \emph{quasi-euclidean} distance transform was implemented into the analysis pipeline (figure:\ref{fig:orgc59f8fb}). This provided much better results than the previous
 \emph{chessboard} transform which had been successful on more uniform data in previous studies \cite{Hughes2017}.
 
 \subsubsection{Quasi-Euclidean algorithm}
-\label{sec:org14d2b09}
+\label{sec:orgc172cb4}
 
 This algorithm measures the total euclidean distance along a set of horizontal, vertical and diagonal
 line segments \cite{Pfaltz1966}.
 
 \begin{align}
-\label{eq:orgabafe25}
+\label{eq:org3a313e8}
   &\begin{aligned}
 &|x_1-x_2|+(\sqrt{2}-1)|y_1-y_2|, |x_1-x_2| > |y_1-y_2| \\
       &(\sqrt{2}-1)|x_1-x_2| + |y_1-y_2|, \textup{otherwise.}
@@ -927,15 +942,15 @@ line segments \cite{Pfaltz1966}.
 \myequations{Quasi-Euclidean Distance}
 
 In order to apply this to a 3D space Kleinberg's method is used  \cite{Kleinberg1997}. This allows for nearest neighbour pixels to be sorted by \(k\) dimensional trees
-and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euclidean} method stated in equation:\ref{eq:orgabafe25}.
+and enabling fast distance transforms via Rosenfeld and Pfaltz's \emph{quasi-euclidean} method stated in equation:\ref{eq:org3a313e8}.
 
-\subsubsection{Implementation}
-\label{sec:orgb965a67}
+\subsection{Implementation}
+\label{sec:orgc7cf655}
 
-The software implementation for this was done in MATLAB \cite{MATHWORKS2017}, this meant that it could instantly and easily be inserted into the existing pipeline in the open source software which was forked and modified to add this feature. In code listing:\ref{org103d1fa} this new algorithm, in full, is shown.
+The software implementation for this was done in MATLAB \cite{MATHWORKS2017}, this meant that it could instantly and easily be inserted into the existing pipeline in the open source software which was forked and modified to add this feature. In code listing:\ref{org123cac6} this new algorithm, in full, is shown.
 
 \begin{listing}[htbp]
-\begin{minted}[]{octave}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{octave}
 function [W] = watershedSplit3D(A)
   % Takes image stack A and splits it into stack W.
   % This is done by using a watershedding
@@ -962,14 +977,14 @@ function [W] = watershedSplit3D(A)
   W(Ld2 == 0) = 0;
 end
 \end{minted}
-\caption{\label{org103d1fa}
+\caption{\label{org123cac6}
 MATLAB Watershedding function}
 \end{listing}
 
 The process creates a black and white copy of the image, performs erosion and dilation to remove holes and erroneous pixels. A distance map is then created, this represents each pixel, which is plant material (grains), as an integer value of distance from the closest non-plant pixel. This map combines with the watershed algorithm to provide an estimate of where objects are incorrectly connected (fused grains), subtracting this from the original 3D image provides cleaning split and segmented grains which can be passed through to the next stage of the pipeline.
 
 \subsubsection{Reasons for Improvement}
-\label{sec:org18b91b9}
+\label{sec:orgc90ec44}
 
 This improved algorithm for measuring distance between points works well with this data because of the variation in seed morphology.
 
@@ -978,26 +993,26 @@ Where previous studies \cite{Hughes2017} found their methods worked well, they a
 This study, with such a varied group of genotypes has encountered many seeds which do not have a reasonable degree of regularity in shape. As such, a simple distance based method of splitting from the centre of objects was ill suited. By using a quasi-euclidean distance a more flexible shape is afforded in grains and the resulting segmentation is less prone to over-zealous splitting due to non-uniform shape.
 
 \subsubsection{Effect of Enhanced Watershed algorithm in 2D}
-\label{sec:orgc18ab7a}
+\label{sec:org846b395}
 
-Figure:\ref{fig:org4374f71} shows in two dimensional flat images how this problem was solved. As well as what the previous method was doing to cause errors in data.
+Figure:\ref{fig:orgf1323eb} shows in two dimensional flat images how this problem was solved. As well as what the previous method was doing to cause errors in data.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=16cm]{./images/chess_quasi.png}
-\caption{\label{fig:org4374f71}
+\caption{\label{fig:orgf1323eb}
 \emph{A} showing the chessboard method, \emph{B} improved quasi-euclidean method}
 \end{figure}
 
 \clearpage
 \subsubsection{Effect of Enhanced Watershed algorithm in 3D}
-\label{sec:org194c48b}
+\label{sec:org7de4185}
 
-Figure:\ref{fig:org56b1ce2} shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
+Figure:\ref{fig:orgbb7820b} shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=14cm]{./images/watershedfigure.png}
-\caption{\label{fig:org56b1ce2}
+\caption{\label{fig:orgbb7820b}
 \emph{A} showing before the new method, \emph{B} after, \emph{C} zoomed before, \emph{D} zoomed after.}
 \end{figure}
 
@@ -1005,17 +1020,17 @@ Figure:\ref{fig:org56b1ce2} shows the effects on grains in three dimensions, whe
 
 \clearpage
 \section{CT Analysing Library Methods}
-\label{sec:org9c799d3}
+\label{sec:org1f38def}
 The CT Analysing Library provided by this project, aims to reduce the amount of work and time required to organise, analyse and pull meaning out of \textmu{}-CT data.
 Here several of the more novel features of the library are explained.
 
 \subsection{CT Data Object}
-\label{sec:org93a96f6}
+\label{sec:org8c4fa7a}
 
 The CT Analysing Library uses a mixture of object orientated (OOP) and functional programming paradigms, the main initialisation function for the object \emph{CTData} enables the storing of data and application of functions upon it, making data organisation much more straightforward.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 class CTData():
     def __init__(self, folder, rachis):
         """
@@ -1034,20 +1049,20 @@ class CTData():
             raise NoDataFoundException
         self.additional_data = None
 \end{minted}
-\caption{\label{org13190e9}
+\caption{\label{orga8a3539}
 CT Data Object Initialisation Method}
 \end{listing}
 
 \clearpage
 \subsection{Loading Data}
-\label{sec:org16374ed}
+\label{sec:org24c3cd2}
 
 Initial data loading is performed by the \emph{gather\_data} function, it takes a folder string and performs a regular expression check for all CSV files. From the files found in this search this function performs separation of rachis information (data about the spike's inner nodes) and the files containing seed/grain data.
 
 These are returned together as a tuple, the data found is stored as part of the \emph{CTData} object for use in the processing pipeline.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def gather_data(self, folder):
     """
     this function gathers together all
@@ -1079,13 +1094,13 @@ def gather_data(self, folder):
 
     return (candidate_files, rachis)
 \end{minted}
-\caption{\label{org24fdd55}
+\caption{\label{orgb0ec40a}
 Loading Data Function}
 \end{listing}
 
 \clearpage
 \subsection{Adding Spike Experiment Information}
-\label{sec:orgf1a4dec}
+\label{sec:orge57cb74}
 
 Using a loosely defined Microsoft excel (.xlsx) file, a file of additional information can be loaded into the \emph{CTData} object. This new information can be any information which is relevant to the individual scans.
 
@@ -1094,7 +1109,7 @@ This function \emph{get\_spike\_info} works by finding the matching column to jo
 By using \(\lambda\) functions (named \emph{look\_up} and \emph{gather\_data}) rapid allocation of information can be done in sections, applying hundreds of data entries to the existing data. This is one of many elements in this project which solves challenges in a very functional programming manner.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def get_spike_info(df, excel_file, join_column='Folder#'):
     """
     This function should do something akin to adding additional
@@ -1120,13 +1135,13 @@ def get_spike_info(df, excel_file, join_column='Folder#'):
     # Return the copy
     return df
 \end{minted}
-\caption{\label{org1c70cf3}
+\caption{\label{orgfb6c138}
 Spike Information Joining Algorithm}
 \end{listing}
 
 \clearpage
 \subsection{Spike Rejoining}
-\label{sec:orgc476f73}
+\label{sec:org73abe02}
 The \emph{Scanco} \textmu{}-CT100 scanner (\emph{Scanco} Medical, Switzerland) allows for a carousel loading of samples, the maximum allowed length of a sample is \textasciitilde{}10cm, in this study the majority of wheat spikes exceed this limit. A solution was found in splitting these samples in half and creating two separated \textmu{}-CT scans.
 
 This process means that post imaging these sample data need to be reconnected and the \(z\) axis of all scans need adjusted.
@@ -1136,7 +1151,7 @@ One of the main issues of this task is that there are multiple ways that rejoini
 The implementation for this searches through the provided data frame for spikes which are not marked as being 'all', that is to say complete and non-split. From these spikes left, they are either marked 'top' or 'bottom', using an associated 'Sample name' these can be linked. Once linked the top of the spikes need to have their \(z\) attribute increased by the size of the bottom spike.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def join_spikes_by_rachis(self):
     """
     Important part of this function is that we accept that the data is what it is
@@ -1162,13 +1177,13 @@ def join_spikes_by_rachis(self):
                     self.df.loc[(self.df['Sample name'] == sn) &
                     (self.df['Ear'] == 'top'), 'z'] + bot
 \end{minted}
-\caption{\label{org69b2ee3}
+\caption{\label{org93d5a4d}
 Spike Rejoining Function}
 \end{listing}
 
 \clearpage
 \subsection{Data Aggregating}
-\label{sec:org784f2a3}
+\label{sec:orgd91ab57}
 The analysis method used is focused on extracting data on a per-grain basis, grains have a many to one relationship of spikes.
 
 In order to look at the data on a spike-per-spike basis rather than from seed-to-seed the data needs to aggregated.
@@ -1176,7 +1191,7 @@ In order to look at the data on a spike-per-spike basis rather than from seed-to
 The function \emph{aggregate\_spike\_averages} takes a list of attributes to be aggregated and a manner of grouping the data. Using this data new columns are created based on median; mean; standard deviation; sum. These new columns are stored in the \emph{CTData} object directly.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def aggregate_spike_averages(self, attributes, groupby):
     """
     This will aggregate features (specified by attributes) into their medians
@@ -1207,18 +1222,18 @@ def aggregate_spike_averages(self, attributes, groupby):
     self.df['grain_count'] = self.df.groupby(
         groupby)[groupby].transform(len)
 \end{minted}
-\caption{\label{orgfc6b4f8}
+\caption{\label{orgb3a763e}
 Aggregating Data Function}
 \end{listing}
 
 \clearpage
 \subsection{Cleaning and Removing Erroneous Data}
-\label{sec:orgcd9de95}
+\label{sec:orgb861bc4}
 
 Data are cleaned by calculating percentiles of minimum data, these extreme values are removed. In addition to this, values found in seed/grain literature are used to remove data based on known extremes \cite{Gegas2010,Hughes2017}.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def clean_data(self, remove_small=False, remove_large=False):
     """
     Following parameters outlined in the
@@ -1246,13 +1261,13 @@ def clean_data(self, remove_small=False, remove_large=False):
                           self.df['volume'].quantile(.05)]
 
 \end{minted}
-\caption{\label{orgfcd903d}
+\caption{\label{org4c5b9d9}
 Cleaning Data}
 \end{listing}
 
 \clearpage
 \subsection{Data Transformations (PCA)}
-\label{sec:orgffc9632}
+\label{sec:org33c81a5}
 In this project several data transformation algorithms are implemented uses the \emph{Scipy} library \cite{Oliphant2007}.
 
 For principal component analysis (PCA), the CT Analysis Library implements it using two principal components (PCs) only. The decision to limit this library
@@ -1261,8 +1276,8 @@ coverage and data explanation from only two PCs.
 
 Prior to using the PC function, data are standardised, this is either done through log transforms or by Box Cox power transforms. This provides more normal data and allows for information to be more likely to provide a significant output.
 
-\#+LATEX\_A
-\begin{minted}[]{python}
+\begin{listing}[htbp]
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def perform_pca(df, features, groupby, groupby2=None,
                 groupby3=None, standardise=False):
     """
@@ -1298,10 +1313,13 @@ def perform_pca(df, features, groupby, groupby2=None,
         return (pd.concat([principalDf, df[[groupby]],
                            df[[groupby2]], df[[groupby3]]], axis=1), pca, data)
 \end{minted}
+\caption{\label{orgd39cc99}
+PCA Data Transform}
+\end{listing}
 
 \clearpage
 \subsection{Bayesian Hypothesis Testing}
-\label{sec:org917f515}
+\label{sec:org91cfbc5}
 
 Null-hypothesis significance testing (NHST) is done typically through T-test like functions, where the means of two groups are tested.
 As a novel addition, this library provides an improvement upon NHST by using a Bayesian approach proposed by Kruschke in 2012 \cite{Kruschke2012}.
@@ -1311,7 +1329,7 @@ Here a full model is produced where data are first normalised through log transf
 The full model is explained later in this chapter.
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
     """
     Implements and uses the hypothesis test outlined as a robust replacement
@@ -1339,14 +1357,14 @@ def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
         group2_std = pm.Uniform('{0}_std'.format(
             group2_name), lower=sig_low, upper=sig_high)
 \end{minted}
-\caption{\label{org757af45}
+\caption{\label{orgc79b2c0}
 Bayesian Model Function (part 1)}
 \end{listing}
 
 \clearpage
 
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=27,frame=lines,linenos=true,fontfamily=dejavu]{python}
 with model:
     nu = pm.Exponential('nu_minus_one', 1/29.) + 1
 with model:
@@ -1369,63 +1387,92 @@ with model:
     return trace, pm.summary(trace, varnames=['difference of means',
                                               'difference of stds','effect size'])
 \end{minted}
-\caption{\label{orgb4fe77e}
+\caption{\label{org0d9d8ca}
 Bayesian Model Function (part 2)}
 \end{listing}
 
 
 \clearpage
 
-\subsection{Plotting Functions}
-\label{sec:orgfa2e1d7}
 
 \section{CT GUI Application Methods}
-\label{sec:org19f8b45}
-\subsection{Integration with CT Analysis Library}
-\label{sec:orgb5aa903}
+\label{sec:org29e387e}
+The CT GUI Application enables a researcher to perform analysis with a high degree of automation and ease of use. Here several of the elements of software engineering behind this application and its design are explored.
+
 \subsection{QT GUI Loading}
-\label{sec:orge37e76f}
+\label{sec:org5e5fe58}
+
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
+class AppWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.setup_menu_functions()
+
+        # Load in Controllers
+        self.find_files_controller = FindFilesWindow(self, self.ui)
+        self.analysis_controller = AnalysisWindow(self, self.ui)
+        self.ui.master_tab.currentChanged.connect(self.update_analysis_view)
+        self.pre_process_controller = PreProcessWindow(self, self.ui)
+        self.stats_test_controller = StatsTestWindow(self, self.ui)
+
+        # Set GUI icon for beautification
+        self.setWindowIcon(QtGui.QIcon('./images/logo.png'))
+
+        # init some variables
+        # Words cannot describe the importance of this object
+        self.data = None
+
+        # init states
+        self.setup_default_states()
+        self.show()
+\end{minted}
+
+\subsection{Integration with CT Analysis Library}
+\label{sec:org0006a75}
 \subsection{Connecting Signals from GUI to Function Calls}
-\label{sec:org0238e2a}
+\label{sec:org549a679}
 \subsection{Plot Window Rendering}
-\label{sec:orgfbd78a7}
+\label{sec:org0cf089d}
 \subsection{Creating GUI Elements When Required}
-\label{sec:org7c11c03}
+\label{sec:org59c4dd0}
 \subsection{Dynamically Generating Plots}
-\label{sec:org1a85804}
+\label{sec:org4c3b75c}
 \section{Data Analysis Methods}
-\label{sec:orgdbc86c1}
+\label{sec:org1be9136}
 \section{Bayesian Modelling}
-\label{sec:orgc6b3e3b}
+\label{sec:org2ac50ba}
 
 \chapter{Results}
-\label{sec:org241abb2}
+\label{sec:org2e3e4f1}
 \chapter{Discussion}
-\label{sec:org5bbb59a}
+\label{sec:org0ac7d48}
 \section{Similar Research}
-\label{sec:orgc431e5f}
+\label{sec:org9a27d3a}
 \section{Alternate Solutions}
-\label{sec:org4594c91}
+\label{sec:orga2755e9}
 \chapter{Critical Evaluation}
-\label{sec:org2229d68}
+\label{sec:org2445b33}
 \section{Organisational Methods}
-\label{sec:org32f5b80}
+\label{sec:org01922dc}
 \section{Relevance to Degree}
-\label{sec:org5cac0e0}
+\label{sec:orgf6e792a}
 \section{Time Management}
-\label{sec:org4378a87}
+\label{sec:org6ecd724}
 \section{Collaborative Work}
-\label{sec:org85108db}
+\label{sec:orge65f5a3}
 \section{Other Issues}
-\label{sec:orgb29dfb9}
+\label{sec:orgb116c6e}
+
 
 \appendix
 \chapter{\emph{Software Packages Used}}
-\label{sec:orge028b6f}
+\label{sec:org2eefabf}
 \subsection{Libraries}
-\label{sec:org3bf20e4}
+\label{sec:org27551da}
 \begin{table}[htbp]
-\caption{\label{tab:org344b748}
+\caption{\label{tab:org9bf44a8}
 Software libraries used}
 \centering
 \begin{tabularx}{\textwidth}{|X|X|X|}
@@ -1442,9 +1489,9 @@ PyQt5 & gcc & Pip\\
 \end{table}
 
 \subsection{Tools}
-\label{sec:org2950a82}
+\label{sec:orgd523e2b}
 \begin{table}[htbp]
-\caption{\label{tab:orgb6e8d6e}
+\caption{\label{tab:orgb058bd9}
 Software tools used}
 \centering
 \begin{tabularx}{\textwidth}{|X|X|X|}
@@ -1460,9 +1507,9 @@ Tomviz & ImageJ & PlantUML\\
 
 \clearpage
 \chapter{\emph{Glossary}}
-\label{sec:org92a4529}
+\label{sec:orgdec8531}
 \begin{table}[htbp]
-\caption{\label{tab:org8348433}
+\caption{\label{tab:org7ff13a6}
 Dictionary for Terms and acronyms}
 \centering
 \begin{tabularx}{\textwidth}{|l|X|}
@@ -1502,9 +1549,9 @@ OOP & Object Orientated Programming\\
 
 \clearpage
 \chapter{Wheat Varieties}
-\label{sec:org5b99945}
+\label{sec:orgf737953}
 \begin{table}[htbp]
-\caption{\label{tab:org1237898}
+\caption{\label{tab:org974d129}
 Wheat used in this work and their common names}
 \centering
 \begin{tabularx}{\textwidth}{|X|X|}
@@ -1514,8 +1561,6 @@ Wheat used in this work and their common names}
 \emph{Triticum monococcum} & Einkorn Domesticate\\
 \hline
 \emph{Triticum boeticum} & Einkorn Wild\\
-\hline
-\emph{Aegilops tauschii} & n/a\\
 \hline
 \emph{Triticum durum} & Pasta Wheat\\
 \hline
@@ -1539,13 +1584,13 @@ Wheat used in this work and their common names}
 
 
 \clearpage
-\chapter{\emph{Code Segments and Examples}}
-\label{sec:org944ce78}
+\chapter{Code Segments and Examples}
+\label{sec:org0877c7e}
 
-\subsection{Setup.py}
-\label{sec:org5d5576e}
+\section{Setup.py}
+\label{sec:orgec12c70}
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 from setuptools import setup
 setup(name='CT_Analysing_Library',
       version='0.2',
@@ -1566,15 +1611,15 @@ setup(name='CT_Analysing_Library',
                         'xlrd'],
       zip_safe=True)
 \end{minted}
-\caption{\label{org09dce75}
+\caption{\label{org6d45530}
 The \emph{setup.py} configuration for the CT Analyser Library}
 \end{listing}
 
 \clearpage
-\subsection{Self-Documenting Code Example}
-\label{sec:org0b6f593}
+\section{Self-Documenting Code Example}
+\label{sec:org66c2316}
 \begin{listing}[htbp]
-\begin{minted}[]{python}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{python}
 def get_spike_info(self, excel_file, join_column='Folder#'):
     """
     This function should do something akin to adding additional
@@ -1588,7 +1633,6 @@ def get_spike_info(self, excel_file, join_column='Folder#'):
     @param join_column if the column for joining data is
     different then it should be stated
     """
-    try:
         # Grab the linking excel file
         info = pd.read_excel(excel_file,
                              index_col='Folder#')
@@ -1611,14 +1655,15 @@ def get_spike_info(self, excel_file, join_column='Folder#'):
         raise NoDataFoundException
 
 \end{minted}
-\caption{\label{org9d6d824}
+\caption{\label{orgdd7aaef}
 Example of code documentation and readability from \emph{data\_transforms.py}}
 \end{listing}
 \clearpage
-\subsection{Custom Documentation Generator}
-\label{sec:org42f874c}
+
+\section{Custom Documentation Generator}
+\label{sec:org4804dba}
 \begin{listing}[htbp]
-\begin{minted}[]{common-lisp}
+\begin{minted}[linenos,firstnumber=1,frame=lines,linenos=true,fontfamily=dejavu]{common-lisp}
 (defun populate-org-buffer (buffer filename root)
   (goto-char (point-min))
   (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
@@ -1655,19 +1700,18 @@ Example of code documentation and readability from \emph{data\_transforms.py}}
     (with-current-buffer doc-buf
       (org-mode))))
 \end{minted}
-\caption{\label{orgd5af7fc}
+\caption{\label{org9ecae02}
 Custom lisp code for generating easy to read documentation}
 \end{listing}
 
 \clearpage
 
-
 \chapter{Sprint Timeline}
-\label{sec:org3550fbf}
-\label{orgd2ffa2b}
+\label{sec:orga2b3a7f}
+\label{orgc884c19}
 
 \subsection{Sprint - Week 0}
-\label{sec:org277a41f}
+\label{sec:org3ca0de7}
 Initial planning was taken out, discussions with researchers at the National Plant Phenomics Centre (NPPC), to create a general set of targets and research goals.
 
 A website was built in order to host weekly progress reports, this was used to share with supervisors and with staff at the NPPC. It also provided a list of discussion points to go through at weekly meetings.
@@ -1677,20 +1721,20 @@ A bug was identified in image analysis software, this was raised to be fixed a l
 A literature review was taken out to highlight the novelty of this research, as well as current trends in the field in terms of analysis and known/accepted information.
 
 \subsection{Sprint - Week 1}
-\label{sec:orgc8bcfd9}
+\label{sec:org3d2a668}
 
 Initial running of grain analysis software was performed multiple times, as per instructions in literature \cite{Hughes2017}, multiple parameters for minimum and maximum expected sizes of grains needed to be tested. Data which was produced was very noisy and would require further work.
 
 Spike work was carried out in investigating the potential of using a skeletonising method on the wheat spikes. The hope behind this was to simplify structure in a three dimensional structure, of 1 pixel thick lines. This technique is often used in plant root analysis \cite{Mairhofer2015,Daly2017}. Experimentation with these methods were technically challenging and a decision was made to revisit if time permitted at the end of the project.
 
-A key function of the CT Analysis Library was created, showing in listing:\ref{org1c70cf3}. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
+A key function of the CT Analysis Library was created, showing in listing:\ref{orgfb6c138}. The method enables additional experiment information to be joined with extracted seed data. This provides a way of grouping seeds into more useful groupings than just their scanning data.
 
 An issue was identified in the choices of testing which are typically used in these studies, the use of ANOVA and Student's T-Test, for example, are best used with parametric data, that is to say data where distribution is normally distributed. Further reading into this presented the use of Box Cox transforms as a method to counter these issues.
 
 An issue was raised; a method for visualising outliers in the data could provide greatly beneficial insight into finding errors. If time was available at the end of the project, this would be explored further.
 
 \subsection{Sprint - Week 2}
-\label{sec:org6a330d6}
+\label{sec:orga44f44a}
 
 Spikes of wheat are scanned in two separate imaging cycles sometimes, this is because the tube used by the \textmu{}-CT machine are 10cm tall and often a spike will exceed this. In order for full analysis to be carried out these separate scans need to be rejoined. A method for doing this was added to the python Analysis Library.
 
@@ -1701,7 +1745,7 @@ An idea for how data could be cleaned was created by using the information found
 Decisions to move the CT Grain Analysing Library towards an object orientated model were made during this sprint, after evaluating the potential of a functionally programmed model or a object one. Handling everything in terms of classes was decidedly easier in terms of understanding how to use the library.
 
 \subsection{Sprint - Week 3}
-\label{sec:orgbbd1551}
+\label{sec:orgb6957ca}
 
 A lot of progress was made on constructing a GUI here, dynamic plotting was put together as a proof of this concept. Histograms of the data were able to be made by using the mouse to select which attribute to measure.
 
@@ -1712,7 +1756,7 @@ A novel and new method for generating documentation was created specifically for
 Another piece of functionality was introduced to the GUI that would enable the user to view the data they had loaded as a single 2 dimensional data frame. This is for quickly viewing data as a single source and all together. This had arisen as a functionality desired by researchers in a previous weeks meeting.
 
 \subsection{Sprint - Week 4}
-\label{sec:orgfd19ab2}
+\label{sec:orgc4c5028}
 A new method for watershedding was developed and deployed in the data extraction pipeline, this moved towards using euclidean distance transforms. Allowing for the more complex shapes which this data set presented as a problem to be fully and properly segmented.
 
 Further work was done in terms of the GUI to enable matplotlib and seaborn library integration with the dynamic plotting features which were developed previously.
@@ -1722,19 +1766,19 @@ Custom exceptions were written for the CT Analysing Library, these exceptions al
 Current versions of doc strings were enhanced to match with newer functionality which had been added in recent weeks, and documentation was regenerated.
 
 \subsection{Sprint - Week 5}
-\label{sec:org83499a6}
+\label{sec:orgd59984d}
 Functions were added to the CT Analysing Library which would allow for aggregation of data columns, this meant that averaging functions could be performed on a per-spike basis. Mean, standard deviation, sum and count functions were applied by default.
 
 Further research was carried out into data transforms which are commonly used in data science; Principal component analysis, linear modelling and multivariate analysis were topics researched as possibilities for inclusion in this library.
 
 \subsection{Sprint - Week 6}
-\label{sec:org1263d7e}
+\label{sec:org52224ed}
 Preparation for a mid-project demo took up the majority of this sprint, ensuring data which had been gathered to date was well understood was vital.
 
 A presentation was created using data extracted via the CT Analysing Library, this was in the mode of figures and graphs which could then be used to better explain the theme of the project.
 
 \subsection{Sprint - Week 7}
-\label{sec:orgd87dc0f}
+\label{sec:orgb78e996}
 An initial implementation of principal component analysis was tested and found to be useful, a considerable amount of time was dedicated to refactoring the code-base to allow for new data transforms to be easily incorporated.
 
 Additions to the graphing section of the library also allowed for splitting data into multiple plots which could then be featured side-by-side, separation of data helped contribute to seeing the differences in the data.
@@ -1742,7 +1786,7 @@ Additions to the graphing section of the library also allowed for splitting data
 Some initial ideas for unit testing were written up, an investigation into which platform and library were best to use was carried out. This had to be taken into consideration as testing a GUI required some additional software to simulate a user testing widgets and onscreen objects.
 
 \subsection{Sprint - Week 8}
-\label{sec:orgf6c0665}
+\label{sec:org45a7465}
 With data extraction parameters finalised, a new watershedding method implemented and a more robust selection process implemented the data was now fit for hypothesis to be tested.
 
 Through meetings with researching staff, the five key hypothesis/null-hypothesis had been formed and the grouping of the data well defined. This allowed for initial Null-Hypothesis-Significance-Testing (NHST) to be carried out. The initial results found were not representative of the data. A requirement for new hypothesis testing was now required.
@@ -1750,19 +1794,19 @@ Through meetings with researching staff, the five key hypothesis/null-hypothesis
 The \emph{PyTest} library was decided upon, this was used as a unit testing framework for both the Analysis Library and the GUI software. In total around 50 tests were devised.
 
 \subsection{Sprint - Week 9}
-\label{sec:org86b6c15}
+\label{sec:org8a6a1ee}
 More graphing options were added to the GUI, these came from the boxplot functionality which the updated CT Analysing Library made available. A new type of grouping by sub-type was added. This let multiple plots be displayed for the same feature i.e. viewing a histogram of volume but split by genotype. This new feature required a rework of the dynamic plotting functionality. This refactoring took a considerable amount of time and work.
 
 An initial solution to hypothesis testing was added in the form of Welch and Student T-Tests to first the CT Analysing Library and then to the GUI also. The GUI now had an additional tab added specifically for testing groups of data.
 
 \subsection{Sprint - Week 10}
-\label{sec:orge3abd42}
+\label{sec:org1b2c599}
 
 A previous issue was highlighted in meetings of the data being ill-suited to normally accepted statistical testing and NHST in general. Through research a new method was devised that was able to use Bayesian statistics to carry out hypothesis testing \cite{Kruschke2012}. This new method of hypothesis testing was added into the CT Analysing Library, requiring a lot of work in data transforming and preparation in order for correct, robust and repeatable model fitting to be carried out.
 Previous research questions were repeated, using this method. This time new and significant findings were uncovered.
 
 \subsection{Sprint - Week 11}
-\label{sec:org57377c1}
+\label{sec:org7621aed}
 A feature freeze was enforced during the 11th week of the project. This was to ensure time was allocated for completing work, finalising unit tests and documentation. The > 50 unit tests were finalised, completed and ensured to be passing. Documentation was completed and exported.
 
 

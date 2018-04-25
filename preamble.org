@@ -24,7 +24,6 @@
 #+LaTeX_HEADER: \usepackage{multicol}
 #+LaTeX_HEADER: \usepackage{array}
 #+LaTeX_HEADER: \usepackage[subfigure]{tocloft}
-
 #+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{10.4cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
 #+LaTeX_HEADER: \usepackage[nocompress]{cite}
@@ -36,6 +35,23 @@
 
 #+LATEX_HEADER_EXTRA: \usepackage{etoolbox}
 
+
+#+BEGIN_EXPORT latex
+\newcommand{\zebra}[3]{%
+    {\realnumberstyle{#3}}%
+    \begingroup
+    \lst@basicstyle
+    \ifodd\value{lstnumber}%
+	\color{#1}%
+    \else
+	\color{#2}%
+    \fi
+	\rlap{\hspace*{\lst@numbersep}%
+	\color@block{\linewidth}{\ht\strutbox}{\dp\strutbox}%
+	}%
+    \endgroup
+}
+#+END_EXPORT
 
 #+BEGIN_EXPORT latex
 \newcommand{\listequationsname}{List of Equations}

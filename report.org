@@ -630,13 +630,13 @@ line segments cite:Pfaltz1966.
 In order to apply this to a 3D space Kleinberg's method is used  cite:Kleinberg1997. This allows for nearest neighbour pixels to be sorted by $k$ dimensional trees
 and enabling fast distance transforms via Rosenfeld and Pfaltz's /quasi-euclidean/ method stated in equation:[[eqn:qe]].
 
-**** Implementation
+*** Implementation
 
 The software implementation for this was done in MATLAB cite:MATHWORKS2017, this meant that it could instantly and easily be inserted into the existing pipeline in the open source software which was forked and modified to add this feature. In code listing:[[lst:ws]] this new algorithm, in full, is shown.
 
 #+CAPTION: MATLAB Watershedding function
 #+LABEL: lst:ws
-#+BEGIN_SRC octave
+#+BEGIN_SRC octave -n
   function [W] = watershedSplit3D(A)
     % Takes image stack A and splits it into stack W.
     % This is done by using a watershedding
@@ -705,7 +705,7 @@ The CT Analysing Library uses a mixture of object orientated (OOP) and functiona
 
 #+CAPTION: CT Data Object Initialisation Method
 #+LABEL: lst:ctdata
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
 class CTData():
     def __init__(self, folder, rachis):
 	"""
@@ -734,7 +734,7 @@ These are returned together as a tuple, the data found is stored as part of the 
 
 #+CAPTION: Loading Data Function
 #+LABEL: lst:gather
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def gather_data(self, folder):
       """
       this function gathers together all
@@ -778,7 +778,7 @@ By using \lambda functions (named /look_up/ and /gather_data/) rapid allocation 
 
 #+NAME: lst:infojoining
 #+CAPTION: Spike Information Joining Algorithm
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def get_spike_info(df, excel_file, join_column='Folder#'):
       """
       This function should do something akin to adding additional
@@ -817,7 +817,7 @@ The implementation for this searches through the provided data frame for spikes 
 
 #+CAPTION: Spike Rejoining Function
 #+LABEL: lst:join
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
     def join_spikes_by_rachis(self):
 	"""
 	Important part of this function is that we accept that the data is what it is
@@ -854,7 +854,7 @@ The function /aggregate_spike_averages/ takes a list of attributes to be aggrega
 
 #+CAPTION: Aggregating Data Function
 #+LABEL: lst:agg
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def aggregate_spike_averages(self, attributes, groupby):
       """
       This will aggregate features (specified by attributes) into their medians
@@ -893,7 +893,7 @@ Data are cleaned by calculating percentiles of minimum data, these extreme value
 
 #+CAPTION: Cleaning Data
 #+LABEL: lst:clean_data
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def clean_data(self, remove_small=False, remove_large=False):
       """
       Following parameters outlined in the
@@ -934,8 +934,7 @@ Prior to using the PC function, data are standardised, this is either done throu
 
 #+CAPTION: PCA Data Transform
 #+LABEL: lst:pca
-#+LATEX_A
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def perform_pca(df, features, groupby, groupby2=None,
 		  groupby3=None, standardise=False):
       """
@@ -984,7 +983,7 @@ The full model is explained later in this chapter.
 
 #+LABEL: lst:bayes1
 #+CAPTION: Bayesian Model Function (part 1)
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
       """
       Implements and uses the hypothesis test outlined as a robust replacement
@@ -1018,7 +1017,7 @@ The full model is explained later in this chapter.
 #+ATTR_LATEX: :placement [!tpb]
 #+LABEL: lst:bayes2
 #+CAPTION: Bayesian Model Function (part 2)
-#+BEGIN_SRC python
+#+BEGIN_SRC python +n
       with model:
 	  nu = pm.Exponential('nu_minus_one', 1/29.) + 1
       with model:
@@ -1045,11 +1044,40 @@ The full model is explained later in this chapter.
 
 \clearpage
 
-*** Plotting Functions
 
 ** CT GUI Application Methods
-*** Integration with CT Analysis Library
+The CT GUI Application enables a researcher to perform analysis with a high degree of automation and ease of use. Here several of the elements of software engineering behind this application and its design are explored.
+
 *** QT GUI Loading
+
+#+BEGIN_SRC python -n
+class AppWindow(QMainWindow):
+    def __init__(self):
+	super().__init__()
+	self.ui = Ui_MainWindow()
+	self.ui.setupUi(self)
+	self.setup_menu_functions()
+
+	# Load in Controllers
+	self.find_files_controller = FindFilesWindow(self, self.ui)
+	self.analysis_controller = AnalysisWindow(self, self.ui)
+	self.ui.master_tab.currentChanged.connect(self.update_analysis_view)
+	self.pre_process_controller = PreProcessWindow(self, self.ui)
+	self.stats_test_controller = StatsTestWindow(self, self.ui)
+
+	# Set GUI icon for beautification
+	self.setWindowIcon(QtGui.QIcon('./images/logo.png'))
+
+	# init some variables
+	# Words cannot describe the importance of this object
+	self.data = None
+
+	# init states
+	self.setup_default_states()
+	self.show()
+#+END_SRC
+
+*** Integration with CT Analysis Library
 *** Connecting Signals from GUI to Function Calls
 *** Plot Window Rendering
 *** Creating GUI Elements When Required
@@ -1067,6 +1095,7 @@ The full model is explained later in this chapter.
 ** Time Management
 ** Collaborative Work
 ** Other Issues
+
 
 \appendix
 * /Software Packages Used/
@@ -1145,8 +1174,6 @@ The full model is explained later in this chapter.
 |------------------------+---------------------|
 | /Triticum boeticum/    | Einkorn Wild        |
 |------------------------+---------------------|
-| /Aegilops tauschii/    | n/a                 |
-|------------------------+---------------------|
 | /Triticum durum/       | Pasta Wheat         |
 |------------------------+---------------------|
 | /Triticum dicoccoides/ | Einkorn Domesticate |
@@ -1167,12 +1194,12 @@ The full model is explained later in this chapter.
 
 
 \clearpage
-* /Code Segments and Examples/
+* Code Segments and Examples
 
-*** Setup.py
+** Setup.py
 #+CAPTION: The /setup.py/ configuration for the CT Analyser Library
 #+LABEL: lst:setuppy
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   from setuptools import setup
   setup(name='CT_Analysing_Library',
 	version='0.2',
@@ -1195,10 +1222,10 @@ The full model is explained later in this chapter.
 #+END_SRC
 
 \clearpage
-*** Self-Documenting Code Example
+** Self-Documenting Code Example
 #+CAPTION: Example of code documentation and readability from /data_transforms.py/
 #+LABEL: lst:docexample
-#+BEGIN_SRC python
+#+BEGIN_SRC python -n
   def get_spike_info(self, excel_file, join_column='Folder#'):
       """
       This function should do something akin to adding additional
@@ -1212,7 +1239,6 @@ The full model is explained later in this chapter.
       @param join_column if the column for joining data is
       different then it should be stated
       """
-      try:
 	  # Grab the linking excel file
 	  info = pd.read_excel(excel_file,
 			       index_col='Folder#')
@@ -1236,10 +1262,11 @@ The full model is explained later in this chapter.
 
 #+END_SRC
 \clearpage
-*** Custom Documentation Generator
+
+** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
 #+LABEL: lst:docgen
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp -n
   (defun populate-org-buffer (buffer filename root)
     (goto-char (point-min))
     (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
@@ -1278,7 +1305,6 @@ The full model is explained later in this chapter.
 #+END_SRC
 
 \clearpage
-
 
 * Sprint Timeline
   <<sec:appendix>>
