@@ -1275,8 +1275,75 @@ Here in example:[[lst:testwindowview]] lines 16,17 show that combo buttons are c
 	  return lst
 #+END_SRC
 
-
 *** Dynamically Generating Plots
+This application provides the ability to make plots instantly, without requiring input from the user to refresh or reload a window.
+
+To do this, the existing canvas window is repainted based on parameter input. Example:[[lst:dynamicplots2]]
+shows how this is implemented. A series of conditionals based on UI elements provides data about what data to use and type of plot to use also.
+
+#+NAME: lst:dynamicplots2
+#+CAPTION: Example code of how figures are computed and implemented using /Seaborn/ and /Matplotlib/
+#+BEGIN_SRC python
+  def compute_initial_figure(self, axes, df):
+      try:
+	  if self.plot_type == 'histogram':
+	      sns.distplot(df[self.column], ax=self.axes,
+			   kde=False, hist_kws=dict(edgecolor="k", linewidth=2))
+	  elif self.plot_type == 'boxplot' or self.plot_type == 'welch':
+	      sns.boxplot(data=df, x=self.column,
+			  y=self.group_by, ax=self.axes)
+	      if self.ttest:
+		  u = list(df[self.group_by].unique())
+		  s1 = df[df[self.group_by] == u[0]][self.column]
+		  try:
+		      s2 = df[df[self.group_by] == u[1]][self.column]
+		  except IndexError:
+		      s2 = s1
+		  if self.plot_type == 'welch':
+		      p = perform_t_test(s1, s2, equal_var=False)
+		  else:
+		      p = perform_t_test(s1, s2)
+		  self.fig.suptitle('P-value of {0}'.format(p))
+	      elif self.plot_type == 'bayes':
+		  u = list(df[self.group_by].unique())
+		  s1 = np.array(df[df[self.group_by] == u[0]][self.column])
+		  try:
+		      s2 = np.array(df[df[self.group_by] == u[1]][self.column])
+		      trace, x = baysian_hypothesis_test(s1, s2, u[0], u[1])
+		      plot_difference_of_means(trace, ax=self.axes)
+#+END_SRC
+
+\clearpage
+*** Creating Facet Plots
+
+To compare data in more than a single dimension the /FacetFrid/ function from the /Seaborn/ library is used. This provides a simple method of creating multiple plots in a single figure.
+
+An example of this is shown when dividing data by ploidy and comparing distributions via histograms in figure:[[fig:facet]].
+
+#+CAPTION: Example of facet plotting by ploidy by grain surface area
+#+LABEL: fig:facet
+#+ATTR_LATEX: :width 12cm
+[[./images/facet_example.png]]
+
+The implementation of /facet plots/ would be simple, however the ability to create sensible plots that organise into a well spaced grid requires additional input.
+
+Example:[[lst:dynamicplots3]] shows on lines 3,5,7 how decisions are made to best arrange the grid. Decisions are made based on the unique number of columns a grouping variable provides. As well this,  additional arguments are  used to indicate further aesthetics of the plots.
+
+#+NAME: lst:dynamicplots3
+#+CAPTION: Using Facet wrapping to provide
+#+BEGIN_SRC python
+  def facet_hist(self, df, column, group_by):
+      col_wrap = len(df[group_by].unique()) // 2
+      if col_wrap < 4:
+	  col_wrap = None
+      g = sns.FacetGrid(df, hue=group_by, col=group_by,
+			col_wrap=col_wrap)
+      g = g.map(sns.distplot, column, kde=False,
+		hist_kws=dict(edgecolor="k", linewidth=2))
+      g.fig.tight_layout()
+      return g.fig
+#+END_SRC
+
 ** Data Analysis Methods
 ** Bayesian Modelling
 
