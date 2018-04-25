@@ -1176,9 +1176,9 @@ class AppWindow(QMainWindow):
 |------------------------+---------------------|
 | /Triticum durum/       | Pasta Wheat         |
 |------------------------+---------------------|
-| /Triticum dicoccoides/ | Einkorn Domesticate |
+| /Triticum dicoccoides/ | Emmer Domesticate   |
 |------------------------+---------------------|
-| /Triticum dicoccum/    | Einkorn Wild        |
+| /Triticum dicoccum/    | Emmer Wild          |
 |------------------------+---------------------|
 | /Triticum ispahanicum/ | n/a                 |
 |------------------------+---------------------|
