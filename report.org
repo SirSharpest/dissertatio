@@ -1281,6 +1281,8 @@ This application provides the ability to make plots instantly, without requiring
 To do this, the existing canvas window is repainted based on parameter input. Example:[[lst:dynamicplots2]]
 shows how this is implemented. A series of conditionals based on UI elements provides data about what data to use and type of plot to use also.
 
+When a hypothesis test is being carried out, this function will call the /CTData/ library to perform the test and return a P-value which is then applied to the plot's title.
+
 #+NAME: lst:dynamicplots2
 #+CAPTION: Example code of how figures are computed and implemented using /Seaborn/ and /Matplotlib/
 #+BEGIN_SRC python
@@ -1345,7 +1347,99 @@ Example:[[lst:dynamicplots3]] shows on lines 3,5,7 how decisions are made to bes
 #+END_SRC
 
 ** Data Analysis Methods
-** Bayesian Modelling
+The research elements of this project went through two distinct phases; the first round of investigation made use of statistical methods most commonly used in similar fields of research. /ANOVA/, Students T-Test and PCA have been heavily used and are well accepted in grain analysis studies cite:Gegas2010,Hughes2017,Xie2015.
+
+Initial findings showed that a more complex model would be required in order to make the best use out of the scientific data which this study produced.
+
+The data which had been gathered, being from such a wide range of samples meant that sample count was relatively low. Distributions of data would also indicate that there were missing elements, with such wide standard deviations.
+
+The solution devised to solve these problems is a Bayesian based model. The choice of this model comes from Bayesian statistics being more and more frequent in biological studies cite:Kruschke2012,Pullen2014. Additionally, a major strength of Bayesian statistics is its ability to adapt to missing data points and make best use of data available.
+
+*** Bayesian Analysis Model
+
+Douglas H. Johnson stated that "Despite their wide use in scientific journals ..., statistical  hypothesis tests add very little value to the products of research" cite:Johnson1999a. In order to answer more complex, more meaningful questions about biological data more detailed and informative approaches are needed, classical methods which involve "p-values" are felt to not be complete solutions cite:Goodman1999.
+
+By moving towards an evidence based model with Bayesian statistics, it is possible to provide interpretable answers, such as “the true parameter \theta has a probability of 0.95 of falling in a 95% credible interval.”
+
+The model provided by this project is an interpretation of the Bayesian T-test proposed by Kruschke in 2012 cite:Kruschke2012.
+
+**** Bayes Theorem
+
+Modern Bayesian interpretations use the simplified model of Bayes original theorem, equation:[[eqn:bayes]] is the basis of the implemented model in this project. This states that: the posterior is proportional to the likelihood times the prior.
+
+ #+NAME: eqn:bayes
+ \begin{align}
+   &\begin{aligned}
+   P(A|B) \propto P(B|A) \times P(A)
+   \end{aligned}
+ \end{align}
+ \myequations{Bayesian Statement}
+
+
+*** Likelihood
+The likelihood is described by the Student's T-test. Where each group $g$ to be tested presents element $y_i$ to a percentage likelihood of fitting a distribution $T$ .
+
+ #+NAME: eqn:likelihood
+ \begin{align}
+   &\begin{aligned}
+y_i^{(g)} \sim T(\nu, \mu, \sigma)
+   \end{aligned}
+ \end{align}
+ \myequations{Likelihood of Model}
+
+**** $\nu$ (Degrees of freedom)
+The degrees of freedom used is given as an exponential as described by
+Krusche cite:Kruschke2012. This is represented as $\nu = 30$.
+
+ #+NAME: eqn:dof
+ \begin{align}
+   &\begin{aligned}
+\nu = 30
+   \end{aligned}
+ \end{align}
+ \myequations{Likelihood of Model}
+
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:expo
+#+CAPTION: Exponential Distribution of 30
+#+RESULTS:
+[[./images/dist2.png]]
+
+**** $\mu$ (Mean)
+This is assumed similar for groups $g$. The data are real-values and normal priors are applied (to ensure the posterior is treated similarly).
+Twice the standard deviation ensures no values are favoured in the model initially.
+
+ #+NAME: eqn:mu
+ \begin{align}
+   &\begin{aligned}
+\mu_k \sim N(\bar{x},2s)
+   \end{aligned}
+ \end{align}
+ \myequations{Mean equation used in Bayesian model}
+
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:mu
+#+CAPTION: Normal$(\bar{x},2s)$
+[[./images/mu.png]]
+
+
+**** $\sigma$ (Standard Deviation)
+A large window for standard deviation is used (1,10000). Whilst no values in the model will have this range, it makes no difference due to random sampling via Markov chain Monte Carlo.
+
+ #+NAME: eqn:sd
+ \begin{align}
+   &\begin{aligned}
+\text{Uniform}(1,10000)
+   \end{aligned}
+ \end{align}
+ \myequations{Mean equation used in Bayesian model}
+
+
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:uni
+#+CAPTION: Uniform(1,10000)
+[[./images/dist.png]]
+
 
 
 * Results
