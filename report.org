@@ -994,7 +994,7 @@ The full model is explained later in this chapter in a much more informative man
 
 #+ATTR_LATEX: :placement [!hpb]
 #+LABEL: lst:bayes1
-#+CAPTION: Bayesian Model Function (part 1)
+#+CAPTION: Bayesian Model Function
 #+BEGIN_SRC python -n
   def baysian_hypothesis_test(group1, group2, group1_name, group2_name):
       """
@@ -1439,6 +1439,36 @@ A large window for standard deviation is used (1,10000). Whilst no values in the
 #+NAME: fig:uni
 #+CAPTION: Uniform(1,10000)
 [[./images/dist.png]]
+
+
+*** Bayesian Hypothesis Testing Example
+A worked example is provided to demonstrate the power of this model.
+**** Input Data
+Given 20 data points of a simulated set of seed/grain lengths, it is generally not enough information to get a significant result from a T-Test. The data is sparse and not informative.
+
+Figure:[[fig:bayesintro]] provides the simulated data in the form of a histogram where two groups, 'g1' and 'g2' have been used. These are considered the input for the model priors.
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:bayesintro
+#+CAPTION: Histogram of example input data
+[[./images/exampledata.png]]
+
+**** Posterior Output
+By applying the method outlined in code example:[[lst:bayes1]] and defined by equation:[[eqn:likelihood]] the posterior predictions can generate 1000 random samples from the perceived distributions of the data. Based on the probability of each value existing within the priors' distribution.
+
+Figure:[[fig:bayeshist]] demonstrates the expanded data set created by the posterior predictions.
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:bayeshist
+#+CAPTION: Histogram of example posterior data
+[[./images/examplebayes.png]]
+
+**** Difference of Means
+Using the created data, a simple $\mu^1 - \mu^2$ will provide the difference of group 'g1' and group 'g2' means. Which can be used to interpret the significance likelihood of the groups having different means.
+
+For the provided example data this model states that there is a 25.3% chance that the two means of these groups are different. This is represented in figure:[[fig:bayeshist2]].
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:bayeshist2
+#+CAPTION: Difference of means plot - $\mu^1 - \mu^2$
+[[./images/examplebayes2.png]]
 
 
 
