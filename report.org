@@ -580,6 +580,26 @@ The entire process is represented as a diagram in figure:[[fig:matlab]]
 #+ATTR_LATEX: :width 15cm
 [[file:./images/matlab.png]]
 
+*** Morphometric Features
+
+ The features/phenotypes used are extracted during the imaging process.
+ - Length is calculated using the major axis of the whole grain.
+ - Width and depth are the major and minor axis of a cross section, found by selecting the grain's midpoint.
+ - Volume is a complete connected pixel count per grain
+ - Surface area is a single pixel perimeter calculation mapped in 3 dimensions
+ - Length X Depth X Width is a post-image-processing value calculated by the interaction between the three dimension descriptors.
+
+ Values used in statistical functions and measurements are presented as metric units, derived from \micro-CT image pixel values. The equation:[[eqn:mm]] is presented here.
+
+ #+NAME: eqn:mm
+ \begin{align}
+   &\begin{aligned}
+ mm = \frac{pixel \times 68.8}{1000}
+   \end{aligned}
+ \end{align}
+ \myequations{Pixel to metric milimeter conversion}
+
+
 *** Data Analysis Pipeline
 The data analysis and research in this project is performed in part by automated software, the CT Analysis Library, and by human decision making as to statistical methods which need to be applied.
 
@@ -591,15 +611,27 @@ The data needs to be checked for false positives, this is done by first removing
 
 When the data has been cleaned, additional data is added. The added data provides information about the experiment, plant names; genotypes; top and bottom scans. With this data, information on scans which need to be joined is provided.
 
-Using data on $x,y,z$ coordinates a approximation is made to join spikes at the most likely point at which they were initially cut for imaging. Once this is performed data columns can be aggregated to form averages, medians, standard deviations etc. on a per plant (sample) basis.
+Using data on $x,y,z$ coordinates a approximation is made to join spikes at the most likely point at which they were initially cut for imaging.
+
+An additional phenotype is created to describe the interaction between the geometric parameters; the interaction is described in equation:[[eqn:inter]].
+
+ #+NAME: eqn:inter
+ \begin{align}
+   &\begin{aligned}
+\text{geometry interaction} = length \times depth \times width
+   \end{aligned}
+ \end{align}
+ \myequations{Pixel to metric milimeter conversion}
+
+When data are usable columns can be aggregated to form averages, medians, standard deviations etc. on a per plant (sample) basis.
 
 Finally, a decision is made by way of human input as to what type of statistics should be used to test hypothesis. This decision is mostly based on the distribution of the data where $X \sim \mathcal{N}(\mu,\,\sigma^{2})$ data is tested with parametric tests (e.g. Student's T-Test) else non-parametric tests are used (e.g. Welch's T-Test).
 
 From statistical testing a final result(s) can be used to answer scientific questions on the data. The entire process is represented in figure:[[fig:pipeline]].
-
+\clearpage
 #+NAME: fig:pipeline
 #+CAPTION: How data is integrated with the CT Analysing Library
-#+ATTR_LATEX: :width 15cm
+#+ATTR_LATEX: :width 18cm
 [[file:./images/pipeline.png]]
 
 ** Image Analysis Methods
@@ -688,11 +720,9 @@ Figure:[[fig:qe]] shows in two dimensional flat images how this problem was solv
 Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
 
 #+CAPTION: /A/ showing before the new method, /B/ after, /C/ zoomed before, /D/ zoomed after.
-#+ATTR_LATEX: :width 14cm
+#+ATTR_LATEX: :width 15cm
 #+NAME: fig:qe3d
 [[./images/watershedfigure.png]]
-
-
 
 \clearpage
 ** CT Analysing Library Methods
@@ -1480,63 +1510,50 @@ With statistical software created specifically to utilise \micro-CT image data o
 1. The Effects of ploidy on grain morphology
 2. Domestication's influence on grain morphology
 
-
-** Morphometric Features
-
-The features/phenotypes used are extracted during the imaging process.
-- Length is calculated using the major axis of the whole grain.
-- Width and depth are the major and minor axis of a cross section, found by selecting the grain's midpoint.
-- Volume is a complete connected pixel count per grain
-- Surface area is a single pixel perimeter calculation mapped in 3 dimensions
-- Length X Depth X Width is a post-image-processing value calculated by the interaction between the three dimension descriptors.
-
-Values used in statistical functions and measurements are presented as metric units, derived from \micro-CT image pixel values. The equation:[[eqn:mm]] is presented here.
-
-#+NAME: eqn:mm
-\begin{align}
-  &\begin{aligned}
-mm = \frac{pixel \times 68.8}{1000}
-  \end{aligned}
-\end{align}
-\myequations{Pixel to metric milimeter conversion}
+Previous studies have used two dimensional morphometric analysis with flatbed scanning systems, Gegas et al. demonstrated through a /Triticum/ mapping population how these data could be used as a framework to partially explain variation in wheat cite:Gegas2010. This project expands by providing new phenotypes previously not examined.
 
 ** Bayesian Modelling
 The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
 
 
+\clearpage
+** Grain Length is Not Effected by Domestication
 
-** Length of Grains is Not Effected by Domestication
-
+Here, this project has demonstrated that for the diploid genotypes /T. beoticum/ and /T. monococcum/ there is no significant difference in means. The provided model has predicted that there is a 49.6% (figure:\ref{fig:lenmeansdiff}) that these two genotypes are different, this indicates a near perfect overlap of expected data.
 
 #+BEGIN_EXPORT latex
 \begin{figure}[!ht]
-  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+  \subfloat[\label{subfig-1:length}]{%
     \includegraphics[width=0.45\textwidth]{./images/results/group1/length.png}
   }
   \hfill
-  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+  \subfloat[\label{subfig-2:Width}]{%
     \includegraphics[width=0.45\textwidth]{./images/results/group2/length.png}
   }
   \caption{Boxplots for (a) diploid (2N) wild (red) and domesticated (blue) grains, (b) tetraploid (4N) wild (red) and domesticated (blue) grains}
-  \label{fig:dummy}
+  \label{fig:lendemest}
 \end{figure}
 #+END_EXPORT
+
+For the tetraploid genotypes /T. dicoccum/ and /T. dicoccoides/ the effect of domestication appears statistically insignificant. A 27.3% chance is reported as the likelihood of both means being independent. Whilst the data leans towards /T. dicoccum/ having a larger mean, there is insufficient evidence to reject that grain length is not effected by domestication.
+
+Results from diploid and tetraploid genotypes, compared by domestication status, have shown no evidence to suggest that grain length is effected by domestication.
 
 
 #+BEGIN_EXPORT latex
 \begin{figure}[!ht]
-  \subfloat[Difference of means between \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+  \subfloat[\label{subfig-1:length}]{%
     \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
   }
   \hfill
-  \subfloat[Difference of means between \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+  \subfloat[\label{subfig-2:Width}]{%
     \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
   }
   \caption{Difference of means plots of wild and domesticated genotypes for length in (a) diploid (2N) grains,(b) tetraploid (4N) grains}
-  \label{fig:dummy}
+  \label{fig:lenmeansdiff}
 \end{figure}
 #+END_EXPORT
-
+\clearpage
 
 ** Grain Width Increases with Domestication
 
