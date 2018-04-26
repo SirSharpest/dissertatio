@@ -1473,12 +1473,312 @@ For the provided example data this model states that there is a 25.3% chance tha
 
 
 * Results
-The research goals behind this project are focused on developing and modelling information on wheat domestication. With statistical software created specifically to utilise \micro-CT image data on wheat grains, the five groups highlighted as the initial hypothesis were able to be investigated.
+The research goals behind this project are focused on developing and modelling information on wheat domestication.
 
+With statistical software created specifically to utilise \micro-CT image data on wheat grains, five comparison groups were highlighted for investigation. Two main goals exist in these results, the chosen groupings aim to isolate both:
+
+1. The Effects of ploidy on grain morphology
+2. Domestication's influence on grain morphology
+
+
+** Morphometric Features
+
+The features/phenotypes used are extracted during the imaging process.
+- Length is calculated using the major axis of the whole grain.
+- Width and depth are the major and minor axis of a cross section, found by selecting the grain's midpoint.
+- Volume is a complete connected pixel count per grain
+- Surface area is a single pixel perimeter calculation mapped in 3 dimensions
+- Length X Depth X Width is a post-image-processing value calculated by the interaction between the three dimension descriptors.
+
+Values used in statistical functions and measurements are presented as metric units, derived from \micro-CT image pixel values. The equation:[[eqn:mm]] is presented here.
+
+#+NAME: eqn:mm
+\begin{align}
+  &\begin{aligned}
+mm = \frac{pixel \times 68.8}{1000}
+  \end{aligned}
+\end{align}
+\myequations{Pixel to metric milimeter conversion}
+
+** Bayesian Modelling
 The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
 
+
+
+** Length of Grains is Not Effected by Domestication
+
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/length.png}
+  }
+  \caption{Boxplots for (a) diploid (2N) wild (red) and domesticated (blue) grains, (b) tetraploid (4N) wild (red) and domesticated (blue) grains}
+  \label{fig:dummy}
+\end{figure}
+#+END_EXPORT
+
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Difference of means between \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means between \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
+  }
+  \caption{Difference of means plots of wild and domesticated genotypes for length in (a) diploid (2N) grains,(b) tetraploid (4N) grains}
+  \label{fig:dummy}
+\end{figure}
+#+END_EXPORT
+
+
+** Grain Width Increases with Domestication
+
+** Grain Volume Increases with Domestication
+
+** Grain Volume Increases with Ploidy
+
+** Hexaploid Genotypes Contain No Significant Variation
+
+
+
+
+\clearpage
+* Discussion
+
+** Grain Classification through PCA
+
+#+LABEL: fig:grainspca
+#+CAPTION: A 2 component PCA showing all the spikes discussed in this study
+#+ATTR_LATEX: width:15cm
+[[./images/pca_all.png]]
+
+** Similar Research
+** Alternate Solutions
+* Critical Evaluation
+** Organisational Methods
+** Relevance to Degree
+** Time Management
+** Collaborative Work
+** Other Issues
+
+
+\appendix
+* Software Packages Used
+*** Libraries
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
+#+NAME: tab:software
+#+CAPTION: Software libraries used
+|---------------------------------+-------+------------|
+| Seaborn                         | Scipy | Sklearn    |
+|---------------------------------+-------+------------|
+| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
+|---------------------------------+-------+------------|
+| Statsmodels                     | Pymc3 | Xlrd       |
+|---------------------------------+-------+------------|
+| PyQt5                           | gcc   | Pip        |
+|---------------------------------+-------+------------|
+
+*** Tools
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
+#+NAME: tab:softwareused
+#+CAPTION: Software tools used
+|--------+-----------------------+----------|
+| MATLAB | Python Debugger (PDB) | IPython  |
+|--------+-----------------------+----------|
+| Emacs  | git                   | org-mode |
+|--------+-----------------------+----------|
+| Tomviz | ImageJ                | PlantUML |
+|--------+-----------------------+----------|
+
+\clearpage
+* Glossary
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
+#+NAME: tab:glossary
+#+CAPTION: Dictionary for Terms and acronyms
+|----------------------------------------+------------------------------------------------------------------------------|
+| *Term*                                 | *Definition*                                                                 |
+|----------------------------------------+------------------------------------------------------------------------------|
+| \micro-CT                              | Micro Computed Tomography                                                    |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genotype                               | A genetically distinct individual or group                                   |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Phenotype                              | A physical/measurable trait                                                  |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Alleles                                | A variant of a gene                                                          |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genus                                  | Classification ranking, below the /family/ grouping                          |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Genome                                 | The complete genetic make up of an organism, which defines its individuality |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Morphometric                           | The shape and form of an organism                                            |
+|----------------------------------------+------------------------------------------------------------------------------|
+| GUI                                    | Graphical User Interface                                                     |
+|----------------------------------------+------------------------------------------------------------------------------|
+| PCA                                    | Principal Component Analysis                                                 |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Spike                                  | A singular stalk of wheat                                                    |
+|----------------------------------------+------------------------------------------------------------------------------|
+| Spikelet                               | A group of seeds all forming from the same node in a spike                   |
+|----------------------------------------+------------------------------------------------------------------------------|
+| MVC                                    | Model View Controller - A design pattern for GUIs                            |
+|----------------------------------------+------------------------------------------------------------------------------|
+| OOP                                    | Object Orientated Programming                                                |
+|----------------------------------------+------------------------------------------------------------------------------|
+| $X \sim \mathcal{N}(\mu,\,\sigma^{2})$ | Notation for Normal (Gaussian) Distribution                                   |
+|----------------------------------------+------------------------------------------------------------------------------|
+
+\clearpage
+* Wheat Varieties
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
+#+NAME: tab:wheat
+#+CAPTION: Wheat used in this work and their common names
+|------------------------+---------------------|
+| *Species name*         | *Common name*       |
+|------------------------+---------------------|
+| /Triticum monococcum/  | Einkorn Domesticate |
+|------------------------+---------------------|
+| /Triticum boeticum/    | Einkorn Wild        |
+|------------------------+---------------------|
+| /Triticum durum/       | Pasta Wheat         |
+|------------------------+---------------------|
+| /Triticum dicoccoides/ | Emmer Domesticate   |
+|------------------------+---------------------|
+| /Triticum dicoccum/    | Emmer Wild          |
+|------------------------+---------------------|
+| /Triticum ispahanicum/ | n/a                 |
+|------------------------+---------------------|
+| /Triticum timopheevii/ | n/a                 |
+|------------------------+---------------------|
+| /Triticum spelta/      | Spelt               |
+|------------------------+---------------------|
+| /Triticum aestivum/    | Bread Wheat         |
+|------------------------+---------------------|
+| /Triticum compactum/   | Club Wheat          |
+|------------------------+---------------------|
+
+
+
+\clearpage
+* Code Segments and Examples
+
+** Setup.py
+#+CAPTION: The /setup.py/ configuration for the CT Analyser Library
+#+LABEL: lst:setuppy
+#+BEGIN_SRC python -n
+  from setuptools import setup
+  setup(name='CT_Analysing_Library',
+	version='0.2',
+	description='Library used for CT grain analysis at the NPPC',
+	url='https://github.com/SirSharpest/CT_Analysing_Library',
+	author='Nathan Hughes',
+	author_email='nathan1hughes@gmail.com',
+	license='MIT',
+	packages=['ct_analysing_library'],
+	install_requires=['pandas',
+			  'numpy',
+			  'matplotlib',
+			  'seaborn',
+			  'scipy',
+			  'sklearn',
+			  'statsmodels',
+			  'pymc3',
+			  'xlrd'],
+	zip_safe=True)
+#+END_SRC
+
+\clearpage
+** Self-Documenting Code Example
+#+CAPTION: Example of code documentation and readability from /data_transforms.py/
+#+LABEL: lst:docexample
+#+BEGIN_SRC python -n
+  def get_spike_info(self, excel_file, join_column='Folder#'):
+      """
+      This function should do something akin to adding additional
+      information to the data frame
+
+      @note there is some confusion in the NPPC about whether to use
+      folder name or file name as the unique id when this is made into
+      end-user software, a toggle should be added to allow this
+
+      @param excel_file a file to attach and read data from
+      @param join_column if the column for joining data is
+      different then it should be stated
+      """
+	  # Grab the linking excel file
+	  info = pd.read_excel(excel_file,
+			       index_col='Folder#')
+
+	  features = list(info.columns)
+	  # Lambda to look up the feature in excel spreadsheet
+	  def look_up(x, y): return info.loc[x['folderid']][y]
+
+	  # Lambda form a series (data row) and apply it to dataframe
+	  def gather_data(x): return pd.Series(
+	      [look_up(x, y) for y in features])
+
+	  self.df[features] = self.df.apply(gather_data, axis=1)
+      except KeyError as e:
+	  print('Error matching data')
+	  print(e)
+	  raise NoDataFoundException
+      except AttributeError as e:
+	  print(e)
+	  raise NoDataFoundException
+
+#+END_SRC
 \clearpage
 
+
+** Custom Documentation Generator
+#+CAPTION: Custom lisp code for generating easy to read documentation
+#+LABEL: lst:docgen
+#+BEGIN_SRC emacs-lisp -n
+  (defun populate-org-buffer (buffer filename root)
+    (goto-char (point-min))
+    (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
+      (while (re-search-forward
+	      (rx (group (or "def" "class"))
+		  space
+		  (group (+ (not (any "()"))))
+		  (? "(" (* nonl) "):" (+ "\n") (+ space)
+		     (= 3 "\"")
+		     (group (+? anything))
+		     (= 3 "\"")))
+	      nil 'noerror)
+	(setq to-insert
+	      (concat
+	       to-insert
+	       (if (string= "class" (match-string 1))
+		   "** "
+		 "*** ")
+	       (match-string 2)
+	       "\n"
+	       (and (match-string 3)
+		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
+      (with-current-buffer buffer
+	(insert to-insert))))
+  (defun org-documentation-from-dir (&optional dir)
+    (interactive)
+    (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
+	   (files (directory-files-recursively dir "\py$"))
+	   (doc-buf (get-buffer-create "org-docs")))
+      (dolist (file files)
+	(with-temp-buffer
+	  (insert-file-contents file)
+	  (populate-org-buffer doc-buf file dir)))
+      (with-current-buffer doc-buf
+	(org-mode))))
+#+END_SRC
+
+\clearpage
+* Full Comparison Plots
 ** /T. monococcum/ and /T. beoticum/
 
 *** Data Distributions
@@ -1809,226 +2109,6 @@ The designed Bayesian model previously described has been used as the basis for 
 
 
 
-
-\clearpage
-* Discussion
-** Similar Research
-** Alternate Solutions
-* Critical Evaluation
-** Organisational Methods
-** Relevance to Degree
-** Time Management
-** Collaborative Work
-** Other Issues
-
-
-\appendix
-* /Software Packages Used/
-*** Libraries
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
-#+NAME: tab:software
-#+CAPTION: Software libraries used
-|---------------------------------+-------+------------|
-| Seaborn                         | Scipy | Sklearn    |
-|---------------------------------+-------+------------|
-| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
-|---------------------------------+-------+------------|
-| Statsmodels                     | Pymc3 | Xlrd       |
-|---------------------------------+-------+------------|
-| PyQt5                           | gcc   | Pip        |
-|---------------------------------+-------+------------|
-
-*** Tools
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
-#+NAME: tab:softwareused
-#+CAPTION: Software tools used
-|--------+-----------------------+----------|
-| MATLAB | Python Debugger (PDB) | IPython  |
-|--------+-----------------------+----------|
-| Emacs  | git                   | org-mode |
-|--------+-----------------------+----------|
-| Tomviz | ImageJ                | PlantUML |
-|--------+-----------------------+----------|
-
-\clearpage
-* /Glossary/
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
-#+NAME: tab:glossary
-#+CAPTION: Dictionary for Terms and acronyms
-|----------------------------------------+------------------------------------------------------------------------------|
-| *Term*                                 | *Definition*                                                                 |
-|----------------------------------------+------------------------------------------------------------------------------|
-| \micro-CT                              | Micro Computed Tomography                                                    |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Genotype                               | A genetically distinct individual or group                                   |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Phenotype                              | A physical/measurable trait                                                  |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Alleles                                | A variant of a gene                                                          |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Genus                                  | Classification ranking, below the /family/ grouping                          |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Genome                                 | The complete genetic make up of an organism, which defines its individuality |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Morphometric                           | The shape and form of an organism                                            |
-|----------------------------------------+------------------------------------------------------------------------------|
-| GUI                                    | Graphical User Interface                                                     |
-|----------------------------------------+------------------------------------------------------------------------------|
-| PCA                                    | Principal Component Analysis                                                 |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Spike                                  | A singular stalk of wheat                                                    |
-|----------------------------------------+------------------------------------------------------------------------------|
-| Spikelet                               | A group of seeds all forming from the same node in a spike                   |
-|----------------------------------------+------------------------------------------------------------------------------|
-| MVC                                    | Model View Controller - A design pattern for GUIs                            |
-|----------------------------------------+------------------------------------------------------------------------------|
-| OOP                                    | Object Orientated Programming                                                |
-|----------------------------------------+------------------------------------------------------------------------------|
-| $X \sim \mathcal{N}(\mu,\,\sigma^{2})$ | Notation for Normal (Gaussian) Distribution                                   |
-|----------------------------------------+------------------------------------------------------------------------------|
-
-\clearpage
-* Wheat Varieties
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
-#+NAME: tab:wheat
-#+CAPTION: Wheat used in this work and their common names
-|------------------------+---------------------|
-| *Species name*         | *Common name*       |
-|------------------------+---------------------|
-| /Triticum monococcum/  | Einkorn Domesticate |
-|------------------------+---------------------|
-| /Triticum boeticum/    | Einkorn Wild        |
-|------------------------+---------------------|
-| /Triticum durum/       | Pasta Wheat         |
-|------------------------+---------------------|
-| /Triticum dicoccoides/ | Emmer Domesticate   |
-|------------------------+---------------------|
-| /Triticum dicoccum/    | Emmer Wild          |
-|------------------------+---------------------|
-| /Triticum ispahanicum/ | n/a                 |
-|------------------------+---------------------|
-| /Triticum timopheevii/ | n/a                 |
-|------------------------+---------------------|
-| /Triticum spelta/      | Spelt               |
-|------------------------+---------------------|
-| /Triticum aestivum/    | Bread Wheat         |
-|------------------------+---------------------|
-| /Triticum compactum/   | Club Wheat          |
-|------------------------+---------------------|
-
-
-
-\clearpage
-* Code Segments and Examples
-
-** Setup.py
-#+CAPTION: The /setup.py/ configuration for the CT Analyser Library
-#+LABEL: lst:setuppy
-#+BEGIN_SRC python -n
-  from setuptools import setup
-  setup(name='CT_Analysing_Library',
-	version='0.2',
-	description='Library used for CT grain analysis at the NPPC',
-	url='https://github.com/SirSharpest/CT_Analysing_Library',
-	author='Nathan Hughes',
-	author_email='nathan1hughes@gmail.com',
-	license='MIT',
-	packages=['ct_analysing_library'],
-	install_requires=['pandas',
-			  'numpy',
-			  'matplotlib',
-			  'seaborn',
-			  'scipy',
-			  'sklearn',
-			  'statsmodels',
-			  'pymc3',
-			  'xlrd'],
-	zip_safe=True)
-#+END_SRC
-
-\clearpage
-** Self-Documenting Code Example
-#+CAPTION: Example of code documentation and readability from /data_transforms.py/
-#+LABEL: lst:docexample
-#+BEGIN_SRC python -n
-  def get_spike_info(self, excel_file, join_column='Folder#'):
-      """
-      This function should do something akin to adding additional
-      information to the data frame
-
-      @note there is some confusion in the NPPC about whether to use
-      folder name or file name as the unique id when this is made into
-      end-user software, a toggle should be added to allow this
-
-      @param excel_file a file to attach and read data from
-      @param join_column if the column for joining data is
-      different then it should be stated
-      """
-	  # Grab the linking excel file
-	  info = pd.read_excel(excel_file,
-			       index_col='Folder#')
-
-	  features = list(info.columns)
-	  # Lambda to look up the feature in excel spreadsheet
-	  def look_up(x, y): return info.loc[x['folderid']][y]
-
-	  # Lambda form a series (data row) and apply it to dataframe
-	  def gather_data(x): return pd.Series(
-	      [look_up(x, y) for y in features])
-
-	  self.df[features] = self.df.apply(gather_data, axis=1)
-      except KeyError as e:
-	  print('Error matching data')
-	  print(e)
-	  raise NoDataFoundException
-      except AttributeError as e:
-	  print(e)
-	  raise NoDataFoundException
-
-#+END_SRC
-\clearpage
-
-
-** Custom Documentation Generator
-#+CAPTION: Custom lisp code for generating easy to read documentation
-#+LABEL: lst:docgen
-#+BEGIN_SRC emacs-lisp -n
-  (defun populate-org-buffer (buffer filename root)
-    (goto-char (point-min))
-    (let ((to-insert (concat "* " (replace-regexp-in-string root "" filename) "\n") ))
-      (while (re-search-forward
-	      (rx (group (or "def" "class"))
-		  space
-		  (group (+ (not (any "()"))))
-		  (? "(" (* nonl) "):" (+ "\n") (+ space)
-		     (= 3 "\"")
-		     (group (+? anything))
-		     (= 3 "\"")))
-	      nil 'noerror)
-	(setq to-insert
-	      (concat
-	       to-insert
-	       (if (string= "class" (match-string 1))
-		   "** "
-		 "*** ")
-	       (match-string 2)
-	       "\n"
-	       (and (match-string 3)
-		    (concat (match-string 3) "\n")))))helm-semantic-or-imenu
-      (with-current-buffer buffer
-	(insert to-insert))))
-  (defun org-documentation-from-dir (&optional dir)
-    (interactive)
-    (let* ((dir  (or dir (read-directory-name "Choose base directory: ")))
-	   (files (directory-files-recursively dir "\py$"))
-	   (doc-buf (get-buffer-create "org-docs")))
-      (dolist (file files)
-	(with-temp-buffer
-	  (insert-file-contents file)
-	  (populate-org-buffer doc-buf file dir)))
-      (with-current-buffer doc-buf
-	(org-mode))))
-#+END_SRC
 
 \clearpage
 
