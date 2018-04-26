@@ -139,7 +139,7 @@ To provide a full spectrum of analysis the null-hypothesis of this work is prese
 The comparison pairs are as follows (where W indicates wild genotypes and D domesticated.):
 
 1. /T. monococcum/ (2N|D) and /T. beoticum/ (2N|W)
-2. /T.dicoccum/ (4N|D) and /T. dicoccoides/ (4N|W)
+2. /T. dicoccum/ (4N|D) and /T. dicoccoides/ (4N|W)
 3. /T. spelta/ (6N|D) and /T. aestivum/ (6N|D)
 4. /T. dicoccum/ (4N|D) and /T. durum/ (4N|D)
 5. /T. beoticum/ (2N|W) and /T. dicoccoides/ (2N|W)
@@ -1473,6 +1473,389 @@ For the provided example data this model states that there is a 25.3% chance tha
 
 
 * Results
+The research goals behind this project are focused on developing and modelling information on wheat domestication. With statistical software created specifically to utilise \micro-CT image data on wheat grains, the five groups highlighted as the initial hypothesis were able to be investigated.
+
+The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
+
+** /T. monococcum/ and /T. beoticum/
+*** Length
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/length.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
+    }
+    \caption{Length of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Width
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_width.png}
+    }
+    \caption{Width of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Volume
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/volume.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_volume.png}
+    }
+    \caption{Volume of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Geometric Ratio
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/length_depth_width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_length_depth_width.png}
+    }
+    \caption{Length Depth Width ratio of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group1/pairplot.png]]
+
+\clearpage
+*** PCA
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group1/pca.png]]
+
+** /T. dicoccum/ and /T. dicoccoides/
+
+*** Length
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/length.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
+    }
+    \caption{Length of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Width
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_width.png}
+    }
+    \caption{Width of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Volume
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/volume.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_volume.png}
+    }
+    \caption{Volume of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Geometric Ratio
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/length_depth_width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_length_depth_width.png}
+    }
+    \caption{Length Depth Width ratio of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group2/pairplot.png]]
+
+\clearpage
+*** PCA
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group2/pca.png]]
+
+
+
+** /T. spelta/ and /T. aestivum/
+
+*** Length
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/length.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_length.png}
+    }
+    \caption{Length of \textit{T. spelta} and \textit{T. aestivium}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Width
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_width.png}
+    }
+    \caption{Width of \textit{T. spelta} and \textit{T. aestivium}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Volume
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/volume.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_volume.png}
+    }
+    \caption{Volume of \textit{T. spelta} and \textit{T. aestivium}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Geometric Ratio
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/length_depth_width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_length_depth_width.png}
+    }
+    \caption{Length Depth Width ratio of \textit{T. spelta} and \textit{T. aestivium}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group3/pairplot.png]]
+
+\clearpage
+*** PCA
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group3/pca.png]]
+
+
+
+
+
+
+** /T. beoticum/ and /T. dicoccoides/
+
+*** Length
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/length.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_length.png}
+    }
+    \caption{Length of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Width
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_width.png}
+    }
+    \caption{Width of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Volume
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/volume.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_volume.png}
+    }
+    \caption{Volume of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Geometric Ratio
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/length_depth_width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_length_depth_width.png}
+    }
+    \caption{Length Depth Width ratio of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group4/pairplot.png]]
+
+\clearpage
+*** PCA
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group4/pca.png]]
+
+
+
+
+** /T. dicoccum/ and /T. durum/
+
+*** Length
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/length.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_length.png}
+    }
+    \caption{Length of \textit{T. dicoccum} and \textit{T. durum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Width
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_width.png}
+    }
+    \caption{Width of \textit{T. dicoccum} and \textit{T. durum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Volume
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/volume.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_volume.png}
+    }
+    \caption{Volume of \textit{T. dicoccum} and \textit{T. durum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Geometric Ratio
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+    \centering
+    \subfigure{
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/length_depth_width.png}
+	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_length_depth_width.png}
+    }
+    \caption{Length Depth Width ratio of \textit{T. dicoccum} and \textit{T. durum}, compared}
+\end{figure}
+#+END_EXPORT
+
+\clearpage
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group5/pairplot.png]]
+
+\clearpage
+*** PCA
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group5/pca.png]]
+
+
+
+
+
+
+
+
+
+
 * Discussion
 ** Similar Research
 ** Alternate Solutions
