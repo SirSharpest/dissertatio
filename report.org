@@ -1477,62 +1477,57 @@ The research goals behind this project are focused on developing and modelling i
 
 The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
 
+\clearpage
+
 ** /T. monococcum/ and /T. beoticum/
-*** Length
+
+*** Data Distributions
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/length.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. monococcum} and \textit{T. beoticum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/length_depth_width.png}
     }
-    \caption{Length of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+  \caption{Plots comparing means and distributions of \textit{T. monococcum} (red) and \textit{T. beoticum} (blue)}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
 \clearpage
-*** Width
+*** Difference of Means
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_width.png}
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length_depth_width.png}
     }
-    \caption{Width of \textit{T. monococcum} and \textit{T. beoticum}, compared}
+  \caption{Plots showing the differnce of means for  \textit{T. monococcum} -  \textit{T. beoticum}}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
-\clearpage
-*** Volume
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/volume.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_volume.png}
-    }
-    \caption{Volume of \textit{T. monococcum} and \textit{T. beoticum}, compared}
-\end{figure}
-#+END_EXPORT
-
-\clearpage
-*** Geometric Ratio
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/length_depth_width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group1/bayes_difference_of_means_length_depth_width.png}
-    }
-    \caption{Length Depth Width ratio of \textit{T. monococcum} and \textit{T. beoticum}, compared}
-\end{figure}
-#+END_EXPORT
-
 \clearpage
 *** Pair Plot
 
@@ -1543,68 +1538,61 @@ The designed Bayesian model previously described has been used as the basis for 
 
 \clearpage
 *** PCA
-
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group1/pca.png]]
 
+\clearpage
 ** /T. dicoccum/ and /T. dicoccoides/
 
-*** Length
+*** Data Distributions
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/length.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/length_depth_width.png}
     }
-    \caption{Length of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+  \caption{Plots comparing means and distributions of \textit{T. dicoccum} (red) and \textit{T. dicoccoides} (blue)}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
 \clearpage
-*** Width
+*** Difference of Means
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_width.png}
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length_depth_width.png}
     }
-    \caption{Width of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
+  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. dicoccoides}}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
-\clearpage
-*** Volume
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/volume.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_volume.png}
-    }
-    \caption{Volume of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
-\end{figure}
-#+END_EXPORT
-
-\clearpage
-*** Geometric Ratio
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/length_depth_width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group2/bayes_difference_of_means_length_depth_width.png}
-    }
-    \caption{Length Depth Width ratio of \textit{T. dicoccum} and \textit{T. dicoccoides}, compared}
-\end{figure}
-#+END_EXPORT
-
 \clearpage
 *** Pair Plot
 
@@ -1615,7 +1603,6 @@ The designed Bayesian model previously described has been used as the basis for 
 
 \clearpage
 *** PCA
-
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
@@ -1623,62 +1610,56 @@ The designed Bayesian model previously described has been used as the basis for 
 
 
 
+\clearpage
 ** /T. spelta/ and /T. aestivum/
 
-*** Length
+*** Data Distributions
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/length.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_length.png}
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. spelta} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. spelta} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. spelta} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. spelta} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/length_depth_width.png}
     }
-    \caption{Length of \textit{T. spelta} and \textit{T. aestivium}, compared}
+  \caption{Plots comparing means and distributions of \textit{T. spelta} (red) and \textit{T. aestivum} (blue)}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
 \clearpage
-*** Width
+*** Difference of Means
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_width.png}
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_length_depth_width.png}
     }
-    \caption{Width of \textit{T. spelta} and \textit{T. aestivium}, compared}
+  \caption{Plots showing the differnce of means for  \textit{T. spelta} -  \textit{T. aestivum}}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
-\clearpage
-*** Volume
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/volume.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_volume.png}
-    }
-    \caption{Volume of \textit{T. spelta} and \textit{T. aestivium}, compared}
-\end{figure}
-#+END_EXPORT
-
-\clearpage
-*** Geometric Ratio
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/length_depth_width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group3/bayes_difference_of_means_length_depth_width.png}
-    }
-    \caption{Length Depth Width ratio of \textit{T. spelta} and \textit{T. aestivium}, compared}
-\end{figure}
-#+END_EXPORT
-
 \clearpage
 *** Pair Plot
 
@@ -1689,73 +1670,62 @@ The designed Bayesian model previously described has been used as the basis for 
 
 \clearpage
 *** PCA
-
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group3/pca.png]]
 
 
-
-
-
-
+\clearpage
 ** /T. beoticum/ and /T. dicoccoides/
 
-*** Length
+*** Data Distributions
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/length.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_length.png}
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. beoticum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. beoticum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. beoticum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. beoticum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/length_depth_width.png}
     }
-    \caption{Length of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+  \caption{Plots comparing means and distributions of \textit{T. beoticum} (red) and \textit{T. dicoccoides} (blue)}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
 \clearpage
-*** Width
+*** Difference of Means
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_width.png}
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_length_depth_width.png}
     }
-    \caption{Width of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
+  \caption{Plots showing the differnce of means for  \textit{T. beoticum} -  \textit{T. dicoccoides}}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
-\clearpage
-*** Volume
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/volume.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_volume.png}
-    }
-    \caption{Volume of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
-\end{figure}
-#+END_EXPORT
-
-\clearpage
-*** Geometric Ratio
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/length_depth_width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group4/bayes_difference_of_means_length_depth_width.png}
-    }
-    \caption{Length Depth Width ratio of \textit{T. beoticum} and \textit{T. dicoccoides}, compared}
-\end{figure}
-#+END_EXPORT
-
 \clearpage
 *** Pair Plot
 
@@ -1766,71 +1736,62 @@ The designed Bayesian model previously described has been used as the basis for 
 
 \clearpage
 *** PCA
-
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group4/pca.png]]
 
 
-
-
+\clearpage
 ** /T. dicoccum/ and /T. durum/
 
-*** Length
+*** Data Distributions
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/length.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_length.png}
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. durum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. durum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. durum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. durum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/length_depth_width.png}
     }
-    \caption{Length of \textit{T. dicoccum} and \textit{T. durum}, compared}
+  \caption{Plots comparing means and distributions of \textit{T. dicoccum} (red) and \textit{T. durum} (blue)}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
 \clearpage
-*** Width
+*** Difference of Means
 
 #+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/width.png}	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_width.png}
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_length_depth_width.png}
     }
-    \caption{Width of \textit{T. dicoccum} and \textit{T. durum}, compared}
+  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. durum}}
+  \label{fig:dummy}
 \end{figure}
 #+END_EXPORT
-
-\clearpage
-*** Volume
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/volume.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_volume.png}
-    }
-    \caption{Volume of \textit{T. dicoccum} and \textit{T. durum}, compared}
-\end{figure}
-#+END_EXPORT
-
-\clearpage
-*** Geometric Ratio
-
-#+BEGIN_EXPORT latex
-\begin{figure}[htbp]
-    \centering
-    \subfigure{
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/length_depth_width.png}
-	\includegraphics[width=0.49\textwidth]{./images/results/group5/bayes_difference_of_means_length_depth_width.png}
-    }
-    \caption{Length Depth Width ratio of \textit{T. dicoccum} and \textit{T. durum}, compared}
-\end{figure}
-#+END_EXPORT
-
 \clearpage
 *** Pair Plot
 
@@ -1841,7 +1802,6 @@ The designed Bayesian model previously described has been used as the basis for 
 
 \clearpage
 *** PCA
-
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
@@ -1850,12 +1810,7 @@ The designed Bayesian model previously described has been used as the basis for 
 
 
 
-
-
-
-
-
-
+\clearpage
 * Discussion
 ** Similar Research
 ** Alternate Solutions

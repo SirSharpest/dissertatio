@@ -23,7 +23,7 @@
 #+LaTeX_HEADER: \usepackage{multicol}
 #+LaTeX_HEADER: \usepackage{array}
 #+LaTeX_HEADER: \usepackage[subfigure]{tocloft}
-#+LaTeX_HEADER: \usepackage{subfigure}
+#+LaTex_HEADER: \usepackage{subfig}
 #+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{10.4cm} }
 #+LaTeX_HEADER: \newcolumntype{D}{ >{\centering\arraybackslash} m{8cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
