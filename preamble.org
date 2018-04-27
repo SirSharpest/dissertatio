@@ -18,6 +18,7 @@
 #+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
 #+LaTeX_HEADER: \usepackage[parfill]{parskip}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}

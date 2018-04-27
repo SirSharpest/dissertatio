@@ -1628,34 +1628,7 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 
 
 \appendix
-* Software Packages Used
-*** Libraries
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
-#+NAME: tab:software
-#+CAPTION: Software libraries used
-|---------------------------------+-------+------------|
-| Seaborn                         | Scipy | Sklearn    |
-|---------------------------------+-------+------------|
-| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
-|---------------------------------+-------+------------|
-| Statsmodels                     | Pymc3 | Xlrd       |
-|---------------------------------+-------+------------|
-| PyQt5                           | gcc   | Pip        |
-|---------------------------------+-------+------------|
 
-*** Tools
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
-#+NAME: tab:softwareused
-#+CAPTION: Software tools used
-|--------+-----------------------+----------|
-| MATLAB | Python Debugger (PDB) | IPython  |
-|--------+-----------------------+----------|
-| Emacs  | git                   | org-mode |
-|--------+-----------------------+----------|
-| Tomviz | ImageJ                | PlantUML |
-|--------+-----------------------+----------|
-
-\clearpage
 * Glossary
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|
 #+NAME: tab:glossary
@@ -1693,6 +1666,50 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 |----------------------------------------+------------------------------------------------------------------------------|
 
 \clearpage
+
+
+* Libraries, Tools and Documentation
+
+*** Libraries
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
+#+NAME: tab:software
+#+CAPTION: Software libraries used
+|---------------------------------+-------+------------|
+| Seaborn                         | Scipy | Sklearn    |
+|---------------------------------+-------+------------|
+| MATLAB Image Processing Toolbox | Numpy | Matplotlib |
+|---------------------------------+-------+------------|
+| Statsmodels                     | Pymc3 | Xlrd       |
+|---------------------------------+-------+------------|
+| PyQt5                           | gcc   | Pip        |
+|---------------------------------+-------+------------|
+
+*** Tools
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|X|
+#+NAME: tab:softwareused
+#+CAPTION: Software tools used
+|--------+-----------------------+----------|
+| MATLAB | Python Debugger (PDB) | IPython  |
+|--------+-----------------------+----------|
+| Emacs  | git                   | org-mode |
+|--------+-----------------------+----------|
+| Tomviz | ImageJ                | PlantUML |
+|--------+-----------------------+----------|
+
+\clearpage
+#+BEGIN_EXPORT latex
+\includepdf[scale=0.8,pages=1,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=2,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 2}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=3,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 3}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=4,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 4}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=5,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 5}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=6,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 6}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=7,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 7}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=8,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 8}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=9,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 9}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=10,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 10}}]{ctanalysis.pdf}
+#+END_EXPORT
+
 * Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
 #+NAME: tab:wheat
@@ -2488,8 +2505,6 @@ Previous research questions were repeated, using this method. This time new and 
 
 *** Sprint - Week 11
 A feature freeze was enforced during the 11th week of the project. This was to ensure time was allocated for completing work, finalising unit tests and documentation. The > 50 unit tests were finalised, completed and ensured to be passing. Documentation was completed and exported.
-
-
 
 
 \clearpage
