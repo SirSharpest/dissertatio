@@ -7,7 +7,8 @@
 #+LaTeX_HEADER: \fancyfoot[CE,CO]{}
 #+LaTeX_HEADER: \fancyhead[LE,LO]{}
 #+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
-#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicel
+#+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \restylefloat{figure} %and this command
 #+LaTeX_HEADER: \usepackage{hyperref}
 #+LaTeX_HEADER: \hypersetup{urlcolor=blue}
@@ -17,16 +18,14 @@
 #+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
 #+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
 #+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER: \usepackage{subfig}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
-#+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LaTeX_HEADER: \usepackage{tabularx}
 #+LaTeX_HEADER: \usepackage{multicol}
 #+LaTeX_HEADER: \usepackage{array}
 #+LaTeX_HEADER: \usepackage[subfigure]{tocloft}
-#+LaTex_HEADER: \usepackage{subfig}
 #+LaTeX_HEADER: \newcolumntype{C}{ >{\centering\arraybackslash} m{10.4cm} }
-#+LaTeX_HEADER: \newcolumntype{D}{ >{\centering\arraybackslash} m{8cm} }
 #+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{color}
 #+LaTeX_HEADER: \usepackage[nocompress]{cite}
 

@@ -142,7 +142,7 @@ The comparison pairs are as follows (where W indicates wild genotypes and D dome
 2. /T. dicoccum/ (4N|D) and /T. dicoccoides/ (4N|W)
 3. /T. spelta/ (6N|D) and /T. aestivum/ (6N|D)
 4. /T. dicoccum/ (4N|D) and /T. durum/ (4N|D)
-5. /T. beoticum/ (2N|W) and /T. dicoccoides/ (2N|W)
+5. /T. beoticum/ (2N|W) and /T. dicoccoides/ (4N|W)
 
 These comparison groups where chosen, with help from researchers at the National Plant Phenomics Centre, based on their ploidy and also on their domestication grouping. This maximises the potential of this research by isolating features and attributes of wheat based on domestication status.
 #+CAPTION: Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)
@@ -383,51 +383,51 @@ The unit tests for the CT Analysing Library were straightforward, using the /PyT
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|l|X|
 #+NAME: tab:unittest
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT Analysing Library
-|------+---------------------------+----------------------------------------------------|
-| I.D. | *Result*                  | *Test*                                             |
-|------+---------------------------+----------------------------------------------------|
-|    0 | \color{ForestGreen}Passed | CTData.py::test_aggregate_spike_averages           |
-|------+---------------------------+----------------------------------------------------|
-|    1 | \color{ForestGreen}Passed | CTData.py::test_clean_data_maximum_removed         |
-|------+---------------------------+----------------------------------------------------|
-|    2 | \color{ForestGreen}Passed | CTData.py::test_clean_data_minimum_removed         |
-|------+---------------------------+----------------------------------------------------|
-|    3 | \color{ForestGreen}Passed | CTData.py::test_load_additional_data               |
-|------+---------------------------+----------------------------------------------------|
-|    4 | \color{ForestGreen}Passed | CTData.py::test_load_additional_data_no_data       |
-|------+---------------------------+----------------------------------------------------|
-|    5 | \color{ForestGreen}Passed | CTData.py::test_load_data                          |
-|------+---------------------------+----------------------------------------------------|
-|    6 | \color{ForestGreen}Passed | CTData.py::test_NoDataFoundException               |
-|------+---------------------------+----------------------------------------------------|
-|    7 | \color{ForestGreen}Passed | Data_transforms.py::test_box_cox_data              |
-|------+---------------------------+----------------------------------------------------|
-|    8 | \color{ForestGreen}Passed | Data_transforms.py::test_pca_to_table              |
-|------+---------------------------+----------------------------------------------------|
-|    9 | \color{ForestGreen}Passed | Data_transforms.py::test_perform_pca               |
-|------+---------------------------+----------------------------------------------------|
-|   10 | \color{ForestGreen}Passed | Data_transforms.py::test_standardise_data          |
-|------+---------------------------+----------------------------------------------------|
-|   11 | \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_dataframe        |
-|------+---------------------------+----------------------------------------------------|
-|   12 | \color{ForestGreen}Passed | Graphing.py::test_plot_boxplot_as_object           |
-|------+---------------------------+----------------------------------------------------|
-|   13 | \color{ForestGreen}Passed | Graphing.py::test_plot_difference_of_means         |
-|------+---------------------------+----------------------------------------------------|
-|   14 | \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_dataframe      |
-|------+---------------------------+----------------------------------------------------|
-|   15 | \color{ForestGreen}Passed | Graphing.py::test_plot_histogram_as_object         |
-|------+---------------------------+----------------------------------------------------|
-|   16 | \color{ForestGreen}Passed | Graphing.py::test_plot_pca                         |
-|------+---------------------------+----------------------------------------------------|
-|   17 | \color{ForestGreen}Passed | Graphing.py::test_plot_qqplot                      |
-|------+---------------------------+----------------------------------------------------|
-|   18 | \color{ForestGreen}Passed | Statistical_tests.py::test_baysian_hypothesis_test |
-|------+---------------------------+----------------------------------------------------|
-|   19 | \color{ForestGreen}Passed | Statistical_tests.py::test_t_test                  |
-|------+---------------------------+----------------------------------------------------|
-|   20 | \color{ForestGreen}Passed | Statistical_tests.py::test_test_normality          |
-|------+---------------------------+----------------------------------------------------|
+|--------+----------+----------------------------------------------------|
+| *I.D.* | *Result* | *Test*                                             |
+|--------+----------+----------------------------------------------------|
+|      0 | Passed   | CTData.py::test_aggregate_spike_averages           |
+|--------+----------+----------------------------------------------------|
+|      1 | Passed   | CTData.py::test_clean_data_maximum_removed         |
+|--------+----------+----------------------------------------------------|
+|      2 | Passed   | CTData.py::test_clean_data_minimum_removed         |
+|--------+----------+----------------------------------------------------|
+|      3 | Passed   | CTData.py::test_load_additional_data               |
+|--------+----------+----------------------------------------------------|
+|      4 | Passed   | CTData.py::test_load_additional_data_no_data       |
+|--------+----------+----------------------------------------------------|
+|      5 | Passed   | CTData.py::test_load_data                          |
+|--------+----------+----------------------------------------------------|
+|      6 | Passed   | CTData.py::test_NoDataFoundException               |
+|--------+----------+----------------------------------------------------|
+|      7 | Passed   | Data_transforms.py::test_box_cox_data              |
+|--------+----------+----------------------------------------------------|
+|      8 | Passed   | Data_transforms.py::test_pca_to_table              |
+|--------+----------+----------------------------------------------------|
+|      9 | Passed   | Data_transforms.py::test_perform_pca               |
+|--------+----------+----------------------------------------------------|
+|     10 | Passed   | Data_transforms.py::test_standardise_data          |
+|--------+----------+----------------------------------------------------|
+|     11 | Passed   | Graphing.py::test_plot_boxplot_as_dataframe        |
+|--------+----------+----------------------------------------------------|
+|     12 | Passed   | Graphing.py::test_plot_boxplot_as_object           |
+|--------+----------+----------------------------------------------------|
+|     13 | Passed   | Graphing.py::test_plot_difference_of_means         |
+|--------+----------+----------------------------------------------------|
+|     14 | Passed   | Graphing.py::test_plot_histogram_as_dataframe      |
+|--------+----------+----------------------------------------------------|
+|     15 | Passed   | Graphing.py::test_plot_histogram_as_object         |
+|--------+----------+----------------------------------------------------|
+|     16 | Passed   | Graphing.py::test_plot_pca                         |
+|--------+----------+----------------------------------------------------|
+|     17 | Passed   | Graphing.py::test_plot_qqplot                      |
+|--------+----------+----------------------------------------------------|
+|     18 | Passed   | Statistical_tests.py::test_baysian_hypothesis_test |
+|--------+----------+----------------------------------------------------|
+|     19 | Passed   | Statistical_tests.py::test_t_test                  |
+|--------+----------+----------------------------------------------------|
+|     20 | Passed   | Statistical_tests.py::test_test_normality          |
+|--------+----------+----------------------------------------------------|
 
 
 \clearpage
@@ -443,63 +443,63 @@ In table:[[tab:unittest2]] the results of the automated testing is given along s
 #+ATTR_LATEX: :environment longtable :width \textwidth :align |l|l|p{4.4cm}|C|
 #+NAME: tab:unittest2
 #+CAPTION: Output of /pytest/ Unit Tests and results for CT GUI Application
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-| I.D. | *Result*                  | *Test*                                                 | *Image*                                                      |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   21 | \color{ForestGreen}Passed | analysis.py:: box_groupby_1_rb_1                       | [[./images/Screenshots/analysis_window_box_groupby_1_rb_1.png]]  |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   22 | \color{ForestGreen}Passed | analysis.py:: box_groupby_2_rb_2                       | [[./images/Screenshots/analysis_window_box_groupby_2_rb_2.png]]  |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   23 | \color{ForestGreen}Passed | analysis.py:: box_rb_1                                 | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   24 | \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_1                      | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   25 | \color{ForestGreen}Passed | analysis.py:: hist_rb_1                                | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   26 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_1                    | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   27 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_1                        | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   28 | \color{ForestGreen}Passed | analysis.py:: box_rb_2                                 | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   29 | \color{ForestGreen}Passed | analysis.py:: hist_groupby_1_rb_2                      | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   30 | \color{ForestGreen}Passed | analysis.py:: hist_rb_2                                | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   31 | \color{ForestGreen}Passed | analysis.py:: loads                                    | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   32 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg1_att_2                    | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   33 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_1                    | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   34 | \color{ForestGreen}Passed | hypothesis_tests.py:: bayesg2_att_2                    | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   35 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg1_att_2                        | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   36 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_1                        | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   37 | \color{ForestGreen}Passed | hypothesis_tests.py:: tg2_att_2                        | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   38 | \color{ForestGreen}Passed | hypothesis_tests.py:: loads                            | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   39 | \color{ForestGreen}Passed | GUI.py:: startup                                       | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   40 | \color{ForestGreen}Passed | load_data.py:: load_data_with_rachis                   | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   41 | \color{ForestGreen}Passed | load_data.py:: load_data_without_rachis                | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   42 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_large             | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   43 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_none              | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   44 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove_small             | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   45 | \color{ForestGreen}Passed | preprocessing.py:: clean_data_remove _small_and_large  | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   46 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data                | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
-|   47 | \color{ForestGreen}Passed | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
-|------+---------------------------+--------------------------------------------------------+--------------------------------------------------------------|
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+| *I.D.* | *Result* | *Test*                                                 | *Image*                                                      |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     21 | Passed   | analysis.py:: box_groupby_1_rb_1                       | [[./images/Screenshots/analysis_window_box_groupby_1_rb_1.png]]  |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     22 | Passed   | analysis.py:: box_groupby_2_rb_2                       | [[./images/Screenshots/analysis_window_box_groupby_2_rb_2.png]]  |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     23 | Passed   | analysis.py:: box_rb_1                                 | [[./images/Screenshots/analysis_window_box_rb_1.png]]            |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     24 | Passed   | analysis.py:: hist_groupby_1_rb_1                      | [[./images/Screenshots/analysis_window_hist_groupby_1_rb_1.png]] |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     25 | Passed   | analysis.py:: hist_rb_1                                | [[./images/Screenshots/analysis_window_hist_rb_1.png]]           |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     26 | Passed   | hypothesis_tests.py:: bayesg1_att_1                    | [[./images/Screenshots/hypothesis_bayestest_g1_att_1.png]]       |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     27 | Passed   | hypothesis_tests.py:: tg1_att_1                        | [[./images/Screenshots/hypothesis_ttest_g1_att_1.png]]           |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     28 | Passed   | analysis.py:: box_rb_2                                 | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     29 | Passed   | analysis.py:: hist_groupby_1_rb_2                      | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     30 | Passed   | analysis.py:: hist_rb_2                                | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     31 | Passed   | analysis.py:: loads                                    | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     32 | Passed   | hypothesis_tests.py:: bayesg1_att_2                    | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     33 | Passed   | hypothesis_tests.py:: bayesg2_att_1                    | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     34 | Passed   | hypothesis_tests.py:: bayesg2_att_2                    | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     35 | Passed   | hypothesis_tests.py:: tg1_att_2                        | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     36 | Passed   | hypothesis_tests.py:: tg2_att_1                        | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     37 | Passed   | hypothesis_tests.py:: tg2_att_2                        | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     38 | Passed   | hypothesis_tests.py:: loads                            | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     39 | Passed   | GUI.py:: startup                                       | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     40 | Passed   | load_data.py:: load_data_with_rachis                   | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     41 | Passed   | load_data.py:: load_data_without_rachis                | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     42 | Passed   | preprocessing.py:: clean_data_remove_large             | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     43 | Passed   | preprocessing.py:: clean_data_remove_none              | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     44 | Passed   | preprocessing.py:: clean_data_remove_small             | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     45 | Passed   | preprocessing.py:: clean_data_remove _small_and_large  | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     46 | Passed   | preprocessing.py:: load_additional_data                | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
+|     47 | Passed   | preprocessing.py:: load_additional_data _expected_fail | N/A                                                          |
+|--------+----------+--------------------------------------------------------+--------------------------------------------------------------|
 
 *** Acceptance Testing
 These unit tests, alongside user tests have been used to meet the outlined functional requirements; specific tests are shown in table:[[tab:frtests]] to match them to the associated functional requirement.
@@ -1601,16 +1601,69 @@ Diploids (/T. beoticum/, /T. monococcum/) , tetraploids (/T. dicoccum/, /T. dico
 
 Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this, with full results shown in supplemental figure:\ref{fig:group6}.
 
-
 #+CAPTION: A boxplot of all grains' volume plotted by ploidy and domestication status
 #+NAME: fig:ploidyvol
-#+ATTR_LATEX: :width 14cm
+#+ATTR_LATEX: :width 10cm
 [[./images/results/ploidyvol.png]]
+
+
+Comparing /T. durum/ and /T. aestivum/ there is a 94.7% chance that the means are similar, this indicates that volume is not dependant on ploidy fully.
+
+
+#+CAPTION: A boxplot of /T. durum/ and /T. aestivum/ volume
+#+NAME: fig:ploidyvolume
+#+ATTR_LATEX: :width 8cm
+[[./images/results/group7/volume.png]]
 
 \clearpage
 * Discussion
 
+Here, this chapter will discuss the relevance of this research, its place in the wider field of plant sciences. The meaning of results and their agreement with current literature is also discussed. As well are some interesting findings, which while not statistically significant are cause of interest and further investigation.
+
+** \micro-CT As Tool For Exploring Domestication
+In plant science \micro-CT and other imaging techniques have been used to great effect cite:Hubeau2015,Staedler2013,Metzner2015. Here this project builds upon and adds to an established image analysis tool cite:Hughes2017 where this method was designed for drought stress experiments this project has expanded functionality for use with a wide range of genotypes.
+
+A wide range of attributes which previous studies could not access cite:Gegas2010 is made available for study. In figure:[[fig:pairplotexample]] the available phenotypes are displayed in a pairwise fashion, demonstrating how interesting relationships between attributes could provide more information if studied further.
+
+The provided pairwise plots consist of scatter plots, each marker represents a single grain, and diagonals are kernel density estimation plots which show the distribution of the phenotypes. For each comparison group from the study a pairwise plot is provided in supplemental figures.
+
+Primarily, this study has focused on the following phenotypes:
+
+1. Length
+2. Width
+3. Volume
+4. Surface Area
+
+Length and width have previously been studied through two dimensional imaging cite:Gegas2010, their availability through this method provides an interesting point of reference. Volume and surface area both present unstudied phenotypes. Grain studies often use spike weight or thousand-grain-weight (TGW) as an estimation of yield from crops, such large assumptions are unsuited when so much variation exists on a grain-to-grain basis. The relationship between spike weight and sum of spike volume has previously been shown to have been significantly correlated cite:Hughes2017. As such, this study proposes that grain volume is a much more useful measurement, reduces amount of data collection needed and that it can also be used as a proxy for TGW if required.
+
+#+LABEL: fig:pairplotexample
+#+CAPTION: A pairplot of two tetraploid genotypes
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group2/pairplot.png]]
+
+\clearpage
+
+** Effects of Ploidy on Grain Width
+
+Lin Qin et at. reported that an increased grain kernel width was observed in tetraploid genotypes. Furthermore, that this change can be accounted for by /TaGW2/ gene expression levels, where a decline was observed between diploid, tetraploid and hexaploid wheat cite:Qin2017.
+
+It has been suggested that polyploidization events cause stronger effects in grain morphology than domestication or breeding cite:Qin2017. The data made available through this research has the potential to explore and contribute to this suggestion. Where similar effects have been observed but have not been cross compared to answer this question.
+
+However, results from comparing primitive /T. beoticum/ and /T. dicoccoides/ show that an insignificant effect is present and that there is a high likelihood of width overlap. This effect could be down to a poor comparison choice as these genotypes may have arose from separate events cite:Ozkan2002.
+
 ** Grain Classification through PCA
+Gegas et al. previously made great use of principal component analysis with wheat mapping populations. Using PCA afforded information on grain morphology specifically towards which traits could be traced to features from ancestral species.
+
+With this data, similar solutions could be implemented. Figure:[[fig:grainspca]] shows all grains in this study, grouped by origin spike and plotted by a two component PCA. Input is calculated through averaging across spike grains' length, width, depth, volume via equation:[[eqn:pca]].
+
+ #+NAME: eqn:pca
+ \begin{align}
+   &\begin{aligned}
+\text{Phenotype}_i = \frac{1}{n}\times\sum^n_{j=1}{x^i_j}
+   \end{aligned}
+ \end{align}
+ \myequations{PCA Equation}
+
 
 #+LABEL: fig:grainspca
 #+CAPTION: A 2 component PCA showing all the spikes discussed in this study
@@ -1619,6 +1672,7 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 
 ** Similar Research
 ** Alternate Solutions
+
 * Critical Evaluation
 ** Organisational Methods
 ** Relevance to Degree
@@ -1696,6 +1750,7 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 | Tomviz | ImageJ                | PlantUML |
 |--------+-----------------------+----------|
 
+** Documentation
 \clearpage
 #+BEGIN_EXPORT latex
 \includepdf[scale=0.8,pages=1,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{ctanalysis.pdf}
@@ -2447,19 +2502,19 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 #+BEGIN_EXPORT latex
 \begin{figure}[!ht]
   \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_length.png}
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_length.png}
   }
   \hfill
   \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_width.png}
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_width.png}
   }
   \hfill
   \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_volume.png}
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_volume.png}
   }
   \hfill
   \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_length_depth_width.png}
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. durum} -  \textit{T. aestivum}}
   \label{fig:group7}
