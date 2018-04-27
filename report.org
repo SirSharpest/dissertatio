@@ -12,7 +12,7 @@ Primarily the focus has been on the data science elements of my degree, creating
 
 Using a population of genetically diverse wheat, several hypothesis and questions are explored in the hopes of contributing to the scientific understanding of domestication. A mixture of image analysis through three-dimensional micro-computed tomography and computational analysis are used to provide these much needed solutions.
 
-Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the /glossary/ (table:[[tab:glossary]]).
+Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the glossary (table:[[tab:glossary]]).
 
 ** Background
 2
@@ -1516,8 +1516,16 @@ Previous studies have used two dimensional morphometric analysis with flatbed sc
 The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
 
 
+** Grain Width is Not Affected by Domestication
+
+The groups /T. beoticum/ and /T. monococcum/ show (supplemental figure:\ref{fig:group1}) that width is significantly different, a 8.6% chance that the mean of /T. beoticum/ width is greater than /T. monococcum/ is reported.
+
+The reported change in width for tetraploids /T. dicoccum/ and /T. dicoccoides/ is not significant. A 36.3% chance exists that the means of the groups are different, which is not a strong difference based on our model.
+
+With one group agreeing to the null-hypothesis and one rejecting it, there is not enough evidence to fully reject that width is associated to solely domestication.
+
 \clearpage
-** Grain Length is Not Effected by Domestication
+** Grain Length is Not Affected by Domestication
 
 Here, this project has demonstrated that for the diploid genotypes /T. beoticum/ and /T. monococcum/ there is no significant difference in means. The provided model has predicted that there is a 49.6% (figure:\ref{fig:lenmeansdiff}) that these two genotypes are different, this indicates a near perfect overlap of expected data.
 
@@ -1555,16 +1563,49 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
 #+END_EXPORT
 \clearpage
 
-** Grain Width Increases with Domestication
-
 ** Grain Volume Increases with Domestication
 
-** Grain Volume Increases with Ploidy
+For volume, the diploid samples /T. beoticum/, /T. monococcum/  and the tetraploids /T. dicoccum/  /T. dicoccoides/ when internally compared have shown that the difference in domestication is highly significant.
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[\label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[\label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_volume.png}
+  }
+  \caption{Forest plots showing credible intervals of wild and domesticated genotypes for volume in (a) diploid (2N) grains,(b) tetraploid (4N) grains. (a) shows a 0.4\% chance of similar means  and (b) a 3.6\%}
+  \label{fig:lenmeansvolume}
+\end{figure}
+#+END_EXPORT
+
+The diploids show a 0.4% chance of their means being similar, while the tetraploids show a 3.7% chance of a same mean value.
 
 ** Hexaploid Genotypes Contain No Significant Variation
 
+Hexaploids /T. aestivum/ and /T. spelta/ are both elite cultivars. When compared show that there is a 77.2% chance than there is a difference in the means of length. A 54.8% chance of difference in width.
+
+A 91.5% chance and a 89.0% chance of difference of means in volume and length X depth x width, respectively.
+
+These values, with the exception of volume, do not provide sufficient evidence of significant variation in hexaploid varieties used in this study.
 
 
+\clearpage
+
+
+** Grain Volume Does Not Increase with Ploidy
+
+Diploids (/T. beoticum/, /T. monococcum/) , tetraploids (/T. dicoccum/, /T. dicoccoides/)  show a significant difference in volume.
+
+Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this, with full results shown in supplemental figure:\ref{fig:group6}.
+
+
+#+CAPTION: A boxplot of all grains' volume plotted by ploidy and domestication status
+#+NAME: fig:ploidyvol
+#+ATTR_LATEX: :width 14cm
+[[./images/results/ploidyvol.png]]
 
 \clearpage
 * Discussion
@@ -1842,10 +1883,35 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
     \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. monococcum} -  \textit{T. beoticum}}
-  \label{fig:dummy}
+  \label{fig:group1}
 \end{figure}
 #+END_EXPORT
 \clearpage
+*** Credible Intervals
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing credible intervals for  \textit{T. monococcum} and  \textit{T. beoticum}}
+  \label{fig:group1}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+
 *** Pair Plot
 
 #+LABEL:
@@ -1907,10 +1973,39 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
     \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. dicoccoides}}
-  \label{fig:dummy}
+  \label{fig:group2}
 \end{figure}
 #+END_EXPORT
 \clearpage
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing credible intervals for  \textit{T. dicoccum} and  \textit{T. dicoccoides}}
+  \label{fig:group2}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+
+
+
 *** Pair Plot
 
 #+LABEL:
@@ -1974,10 +2069,39 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
     \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. spelta} -  \textit{T. aestivum}}
-  \label{fig:dummy}
+  \label{fig:group3}
 \end{figure}
 #+END_EXPORT
 \clearpage
+
+
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing the credible intervals for  \textit{T. spelta} and  \textit{T. aestivum}}
+  \label{fig:group3}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+
 *** Pair Plot
 
 #+LABEL:
@@ -2040,10 +2164,39 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
     \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. beoticum} -  \textit{T. dicoccoides}}
-  \label{fig:dummy}
+  \label{fig:group4}
 \end{figure}
 #+END_EXPORT
 \clearpage
+
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing the credible intervals for  \textit{T. beoticum} and  \textit{T. dicoccoides}}
+  \label{fig:group4}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+
+
 *** Pair Plot
 
 #+LABEL:
@@ -2106,10 +2259,38 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
     \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_length_depth_width.png}
     }
   \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. durum}}
-  \label{fig:dummy}
+  \label{fig:group5}
 \end{figure}
 #+END_EXPORT
 \clearpage
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing the credible intervals for  \textit{T. dicoccum} and  \textit{T. durum}}
+  \label{fig:group5}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+
+
 *** Pair Plot
 
 #+LABEL:
@@ -2124,9 +2305,98 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group5/pca.png]]
 
+\clearpage
+
+** /T. dicoccum/ and /T. aestivum/
+
+*** Data Distributions
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. dicoccum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/length_depth_width.png}
+    }
+  \caption{Plots comparing means and distributions of \textit{T. dicoccum} (red) and \textit{T. aestivum} (blue)}
+  \label{fig:dummy}
+\end{figure}
+#+END_EXPORT
+\clearpage
+*** Difference of Means
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_length_depth_width.png}
+    }
+  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. aestivum}}
+  \label{fig:group6}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing the credible intervals for  \textit{T. dicoccum} and  \textit{T. aestivum}}
+  \label{fig:group6}
+\end{figure}
+#+END_EXPORT
+\clearpage
 
 
+*** Pair Plot
 
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group6/pairplot.png]]
+
+\clearpage
+*** PCA
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group6/pca.png]]
 \clearpage
 
 * Sprint Timeline
