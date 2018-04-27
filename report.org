@@ -2324,6 +2324,7 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 
 \clearpage
 
+
 ** /T. dicoccum/ and /T. aestivum/
 
 *** Data Distributions
@@ -2400,7 +2401,6 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 #+END_EXPORT
 \clearpage
 
-
 *** Pair Plot
 
 #+LABEL:
@@ -2415,6 +2415,98 @@ Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports 
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group6/pca.png]]
 \clearpage
+
+** /T. durum/ and /T. aestivum/
+
+*** Data Distributions
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Boxplot of \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/length.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/width.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/volume.png}
+  }
+  \hfill
+  \subfloat[Boxplot of \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/length_depth_width.png}
+    }
+  \caption{Plots comparing means and distributions of \textit{T. durum} (red) and \textit{T. aestivum} (blue)}
+  \label{fig:dummy}
+\end{figure}
+#+END_EXPORT
+\clearpage
+*** Difference of Means
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_volume.png}
+  }
+  \hfill
+  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_difference_of_means_length_depth_width.png}
+    }
+  \caption{Plots showing the differnce of means for  \textit{T. durum} -  \textit{T. aestivum}}
+  \label{fig:group7}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+*** Credible Intervals
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_length.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_width.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_volume.png}
+  }
+  \hfill
+  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
+    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_length_depth_width.png}
+    }
+  \caption{Plots showing the credible intervals for  \textit{T. durum} and  \textit{T. aestivum}}
+  \label{fig:group7}
+\end{figure}
+#+END_EXPORT
+\clearpage
+
+*** Pair Plot
+
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group7/pairplot.png]]
+
+\clearpage
+*** PCA
+#+LABEL:
+#+CAPTION:
+#+ATTR_LATEX: :width 18cm
+[[./images/results/group7/pca.png]]
+\clearpage
+
 
 * Sprint Timeline
   <<sec:appendix>>
