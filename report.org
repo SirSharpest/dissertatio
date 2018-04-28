@@ -1686,6 +1686,14 @@ Both these pieces of software will be made freely available as research tools, t
 
 Ideally a MIT style software license will be applied to these software packages, and they will also be made available on python library repositories for easy distribution
 
+** Development of Grains
+Within the data present exists opportunities yet unexplored. A veritable goldmine of results are waiting to be used to answer questions on grain domestication.
+
+Additional exploration of spike information, grain occurrence relative to position along the spike for example is a hugely interesting trait that has mostly been neglected by other studies. The unique preservation of shape which \micro-CT imaging offers also allows for structure analysis.
+
+There exists the possibility of utilising existing imaging software which explores root patterns in crops to study spike structure cite:Mairhofer2015,Daly2017. This could provide further phenotypic information which may be used to provide explanation in grain development.
+
+Grains have displayed a wide standard deviation in shape and size even within single spikes. This presents an incredibly complex problem that wants exploring, however it is a huge time sink and will be the follow up targets of this work.
 
 * Critical Evaluation
 This chapter discusses the project more critically in terms of what worked well, what helped progress, what impeded and also what the limiting factors were.
@@ -1707,20 +1715,45 @@ The computer vision module provided the basis of image analysis techniques, a se
 *** CS36110 - Machine Learning
 The data analysis model used in the research methods is heavily based on Bayesian machine learning techniques. The machine learning module provided key insight on Bayes theorem.
 *** CS27020 - Modelling Persistent Data
-The data model used here is ve
-*** CS21120 - Program Design, Data Structures And Algorithms
+The data model used here is loosely defined to allow for change in experimental parameters, the ideas behind it come from "NoSQL" style data storage systems. Flat structures which have become incredible adaptable in terms of modelling.
 *** CSS0160 - Industrial year
+The source of this work, and reason for it being carried out are due to work performed on the industrial year scheme. An internship at the National Plant Phenomics Centre provided the insight into plant biology and its relationship with computer science, statistics and high-throughput experiments.
 
+The background biological knowledge required for this project was founded here.
 
 ** Time Management
+Major goals where met on time, well in advance to allow for change when required. The project started with a lot of ambition to explore the data fully. Unfortunately time and deadlines allowed for only the key elements of polyploidization and domestication of grain to be investigated.
 
-** Collaborative Work
+Despite the pull of interesting data findings, the work of this project has been completed on time without distraction. Although the expected work, as always, was much larger than initially forecast no issues where caused.
+
+However, if more time was given certain elements of the software may have been revised. Further usage by researchers of the library and GUI application may have uncovered  different and more useful methods that could have been factored in.
+
+** Original Aims
+In terms of software deliverable the project met all of those outlined. In particular some of the FRs are implemented in ways which are straightforward and would be difficult to improve; F.R:5 implements a method in the CT Analysing Library for rejoining spikes which were split. This method achieves and meets the requirements quite succinctly, the implementation is lean and to the point.
+
+In contrast, F.R:4 is one of the more loosely defined requirements, stating that hypothesis testing should be performed by the library. This was difficult to fully implement for a few reasons.
+
+1. It was wasn't clearly defined.
+2. Hypothesis testing has hundreds of valid approaches all depending on the experiment and input data.
+3. Creating a GUI to allow multiple hypothesis tests would require many settings to be changed and tweaked which could become too obscured and difficult to use.
+
+To accommodate for this two of the most widely used tests in biological research were implemented, the Student's T-test and Welch's T-test. In addition the specific Bayesian estimation hypothesis test that was used to answer the research questions of the project was implemented.
+
+
+** Quality of Work
+The quality of the work done had been to a high standard, as one of the central dogmas of research is robustness. A higher output of work could have been achieved if quality was scarified. For example a custom data model being devised and researched took a large amount of time and effort, existing solutions could have been used and allow more hypothesis to be asked and answered. The results however, would be much less useful.
+
+The software provided by this project is built to be extensible, it presents as much a framework for "how" tasks should be carried out as it does actually implement tasks. This means that in future experiments new tests could be added to the hypothesis testing library, new data formats could be added to the data exporter and additional phenotypes could easily be included in the analysis window.
 
 ** Further Work
 
-** Other Issues
+As mentioned, the time constraint imposed upon this project prevented a full exploration of the data created. It is proposed that many more interesting results could be drawn from it. Development of spikes, exploring the formation of grain florets and fertilisation processes are of great interest (why some grains become fully formed and others are left not fully formed).
 
+Additional groupings, such as into floret subgroups could provide a new and interesting way to compare grains. It would allow the study of individual spikes, divided by sub-regions. Further investigation in this area may provide critical information as to why specific regions of spikes have more/larger grains whilst others do not fully fill their potential.
 
+Contributing more tests to the CT Analysis Library would be a main goal of future work also. The distributions and style of the data presented may require thinking about in new and novel ways. This could be interesting.
+
+Finally, creating a repository for seed morphometrics will be a goal for further work, contributing too and allowing other researchers to add to a centralised library. Doing this could create a large multi-experiment analysis to take place with standardised data.
 
 
 \appendix
