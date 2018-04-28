@@ -170,11 +170,11 @@ Two effects run parallel in this study, both of these need to be accounted for i
 Both of these effects will need to be taken into consideration so as not to misidentify results, and falsely attribute effect.
 
 *** Computational Challenges
-Using \micro-CT data in plant sciences is becoming more and more common cite:Tracy2017,Jhala2015,Hughes2017,Metzner2015 and whilst a lot of studies focus on the traits of grains specifically no formal model has been created, no accepted data format. This is a data engineering problem and the methods described in this project address this.
+Using \micro-CT data in plant sciences is becoming more and more common cite:Tracy2017,Jhala2015,Hughes2017,Metzner2015 and whilst a lot of studies focus on the traits of grains specifically no formal model has been created, and no accepted data format. This is a data engineering problem and the methods described in this project address this.
 
-Further to data organisation, proposals are made for the statistical analysis which should be used. This allows for studies to become more robust and repeatable, thus strengthening the studies overall.
+Further to data organisation, proposals are made for the statistical analysis which should be used. This allows for studies to become more robust and repeatable, thus strengthening the studies overall and giving more confidence to results.
 
-The biological material used in this research is much more diverse a population than has been previously studied with \micro-CT image analysis, this requires current computer vision methods to be adapted in order to be accurate.
+The biological material used in this research is much more diverse a population than has been previously studied with \micro-CT image analysis. This requires current computer vision methods to be adapted in order to analyse this added diversity.
 
 ** Deliverables
 
@@ -182,7 +182,7 @@ This project provides three final deliveribles:
 
 1. A flexible software suite written in /Python/ that provides a standardised method for analysing and interpreting \micro-CT data output.
 2. A Graphical User Interface (GUI) which offers a point and click method for data gathering, graphing and manipulating \micro-CT data, using the library from deliverable 1 as a backend.
-3. Answers to the proposed questions (hypothesis), the /Results/ and /Discussion/ sections of this report provides this.
+3. Answers to the proposed questions (hypotheses), provided in the /Results/ and /Discussion/ sections of this report.
 
 * Software Design, Implementation and Testing
 This chapter outlines choices and methodologies employed in the software engineering aspect of this project, as well as highlighting the key functional requirements and implementation decisions.
@@ -255,18 +255,18 @@ These are the functional requirements for the Python library produced:
 This project made use of formal design methods and strict organisation whilst being flexible to change. Overall the design took a hybridised form in order to best suit the scientific environment which this domain specific software is built for.
 
 Data analysis drove the direction of the project, as a result an agile methodology was adopted.
-Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based off of the previous week's list.
+Weekly sprints were implemented as a list of "todo's", these were written on a Monday morning based on the previous week's list.
 
 Critical self-evaluation was performed by means of a "one-man SCRUM" meeting, this is a technique which requires self-discipline in order to accurately find faults and areas for improvement cite:Andrews.
 
-Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made as to software design and overall structure.
+Further to this, regular meetings with research staff, at the National Plant Phenomics Centre,  allowed for a developer-client relationship which SCRUM defines as being key. During these meetings details of the research was discussed and ideas given as to how future experiments could proceed. This allowed for critical decisions to be made regarding software design and overall structure.
 ** Sprint Timeline
 The implementation of this work was done following agile sprint planning, treating each week as a encapsulated working frame, for each of these a detailed organisational programme was created, discussed with supervisors and then used to formulate plans of action for following up on.
 
 A full account of the sprints, which are in part running documentation for this project, are available in appendix:[[sec:appendix]].
 
 ** Language Choices
-Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project).
+Both the CT Analysing Library and the CT Analysing GUI are implemented using the Python programming language, it has been developed and tested in versions 3.5 and 3.6 (Python 2 is not supported at all by this project, there is an ongoing effort to move forward in scientific computing, away from Python 2.X  cite:Ozgur2016).
 
 In scientific programming three of the most commonly used languages are Python, R and MATLAB cite:Ozgur2016.
 
@@ -284,20 +284,20 @@ Through meetings and emails, the agile principles of communication over comprehe
 Graphical elements, such as the graphing functionality of the CT Analysing Library and the CT GUI Application were sketched using wire-frames whilst in meetings where the potential users (clients) could provide their ideas.
 
 In figure:[[fig:gui1]] an example of the wire-frames created during meetings is show (A), next to it is displayed the final look of the loading window (B).
- #+CAPTION: Wire-frame of the GUI loading data window
+ #+CAPTION: Wire-frame (A) of the GUI loading data window (B)
  #+ATTR_LATEX: :width 16cm
  #+NAME: fig:gui1
  [[./images/wireframe1.png]]
 
 Similarly, figure:[[fig:gui2]] provides the initial wire-frame (A) of how the analysis window could have looked and what kind of GUI elements would be required, again, next to it is the final analysis window (B)
- #+CAPTION: Wire-frame of the GUI analysis window
+ #+CAPTION: Wire-frame (A) of the GUI analysis window (B)
  #+ATTR_LATEX: :width 16cm
  #+NAME: fig:gui2
  [[./images/wireframe2.png]]
 ** Documentation
 Whilst an agile approach was used, some documentation was created for use with the CT Analysing Library.
 
-The provided CT Analysing Library comes with "human-readable" format. Where most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
+The provided CT Analysing Library comes with "human-readable" format. Where as most documentation generators (Doxygen, Pydocs, Javadocs etc.) implement very well structured and comprehensive documentation, the output is generally not very friendly and easy to read. Particularly for non-career-programmers. A core feature of these provided software implementations are that they are well suited for a biologist, researcher or statistician to use.
 
 This documentation generator was purpose created, implemented in LISP and provided in listing:[[lst:docgen]].
 
@@ -305,24 +305,25 @@ Beyond this, inline commenting is provided for supplied software. Keeping in lin
 
 Documentation for the CT GUI application is provided as a visual user guide, and provides sample data for the user to test with.
 ** Software Library Choices
-The software libraries used for this project focus around data manipulation, where possible core libraries of the Python language were used and only well supported, established and documented libraries were chosen. Software support is a major requirement for reproducible results.
+The software libraries used for this project focus around data manipulation. Where possible, only core libraries of the Python language were used and only well supported, established and documented libraries were chosen. Software support is a major requirement for reproducible results.
 
 All software packages used in the Analysing Library are required by the CT Analysing GUI as the Library is a dependency of it. The GUI has a single separate requirement /PyQT5/.
 Table:[[tab:software]] contains a full listing of all software used and required by this project.
 *** Numpy
-The Numpy library is one of the most commonly used additions to the Python ecosystem, it is fundamental to many data science projects. Here it is used to handle data lists, arrays and structures. There is no viable alternative to this package and it is required by Scipy and Statsmodels.
+The Numpy library is one of the most commonly used additions to the Python ecosystem, it is fundamental to many data science projects. Here it is used to handle data lists, arrays and structures. The data model used in this project is able to be optimised through Numpy and allows results to be calculated in seconds.
 *** Matplotlib/Seaborn
 Matplotlib acts as the plotting backend for the project. The Seaborn package acts as a porcelain for matplotlib and makes graph creation and decoration much easier.
-*** Scipy
-Data transforms such as Box Cox and PCA are dependant on the functions of the Scipy library. Alternatives are available, however this is the most well established and often used library for these functions.
+*** SciPy
+Data transforms such as Box Cox and PCA are dependant on the functions of the Scipy library. Alternatives are available, however this is the most well established and often used library for these functions. SciPy provides many of the required functions in a single package and helps reduce further software dependencies.
 *** Pandas
-Pandas is used to read the CSV files which the raw data is stored in. This library converts and stores data in dataframes which are used throughout this project to manipulate data.
+Pandas is used to read the CSV files which the raw data is stored in. This library converts and stores data in dataframes which are used throughout this project to manipulate data. Dataframes are used as the core of /CTData/ objects in the analysis library.
 *** Xlrd
 This extension library is required in order to read Microsoft encoded files. Extra experiment information can be provided with the "xlsx" extension.
 *** Statsmodels
 The backbone of the data analysis model is handled by this library, it also provides an implementation of the Markov chain Monte Carlo system used to generate random samples from the model population.
 *** PyQT5
 There were many options for creating a user interface in Python, the language provides its own core library via the /TKinter/ module. However PyQT is a port of the QT framework, one of the most widely used libraries for GUIs in software development. It is cross platform, robust and has excellent documentation and user-guides.
+
 ** Version control
 This project has used Git version 2.7.4 throughout. The structure of the project has been as submodules of a larger project.
 
@@ -725,7 +726,7 @@ Figure:[[fig:qe]] shows in two dimensional flat images how this problem was solv
 Figure:[[fig:qe3d]] shows the effects on grains in three dimensions, where the seeds which where incorrectly split have now been vastly improved, leading to an increase in result accuracy.
 
 #+CAPTION: /A/ showing before the new method, /B/ after, /C/ zoomed before, /D/ zoomed after.
-#+ATTR_LATEX: :width 15cm
+#+ATTR_LATEX: :width 14cm
 #+NAME: fig:qe3d
 [[./images/watershedfigure.png]]
 
