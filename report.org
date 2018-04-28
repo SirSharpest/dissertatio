@@ -10,7 +10,7 @@ This project aims to answer a biological research question through the use of co
 
 Primarily the focus has been on the data science elements of my degree, creating, cleaning and discerning meaning in it.
 
-Using a population of genetically diverse wheat, several hypothesis and questions are explored in the hopes of contributing to the scientific understanding of domestication. A mixture of image analysis through three-dimensional micro-computed tomography and computational analysis are used to provide these much needed solutions.
+Using a population of genetically diverse wheat, several hypothesis and questions are explored in the hopes of contributing to the scientific understanding of plant domestication. A mixture of image analysis through three-dimensional micro-computed tomography and computational analysis are used to provide these much needed solutions.
 
 
 Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the glossary (table:[[tab:glossary]]).
@@ -21,17 +21,19 @@ Additionally, as this is very much multi-disciplinary research, specific terms a
 
 During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
 
-Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly on wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and  domesticated genotypes are unprepared for.
+Whilst the choices made for selective breeding were successful, effects are now being felt as it is estimated that as much as a 5% dip is observed yearly for  wheat production cite:Shiferaw2013. This decrease in efficiency is attributed to climate change bringing in more hostile conditions, which these elite and  domesticated genotypes are unprepared for.
 
-Furthermore, with increasing populations and less arable land there is an even greater pressure for the optimisation of grain and spike characteristics. With studies showing that spikelet, the collective for seeds sharing the same node on a spike, count can be controlled by specific and sometimes recessive genes cite:Finnegan2018, which could drastically enhance overall yield, and a general public distrust towards genetically modification cite:Aleksejeva2014,Twardowski2015,Lynas the reliance on breeding programs for optimisation is further stressed.
+Furthermore, with increasing population and less arable land there is an even greater pressure for the optimisation of grain and spike characteristics. With studies showing that spikelet, the collective for seeds sharing the same node on a spike, count can be controlled by specific and sometimes recessive genes cite:Finnegan2018, which could drastically enhance overall yield, and a general public distrust towards genetically modification cite:Aleksejeva2014,Twardowski2015,Lynas the reliance on breeding programs for optimisation is further stressed.
 
 Modern breeding programs have had some success in selecting primitive undomesticated genotypes and using them to breed back in useful alleles which would have been lost during domestication cite:Charmet2011.
 
-As such, there are questions still left open about how best to make selections for crop breeding. There is also a lack of formalised modelling of information which could be of use to these areas of research.
+As such, there are questions still left open about how best to make selections for crop breeding. There is also a lack of formalised modelling of information which could be of use in these areas of research.
 
 ** Biological Question and Materials
 
-The driving question for this research asks "Can \micro-CT data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
+The driving question for this research asks "Can \micro-Computed Tomography data be used to model domestication in wheat?". Using an already grown and harvested range of genetically diverse wheat this project has generated a collection of 3D images, processed these images into raw phenotypic data and produced biologically significant information.
+
+Here, ploidy has been used as a distinguishable and important attribute of the study. Ploidy refers to the number of sets of chromosomes that an organism has, usually this is denoted by an N.
 
 The genotypes used in this study are listed here, denoted by "/X/ N" where /X/ indicates the ploidy. 2N - Diploid; 4N - Tetraploid; 6N - Hexaploid. A /W/ indicates wild genotypes, /D/ domesticated ones.
 
@@ -69,15 +71,15 @@ Full species names are found in table:[[tab:wheat]].
 *** Why use \micro-CT image analysis?
 In the past, science has been greatly limited by the amount of data which could be processed in an experiment. In the last few decades the inclusion of computer science has reduced this bottleneck. Now, the challenge for many fields of research is producing more data and this is often cited as the new limiting factor in creating robust studies cite:Furbank2011.
 
-Many experiments aim to meet the demand for data by using high-throughput automated imaging systems cite:Naumann2007,Prasanna2013,Humplik2015. These systems have, in the last decade, become a standard and accepted tool for data generation. However, they will only produce 2-dimensional data on a per-plant basis. Image processing research has had success in modifying these automated systems in order to produce a pseudo 3-dimensional structure using stero-imaging cite:Roussel2016. Even so, these techniques require destructive harvesting of materials and do not provide information of internal structure.
+Many experiments aim to meet the demand for data by using high-throughput automated imaging systems cite:Naumann2007,Prasanna2013,Humplik2015. These systems have, in the last decade, become a standard and accepted tool for data generation in plant phenotype studies. However, they will only produce 2-dimensional data on a per-plant basis. Image processing research has had success in modifying these automated systems in order to produce a pseudo 3-dimensional structure using stero-imaging cite:Roussel2016. Even so, these techniques require destructive harvesting of plant materials and do not provide information of internal structure.
 
 For decades medical research has found success with X-Ray imaging technology cite:Wang2008. From this, plant science has been able to benefit from the wealth of prior knowledge and more and more studies are being augmented with the use of X-Ray/\micro-CT imaging cite:Jhala2015,Tracy2012,Metzner2015,Hughes2017,Staedler2013.
 
-In this study, \micro-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, whilst retaining developmental and positional information, or in such a high throughput or quality.
+In this study, \micro-CT has enabled the study of individual seeds of wheat, which is the product that plant breeders, commercial growers and farmers are truly interested in. Other imaging techniques could not provide as much detail, whilst retaining developmental and positional information, or in such a high throughput or quality/resolution.
 
 *** Extracted Data
 
- These samples come from over 70 plants and provided in excess of 2000 seeds for analysis which data was created based on. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
+ These samples come from over 70 plants and provided in excess of 2000 seeds. These data form the basis for this research and testing of the software libraries created. The traits recorded are labelled in figure:[[fig:seeds]] and are as follows:
 
  #+BEGIN_EXPORT latex
    \begin{multicols}{2}
@@ -100,7 +102,7 @@ In this study, \micro-CT has enabled the study of individual seeds of wheat, whi
  #+END_EXPORT
 
 
- #+CAPTION: Wheat grain labelled (/left/), wheat grain cut in half (/right/), adapted from Hughes et al. cite:Hughes2017
+ #+CAPTION: Wheat grain labelled (/left/), wheat grain cut in half horizontally (/right/), adapted from Hughes et al. cite:Hughes2017
  #+ATTR_LATEX: :width 17cm
  #+NAME: fig:seeds
  [[./images/seeds.png]]
@@ -108,7 +110,7 @@ In this study, \micro-CT has enabled the study of individual seeds of wheat, whi
 ** Significance to Current Research
 The biological interest in this area has been expressed in several areas of research cite:Leigh2013, it is proposed that the key to unlocking diversity in the wheat genus lies in these ancestor, undomesticated species cite:Cockram2007.
 
-This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress. Each of these areas depend on making informed decisions in order to direct experiments. By producing information at an individual seed level, this study has been able to provide data that can offer suggestions of plant potential and behaviour.
+This research has the potential to be useful in several areas including: crop breeding; disease resistance; environmental stress. Each of these areas depend on making informed decisions in order to direct experiments. By producing information at an individual seed level, this study has been able to provide data that can offer suggestions of grain potential and the developmental behaviour/effects of polyloidization.
 
 Often, the most sought after traits are centred around thousand-grain-weight (TGW) as well as standard deviation of seed shapes. During harvesting, filters are used to only allow ideal shaped seeds through. This means that, potentially, despite a breed of wheat providing a high average volume of seed in reality much of it may go to waste if the shapes are not uniform. This research aims to alleviate this problem and provides low level information which is sorely required.
 
@@ -144,8 +146,10 @@ The comparison pairs are as follows (where W indicates wild genotypes and D dome
 3. /T. spelta/ (6N|D) and /T. aestivum/ (6N|D)
 4. /T. dicoccum/ (4N|D) and /T. durum/ (4N|D)
 5. /T. beoticum/ (2N|W) and /T. dicoccoides/ (4N|W)
+6. /T. dicoccum/ (4N|D) and /T. aestivum (6N|D)
+7. /T. durum/ (4N|D) and /T. aestivum (6N|D)
 
-These comparison groups where chosen, with help from researchers at the National Plant Phenomics Centre, based on their ploidy and also on their domestication grouping. This maximises the potential of this research by isolating features and attributes of wheat based on domestication status.
+These comparison groups where chosen, with help from researchers at the National Plant Phenomics Centre and the University of Manchester, based on their ploidy and also on their domestication grouping. This maximises the potential of this research by isolating features and attributes of wheat based on domestication status.
 #+CAPTION: Scans of wheat, showing diversity in Population, Compactum (6N) left, Durum right (4N)
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:spikes
@@ -160,10 +164,10 @@ Previous studies have been able to demonstrate that variation in wheat grain mor
 
 Two effects run parallel in this study, both of these need to be accounted for in the analysis, and questions need asked in a manner to extract each effect independently:
 
-1. The effects of ploidy in wheat.
+1. The effects of polyploidization in wheat.
 2. The effects of domestication in wheat.
 
-Hypothesis are required to take into account, both of these effects so as not to misidentify results.
+Both of these effects will need to be taken into consideration so as not to misidentify results, and falsely attribute effect.
 
 *** Computational Challenges
 Using \micro-CT data in plant sciences is becoming more and more common cite:Tracy2017,Jhala2015,Hughes2017,Metzner2015 and whilst a lot of studies focus on the traits of grains specifically no formal model has been created, no accepted data format. This is a data engineering problem and the methods described in this project address this.
@@ -2654,3 +2658,5 @@ A feature freeze was enforced during the 11th week of the project. This was to e
 \clearpage
 bibliography:library.bib
 bibliographystyle:IEEEannotU
+
+* Footnotes
