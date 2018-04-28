@@ -1524,7 +1524,7 @@ The designed Bayesian model previously described has been used as the basis for 
 
 ** Grain Width is Not Affected by Domestication
 
-The groups /T. beoticum/ and /T. monococcum/ show (supplemental figure:\ref{fig:group1}) that width is significantly different, a 8.6% chance that the mean of /T. beoticum/ width is greater than /T. monococcum/ is reported.
+The groups /T. beoticum/ and /T. monococcum/ show  that width is significantly different, a 8.6% chance that the mean of /T. beoticum/ width is greater than /T. monococcum/ is reported.
 
 The reported change in width for tetraploids /T. dicoccum/ and /T. dicoccoides/ is not significant. A 36.3% chance exists that the means of the groups are different, which is not a strong difference based on our model.
 
@@ -1605,7 +1605,7 @@ These values, with the exception of volume, do not provide sufficient evidence o
 
 Diploids (/T. beoticum/, /T. monococcum/) , tetraploids (/T. dicoccum/, /T. dicoccoides/)  show a significant difference in volume.
 
-Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this, with full results shown in supplemental figure:\ref{fig:group6}.
+Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this.
 
 #+CAPTION: A boxplot of all grains' volume plotted by ploidy and domestication status
 #+NAME: fig:ploidyvol
@@ -1688,11 +1688,39 @@ Ideally a MIT style software license will be applied to these software packages,
 
 
 * Critical Evaluation
+This chapter discusses the project more critically in terms of what worked well, what helped progress, what impeded and also what the limiting factors were.
+
 ** Organisational Methods
+For organisation of development the system of using weekly sprints (full diary in appendix:[[sec:appendix]]) worked very well. The project being very research heavy, exploring lots of unknowns, created a lot of uncertainty. Had a waterfall methodology been used, for example, adaption to new information would have been very difficult and required a huge amount of refactoring of documentation.
+
+Reflective diaries of progress and ideas being shared with supervisors and other researchers allowed for very rapid information sharing, a slight reduction in formality with the huge boon of efficiency. Invoking the agile mentality of interactions over processes.
+
 ** Relevance to Degree
+The project was carried out as part of completion of a BSc degree in Computer Science. It builds upon many of modules which were studied and they were also able to provide a basis of information and knowledge:
+
+*** MA35210 - Topics In Biological Statistics
+This module provided a firm understanding of how statistics can be used in biological systems. In particular the knowledge gained from linear modelling, regression analysis and principal component analysis was incredibly useful for this project, and enhanced it greatly.
+*** CS31310 - Agile Methodologies
+The development practices used in this project are heavily inspired by the agile manifesto. Learning how to interact with clients, use SCRUM and weekly sprint techniques were pivotal to the project's progress over the course of development.
+*** CS34110 - Computer Vision
+The computer vision module provided the basis of image analysis techniques, a set of tools and which to use to solve certain problems. Semantic segmentation techniques in particular were used extensively throughout the image analysis pipeline.
+*** CS36110 - Machine Learning
+The data analysis model used in the research methods is heavily based on Bayesian machine learning techniques. The machine learning module provided key insight on Bayes theorem.
+*** CS27020 - Modelling Persistent Data
+The data model used here is ve
+*** CS21120 - Program Design, Data Structures And Algorithms
+*** CSS0160 - Industrial year
+
+
 ** Time Management
+
 ** Collaborative Work
+
+** Further Work
+
 ** Other Issues
+
+
 
 
 \appendix
@@ -1766,6 +1794,19 @@ Ideally a MIT style software license will be applied to these software packages,
 
 ** Documentation
 \clearpage
+#+BEGIN_EXPORT latex
+\includepdf[scale=0.8,pages=1,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=2,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 2}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=3,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 3}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=4,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 4}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=5,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 5}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=6,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 6}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=7,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 7}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=8,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 8}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=9,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 9}}]{ctanalysis.pdf}
+\includepdf[scale=0.8,pages=10,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 10}}]{ctanalysis.pdf}
+#+END_EXPORT
+
 
 * Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
@@ -1867,7 +1908,6 @@ Ideally a MIT style software license will be applied to these software packages,
 #+END_SRC
 \clearpage
 
-
 ** Custom Documentation Generator
 #+CAPTION: Custom lisp code for generating easy to read documentation
 #+LABEL: lst:docgen
@@ -1911,8 +1951,8 @@ Ideally a MIT style software license will be applied to these software packages,
 
 \clearpage
 * Full Comparison Plots
-** /T. monococcum/ and /T. beoticum/
 
+** /T. monococcum/ and /T. beoticum/
 *** Data Distributions
 
 #+BEGIN_EXPORT latex
@@ -1937,68 +1977,12 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. monococcum} and \textit{T. beoticum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. monococcum} -  \textit{T. beoticum}}
-  \label{fig:group1}
-\end{figure}
-#+END_EXPORT
-\clearpage
-*** Credible Intervals
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credile Intervals for \textit{T. monococcum} and \textit{T. beoticum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group1/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing credible intervals for  \textit{T. monococcum} and  \textit{T. beoticum}}
-  \label{fig:group1}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
 *** Pair Plot
 
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group1/pairplot.png]]
-
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group1/pca.png]]
 
 \clearpage
 ** /T. dicoccum/ and /T. dicoccoides/
@@ -2027,74 +2011,12 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. dicoccoides}}
-  \label{fig:group2}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervalsfor \textit{T. dicoccum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group2/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing credible intervals for  \textit{T. dicoccum} and  \textit{T. dicoccoides}}
-  \label{fig:group2}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
-
-
 *** Pair Plot
 
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group2/pairplot.png]]
-
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group2/pca.png]]
-
-
 
 \clearpage
 ** /T. spelta/ and /T. aestivum/
@@ -2123,73 +2045,12 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. spelta} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. spelta} -  \textit{T. aestivum}}
-  \label{fig:group3}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. spelta} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group3/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing the credible intervals for  \textit{T. spelta} and  \textit{T. aestivum}}
-  \label{fig:group3}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
 *** Pair Plot
 
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group3/pairplot.png]]
-
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group3/pca.png]]
-
 
 \clearpage
 ** /T. beoticum/ and /T. dicoccoides/
@@ -2218,73 +2079,12 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. beoticum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. beoticum} -  \textit{T. dicoccoides}}
-  \label{fig:group4}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. beoticum} and \textit{T. dicoccoides} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group4/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing the credible intervals for  \textit{T. beoticum} and  \textit{T. dicoccoides}}
-  \label{fig:group4}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
-
 *** Pair Plot
 
 #+LABEL:
 #+CAPTION:
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group4/pairplot.png]]
-
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group4/pca.png]]
-
 
 \clearpage
 ** /T. dicoccum/ and /T. durum/
@@ -2313,58 +2113,6 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. durum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. durum}}
-  \label{fig:group5}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for for \textit{T. dicoccum} and \textit{T. durum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group5/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing the credible intervals for  \textit{T. dicoccum} and  \textit{T. durum}}
-  \label{fig:group5}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-
-
 *** Pair Plot
 
 #+LABEL:
@@ -2372,15 +2120,8 @@ Ideally a MIT style software license will be applied to these software packages,
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group5/pairplot.png]]
 
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group5/pca.png]]
 
 \clearpage
-
 
 ** /T. dicoccum/ and /T. aestivum/
 
@@ -2408,56 +2149,6 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. dicoccum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. dicoccum} -  \textit{T. aestivum}}
-  \label{fig:group6}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. dicoccum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group6/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing the credible intervals for  \textit{T. dicoccum} and  \textit{T. aestivum}}
-  \label{fig:group6}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
 *** Pair Plot
 
 #+LABEL:
@@ -2466,13 +2157,6 @@ Ideally a MIT style software license will be applied to these software packages,
 [[./images/results/group6/pairplot.png]]
 
 \clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group6/pca.png]]
-\clearpage
-
 ** /T. durum/ and /T. aestivum/
 
 *** Data Distributions
@@ -2499,56 +2183,6 @@ Ideally a MIT style software license will be applied to these software packages,
 \end{figure}
 #+END_EXPORT
 \clearpage
-*** Difference of Means
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_length.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_width.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_volume.png}
-  }
-  \hfill
-  \subfloat[Difference of means for \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/difference_of_means_length_depth_width.png}
-    }
-  \caption{Plots showing the differnce of means for  \textit{T. durum} -  \textit{T. aestivum}}
-  \label{fig:group7}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
-*** Credible Intervals
-
-#+BEGIN_EXPORT latex
-\begin{figure}[!ht]
-  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Length  \label{subfig-1:length}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_length.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Width  \label{subfig-2:Width}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_width.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Volume  \label{subfig-3:volume}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_volume.png}
-  }
-  \hfill
-  \subfloat[Credible Intervals for \textit{T. durum} and \textit{T. aestivum} Length X depth X width \label{subfig-4:lengthwidthdepth}]{%
-    \includegraphics[width=0.45\textwidth]{./images/results/group7/bayes_length_depth_width.png}
-    }
-  \caption{Plots showing the credible intervals for  \textit{T. durum} and  \textit{T. aestivum}}
-  \label{fig:group7}
-\end{figure}
-#+END_EXPORT
-\clearpage
-
 *** Pair Plot
 
 #+LABEL:
@@ -2556,12 +2190,6 @@ Ideally a MIT style software license will be applied to these software packages,
 #+ATTR_LATEX: :width 18cm
 [[./images/results/group7/pairplot.png]]
 
-\clearpage
-*** PCA
-#+LABEL:
-#+CAPTION:
-#+ATTR_LATEX: :width 18cm
-[[./images/results/group7/pca.png]]
 \clearpage
 
 
