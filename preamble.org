@@ -7,8 +7,7 @@
 #+LaTeX_HEADER: \fancyfoot[CE,CO]{}
 #+LaTeX_HEADER: \fancyhead[LE,LO]{}
 #+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
-#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicel
-#+LaTeX_HEADER: \usepackage{pdfpages}
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
 #+LaTeX_HEADER: \restylefloat{figure} %and this command
 #+LaTeX_HEADER: \usepackage{hyperref}
 #+LaTeX_HEADER: \hypersetup{urlcolor=blue}

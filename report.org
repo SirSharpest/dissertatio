@@ -12,10 +12,11 @@ Primarily the focus has been on the data science elements of my degree, creating
 
 Using a population of genetically diverse wheat, several hypothesis and questions are explored in the hopes of contributing to the scientific understanding of domestication. A mixture of image analysis through three-dimensional micro-computed tomography and computational analysis are used to provide these much needed solutions.
 
+
 Additionally, as this is very much multi-disciplinary research, specific terms and definitions have been outlined in the glossary (table:[[tab:glossary]]).
 
 ** Background
-2
+
    Western society and agriculture has been dominated by the ability to create successful crops for the past 10,000 years cite:Ozkan2002. Of these crops wheat is considered to be one of the most vital and is estimated to contribute to 20% of the total calories and proteins consumed worldwide, and accounts for roughly 53% of total harvested area (in China and Central Asia) cite:Shiferaw2013.
 
 During domestication, the main traits selected for breeding were most likely plant height and yield. This meant that important non-expressed traits such as disease resistance and drought tolerance were often neglected and lost overtime.
@@ -1654,7 +1655,7 @@ However, results from comparing primitive /T. beoticum/ and /T. dicoccoides/ sho
 ** Grain Classification through PCA
 Gegas et al. previously made great use of principal component analysis with wheat mapping populations. Using PCA afforded information on grain morphology specifically towards which traits could be traced to features from ancestral species.
 
-With this data, similar solutions could be implemented. Figure:[[fig:grainspca]] shows all grains in this study, grouped by origin spike and plotted by a two component PCA. Input is calculated through averaging across spike grains' length, width, depth, volume via equation:[[eqn:pca]].
+With this data, similar solutions could be implemented. Figure:[[fig:grainspca]] shows all grains in this study, grouped by origin spike and plotted by a two component PCA. Input is calculated through averaging across spike grains' length, width, depth, volume and the geometric interaction term, via equation:[[eqn:pca]].
 
  #+NAME: eqn:pca
  \begin{align}
@@ -1670,8 +1671,16 @@ With this data, similar solutions could be implemented. Figure:[[fig:grainspca]]
 #+ATTR_LATEX: width:15cm
 [[./images/pca_all.png]]
 
-** Similar Research
-** Alternate Solutions
+** CT Library and CT GUI
+
+The library provided by this project ensures the standardisation and organising of \micro-CT image data for crops. By creating a base line method of processing a lot of repeated work can be avoided. In addition it also provides a new hypothesis testing model which is yet unused in crop science or to study morphology in seeds. The introduction of a easy to use library will hopefully speed up future experiments and make them comparable to previous ones. This contributes to the robustness of the studies themselves and creates work which can be built upon.
+
+The CT GUI application delivers a package in which a user can quickly view vast amounts of data, allowing clear and concise visual representation of thousands of seeds at once. Furthermore, this application gathers data and outputs it in a standard output, this allows for other external software such as /R/-language packages or other /Python/ libraries to make use of it.
+
+Both these pieces of software will be made freely available as research tools, the openness of them, and with the ability for others to modify and contribute to will ensure the ideologies of open science are kept.
+
+Ideally a MIT style software license will be applied to these software packages, and they will also be made available on python library repositories for easy distribution
+
 
 * Critical Evaluation
 ** Organisational Methods
@@ -1752,18 +1761,6 @@ With this data, similar solutions could be implemented. Figure:[[fig:grainspca]]
 
 ** Documentation
 \clearpage
-#+BEGIN_EXPORT latex
-\includepdf[scale=0.8,pages=1,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=2,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 2}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=3,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 3}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=4,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 4}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=5,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 5}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=6,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 6}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=7,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 7}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=8,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 8}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=9,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 9}}]{ctanalysis.pdf}
-\includepdf[scale=0.8,pages=10,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 10}}]{ctanalysis.pdf}
-#+END_EXPORT
 
 * Wheat Varieties
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |X|X|
