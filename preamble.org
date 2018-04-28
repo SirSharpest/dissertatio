@@ -4,7 +4,7 @@
 #+LaTeX_HEADER: \usepackage{amssymb,amsmath}
 #+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
 #+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
-#+LaTeX_HEADER: \usepackage[pdfpages]{}
+#+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \fancyfoot[CE,CO]{}
 #+LaTeX_HEADER: \fancyhead[LE,LO]{}
 #+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y

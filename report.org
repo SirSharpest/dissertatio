@@ -1827,7 +1827,9 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 
 ** Documentation
 \clearpage
+
 #+BEGIN_EXPORT latex
+
 \includepdf[scale=0.8,pages=1,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{ctanalysis.pdf}
 \includepdf[scale=0.8,pages=2,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 2}}]{ctanalysis.pdf}
 \includepdf[scale=0.8,pages=3,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 3}}]{ctanalysis.pdf}
@@ -1838,6 +1840,7 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 \includepdf[scale=0.8,pages=8,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 8}}]{ctanalysis.pdf}
 \includepdf[scale=0.8,pages=9,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 9}}]{ctanalysis.pdf}
 \includepdf[scale=0.8,pages=10,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 10}}]{ctanalysis.pdf}
+
 #+END_EXPORT
 
 
