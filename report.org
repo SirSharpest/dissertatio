@@ -1825,7 +1825,7 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 | Tomviz | ImageJ                | PlantUML |
 |--------+-----------------------+----------|
 
-** Documentation
+** CT Analysis Library Documentation
 \clearpage
 
 #+BEGIN_EXPORT latex
@@ -1842,6 +1842,16 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 \includepdf[scale=0.8,pages=10,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 10}}]{ctanalysis.pdf}
 
 #+END_EXPORT
+
+** CT Analysis GUI User Walk Through
+
+
+#+BEGIN_EXPORT latex
+\includepdf[scale=0.8,pages=3,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 1}}]{examplegui.pdf}
+\includepdf[scale=0.8,pages=4,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 2}}]{examplegui.pdf}
+\includepdf[scale=0.8,pages=5,frame,pagecommand={\subsecton{CT Analysis Library Documentation Page 3}}]{examplegui.pdf}
+#+END_EXPORT
+
 
 
 * Wheat Varieties
