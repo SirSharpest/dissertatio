@@ -1593,7 +1593,7 @@ The diploids show a 0.4% chance of their means being similar, while the tetraplo
 
 Hexaploids /T. aestivum/ and /T. spelta/ are both elite cultivars. When compared show that there is a 77.2% chance than there is a difference in the means of length. A 54.8% chance of difference in width.
 
-A 91.5% chance and a 89.0% chance of difference of means in volume and length X depth x width, respectively.
+A 91.5% chance and a 89.0% chance of difference of means in volume and length $\times$ depth $\times$ width, respectively.
 
 These values, with the exception of volume, do not provide sufficient evidence of significant variation in hexaploid varieties used in this study.
 
@@ -1986,6 +1986,89 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 #+END_SRC
 
 \clearpage
+
+* Bayesian Results
+
+** /T. monococcum/ and /T. beoticum/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.000625 |
+|   | length             |              0.495875 |
+|   | width              |              0.083125 |
+|   | surface_area       |               0.02225 |
+|   | depth              |                0.0325 |
+|   | volume             |               0.00425 |
+
+** /T. dicoccum/ and /T. dicoccoides/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.030375 |
+|   | length             |              0.260375 |
+|   | width              |              0.363125 |
+|   | surface_area       |                  0.35 |
+|   | depth              |               0.24325 |
+|   | volume             |                0.0385 |
+
+** /T. spelta/ and /T. aestivum/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.887125 |
+|   | length             |              0.760875 |
+|   | width              |               0.52075 |
+|   | surface_area       |              0.723375 |
+|   | depth              |               0.60775 |
+|   | volume             |                 0.918 |
+
+
+\clearpage
+** /T. beoticum/ and /T. dicoccoides/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.887125 |
+|   | length             |              0.760875 |
+|   | width              |               0.52075 |
+|   | surface_area       |              0.723375 |
+|   | depth              |               0.60775 |
+|   | volume             |                 0.918 |
+
+** /T. dicoccum/ and /T. durum/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.333125 |
+|   | length             |                 0.806 |
+|   | width              |                 0.238 |
+|   | surface_area       |              0.306125 |
+|   | depth              |              0.292125 |
+|   | volume             |                 0.343 |
+
+** /T. dicoccum/ and /T. aestivum/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.894625 |
+|   | length             |                0.9115 |
+|   | width              |              0.432125 |
+|   | surface_area       |              0.628125 |
+|   | depth              |              0.502125 |
+|   | volume             |                 0.864 |
+
+** /T. durum/ and /T. aestivum/
+#+ATTR_latex: :environment longtable :align l|l|l
+|   | Phenotype          | Less than probability |
+|---+--------------------+-----------------------|
+|   | length_depth_width |              0.970875 |
+|   | length             |              0.741375 |
+|   | width              |                 0.691 |
+|   | surface_area       |              0.812375 |
+|   | depth              |                 0.711 |
+|   | volume             |               0.94725 |
+
+
 * Full Comparison Plots
 
 ** /T. monococcum/ and /T. beoticum/
