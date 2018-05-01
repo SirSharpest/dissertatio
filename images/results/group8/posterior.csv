@@ -1,0 +1,9 @@
+,Phenotype,Less than probability
+0,T. dicoccum+T. dicoccoides,"{'depth': 0.251875, 'volume': 0.039125, 'length': 0.26575, 'length_depth_width': 0.031875, 'width': 0.359375, 'surface_area': 0.357125}"
+1,T. aestivum+T. spelta,"{'depth': 0.596375, 'volume': 0.915875, 'length': 0.76725, 'length_depth_width': 0.898, 'width': 0.520625, 'surface_area': 0.72775}"
+2,T. monococcum+T. beoticum,"{'depth': 0.031875, 'volume': 0.00425, 'length': 0.48725, 'length_depth_width': 0.001125, 'width': 0.09125, 'surface_area': 0.024}"
+3,T. dicoccum+T. durum,"{'depth': 0.718875, 'volume': 0.661125, 'length': 0.188625, 'length_depth_width': 0.6585, 'width': 0.748625, 'surface_area': 0.701125}"
+4,T. beoticum+T. dicoccoides,"{'depth': 0.6975, 'volume': 0.68925, 'length': 0.383, 'length_depth_width': 0.72275, 'width': 0.607125, 'surface_area': 0.828375}"
+5,T. aestivum+T. durum,"{'depth': 0.7205, 'volume': 0.954125, 'length': 0.729625, 'length_depth_width': 0.971375, 'width': 0.68975, 'surface_area': 0.8255}"
+6,T. aestivum+T. dicoccum,"{'depth': 0.5095, 'volume': 0.855875, 'length': 0.920125, 'length_depth_width': 0.89875, 'width': 0.440625, 'surface_area': 0.637125}"
+7,T. monococcum+T. dicoccum,"{'depth': 0.8565, 'volume': 0.9865, 'length': 0.720625, 'length_depth_width': 0.982, 'width': 0.61575, 'surface_area': 0.833125}"

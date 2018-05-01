@@ -627,7 +627,7 @@ An additional phenotype is created to describe the interaction between the geome
 \text{geometry interaction} = length \times depth \times width
    \end{aligned}
  \end{align}
- \myequations{Pixel to metric milimeter conversion}
+ \myequations{Geometric interation ratio}
 
 When data are usable columns can be aggregated to form averages, medians, standard deviations etc. on a per plant (sample) basis.
 
@@ -1516,22 +1516,23 @@ With statistical software created specifically to utilise \micro-CT image data o
 1. The Effects of ploidy on grain morphology
 2. Domestication's influence on grain morphology
 
-Previous studies have used two dimensional morphometric analysis with flatbed scanning systems, Gegas et al. demonstrated through a /Triticum/ mapping population how these data could be used as a framework to partially explain variation in wheat cite:Gegas2010. This project expands by providing new phenotypes previously not examined.
+Previous studies have used two dimensional morphometric analysis with flatbed scanning systems, Gegas et al. demonstrated  how these data could be used as a framework to partially explain variation in wheat cite:Gegas2010.  Qin et al. discusses the usefulness and placement of these morphometric parameters in relation to polyploidization cite:Qin2017. These studies by Gegas and Qin established knowledge on the interactions of morphometrics in polyploid grains, but the technology used to quantify them was limited to two dimensional measurements and grain count was limited.  This project expands upon these studies by providing new phenotypes previously not examined. In addition to a higher degree of accuracy and a complete range of wheat genotypes.
 
-** Bayesian Modelling
 The designed Bayesian model previously described has been used as the basis for these results. Here a credible interval of 95% of the data is presented. Null-hypothesis are tested against a difference of means. Data which present >99% chance of different means are considered highly significant, >90% is considered significant (similar to P<0.05 and P<0.01 is used).
 
-
-** Grain Width is Not Affected by Domestication
-
-The groups /T. beoticum/ and /T. monococcum/ show  that width is significantly different, a 8.6% chance that the mean of /T. beoticum/ width is greater than /T. monococcum/ is reported.
-
-The reported change in width for tetraploids /T. dicoccum/ and /T. dicoccoides/ is not significant. A 36.3% chance exists that the means of the groups are different, which is not a strong difference based on our model.
-
-With one group agreeing to the null-hypothesis and one rejecting it, there is not enough evidence to fully reject that width is associated to solely domestication.
+Results were created using the CT Data Analysis Library, example of this is shown in the appendix:[[sec:resultsgen]].
 
 \clearpage
-** Grain Length is Not Affected by Domestication
+** The effects of Domestication
+The groups /T. beoticum/ (2N|W) and /T. monococcum/ (2N|D) show that width is significantly different, a 8.6% chance that the mean of /T. beoticum/ width is greater than /T. monococcum/ is reported. Shown in figure:[[fig:diffmeansvolume]].
+
+The reported change in width for tetraploids /T. dicoccum/ (4N|D) and /T. dicoccoides/ (4N|W) is not significant. A 36.3% chance exists that the means of the groups are different, which is not a strong difference based on our model.
+
+#+ATTR_LATEX: :width 8cm
+#+name: fig:diffmeansvolume
+#+caption: Difference of means plot for posterior probability of volume in /T. beoticum/ (2N|W) and /T. monococcum/ (2N|D)
+[[./images/results/group1/width.png]]
+
 
 Here, this project has demonstrated that for the diploid genotypes /T. beoticum/ and /T. monococcum/ there is no significant difference in means. The provided model has predicted that there is a 49.6% (figure:\ref{fig:lenmeansdiff}) that these two genotypes are different, this indicates a near perfect overlap of expected data.
 
@@ -1549,10 +1550,7 @@ Here, this project has demonstrated that for the diploid genotypes /T. beoticum/
 \end{figure}
 #+END_EXPORT
 
-For the tetraploid genotypes /T. dicoccum/ and /T. dicoccoides/ the effect of domestication appears statistically insignificant. A 27.3% chance is reported as the likelihood of both means being independent. Whilst the data leans towards /T. dicoccum/ having a larger mean, there is insufficient evidence to reject that grain length is not effected by domestication.
-
-Results from diploid and tetraploid genotypes, compared by domestication status, have shown no evidence to suggest that grain length is effected by domestication.
-
+For the tetraploid genotypes /T. dicoccum/ and /T. dicoccoides/ the effect of domestication on length appears statistically insignificant. A 27.3% chance is reported as the likelihood of both means being independent. Whilst the data leans towards /T. dicoccum/ having a larger mean, there is insufficient evidence to confidently suggest that there is an effect.
 
 #+BEGIN_EXPORT latex
 \begin{figure}[!ht]
@@ -1567,9 +1565,6 @@ Results from diploid and tetraploid genotypes, compared by domestication status,
   \label{fig:lenmeansdiff}
 \end{figure}
 #+END_EXPORT
-\clearpage
-
-** Grain Volume Increases with Domestication
 
 For volume, the diploid samples /T. beoticum/, /T. monococcum/  and the tetraploids /T. dicoccum/  /T. dicoccoides/ when internally compared have shown that the difference in domestication is highly significant.
 
@@ -1589,6 +1584,68 @@ For volume, the diploid samples /T. beoticum/, /T. monococcum/  and the tetraplo
 
 The diploids show a 0.4% chance of their means being similar, while the tetraploids show a 3.7% chance of a same mean value.
 
+*** Summary
+With one group stating a difference in width and one disagreeing there is not enough evidence to fully reject that width is associated to solely domestication. Moreover,
+
+Results from diploid and tetraploid genotypes, compared by domestication status, have shown no evidence to suggest that grain length is effected by domestication.
+
+However, the grain volume across domestication shows a highly significant effect! Between the diploids there is a 99.6% chance that domesticated grains have a larger volume. Agreeing to this are the tetraploids which show a 96.3% chance of their means increasing with domestication.
+
+** The effects of Polyploidization
+
+Polyploidization, the process by which organisms hybridise into developing extra sets of homologous chromosomes.
+
+Diploids (/T. beoticum/ (2N|W), /T. monococcum/ (2N|D)) , tetraploids (/T. dicoccum/ (4N|D), /T. dicoccoides/ (2N|D)) show a significant difference in volume.
+
+Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this.
+
+#+CAPTION: A boxplot of all grains' volume plotted by ploidy and domestication status
+#+NAME: fig:ploidyvol
+#+ATTR_LATEX: :width 12cm
+[[./images/results/ploidyvol.png]]
+
+\clearpage
+Comparing /T. durum/ and /T. aestivum/ there is a 94.7% chance that the means are similar, this indicates that volume is not dependant on ploidy fully.
+
+#+CAPTION: A boxplot of /T. durum/ and /T. aestivum/ volume
+#+NAME: fig:ploidyvolume
+#+ATTR_LATEX: :width 12cm
+[[./images/results/group7/volume.png]]
+
+Further examination of domesticated diploids (/T. monococcum/) and domesticated tetraploids (/T. dicoccum/) has shown that there is no significant differences in length, width or depth (figure:\ref{fig:widthdpethlength})
+
+#+BEGIN_EXPORT latex
+\begin{figure}[htbp]
+  \subfloat[\label{subfig-1:length}]{%
+    \includegraphics[width=0.3\textwidth]{./images/results/group8/bayes_difference_of_means_length.png}
+  }
+  \hfill
+  \subfloat[\label{subfig-2:Width}]{%
+\includegraphics[width=0.3\textwidth]{./images/results/group8/bayes_difference_of_means_width.png}
+  }
+  \hfill
+  \subfloat[\label{subfig-2:Width}]{%
+\includegraphics[width=0.3\textwidth]{./images/results/group8/bayes_difference_of_means_depth.png}
+  }
+  \caption{Length (a), width (b), depth (c) }
+  \label{fig:widthdpethlength}
+\end{figure}
+#+END_EXPORT
+
+However, a significant difference is seen in volume (figure:[[fig:ploidyvolmono]]) which can be seen as a culmination of the three geometric descriptors. This indicates that better and more complex descriptors may be required to fully decipher these differences in grains.
+
+\clearpage
+
+#+CAPTION: A boxplot of /T. monococcum/ and /T. dicoccodies/ volume
+#+NAME: fig:ploidyvolmono
+#+ATTR_LATEX: :width 8cm
+[[./images/results/group8/volume.png]]
+
+
+*** Summary
+The results of comparing diploid to tetraploid show that a polyploidization applies a highly significant boost in grain volume. This effect is interesting when as it does not continue between tetraploid and hexaploid, an almost diminishing returns effect is noted, though not quite significant.
+
+
 ** Hexaploid Genotypes Contain No Significant Variation
 
 Hexaploids /T. aestivum/ and /T. spelta/ are both elite cultivars. When compared show that there is a 77.2% chance than there is a difference in the means of length. A 54.8% chance of difference in width.
@@ -1597,34 +1654,32 @@ A 91.5% chance and a 89.0% chance of difference of means in volume and length $\
 
 These values, with the exception of volume, do not provide sufficient evidence of significant variation in hexaploid varieties used in this study.
 
-
-\clearpage
-
-
-** Grain Volume Does Not Increase with Ploidy
-
-Diploids (/T. beoticum/, /T. monococcum/) , tetraploids (/T. dicoccum/, /T. dicoccoides/)  show a significant difference in volume.
-
-Hexaploids (/T. aestivum/) when compared to tetraploids (/T. dicoccum/) reports a 86.2% chance of the two means being the same. Indicating that increasing of ploidy fron 4N to 6N does not produce a significant change in grain volume. Figure:[[fig:ploidyvol]] shows this.
-
-#+CAPTION: A boxplot of all grains' volume plotted by ploidy and domestication status
-#+NAME: fig:ploidyvol
-#+ATTR_LATEX: :width 10cm
-[[./images/results/ploidyvol.png]]
-
-
-Comparing /T. durum/ and /T. aestivum/ there is a 94.7% chance that the means are similar, this indicates that volume is not dependant on ploidy fully.
-
-
-#+CAPTION: A boxplot of /T. durum/ and /T. aestivum/ volume
-#+NAME: fig:ploidyvolume
+#+CAPTION: A boxplot of /T. aestivum/ and /T. spelta/ volume
+#+NAME: fig:ploidyvolspelt
 #+ATTR_LATEX: :width 8cm
-[[./images/results/group7/volume.png]]
+[[./images/results/group3/volume.png]]
 
-\clearpage
+
+
+** Grain Classification through PCA
+Gegas et al. previously made great use of principal component analysis with wheat mapping populations. Using PCA afforded information on grain morphology specifically towards which traits could be traced to features from ancestral species.
+
+With this data, similar solutions could be implemented. Figure:[[fig:grainspca]] shows all grains in this study, grouped by origin spike and plotted by a two component PCA. Input is calculated through averaging across spike grains' length, width, depth, volume and the geometric interaction term, via equation:[[eqn:pca]].
+
+ #+NAME: eqn:pca
+ \begin{align}
+   &\begin{aligned}
+\text{Phenotype}_i = \frac{1}{n}\times\sum^n_{j=1}{x^i_j}
+   \end{aligned}
+ \end{align}
+ \myequations{PCA Equation}
+
+
+#+LABEL: fig:grainspca
+#+CAPTION: A 2 component PCA showing all the spikes discussed in this study
+#+ATTR_LATEX: width:16cm
+[[./images/pca_all.png]]
 * Discussion
-
-Here, this chapter will discuss the relevance of this research, its place in the wider field of plant sciences. The meaning of results and their agreement with current literature is also discussed. As well are some interesting findings, which while not statistically significant are cause of interest and further investigation.
 
 ** \micro-CT As Tool For Exploring Domestication
 In plant science \micro-CT and other imaging techniques have been used to great effect cite:Hubeau2015,Staedler2013,Metzner2015. Here this project builds upon and adds to an established image analysis tool cite:Hughes2017 where this method was designed for drought stress experiments this project has expanded functionality for use with a wide range of genotypes.
@@ -1633,12 +1688,7 @@ A wide range of attributes which previous studies could not access cite:Gegas201
 
 The provided pairwise plots consist of scatter plots, each marker represents a single grain, and diagonals are kernel density estimation plots which show the distribution of the phenotypes. For each comparison group from the study a pairwise plot is provided in supplemental figures.
 
-Primarily, this study has focused on the following phenotypes:
-
-1. Length
-2. Width
-3. Volume
-4. Surface Area
+Primarily, this study has focused on the following phenotypes: Length; Width; Volume; Surface Area.
 
 Length and width have previously been studied through two dimensional imaging cite:Gegas2010, their availability through this method provides an interesting point of reference. Volume and surface area both present unstudied phenotypes. Grain studies often use spike weight or thousand-grain-weight (TGW) as an estimation of yield from crops, such large assumptions are unsuited when so much variation exists on a grain-to-grain basis. The relationship between spike weight and sum of spike volume has previously been shown to have been significantly correlated cite:Hughes2017. As such, this study proposes that grain volume is a much more useful measurement, reduces amount of data collection needed and that it can also be used as a proxy for TGW if required.
 
@@ -1657,24 +1707,6 @@ It has been suggested that polyploidization events cause stronger effects in gra
 
 However, results from comparing primitive /T. beoticum/ and /T. dicoccoides/ show that an insignificant effect is present and that there is a high likelihood of width overlap. This effect could be down to a poor comparison choice as these genotypes may have arose from separate events cite:Ozkan2002.
 
-** Grain Classification through PCA
-Gegas et al. previously made great use of principal component analysis with wheat mapping populations. Using PCA afforded information on grain morphology specifically towards which traits could be traced to features from ancestral species.
-
-With this data, similar solutions could be implemented. Figure:[[fig:grainspca]] shows all grains in this study, grouped by origin spike and plotted by a two component PCA. Input is calculated through averaging across spike grains' length, width, depth, volume and the geometric interaction term, via equation:[[eqn:pca]].
-
- #+NAME: eqn:pca
- \begin{align}
-   &\begin{aligned}
-\text{Phenotype}_i = \frac{1}{n}\times\sum^n_{j=1}{x^i_j}
-   \end{aligned}
- \end{align}
- \myequations{PCA Equation}
-
-
-#+LABEL: fig:grainspca
-#+CAPTION: A 2 component PCA showing all the spikes discussed in this study
-#+ATTR_LATEX: width:15cm
-[[./images/pca_all.png]]
 
 ** CT Library and CT GUI
 
@@ -1686,12 +1718,16 @@ Both these pieces of software will be made freely available as research tools, t
 
 Ideally a MIT style software license will be applied to these software packages, and they will also be made available on python library repositories for easy distribution
 
+Moreover, whilst these tools have been developed using wheat plants as their basis, there exists the possibility for use in other crops. Demonstration of oats, millet, ryegrass and barley have been shown with similar non-enhanced versions of the imaging software cite:Hughes2017. As a result, the output data would be similar and easily usable with these provided software packages.
+
 ** Development of Grains
 Within the data present exists opportunities yet unexplored. A veritable goldmine of results are waiting to be used to answer questions on grain domestication.
 
 Additional exploration of spike information, grain occurrence relative to position along the spike for example is a hugely interesting trait that has mostly been neglected by other studies. The unique preservation of shape which \micro-CT imaging offers also allows for structure analysis.
 
-There exists the possibility of utilising existing imaging software which explores root patterns in crops to study spike structure cite:Mairhofer2015,Daly2017. This could provide further phenotypic information which may be used to provide explanation in grain development.
+Furthermore, grain density along the spike would be an interesting trait to examine, primitive species show a floret structure of 2 or 1 grains, whereas the domesticated have a filling potential of up-to 5 grains. Comparing these would be of great interest. Extracting information on volume density per floret may give insight into how and why grains have developed a higher quantity and if the distribution of grain changes.
+
+There also exists the possibility of utilising existing imaging software which explores root patterns in crops to study spike structure cite:Mairhofer2015,Daly2017. This could provide further phenotypic information which may be used to provide explanation in grain development.
 
 Grains have displayed a wide standard deviation in shape and size even within single spikes. This presents an incredibly complex problem that wants exploring, however it is a huge time sink and will be the follow up targets of this work.
 
@@ -1739,6 +1775,8 @@ In contrast, F.R:4 is one of the more loosely defined requirements, stating that
 
 To accommodate for this two of the most widely used tests in biological research were implemented, the Student's T-test and Welch's T-test. In addition the specific Bayesian estimation hypothesis test that was used to answer the research questions of the project was implemented.
 
+Briefly in early meetings a visual representation of errors was proposed as an idea. This would have been an incredibly useful tool to have. It could work by taking possible erroneous data points displaying their image in 3D so that a user could visually inspect the error. This would have provided insight into recognising where the software is wrong, or possibly where it is right and why certain grains have grown non-uniformly. This was unfortunately never implemented due to time-constraints.
+
 
 ** Quality of Work
 The quality of the work done had been to a high standard, as one of the central dogmas of research is robustness. A higher output of work could have been achieved if quality was scarified. For example a custom data model being devised and researched took a large amount of time and effort, existing solutions could have been used and allow more hypothesis to be asked and answered. The results however, would be much less useful.
@@ -1752,6 +1790,8 @@ As mentioned, the time constraint imposed upon this project prevented a full exp
 Additional groupings, such as into floret subgroups could provide a new and interesting way to compare grains. It would allow the study of individual spikes, divided by sub-regions. Further investigation in this area may provide critical information as to why specific regions of spikes have more/larger grains whilst others do not fully fill their potential.
 
 Contributing more tests to the CT Analysis Library would be a main goal of future work also. The distributions and style of the data presented may require thinking about in new and novel ways. This could be interesting.
+
+Some work would be interesting to undertake on testing the created software packages on other crops, oats for example have a fairly similar structure to wheat and similar techniques may be applicable.
 
 Finally, creating a repository for seed morphometrics will be a goal for further work, contributing too and allowing other researchers to add to a centralised library. Doing this could create a large multi-experiment analysis to take place with standardised data.
 
@@ -1996,6 +2036,76 @@ Finally, creating a repository for seed morphometrics will be a goal for further
 #+END_SRC
 
 \clearpage
+
+** Results Generation
+<<sec:resultsgen>>
+#+BEGIN_SRC python
+  # import library object
+  from ct_analysing_library.ct_data import CTData as ctd
+  from ct_analysing_library.statistical_tests import baysian_hypothesis_test
+  from numpy import array as nparr
+  # small func to split on two criteria to reduce code reuse
+
+
+  def split_on_two_sample_types(df, type1, type2):
+      result = df[(df['Sample Type'] == type1) | (df['Sample Type'] == type2)]
+      result.reset_index(drop=True, inplace=True)
+      return result
+
+
+  # give data locations
+  dloc = '/home/nathan/Dropbox/Dissertation/Data/Primitives_Final/'
+  dinfo = '/home/nathan/Dropbox/Dissertation/Documents/List of primitives and synthetics final.xlsx'
+
+
+  data = ctd(dloc, 'True')
+  # add spike info
+  data.get_spike_info(dinfo)
+  # fix colnames
+  data.clean_data()
+  data.fix_colnames()
+  # extract just the data frame
+  df = data.get_data()
+
+  # Then start to compare
+
+  # select attributes we are interested in
+  atts = ['length', 'width', 'depth', 'volume',
+	  'surface_area', 'length_depth_width']
+
+  # Remap the namings so that they display well in results
+  df['Sample Type'] = df['Sample Type'].map(
+      {'T_monococcum_': 'T. monococcum',
+       'T_monococcum_wild_': 'T. beoticum',
+       'T_dicoccum_': 'T. dicoccum',
+       'T_dicoccoides_': 'T. dicoccoides',
+       'T_aestivum_': 'T. aestivum',
+       'T_spelta_': 'T. spelta',
+       'T_durum_': 'T. durum'})
+
+  compare_groups = [('T. monococcum', 'T. beoticum'),
+		    ('T. dicoccum', 'T. dicoccoides'),
+		    ('T. aestivum', 'T. spelta'),
+		    ('T. beoticum', 'T. dicoccoides'),
+		    ('T. dicoccum', 'T. durum'),
+		    ('T. aestivum', 'T. dicoccum'),
+		    ('T. aestivum', 'T. durum')]
+
+  # for each group comparison
+  results = {}
+  for g1, g2 in compare_groups:
+      # split data
+      d = split_on_two_sample_types(df, g1, g2)
+      bayes = {}
+      # for each attribue
+      for a in atts:
+	  d1 = nparr(d[d['Sample Type'] == g1][a])
+	  d2 = nparr(d[d['Sample Type'] == g2][a])
+	  res, summ = baysian_hypothesis_test(d1, d2, g1, g2)
+	  bayes[a] = (res['difference of means'] < 0).mean()
+      results['{0}+{1}'.format(g1, g2)] = bayes
+
+#+END_SRC
 
 * Bayesian Results
 
@@ -2416,5 +2526,3 @@ A feature freeze was enforced during the 11th week of the project. This was to e
 \clearpage
 bibliography:library.bib
 bibliographystyle:IEEEannotU
-
-* Footnotes
